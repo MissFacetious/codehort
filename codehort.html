@@ -1,0 +1,121 @@
+<!doctype html>
+<!-- See http://www.firepad.io/docs/ for detailed embedding docs. -->
+<html>
+<head>
+  <meta charset="utf-8" />
+  <!-- Firebase -->
+  <script src="https://www.gstatic.com/firebasejs/5.5.4/firebase.js"></script>
+  <!-- CodeMirror and its JavaScript mode file -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.17.0/codemirror.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.17.0/mode/javascript/javascript.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.17.0/codemirror.css" />
+
+  <!-- Firepad -->
+  <link rel="stylesheet" href="https://cdn.firebase.com/libs/firepad/1.4.0/firepad.css" />
+  <script src="https://cdn.firebase.com/libs/firepad/1.4.0/firepad.min.js"></script>
+
+  <style>
+    html { height: 100%; }
+    body { margin: 0; height: 100%; position: relative; }
+    #codehort-header {
+      padding: 10px;
+      font-family: Arial;
+    }
+    /* Height / width / positioning can be customized for your use case.
+       For demo purposes, we make firepad fill the entire browser. */
+    #firepad-container {
+      width: 100%;
+      height: 100%;
+    }
+  </style>
+</head>
+
+<body onload="init()">
+
+  <div id="codehort-header">
+    <h1>Hello, Welcome to Codehort!</h1>
+    <div id="codehort-intro">Share this code: <span id="codehort-link"></span></div>
+    <div id="codehort-intro2">Join with this code: <input type="text" id="JoinValue"><input type="submit" value="Join" id="JoinButton" onclick="return joinCode()"></div>
+    <input name="buttonExecute" onclick="executeCode();" type="button" value="Run" />
+  </div>
+  <div id="firepad-container"></div>
+
+  <script>
+    var codeMirror;
+    var firepad;
+
+    var baseURL = window.location+"";
+    //strip out anything after #
+    if (baseURL != null) {
+      var n = baseURL.indexOf('#');
+      baseURL = baseURL.substring(0, n != -1 ? n : baseURL.length);
+    }
+    else baseURL = "";
+
+    function init() {
+      //// Initialize Firebase.
+      //// TODO: replace with your Firebase project configuration.
+      var config = {
+        apiKey: "AIzaSyCa3PLDxHQ8Fz0Gyz8-aL-Ep6WhjSgKdRc",
+       authDomain: "codehort.firebaseapp.com",
+       databaseURL: "https://codehort.firebaseio.com",
+       projectId: "codehort",
+       storageBucket: "codehort.appspot.com",
+       messagingSenderId: "323980550600"
+      };
+      firebase.initializeApp(config);
+      //// Get Firebase Database reference.
+      var firepadRef = getExampleRef();
+      //// Create CodeMirror (with line numbers and the JavaScript mode).
+      codeMirror = CodeMirror(document.getElementById('firepad-container'), {
+        lineNumbers: true,
+        mode: 'javascript'
+      });
+      //// Create Firepad.
+      firepad = Firepad.fromCodeMirror(firepadRef, codeMirror, {
+        defaultText: '// JavaScript Editing with Firepad!\nfunction go() {\n  var message = "Hello, world.";\n  console.log(message);\n}'
+      });
+    }
+
+    function joinCode() {
+      console.log(document.getElementById("JoinValue").value);
+      window.location.href = baseURL + '#' + document.getElementById("JoinValue").value;
+    }
+
+    function executeCode() {
+      console.log(codeMirror.getValue(""));
+      //var newWindow = window.open();
+      //newWindow.document.write('<script>function init() { alert("hello"); eval(codeMirror.getValue("")) }');
+      //newWindow.document.write('<body onload="init()">');
+
+      
+      eval(codeMirror.getValue(""));
+     
+    }
+
+function link(linkValue) {
+  // copy to clipboard
+  console.log(linkValue);
+}
+    // Helper to get hash from end of URL or generate a random one.
+    function getExampleRef() {
+      var ref = firebase.database().ref();
+      var hash = window.location.hash.replace(/#/g, '');
+      if (hash) {
+        ref = ref.child(hash);
+        var linkValue = ref.key;
+        document.getElementById("codehort-link").innerHTML = "<a href=\"javascript:link('"+linkValue+"')\">"+linkValue+"</a>";
+      
+      } else {
+        ref = ref.push(); // generate unique location.
+        window.location = baseURL + '#' + ref.key; // add it as a hash to the URL.
+        //document.getElementById("codehort-link2").innerHTML = "";
+      }
+      if (typeof console !== 'undefined') {
+        console.log('Firebase data: ', ref.toString());
+      }
+      return ref;
+    }
+  </script>
+</body>
+</html>
