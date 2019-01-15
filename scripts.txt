@@ -1,0 +1,13 @@
+# install apache cordova
+sudo npm install -g cordova
+
+# create an app
+cordova create codehort
+
+# add a platform 
+cordova platform add osx
+cordova platform add windows
+
+# run the executable
+cordova run osx
+cordova run windows
