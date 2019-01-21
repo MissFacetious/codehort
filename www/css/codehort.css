@@ -1,3 +1,7 @@
+html {
+    background: #ddd;
+}
+
 .button {
   height: 57px;
   width: 57px;
@@ -53,4 +57,30 @@
 }
 .runBtn {
   background-image: url("./../img/twotone_play_circle_filled_black_18dp.png");
+}
+
+.tooltip {
+  position: relative;
+  display: inline-block;
+  border-bottom: 1px dotted black; /* If you want dots under the hoverable text */
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  padding: 5px 0;
+  border-radius: 6px;
+
+  /* Position the tooltip text - see examples below! */
+  position: absolute;
+  z-index: 1;
+  top: -20px;
+  left: 50%;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
 }

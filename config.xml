@@ -1,13 +1,14 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="io.cordova.hellocordova" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-    <name>HelloCordova</name>
+<widget id="io.cordova.hellocordova" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <name>Codehort</name>
+    <name short="HiCdv">Codehort</name>
     <description>
-        A sample Apache Cordova application that responds to the deviceready event.
+        A Distributed eXtreme Programing Tool
     </description>
-    <author email="dev@cordova.apache.org" href="http://cordova.io">
-        Apache Cordova Team
+    <author email="evilisa@gmail.com" href="mailto:evilisa@gmail.com">
+        Lisa Walkosz-Migliacio
     </author>
-    <content src="index.html" />
+    <content src="codehort.html" />
     <plugin name="cordova-plugin-whitelist" spec="1" />
     <access origin="*" />
     <allow-intent href="http://*/*" />
@@ -23,6 +24,11 @@
         <allow-intent href="itms:*" />
         <allow-intent href="itms-apps:*" />
     </platform>
+    <preference name="Fullscreen" value="false" />
+    <preference name="WebViewBounce" value="true" />
+    <preference name="BackgroundColor" value="0xdddddd" />
+    <preference name="WindowSize" value="1280x768" />
+    <preference name="OSXLocalStoragePath" value="~/.codehort/database"/>
     <engine name="browser" spec="^5.0.4" />
     <engine name="osx" spec="^4.0.2" />
 </widget>
