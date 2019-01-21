@@ -3,6 +3,7 @@
 <html>
 <head>
   <meta charset="utf-8" />
+  <link rel="stylesheet" href="./css/codehort.css" />
   <!-- Firebase -->
   <script src="https://www.gstatic.com/firebasejs/5.5.4/firebase.js"></script>
   <!-- CodeMirror and its JavaScript mode file -->
@@ -17,10 +18,17 @@
   <style>
     html { height: 100%; }
     body { margin: 0; height: 100%; position: relative; }
+
+
     #codehort-header {
       padding: 10px;
       font-family: Arial;
     }
+    #codehort-icons {
+
+
+    }
+
     /* Height / width / positioning can be customized for your use case.
        For demo purposes, we make firepad fill the entire browser. */
     #firepad-container {
@@ -36,7 +44,24 @@
     <h1>Hello, Welcome to Codehort!</h1>
     <div id="codehort-intro">Share this code: <span id="codehort-link"></span></div>
     <div id="codehort-intro2">Join with this code: <input type="text" id="JoinValue"><input type="submit" value="Join" id="JoinButton" onclick="return joinCode()"></div>
-    <input name="buttonExecute" onclick="executeCode();" type="button" value="Run" />
+
+  </div>
+  <div class="codehort-icons" id="codehort-icons">
+    <button name="newBtn" id="newBtn" class="button icon newBtn" value="New" ><i class="" /></button>
+    <button name="saveBtn" id="saveBtn" class="button icon saveBtn" value="Save" ><i class="" /></button>
+    <button name="undoBtn" id="undoBtn" class="button icon undoBtn" value="Undo" ><i class="" /></button>
+    <button name="redoBtn" id="redoBtn" class="button icon redoBtn" value="Redo" ><i class="" /></button>
+    <button name="copyBtn" id="copyBtn" class="button icon copyBtn" value="Copy" ><i class="" /></button>
+    <button name="pasteBtn" id="pasteBtn" class="button icon pasteBtn" value="Paste" ><i class="" /></button>
+    <button name="zoomOutBtn" id="zoomOutBtn" class="button icon zoomOutBtn" value="Zoom Out" ><i class="" /></button>
+    <button name="zoomInBtn" id="zoomInBtn" class="button icon zoomInBtn" value="Zoom In" ><i class="" /></button>
+    <button name="searchBtn" id="searchBtn" class="button icon searchBtn" value="Search" ><i class="" /></button>
+    <button name="replaceBtn" id="replaceBtn" class="button icon replaceBtn" value="Replace" ><i class="" /></button>
+    <button name="newSessionBtn" id="newSessionBtn" class="button icon newSessionBtn" value="New Session" ><i class="" /></button>
+    <button name="joinSessionBtn" id="joinSessionBtn" class="button icon joinSessionBtn" value="Join Session" ><i class="" /></button>
+    <button name="infoSessionBtn" id="infoSessionBtn" class="button icon infoSessionBtn" value="Session Info" ><i class="" /></button>
+    <button name="configBtn" id="configBtn" type="button" class="button icon configBtn" value="Preferences" ><i class="" /></button>
+    <button name="runBtn" id="runBtn" onclick="executeCode();" class="button icon runBtn" value="Run" ><i class="" /></button>
   </div>
   <div id="firepad-container"></div>
 
@@ -75,6 +100,41 @@
       firepad = Firepad.fromCodeMirror(firepadRef, codeMirror, {
         defaultText: '// JavaScript Editing with Firepad!\nfunction go() {\n  var message = "Hello, world.";\n  console.log(message);\n}'
       });
+
+      // copy paste listeners
+      var copyBtn = document.getElementById("copyBtn");
+      copyBtn.addEventListener('click', function(event) {
+        try {
+          // Now that we've selected the anchor text, execute the copy command
+          var successful = document.execCommand('copy');
+          var msg = successful ? 'successful' : 'unsuccessful';
+          console.log('Copy email command was ' + msg + " and what was copied to clipboard was " + successful);
+        } catch(err) {
+          console.log('Oops, unable to copy');
+        }
+
+        // Remove the selections - NOTE: Should use
+        // removeRange(range) when it is supported
+        //window.getSelection().removeAllRanges();
+      });
+      var pasteBtn = document.getElementById("pasteBtn");
+      pasteBtn.addEventListener('click', function(event) {
+
+        console.log(codeMirror.getValue(""));
+        codeMirror.get
+        try {
+          // Now that we've selected the anchor text, execute the copy command
+          var successful = document.execCommand('paste');
+          var msg = successful ? 'successful' : 'unsuccessful';
+          console.log('Copy email command was ' + msg + " and what was pasted to clipboard was " + successful);
+        } catch(err) {
+          console.log('Oops, unable to paste');
+        }
+
+        // Remove the selections - NOTE: Should use
+        // removeRange(range) when it is supported
+        //window.getSelection().removeAllRanges();
+      });
     }
 
     function joinCode() {
@@ -88,9 +148,9 @@
       //newWindow.document.write('<script>function init() { alert("hello"); eval(codeMirror.getValue("")) }');
       //newWindow.document.write('<body onload="init()">');
 
-      
+
       eval(codeMirror.getValue(""));
-     
+
     }
 
 function link(linkValue) {
@@ -105,7 +165,7 @@ function link(linkValue) {
         ref = ref.child(hash);
         var linkValue = ref.key;
         document.getElementById("codehort-link").innerHTML = "<a href=\"javascript:link('"+linkValue+"')\">"+linkValue+"</a>";
-      
+
       } else {
         ref = ref.push(); // generate unique location.
         window.location = baseURL + '#' + ref.key; // add it as a hash to the URL.

@@ -1,0 +1,56 @@
+.button {
+  height: 57px;
+  width: 57px;
+  background-color: powderblue;
+}
+.icon {
+  background-repeat: no-repeat;
+  background-position: center;
+  /*background-color: #cccccc;*/
+  /*background-size: cover; */
+}
+.newBtn {
+  background-image: url("./../img/twotone_insert_drive_file_black_18dp.png");
+}
+.saveBtn {
+  background-image: url("./../img/twotone_save_black_18dp.png");
+}
+.undoBtn {
+  background-image: url("./../img/twotone_undo_black_18dp.png");
+}
+.redoBtn {
+  background-image: url("./../img/twotone_redo_black_18dp.png");
+}
+.copyBtn {
+  background-image: url("./../img/twotone_file_copy_black_18dp.png");
+}
+.pasteBtn {
+  background-image: url("./../img/twotone_perm_media_black_18dp.png");
+}
+.zoomOutBtn {
+  background-image: url("./../img/twotone_zoom_out_black_18dp.png");
+}
+.zoomInBtn {
+  background-image: url("./../img/twotone_zoom_in_black_18dp.png");
+}
+.searchBtn {
+  background-image: url("./../img/baseline_search_black_18dp.png");
+}
+.replaceBtn {
+  background-image: url("./../img/baseline_search_black_18dp.png");
+}
+.newSessionBtn {
+  background-image: url("./../img/twotone_person_add_black_18dp.png");
+}
+.joinSessionBtn {
+  background-image: url("./../img/twotone_group_black_18dp.png");
+}
+.infoSessionBtn {
+  background-image: url("./../img/twotone_info_black_18dp.png");
+}
+.configBtn {
+  background-image: url("./../img/twotone_settings_black_18dp.png");
+}
+.runBtn {
+  background-image: url("./../img/twotone_play_circle_filled_black_18dp.png");
+}
