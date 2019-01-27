@@ -10,6 +10,9 @@
   else baseURL = "";
 
   function init() {
+
+    // hide panels
+    hidePanels();
     //// Initialize Firebase.
     //// TODO: replace with your Firebase project configuration.
     var config = {
@@ -67,6 +70,26 @@
       // removeRange(range) when it is supported
       //window.getSelection().removeAllRanges();
     });
+  }
+
+  function hidePanels() {
+    document.getElementById("codehort-neweditor").style.display = 'none';
+    document.getElementById("codehort-saveedit").style.display = 'none';
+    document.getElementById("codehort-newsession").style.display = 'none';
+    document.getElementById("codehort-joinsession").style.display = 'none';
+    document.getElementById("codehort-sessioninfo").style.display = 'none';
+    document.getElementById("codehort-preferences").style.display = 'none';
+    document.getElementById("codehort-run").style.display = 'none';
+    document.getElementById("overlay").style.display = 'none';
+  }
+
+  function showPanel(panel) {
+    document.getElementById(panel).style.display = 'block';
+    document.getElementById("overlay").style.display = 'block';
+  }
+
+  function closePanel() {
+    hidePanels();
   }
 
   function joinCode() {

@@ -21,31 +21,119 @@
 
 <body onload="init()">
 
+<div id="codehort-neweditor" class="panel panel-small">
+  <div class="panel-content">
+    <div class="panel-header">
+      <span class="close" onclick="closePanel();">&times;</span>
+      <h2>Header</h2>
+    </div>
+    <div class="panel-body">
+      <div id="codehort-intro">Share this code: <span id="codehort-link"></span></div>
+      <div id="codehort-intro2">Join with this code: <input type="text" id="JoinValue"><input type="submit" value="Join" id="JoinButton" onclick="return joinCode()"></div>
+    </div>
+  </div>
+</div>
+
+<div id="codehort-saveedit" class="panel panel-large">
+  <div class="panel-content">
+    <div class="panel-header">
+      <span class="close" onclick="closePanel();">&times;</span>
+      <h2>Header</h2>
+    </div>
+    <div class="panel-body">
+      <div id="codehort-intro">Share this code: <span id="codehort-link"></span></div>
+      <div id="codehort-intro2">Join with this code: <input type="text" id="JoinValue"><input type="submit" value="Join" id="JoinButton" onclick="return joinCode()"></div>
+    </div>
+  </div>
+</div>
+
+<div id="codehort-newsession" class="panel panel-small">
+  <div class="panel-content">
+    <div class="panel-header">
+      <span class="close" onclick="closePanel();">&times;</span>
+      <h2>Header</h2>
+    </div>
+    <div class="panel-body">
+      <div id="codehort-intro">Share this code: <span id="codehort-link"></span></div>
+      <div id="codehort-intro2">Join with this code: <input type="text" id="JoinValue"><input type="submit" value="Join" id="JoinButton" onclick="return joinCode()"></div>
+    </div>
+  </div>
+</div>
+
+<div id="codehort-joinsession" class="panel panel-large">
+  <div class="panel-content">
+    <div class="panel-header">
+      <span class="close" onclick="closePanel();">&times;</span>
+      <h2>Header</h2>
+    </div>
+    <div class="panel-body">
+      <div id="codehort-intro">Share this code: <span id="codehort-link"></span></div>
+      <div id="codehort-intro2">Join with this code: <input type="text" id="JoinValue"><input type="submit" value="Join" id="JoinButton" onclick="return joinCode()"></div>
+    </div>
+  </div>
+</div>
+
+<div id="codehort-sessioninfo" class="panel panel-large">
+  <div class="panel-content">
+    <div class="panel-header">
+      <span class="close" onclick="closePanel();">&times;</span>
+      <h2>Header</h2>
+    </div>
+    <div class="panel-body">
+      <div id="codehort-intro">Share this code: <span id="codehort-link"></span></div>
+      <div id="codehort-intro2">Join with this code: <input type="text" id="JoinValue"><input type="submit" value="Join" id="JoinButton" onclick="return joinCode()"></div>
+    </div>
+  </div>
+</div>
+
+<div id="codehort-preferences" class="panel panel-large">
+  <div class="panel-content">
+    <div class="panel-header">
+      <span class="close" onclick="closePanel();">&times;</span>
+      <h2>Header</h2>
+    </div>
+    <div class="panel-body">
+      <div id="codehort-intro">Share this code: <span id="codehort-link"></span></div>
+      <div id="codehort-intro2">Join with this code: <input type="text" id="JoinValue"><input type="submit" value="Join" id="JoinButton" onclick="return joinCode()"></div>
+    </div>
+  </div>
+</div>
+
+<div id="codehort-run" class="panel panel-large">
+  <div class="panel-content">
+    <div class="panel-header">
+      <span class="close" onclick="closePanel();">&times;</span>
+      <h2>Header</h2>
+    </div>
+    <div class="panel-body">
+      <div id="codehort-intro">Share this code: <span id="codehort-link"></span></div>
+      <div id="codehort-intro2">Join with this code: <input type="text" id="JoinValue"><input type="submit" value="Join" id="JoinButton" onclick="return joinCode()"></div>
+    </div>
+  </div>
+</div>
+
   <div id="codehort-header">
-    <h1>Hello, Welcome to Codehort!</h1>
-    <div id="codehort-intro">Share this code: <span id="codehort-link"></span></div>
-    <div id="codehort-intro2">Join with this code: <input type="text" id="JoinValue"><input type="submit" value="Join" id="JoinButton" onclick="return joinCode()"></div>
-
+    <div class="codehort-icons" id="codehort-icons">
+      <button name="newBtn" id="newBtn" onclick="showPanel('codehort-neweditor');" class="button icon tooltip newBtn" value="New" ><span class="tooltiptext">Create New Editor</span></button>
+      <button name="saveBtn" id="saveBtn" onclick="showPanel('codehort-saveedit');" class="button icon tooltip saveBtn" value="Save" ><span class="tooltiptext">Save Code in Editor</span></button>
+      <button name="undoBtn" id="undoBtn" onclick=";" class="button icon tooltip undoBtn" value="Undo" ><span class="tooltiptext">Undo</span></button>
+      <button name="redoBtn" id="redoBtn" onclick=";" class="button icon tooltip redoBtn" value="Redo" ><span class="tooltiptext">Redo</span></button>
+      <button name="copyBtn" id="copyBtn" onclick=";" class="button icon tooltip copyBtn" value="Copy" ><span class="tooltiptext">Copy</span></button>
+      <button name="pasteBtn" id="pasteBtn" onclick=";" class="button icon tooltip pasteBtn" value="Paste" ><span class="tooltiptext">Paste</span></button>
+      <button name="zoomOutBtn" id="zoomOutBtn" onclick=";" class="button icon tooltip zoomOutBtn" value="Zoom Out" ><span class="tooltiptext">Zoom Out</span></button>
+      <button name="zoomInBtn" id="zoomInBtn" onclick=";" class="button icon tooltip zoomInBtn" value="Zoom In" ><span class="tooltiptext">Zoom In</span></button>
+      <button name="searchBtn" id="searchBtn" onclick=";" class="button icon tooltip searchBtn" value="Search" ><span class="tooltiptext">Search Code</span></button>
+      <button name="replaceBtn" id="replaceBtn" onclick=";" class="button icon tooltip replaceBtn" value="Replace" ><span class="tooltiptext">Replace Text</span></button>
+      <button name="newSessionBtn" id="newSessionBtn" onclick="showPanel('codehort-newsession');" class="button icon tooltip newSessionBtn" value="New Session" ><span class="tooltiptext">New Session</span></button>
+      <button name="joinSessionBtn" id="joinSessionBtn" onclick="showPanel('codehort-joinsession');" class="button icon tooltip joinSessionBtn" value="Join Session" ><span class="tooltiptext">Join Session</span></button>
+      <button name="infoSessionBtn" id="infoSessionBtn" onclick="showPanel('codehort-sessioninfo');" class="button icon tooltip infoSessionBtn" value="Session Info" ><span class="tooltiptext">Session Info</span></button>
+      <button name="configBtn" id="configBtn" onclick="showPanel('codehort-preferences');" type="button" class="button icon tooltip configBtn" value="Preferences" ><span class="tooltiptext">Preferences</span></button>
+      <button name="runBtn" id="runBtn" onclick="executeCode();" class="button icon tooltip runBtn" value="Run" ><span class="tooltiptext">Run Code</span></button>
+    </div>
   </div>
-  <div class="codehort-icons" id="codehort-icons">
-    <button name="newBtn" id="newBtn" class="button icon tooltip newBtn" value="New" ><span class="tooltiptext">Create New Editor</span></button>
-    <button name="saveBtn" id="saveBtn" class="button icon tooltip saveBtn" value="Save" ><span class="tooltiptext">Save Code in Editor</span></button>
-    <button name="undoBtn" id="undoBtn" class="button icon tooltip undoBtn" value="Undo" ><span class="tooltiptext">Undo</span></button>
-    <button name="redoBtn" id="redoBtn" class="button icon tooltip redoBtn" value="Redo" ><span class="tooltiptext">Redo</span></button>
-    <button name="copyBtn" id="copyBtn" class="button icon tooltip copyBtn" value="Copy" ><span class="tooltiptext">Copy</span></button>
-    <button name="pasteBtn" id="pasteBtn" class="button icon tooltip pasteBtn" value="Paste" ><span class="tooltiptext">Paste</span></button>
-    <button name="zoomOutBtn" id="zoomOutBtn" class="button icon tooltip zoomOutBtn" value="Zoom Out" ><span class="tooltiptext">Zoom Out</span></button>
-    <button name="zoomInBtn" id="zoomInBtn" class="button icon tooltip zoomInBtn" value="Zoom In" ><span class="tooltiptext">Zoom In</span></button>
-    <button name="searchBtn" id="searchBtn" class="button icon tooltip searchBtn" value="Search" ><span class="tooltiptext">Search Code</span></button>
-    <button name="replaceBtn" id="replaceBtn" class="button icon tooltip replaceBtn" value="Replace" ><span class="tooltiptext">Replace Text</span></button>
-    <button name="newSessionBtn" id="newSessionBtn" class="button icon tooltip newSessionBtn" value="New Session" ><span class="tooltiptext">New Session</span></button>
-    <button name="joinSessionBtn" id="joinSessionBtn" class="button icon tooltip joinSessionBtn" value="Join Session" ><span class="tooltiptext">Join Session</span></button>
-    <button name="infoSessionBtn" id="infoSessionBtn" class="button icon tooltip infoSessionBtn" value="Session Info" ><span class="tooltiptext">Session Info</span></button>
-    <button name="configBtn" id="configBtn" type="button" class="button icon tooltip configBtn" value="Preferences" ><span class="tooltiptext">Preferences</span></button>
-    <button name="runBtn" id="runBtn" onclick="executeCode();" class="button icon tooltip runBtn" value="Run" ><span class="tooltiptext">Run Code</span></button>
-  </div>
-  <div id="firepad-container"></div>
-
+<div id="codehort-header-behind"></div>
+<div id="overlay" class="overlay"></div>
+    <div id="firepad-container"></div>
 
 </body>
 </html>
