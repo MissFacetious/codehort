@@ -93,8 +93,24 @@
   }
 
   function joinCode() {
-    console.log(document.getElementById("JoinValue").value);
-    window.location.href = baseURL + '#' + document.getElementById("JoinValue").value;
+    console.log(document.getElementById("sessionIdInput").value);
+    window.location.href = baseURL + '#' + document.getElementById("sessionIdInput").value;
+    // TODO: make sure we reload the url to join correcty
+    hidePanels();
+  }
+
+  function applyPref() {
+    // apply the prefs in the panel such as
+
+    // dark / light theme
+
+    // show intro at startup
+
+    // display chat
+
+    
+
+    hidePanels();
   }
 
   function executeCode() {
@@ -120,6 +136,7 @@ console.log(linkValue);
       ref = ref.child(hash);
       var linkValue = ref.key;
       document.getElementById("codehort-link").innerHTML = "<a href=\"javascript:link('"+linkValue+"')\">"+linkValue+"</a>";
+      document.getElementById("codehort-display").innerHTML = linkValue;
 
     } else {
       ref = ref.push(); // generate unique location.
