@@ -1,8 +1,7 @@
   var codeMirror;
   var firepad;
 
-  var zoom = 1;
-
+  var zoom = 1.5;
   var baseURL = window.location+"";
   //strip out anything after #
   if (baseURL != null) {
@@ -15,15 +14,16 @@
 
     // hide panels
     hidePanels();
+
     //// Initialize Firebase.
     //// TODO: replace with your Firebase project configuration.
     var config = {
       apiKey: "AIzaSyCa3PLDxHQ8Fz0Gyz8-aL-Ep6WhjSgKdRc",
-     authDomain: "codehort.firebaseapp.com",
-     databaseURL: "https://codehort.firebaseio.com",
-     projectId: "codehort",
-     storageBucket: "codehort.appspot.com",
-     messagingSenderId: "323980550600"
+      authDomain: "codehort.firebaseapp.com",
+      databaseURL: "https://codehort.firebaseio.com",
+      projectId: "codehort",
+      storageBucket: "codehort.appspot.com",
+      messagingSenderId: "323980550600"
     };
     firebase.initializeApp(config);
     //// Get Firebase Database reference.
@@ -72,6 +72,8 @@
       // removeRange(range) when it is supported
       //window.getSelection().removeAllRanges();
     });
+
+    changeSize(0);
   }
 
   function hidePanels() {
@@ -94,11 +96,16 @@
     hidePanels();
   }
 
+  function newEditor() {
+    window.location.href = baseURL;
+    getExampleRef();
+  }
   function joinCode() {
     console.log(document.getElementById("sessionIdInput").value);
-    window.location.href = baseURL + '#' + document.getElementById("sessionIdInput").value;
-    // TODO: make sure we reload the url to join correcty
-    hidePanels();
+    var sessionId = document.getElementById("sessionIdInput").value;
+    window.location.href = baseURL + '#-' + sessionId;
+    // make sure we reload the url to join correcty
+    window.location.reload(true);
   }
 
   function changeSize(i) {
@@ -155,12 +162,12 @@ console.log(linkValue);
   function getExampleRef() {
     var ref = firebase.database().ref();
     var hash = window.location.hash.replace(/#/g, '');
+    hash = hash.replace(/-/g, '');
     if (hash) {
       ref = ref.child(hash);
       var linkValue = ref.key;
       document.getElementById("codehort-link").innerHTML = "<a href=\"javascript:link('"+linkValue+"')\">"+linkValue+"</a>";
       document.getElementById("codehort-display").innerHTML = linkValue;
-
     } else {
       ref = ref.push(); // generate unique location.
       window.location = baseURL + '#' + ref.key; // add it as a hash to the URL.
