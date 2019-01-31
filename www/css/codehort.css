@@ -7,6 +7,22 @@ body {
 
 }
 
+table.labeled {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+td.right {
+  text-align: right;
+}
+
+td.labeled {
+  padding: 5px;
+}
+
+div.right {
+  float: right;
+}
 
 #codehort-header {
   padding-top: 20px;

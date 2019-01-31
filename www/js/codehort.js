@@ -1,6 +1,8 @@
   var codeMirror;
   var firepad;
 
+  var zoom = 1;
+
   var baseURL = window.location+"";
   //strip out anything after #
   if (baseURL != null) {
@@ -99,6 +101,11 @@
     hidePanels();
   }
 
+  function changeSize(i) {
+    zoom += 0.5*i;
+    document.getElementById('firepad-container').style.fontSize = zoom+"em";
+  }
+
   function applyPref() {
     // apply the prefs in the panel such as
 
@@ -108,7 +115,7 @@
 
     // display chat
 
-    
+
 
     hidePanels();
   }
