@@ -102,7 +102,23 @@
   }
 
   function changeSize(i) {
-    zoom += 0.5*i;
+    // do not allow it to zoom out less than 0.1 and more than 10
+    if (zoom > 0.5 && i < 0) {
+      if (zoom < 1.2) {
+        zoom += 0.1*i;
+      }
+      else {
+        zoom += 0.5*i;
+      }
+    }
+    if (zoom < 7.2 && i > 0) {
+      if (zoom < 1.2) {
+        zoom += 0.1*i;
+      }
+      else {
+        zoom += 0.5*i;
+      }
+    }
     document.getElementById('firepad-container').style.fontSize = zoom+"em";
   }
 
