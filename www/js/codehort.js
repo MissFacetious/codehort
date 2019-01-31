@@ -35,7 +35,7 @@
     });
     //// Create Firepad.
     firepad = Firepad.fromCodeMirror(firepadRef, codeMirror, {
-      defaultText: '// JavaScript Editing with Firepad!\nfunction go() {\n  var message = "Hello, world.";\n  console.log(message);\n}'
+      defaultText: '// Welcome to Codehort, start coding!\n\nconsole.log(\'hello world!\');\n\n'
     });
 
     // copy paste listeners
@@ -97,9 +97,17 @@
   }
 
   function newEditor() {
+    // remove all text in the editor
+    firepad.setText('');
+    hidePanels();
+  }
+
+  function newSession() {
+    // create new session
     window.location.href = baseURL;
     getExampleRef();
   }
+
   function joinCode() {
     console.log(document.getElementById("sessionIdInput").value);
     var sessionId = document.getElementById("sessionIdInput").value;
@@ -158,6 +166,11 @@ function link(linkValue) {
 // copy to clipboard
 console.log(linkValue);
 }
+
+function showSessionInfo(link) {
+  document.getElementById("codehort-link").innerHTML = "<a href=\"javascript:link('"+link+"')\">"+link+"</a>";
+  document.getElementById("codehort-display").innerHTML = link;
+}
   // Helper to get hash from end of URL or generate a random one.
   function getExampleRef() {
     var ref = firebase.database().ref();
@@ -165,13 +178,15 @@ console.log(linkValue);
     hash = hash.replace(/-/g, '');
     if (hash) {
       ref = ref.child(hash);
-      var linkValue = ref.key;
-      document.getElementById("codehort-link").innerHTML = "<a href=\"javascript:link('"+linkValue+"')\">"+linkValue+"</a>";
-      document.getElementById("codehort-display").innerHTML = linkValue;
+      var link = ref.key;
+      console.log(link);
+      showSessionInfo(link);
     } else {
       ref = ref.push(); // generate unique location.
       window.location = baseURL + '#' + ref.key; // add it as a hash to the URL.
-      //document.getElementById("codehort-link2").innerHTML = "";
+      var link = ref.key.replace(/-/g, '');
+      console.log(link);
+      showSessionInfo(link);
     }
     if (typeof console !== 'undefined') {
       console.log('Firebase data: ', ref.toString());
