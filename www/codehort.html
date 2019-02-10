@@ -15,8 +15,10 @@
   <!-- Firepad -->
   <link rel="stylesheet" href="./css/firepad.css" />
   <script src="./js/firepad.min.js"></script>
+  <script src="./js/firepad-userlist.js"></script>
 
-  <script src="js/codehort.js"></script>
+  <script src="./js/FileSaver.min.js"></script>
+  <script src="./js/codehort.js"></script>
 
 </head>
 
@@ -50,6 +52,7 @@
     </div>
     <div class="panel-body">
       <div>Select a file to save in your file folder.</div>
+      <center><input type="text" maxSize="20" width="20" name="fileInput" id="fileInput" class="inputClick session" value="filename.txt"></center>
       <p></p>
       <div class="right">
         <input type="button" name="cancelEditorBtn" id="cancelEditorBtn" class="buttonClick buttonClickCancel" value="Cancel" onclick="closePanel();">
@@ -91,6 +94,9 @@
       <p></p>
       <center><input type="text" maxSize="20" width="20" name="sessionIdInput" id="sessionIdInput" class="inputClick session" value="00000000000000000000"></center>
       <p></p>
+      <!-- TODO: this should reload when the user hits join session? -->
+      <div>Current users in session:</div>
+      <div id="user" class="userlist-disabled"></div>
       <div class="right">
         <input type="button" name="cancelSessionBtn" id="cancelSessionBtn" class="buttonClick buttonClickCancel" value="Cancel" onclick="closePanel();">
         <input type="button" name="joinSessionBtn" id="joinSessionBtn" value="Join" class="buttonClick buttonClickOk" onclick="return joinCode();">
@@ -114,8 +120,12 @@
       <p></p>
       <center><div id="codehort-link"></div></center>
       <p></p>
+      <!-- TODO: this should reload when the user hits info session? -->
       <div>Current users in session:</div>
-      <p></p>
+      <div id="userlist" class="userlist"></div>
+      <div class="right">
+        <input type="button" name="sessionInfoBtn" id="sessionInfoBtn" value="Okay" class="buttonClick buttonClickOk" onclick="closePanel();">
+      </div>
     </div>
   </div>
 </div>

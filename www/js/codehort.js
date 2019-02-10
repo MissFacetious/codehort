@@ -1,6 +1,6 @@
   var codeMirror;
   var firepad;
-
+  var firepadRef;
   var zoom = 1.5;
   var baseURL = window.location+"";
   //strip out anything after #
@@ -27,16 +27,28 @@
     };
     firebase.initializeApp(config);
     //// Get Firebase Database reference.
-    var firepadRef = getExampleRef();
+    firepadRef = getExampleRef();
     //// Create CodeMirror (with line numbers and the JavaScript mode).
     codeMirror = CodeMirror(document.getElementById('firepad-container'), {
       lineNumbers: true,
       mode: 'javascript'
     });
+
+    // Create a random ID to use as our user ID (we must give this to firepad and FirepadUserList).
+    var userId = Math.floor(Math.random() * 9999999999).toString();
+
     //// Create Firepad.
     firepad = Firepad.fromCodeMirror(firepadRef, codeMirror, {
-      defaultText: '// Welcome to Codehort, start coding!\n\nconsole.log(\'hello world!\');\n\n'
+      defaultText: '// Welcome to Codehort, start coding!\n\nconsole.log(\'hello world!\');\n\n',
+      userId: userId
     });
+
+    //// Create FirepadUserList (with our desired userId).
+    var firepadUserList = FirepadUserList.fromDiv(firepadRef.child('users'),
+    document.getElementById('userlist'), userId);
+
+    var firepadUser = FirepadUserList.fromDiv(firepadRef.child('users'),
+    document.getElementById('user'), userId);
 
     // copy paste listeners
     var copyBtn = document.getElementById("copyBtn");
@@ -76,6 +88,15 @@
     changeSize(0);
   }
 
+  function saveEditor() {
+    var filename = document.getElementById("fileInput").value;
+    var blob = new Blob([codeMirror.getValue("")], {
+      type: "text/plain;charset=utf-8;",
+    });
+    window.saveAs(blob, filename);
+    closePanel();
+  }
+
   function hidePanels() {
     document.getElementById("codehort-neweditor").style.display = 'none';
     document.getElementById("codehort-saveedit").style.display = 'none';
@@ -105,7 +126,7 @@
   function newSession() {
     // create new session
     window.location.href = baseURL;
-    getExampleRef();
+    firepadRef = getExampleRef();
   }
 
   function joinCode() {
