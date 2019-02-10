@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="io.cordova.hellocordova" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="com.intropy.games.codehort" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>Codehort</name>
     <name short="HiCdv">Codehort</name>
     <description>
@@ -29,5 +29,10 @@
     <preference name="BackgroundColor" value="0xdddddd" />
     <preference name="WindowSize" value="1280x768" />
     <preference name="OSXLocalStoragePath" value="~/.codehort/database" />
+    <preference name="EnableWebGL" value="true" />
+    <preference name="windows-target-version" value="10.0" />
     <engine name="osx" spec="^4.0.2" />
+    <engine name="browser" spec="^5.0.4" />
+    <engine name="macos" spec="^4.0.2" />
+    <engine name="windows" spec="^6.0.1" />
 </widget>
