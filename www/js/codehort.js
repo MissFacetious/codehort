@@ -38,7 +38,7 @@ function init() {
 
   //// Create Firepad.
   firepad = Firepad.fromCodeMirror(firepadRef, codeMirror, {
-    defaultText: '// Welcome to Codehort, start coding!\n\nconsole.log(\'hello world!\');\n\n',
+    defaultText: '// Welcome to Codehort, start coding!\n\nconsole.log(\'hello codehort!\');\n\n',
     userId: userId
   });
 

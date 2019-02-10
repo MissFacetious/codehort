@@ -10,6 +10,14 @@
 html {
   height: 100%;
   background: #ddd;
+  cursor: default;
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome and Opera */
 }
 body {
   margin: 0; height: 100%;
@@ -252,7 +260,22 @@ input.firepad-userlist-name-input {
 }
 
 .codehort-display {
-  cursor: pointer;
+  padding: 5px;
+  border: 1px solid #000;
+  width: auto;
+  margin-left: 275px;
+  margin-right: 275px;
+  cursor: copy;
+  -webkit-touch-callout: auto !important;
+  -webkit-user-select: auto !important;
+  -khtml-user-select: auto !important;
+  -moz-user-select: auto !important;
+  -ms-user-select: auto !important;
+  user-select: auto !important;
+}
+
+.codehort-display::selection {
+  background: #ffe300;
 }
 
 .session {
