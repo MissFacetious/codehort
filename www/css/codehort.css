@@ -243,6 +243,10 @@ input.firepad-userlist-name-input {
   font-size: 24px;
 }
 
+.codehort-display {
+  cursor: pointer;
+}
+
 .session {
   width: 300px;
   maxSize: 20px;
@@ -333,6 +337,13 @@ input:checked + .slider:before {
   width: 57px;
   background-color: powderblue;
 }
+
+.spacerIcon {
+  height: 57px;
+  width: 57px;
+  margin-left: 57px;
+}
+
 .icon {
   background-repeat: no-repeat;
   background-position: center;
