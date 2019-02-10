@@ -345,6 +345,17 @@ input:checked + .slider:before {
   border-radius: 50%;
 }
 
+.grid-icons {
+  display: grid;
+  width: 100%;
+  grid-template-columns: repeat(6, auto);
+}
+
+.grid-icon {
+  padding: 0px;
+  margin-left: 0px;
+}
+
 .buttonClick {
   padding: 5px;
   margin: 5px;
@@ -369,12 +380,6 @@ input:checked + .slider:before {
   background-color: #eee;
 }
 
-.spacerIcon {
-  height: 57px;
-  width: 57px;
-  margin-left: 57px;
-}
-
 .icon {
   background-repeat: no-repeat;
   background-position: center;
@@ -383,9 +388,10 @@ input:checked + .slider:before {
 }
 
 .logo {
-  background-image: url("./../img/codehort-logo-512.png");
+  background-image: url("./../img/codehort-logo-white-512.png");
   background-repeat: no-repeat;
-  background-position: center;
+  background-position: contain;
+  background-size:contain;
   height: 57px;
   width: 57px;
   margin-left: 57px;

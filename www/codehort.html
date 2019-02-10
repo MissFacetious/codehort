@@ -225,31 +225,34 @@
   </div>
 </div>
 <!-- end run code panel -->
-
 <div id="codehort-header" class="codehort-header">
   <div class="codehort-icons" id="codehort-icons">
-    <button name="newBtn" id="newBtn" onclick="showPanel('codehort-neweditor');" class="buttonIcon icon tooltip newBtn" value="New" ><span class="tooltiptext">Create New Editor</span></button>
-    <button name="saveBtn" id="saveBtn" onclick="showPanel('codehort-saveedit');" class="buttonIcon icon tooltip saveBtn" value="Save" ><span class="tooltiptext">Save Code in Editor</span></button>
-    <span class="spacerIcon"></span>
-<!--
-    <button name="undoBtn" id="undoBtn" onclick=";" class="buttonIcon icon tooltip undoBtn" value="Undo" ><span class="tooltiptext">Undo</span></button>
-    <button name="redoBtn" id="redoBtn" onclick=";" class="buttonIcon icon tooltip redoBtn" value="Redo" ><span class="tooltiptext">Redo</span></button>
-    <button name="copyBtn" id="copyBtn" onclick=";" class="buttonIcon icon tooltip copyBtn" value="Copy" ><span class="tooltiptext">Copy</span></button>
-    <button name="pasteBtn" id="pasteBtn" onclick=";" class="buttonIcon icon tooltip pasteBtn" value="Paste" ><span class="tooltiptext">Paste</span></button>
--->
-    <button name="zoomOutBtn" id="zoomOutBtn" onclick="changeSize(-1);" class="buttonIcon icon tooltip zoomOutBtn" value="Zoom Out" ><span class="tooltiptext">Zoom Out</span></button>
-    <button name="zoomInBtn" id="zoomInBtn" onclick="changeSize(1);" class="buttonIcon icon tooltip zoomInBtn" value="Zoom In" ><span class="tooltiptext">Zoom In</span></button>
-    <span class="spacerIcon"></span>
-    <button name="searchBtn" id="searchBtn" onclick=";" class="buttonIcon icon tooltip searchBtn" value="Search" ><span class="tooltiptext">Search Code</span></button>
-    <button name="replaceBtn" id="replaceBtn" onclick=";" class="buttonIcon icon tooltip replaceBtn" value="Replace" ><span class="tooltiptext">Replace Text</span></button>
-    <span class="spacerIcon"></span><span class="spacerIcon"></span><span class="spacerIcon"></span><span class="spacerIcon"></span>
-    <button name="newSessionBtn" id="newSessionBtn" onclick="showPanel('codehort-newsession');" class="buttonIcon icon tooltip newSessionBtn" value="New Session" ><span class="tooltiptext">New Session</span></button>
-    <button name="joinSessionBtn" id="joinSessionBtn" onclick="showPanel('codehort-joinsession');" class="buttonIcon icon tooltip joinSessionBtn" value="Join Session" ><span class="tooltiptext">Join Session</span></button>
-    <button name="infoSessionBtn" id="infoSessionBtn" onclick="showPanel('codehort-sessioninfo');" class="buttonIcon icon tooltip infoSessionBtn" value="Session Info" ><span class="tooltiptext">Session Info</span></button>
-    <span class="spacerIcon"></span><span class="spacerIcon"></span><span class="spacerIcon"></span><span class="spacerIcon"></span>
-    <button name="configBtn" id="configBtn" onclick="showPanel('codehort-preferences');" type="button" class="buttonIcon icon tooltip configBtn" value="Preferences" ><span class="tooltiptext">Preferences</span></button>
-    <button name="runBtn" id="runBtn" onclick="executeCode();" class="buttonIcon icon tooltip runBtn" value="Run" ><span class="tooltiptext">Run Code</span></button>
-    <span name="logo" id="logo" class="logo" />
+    <div class="grid-icons">
+      <div class="grid-icon">
+        <button name="newBtn" id="newBtn" onclick="showPanel('codehort-neweditor');" class="buttonIcon icon tooltip newBtn" value="New" ><span class="tooltiptext">Create New Editor</span></button>
+        <button name="saveBtn" id="saveBtn" onclick="showPanel('codehort-saveedit');" class="buttonIcon icon tooltip saveBtn" value="Save" ><span class="tooltiptext">Save Code in Editor</span></button>
+      </div>
+      <div class="grid-icon">
+        <button name="zoomOutBtn" id="zoomOutBtn" onclick="changeSize(-1);" class="buttonIcon icon tooltip zoomOutBtn" value="Zoom Out" ><span class="tooltiptext">Zoom Out</span></button>
+        <button name="zoomInBtn" id="zoomInBtn" onclick="changeSize(1);" class="buttonIcon icon tooltip zoomInBtn" value="Zoom In" ><span class="tooltiptext">Zoom In</span></button>
+      </div>
+      <div class="grid-icon">
+        <button name="searchBtn" id="searchBtn" onclick=";" class="buttonIcon icon tooltip searchBtn" value="Search" ><span class="tooltiptext">Search Code</span></button>
+        <button name="replaceBtn" id="replaceBtn" onclick=";" class="buttonIcon icon tooltip replaceBtn" value="Replace" ><span class="tooltiptext">Replace Text</span></button>
+      </div>
+      <div class="grid-icon">
+        <button name="newSessionBtn" id="newSessionBtn" onclick="showPanel('codehort-newsession');" class="buttonIcon icon tooltip newSessionBtn" value="New Session" ><span class="tooltiptext">New Session</span></button>
+        <button name="joinSessionBtn" id="joinSessionBtn" onclick="showPanel('codehort-joinsession');" class="buttonIcon icon tooltip joinSessionBtn" value="Join Session" ><span class="tooltiptext">Join Session</span></button>
+        <button name="infoSessionBtn" id="infoSessionBtn" onclick="showPanel('codehort-sessioninfo');" class="buttonIcon icon tooltip infoSessionBtn" value="Session Info" ><span class="tooltiptext">Session Info</span></button>
+      </div>
+      <div class="grid-icon">
+        <button name="configBtn" id="configBtn" onclick="showPanel('codehort-preferences');" type="button" class="buttonIcon icon tooltip configBtn" value="Preferences" ><span class="tooltiptext">Preferences</span></button>
+        <button name="runBtn" id="runBtn" onclick="executeCode();" class="buttonIcon icon tooltip runBtn" value="Run" ><span class="tooltiptext">Run Code</span></button>
+      </div>
+      <div class="grid-icon">
+        <img name="logo" id="logo" class="logo" />
+      </div>
+    </div>
   </div>
 </div>
 
