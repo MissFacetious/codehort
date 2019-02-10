@@ -29,6 +29,5 @@
     <preference name="BackgroundColor" value="0xdddddd" />
     <preference name="WindowSize" value="1280x768" />
     <preference name="OSXLocalStoragePath" value="~/.codehort/database" />
-    <engine name="browser" spec="^5.0.4" />
     <engine name="osx" spec="^4.0.2" />
 </widget>

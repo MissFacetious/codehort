@@ -1,14 +1,14 @@
 {
-    "name": "helloworld",
-    "displayName": "HelloCordova",
+    "name": "codehort",
+    "displayName": "codehort",
     "version": "1.0.0",
-    "description": "A sample Apache Cordova application that responds to the deviceready event.",
+    "description": "A Distributed eXtreme Programing Tool.",
     "main": "index.js",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1"
     },
-    "author": "Apache Cordova Team",
-    "license": "Apache-2.0",
+    "author": "Lisa Walkosz-Migliacio",
+    "license": "Proprietary",
     "dependencies": {
         "cordova-browser": "^5.0.4",
         "cordova-osx": "^4.0.2",
@@ -20,8 +20,8 @@
             "cordova-plugin-whitelist": {}
         },
         "platforms": [
-            "browser",
-            "osx"
+            "osx",
+            "browser"
         ]
     }
 }

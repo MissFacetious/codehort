@@ -1,10 +1,18 @@
+/* for when this supports dark/light themes */
+@media (prefers-color-scheme: light) {
+
+}
+
+@media (prefers-color-scheme: dark) {
+
+}
+
 html {
-  background: #ddd;
   height: 100%;
+  background: #ddd;
 }
 body {
   margin: 0; height: 100%;
-
 }
 
 table.labeled {
@@ -34,8 +42,8 @@ div.right {
   height: 80px; /* subtracting the padding on top/bottom */
   margin-top: -100px;
   z-index: 5;
-  background: #ddd;
   width: 100%;
+  background-color: #ffe300;
 }
 
 #codehort-header-behind {
@@ -205,7 +213,7 @@ input.firepad-userlist-name-input {
   background-color: #fefefe;
   margin: 5% 15%; /* 15% from the top and centered */
   padding: 20px;
-  border: 1px solid #888;
+  border: 5px solid #ffe300;
   width: 70%; /* Could be more or less, depending on screen size */
   height: 55%;
 }
@@ -214,7 +222,7 @@ input.firepad-userlist-name-input {
   background-color: #fefefe;
   margin: 5% 30%; /* 15% from the top and centered */
   padding: 20px;
-  border: 1px solid #888;
+  border: 5px solid #ffe300;
   width: 35%; /* Could be more or less, depending on screen size */
   height: 35%;
 }
@@ -292,11 +300,11 @@ input.firepad-userlist-name-input {
 }
 
 input:checked + .slider {
-  background-color: #2196F3;
+  background-color: #ffe300;
 }
 
 input:focus + .slider {
-  box-shadow: 0 0 1px #2196F3;
+  box-shadow: 0 0 1px #ffe300;
 }
 
 input:checked + .slider:before {
@@ -325,17 +333,17 @@ input:checked + .slider:before {
 }
 
 .buttonClickOk:hover {
-  background-color: powderblue;
+  background-color: #ffe300;
 }
 
 .buttonClickCancel:hover {
-  background-color: pink;
+  background-color: #ff4b00;
 }
 
 .buttonIcon {
   height: 57px;
   width: 57px;
-  background-color: powderblue;
+  background-color: #eee;
 }
 
 .spacerIcon {
@@ -349,6 +357,15 @@ input:checked + .slider:before {
   background-position: center;
   /*background-color: #cccccc;*/
   /*background-size: cover; */
+}
+
+.logo {
+  background-image: url("./../img/codehort-logo-512.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 57px;
+  width: 57px;
+  margin-left: 57px;
 }
 .newBtn {
   background-image: url("./../img/twotone_insert_drive_file_black_18dp.png");
