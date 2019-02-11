@@ -1,0 +1,302 @@
+/* for when this supports dark/light themes */
+@media (prefers-color-scheme: light) {
+
+}
+
+@media (prefers-color-scheme: dark) {
+
+}
+
+html {
+  background: #ddd;
+  font-family: Arial;
+}
+body {
+  margin: 0; height: 100%;
+}
+
+table.labeled {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+td.right {
+  text-align: right;
+}
+
+td.labeled {
+  padding: 5px;
+}
+
+div.right {
+  float: right;
+}
+
+#codehort-header {
+  padding-top: 20px;
+  padding-bottom: 0px;
+  font-family: Arial;
+  border: 0px;
+  position: fixed;
+  height: 256px; /* subtracting the padding on top/bottom */
+  margin-top: 0px;
+  z-index: 5;
+  width: 100%;
+  background-color: #ffe300;
+}
+
+#codehort-header-behind {
+  z-index: 3;
+  position: absolute;
+  overflow-y:auto;
+  margin-top: 276px;
+  margin-left: 0px;
+  margin-right: 0px;
+  width: 100%;
+}
+
+.panel {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  background-color: #fefefe;
+  margin: auto;
+  padding: 0;
+  border: 1px solid #888;
+  width: 80%;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+  animation-name: animatetop;
+  animation-duration: 0.4s;
+  z-index: 8;
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  overflow: hidden;
+}
+
+.overlay {
+  position: fixed; /* Sit on top of the page content */
+  display: none; /* Hidden by default */
+  width: 100%; /* Full width (cover the whole page) */
+  height: 100%; /* Full height (cover the whole page) */
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0,0,0,0.5); /* Black background with opacity */
+  z-index: 7;
+}
+.overlay:target {
+  visibility: visible;
+  opacity: 1;
+}
+
+/* The Close Button */
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.panel-large {
+  background-color: #fefefe;
+  margin: 5% 15%; /* 15% from the top and centered */
+  padding: 20px;
+  border: 5px solid #ffe300;
+  width: 70%; /* Could be more or less, depending on screen size */
+  height: 55%;
+}
+
+.panel-small {
+  background-color: #fefefe;
+  margin: 5% 30%; /* 15% from the top and centered */
+  padding: 20px;
+  border: 5px solid #ffe300;
+  width: 35%; /* Could be more or less, depending on screen size */
+  height: 35%;
+}
+
+.panel-header {
+  font-family: Arial;
+}
+
+.panel-body {
+  font-family: Arial;
+}
+
+/* Add Animation */
+@keyframes animatetop {
+  from {top: -300px; opacity: 0}
+  to {top: 0; opacity: 1}
+}
+
+.inputClick {
+  padding: 5px;
+  margin: 5px;
+  height: 45px;
+  width: 130px;
+  background-color: lightGray;
+  color: #333;
+  font-size: 24px;
+}
+
+.codehort-display {
+  padding: 5px;
+  border: 1px solid #000;
+  width: auto;
+  margin-left: 275px;
+  margin-right: 275px;
+  cursor: copy;
+  -webkit-touch-callout: auto !important;
+  -webkit-user-select: auto !important;
+  -khtml-user-select: auto !important;
+  -moz-user-select: auto !important;
+  -ms-user-select: auto !important;
+  user-select: auto !important;
+}
+
+.codehort-display::selection {
+  background: #ffe300;
+}
+
+.session {
+  width: 300px;
+  maxSize: 20px;
+}
+
+.grid-headers {
+  display: grid;
+  width: 50%;
+  margin: auto;
+  grid-template-columns: repeat(2, auto);
+}
+
+.grid-header {
+  padding: 0px;
+  margin-left: 0px;
+}
+
+.buttonClick {
+  padding: 5px;
+  margin: 5px;
+  height: 45px;
+  width: 200px;
+  background-color: lightGray;
+  color: #333;
+  font-size: 20px;
+}
+
+.buttonClickOk:hover {
+  background-color: #ffe300;
+}
+
+.buttonClickCancel:hover {
+  background-color: #ff4b00;
+}
+
+.buttonIcon {
+  height: 57px;
+  width: 57px;
+  background-color: #eee;
+}
+
+.icon {
+  background-repeat: no-repeat;
+  background-position: center;
+  /*background-color: #cccccc;*/
+  /*background-size: cover; */
+}
+
+.logo {
+  background-image: url("./../images/codehort-logo-white-512.png");
+  background-repeat: no-repeat;
+  background-position: contain;
+  background-size:contain;
+  height: 256px;
+  width: 256px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.logo-yellow {
+  background-image: url("./../images/codehort-logo-512.png");
+  background-repeat: no-repeat;
+  background-position: contain;
+  background-size:contain;
+  height: 128px;
+  width: 128px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.target {
+  background-image: url("./../images/target-gray.png");
+  background-repeat: no-repeat;
+  background-position: contain;
+  background-size:contain;
+  height: 128px;
+  width: 128px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.screencap {
+  background-image: url("./../images/screencap.png");
+  background-repeat: no-repeat;
+  background-position: contain;
+  background-size:contain;
+  width: 640px;
+  height: 384px;
+  align-items: center;
+  align-content: center;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.intro {
+  font-size: 2em;
+  text-align: right;
+}
+
+.title {
+  font-size: 5em;
+  text-align: center;
+  padding: 50px;
+  color: #fff;
+  font-weight: 700;
+  -webkit-text-stroke-width: 2px;
+   -webkit-text-stroke-color: black;
+}
+
+.cohort-subheader {
+  font-size: 2em;
+  text-align: left;
+}
+
+#cohort-footer {
+  margin-bottom: 20px;
+  padding: 10px;
+  width: 100%;
+  background: #fff;
+  z-index: 5;
+}
+
+.white {
+  margin: auto;
+  padding: 50px;
+  width: auto;
+  background: #fff;
+}
+
+.gray {
+  margin: 0 auto;
+  width: 90%;
+  padding: 50px;
+  background: #ddd;
+}
