@@ -45,8 +45,8 @@
   .buttonClick {
     padding: 5px;
     margin: 5px;
-    height: 45px;
-    width: 200px;
+    height: 55px;
+    width: 240px;
     background-color: lightGray;
     color: #333;
     font-size: 20px;
@@ -54,15 +54,10 @@
 
   .screencap {
     background: url("./../images/screencap.png");
-    background-repeat: no-repeat;
-    background-position: contain;
-    background-size:contain;
     width: 640px;
     height: 384px;
     align-items: center;
     align-content: center;
-    margin-right: auto;
-    margin-left: auto;
   }
 
   @media only screen
@@ -113,15 +108,10 @@
   }
   .screencap {
     background: url("./../images/screencap.png");
-    background-repeat: no-repeat;
-    background-position: contain;
-    background-size:contain;
     width: 100%;
     height: 100%;
     align-items: center;
     align-content: center;
-    margin-right: auto;
-    margin-left: auto;
   }
 }
 
@@ -329,35 +319,52 @@ div.right {
 
 .logo {
   background: url("./../images/codehort-logo-white-512.png");
-  background-repeat: no-repeat;
-  background-position: contain;
-  background-size:contain;
   height: 256px;
   width: 256px;
-  margin-right: auto;
-  margin-left: auto;
 }
 
 .logo-yellow {
   background-image: url("./../images/codehort-logo-512.png");
-  background-repeat: no-repeat;
-  background-position: contain;
-  background-size:contain;
   height: 64px;
   width: 64px;
-  margin-right: auto;
-  margin-left: auto;
 }
 
 .target {
   background: url("./../images/target-gray.png");
+  height: 128px;
+  width: 128px;
+}
+
+.georgiatech {
+  background: url("./../images/gt-gray.png");
+  height: 128px;
+  width: 303px;
+}
+
+.macos {
+  background: url("./../images/mac.png");
+  height: 30px;
+  width: 30px;
+}
+
+.windows {
+  background: url("./../images/windows.png");
+  height: 30px;
+  width: 30px;
+}
+
+.code {
+  background: url("./../images/code.png");
+  height: 30px;
+  width: 30px;
+}
+
+.image {
   background-repeat: no-repeat;
   background-position: contain;
   background-size:contain;
-  height: 128px;
-  width: 128px;
-  margin-right: auto;
-  margin-left: auto;
+  margin-right: 5px;
+  margin-left: 5px;
 }
 
 .cohort-subheader {
@@ -398,6 +405,21 @@ div.right {
   padding-bottom: : 1em;
   padding-left: 1em;
   padding-right: 1em;
-  margin: 0;
+  margin: 0 0 1em 0;
   letter-spacing: 2px;
+}
+
+.grid-buttons {
+  display: grid;
+  width: 100%;
+  margin: auto;
+  grid-template-columns: repeat(2, auto);
+}
+
+.grid-button {
+  padding: 0px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: auto;
+  margin-bottom: auto;
 }
