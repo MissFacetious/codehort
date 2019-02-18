@@ -43,12 +43,18 @@ function init() {
   });
 
   //// Create FirepadUserList (with our desired userId).
+  // problem where all of these users ends up with different name
   var firepadUserList = FirepadUserList.fromDiv(firepadRef.child('users'),
   document.getElementById('userlist'), userId);
 
   var firepadUser = FirepadUserList.fromDiv(firepadRef.child('users'),
   document.getElementById('user'), userId);
+
+  var firepadUserListDisabled = FirepadUserList.fromDiv(firepadRef.child('users'),
+  document.getElementById('userlistdisabled'), userId);
+
   changeSize(0);
+  updateMobbing();
 }
 
 // Helper to get hash from end of URL or generate a random one.
@@ -100,6 +106,7 @@ function newEditor() {
   // remove all text in the editor
   firepad.setText('');
   hidePanels();
+  updateMobbing();
 }
 
 // save editor icon click
@@ -177,6 +184,30 @@ function changeQuantity(input, amount) {
     value++;
   }
   document.getElementById(input).value = value;
+  updateMobbing();
+}
+
+function updateMobbing() {
+  var code = document.getElementById('timer').value;
+  var thenbreak = document.getElementById('break').value;
+  var every = document.getElementById('every').value;
+  var sentence = "You will code for " + code + " minutes each, take a " + thenbreak + " minute break every "+ every + " coding ";
+  if (every > 1) {
+    sentence += "sessions.";
+  }
+  else {
+    sentence += "session.";
+  }
+  if (every == 0 || thenbreak == 0) {
+    sentence = "You will code for " + code + " minutes each, no breaks!";
+  }
+  document.getElementById("sentence").innerHTML = sentence;
+  if (every > 1) {
+    document.getElementById("plural").innerHTML = "s";
+  }
+  else {
+    document.getElementById("plural").innerHTML = "";
+  }
 }
 
 // preferences icon click

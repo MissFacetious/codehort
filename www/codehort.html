@@ -140,11 +140,6 @@
     </div>
     <div class="panel-body">
       <div>Setup the timer with your cohort to begin extreme programming.</div>
-      Timer - 5 + Minutes
-      Breaks - 5 + Minutes
-      Every - 5 + Minutes
-      Active User1, User2, User3
-      Inactive User4, User5
       <table width="100%">
         <tr>
           <td>
@@ -154,9 +149,12 @@
                 <td class="labeled">
                   <div class="number">
                     <input class="minus change quantityIcon" type="button" value="" onclick="changeQuantity('timer', -1);">
-                    <input id="timer" class="quantity" type="number" size="3" value="5">
+                    <input id="timer" class="quantity" type="number" size="3" value="5" onchange="changeQuantity('timer', 0);">
                     <input class="plus change quantityIcon" type="button" value="" onclick="changeQuantity('timer', 1);">
                 </div>
+                </td>
+                <td class="labeled">
+                  Minutes
                 </td>
               </tr>
               <tr>
@@ -164,9 +162,12 @@
                 <td class="labeled">
                   <div class="number">
                     <input class="minus change quantityIcon" type="button" value="" onclick="changeQuantity('break', -1);">
-                    <input id="break" class="quantity" type="number" size="3" value="5">
+                    <input id="break" class="quantity" type="number" size="3" value="5" onchange="changeQuantity('break', 0);">
                     <input class="plus change quantityIcon" type="button" value="" onclick="changeQuantity('break', 1);">
                   </div>
+                </td>
+                <td class="labeled">
+                  Minutes
                 </td>
               </tr>
               <tr>
@@ -174,46 +175,19 @@
                 <td class="labeled">
                   <div class="number">
                     <input class="minus change quantityIcon" type="button" value="" onclick="changeQuantity('every', -1);">
-                    <input id="every" class="quantity" type="number" size="3" value="5">
+                    <input id="every" class="quantity" type="number" size="3" value="3" onchange="changeQuantity('every', 0);">
                     <input class="plus change quantityIcon" type="button" value="" onclick="changeQuantity('every', 1);">
                   </div>
                 </td>
+                <td class="labeled">
+                  Coding Session<span id="plural" />
+                </td>
               </tr>
             </table>
+            <div id="sentence"></div>
           </td>
           <td>
-            <table class="labeled">
-              <tr>
-                <td class="labeled right">name</td>
-                <td class="labeled">
-                  <div class="number">
-                    <input class="minus change quantityIcon" type="button" value="" onclick="changeQuantity('name1', -1);">
-                    <input id="name1" class="quantity" type="number" size="3" value="5">
-                    <input class="plus change quantityIcon" type="button" value="" onclick="changeQuantity('name1', 1);">
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <td class="labeled right">name</td>
-                <td class="labeled">
-                  <div class="number">
-                    <input class="minus change quantityIcon" type="button" value="" onclick="changeQuantity('name2', -1);">
-                    <input id="name2" class="quantity" type="number" size="3" value="5">
-                    <input class="plus change quantityIcon" type="button" value="" onclick="changeQuantity('name2', 1);">
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <td class="labeled right">name</td>
-                <td class="labeled">
-                  <div class="number">
-                    <input class="minus change quantityIcon" type="button" value="" onclick="changeQuantity('name3', -1);">
-                    <input id="name3" class="quantity" type="number" size="3" value="5">
-                    <input class="plus change quantityIcon" type="button" value="" onclick="changeQuantity('name3', 1);">
-                  </div>
-                </td>
-              </tr>
-            </table>
+            <div id="userlistdisabled" class="userlist-disabled"></div>
           </td>
         </tr>
       </table>
