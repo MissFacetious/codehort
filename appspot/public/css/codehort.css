@@ -26,6 +26,25 @@
     width: 50%;
   }
 
+  .grid-sidebysides {
+    display: grid;
+    width: 100%;
+    margin: auto;
+    grid-template-columns: repeat(2, auto);
+  }
+
+  .grid-sidebyside {
+    padding: 0px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: auto;
+    margin-bottom: auto;
+  }
+
+  .middle {
+    text-align: center;
+  }
+
   .title {
     font-size: 5em;
     text-align: center;
@@ -43,13 +62,15 @@
   }
 
   .buttonClick {
+    border-radius: 5px;
     padding: 5px;
     margin: 5px;
     height: 55px;
-    width: 240px;
+    width: 180px;
     background-color: lightGray;
     color: #333;
     font-size: 20px;
+
   }
 
   .screencap {
@@ -129,6 +150,12 @@ a {
   text-decoration: none;
 }
 
+a.black {
+  color: #333 !important;
+  font-color: #333 !important;
+  font-size: 0.5em;
+}
+
 a:hover {
   color: #000;
 }
@@ -153,7 +180,7 @@ div.right {
 #codehort-header {
   padding-top: 20px;
   padding-bottom: 0px;
-  font-family: Arial;
+  font-family: "Lato", "Helvetica Neue", "Helvetica", Arial;
   border: 0px;
   position: fixed;
   height: 256px; /* subtracting the padding on top/bottom */
@@ -264,6 +291,10 @@ div.right {
   font-size: 24px;
 }
 
+.download {
+  background-color: rgba(9,180,80,1);
+}
+
 .codehort-footer {
   font-size: 1em;
   font-weight: 500;
@@ -349,6 +380,12 @@ div.right {
 
 .windows {
   background: url("./../images/windows.png");
+  height: 30px;
+  width: 30px;
+}
+
+.email {
+  background: url("./../images/code.png");
   height: 30px;
   width: 30px;
 }

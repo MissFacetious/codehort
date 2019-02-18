@@ -8,9 +8,35 @@
   <meta charset="utf-8" />
   <link rel="stylesheet" href="./css/codehort.css" />
 
+<script language="javascript">
+
+function init() {
+  console.log("hii");
+  checkOS();
+}
+
+function checkOS() {
+  document.getElementById('windowsDL').style.display = 'none';
+  document.getElementById('macDL').style.display = 'none';
+  document.getElementById('noDL').style.display = 'none';
+  var OSName=navigator.platform;
+  if (OSName.includes("Windows")) OSName="Windows";
+  if (OSName.includes("Mac")) OSName="MacOS";
+  console.log(OSName);
+  if (OSName == "Windows") {
+    document.getElementById('windowsDL').style.display = 'block';
+  }
+  else if (OSName =="MacOS") {
+    document.getElementById('macDL').style.display = 'block';
+  }
+  else {
+    document.getElementById('noDL').style.display = 'block';
+  }
+}
+  </script>
   <title>codehort - learn programming better together</title>
 </head>
-<body>
+<body onload="init();">
 
 <div id="codehort-header" class="codehort-header">
   <div class="grid-headers">
@@ -28,42 +54,59 @@
 
   <div class="white">
     <div class="centered">
-      <div class="cohort-subheader">Start your cohort</div>
-      <div class="text">Codehort is a tool that allows you to share coding sessions together while on separate machines.</div>
-      <div class="text">Have your team or class learn how to code Javascript together.</div>
-      <div class="cohort-subheader">Download your codehort</div>
-
-      <div class="grid-buttons">
-        <div class="grid-button">
-          <button class="buttonClick buttonClickOk">
-            <div class="grid-buttons">
-              <div class="grid-button">
-                <img src="./images/mac.png" class="macos image">
-              </div>
-              <div class="grid-button">
-                <div class="vcenter">Download Mac</div>
-              </div>
+      <div class="grid-sidebysides">
+        <div class="grid-sidebyside">
+          <div class="cohort-subheader">Start your cohort</div>
+          <div class="text">Codehort is a tool that allows you to share coding sessions together while on separate machines.</div>
+          <div class="text">Have your team or class learn how to code Javascript together.</div>
+          <div id="noDL" class="grid-buttons">
+            <div class="grid-button centered">
+              <button class="buttonClick buttonClickOk">
+                <div class="grid-buttons">
+                  <div class="grid-button">
+                    <img src="./images/code.png" class="email image">
+                  </div>
+                  <div class="grid-button">
+                    <div class="vcenter">Send</div>
+                  </div>
+                </div>
+              </button>
+              <div class="middle"><a href="" class="black">Another Platform?</a></div>
             </div>
-          </button>
+          </div>
+          <div id="macDL" class="grid-buttons">
+            <div class="grid-button centered">
+              <button class="buttonClick buttonClickOk download">
+                <div class="grid-buttons">
+                  <div class="grid-button">
+                    <img src="./images/mac.png" class="macos image">
+                  </div>
+                  <div class="grid-button">
+                    <div class="vcenter">Download</div>
+                  </div>
+                </div>
+              </button>
+              <div class="middle"><a href="" class="black">Another Platform?</a></div>
+            </div>
+            <div id="windowsDL" class="grid-button centered">
+              <button class="buttonClick buttonClickOk download">
+                <div class="grid-buttons">
+                  <div class="grid-button">
+                    <img src="./images/windows.png" class="windows image">
+                  </div>
+                  <div class="grid-button">
+                    <div class="vcenter">Download</div>
+                  </div>
+                </div>
+              </button>
+              <div class="middle"><a href="" class="black">Another Platform?</a></div>
+            </div>
+          </div>
         </div>
-        <div class="grid-button">
-          <button class="buttonClick buttonClickOk">
-            <div class="grid-buttons">
-              <div class="grid-button">
-                <img src="./images/windows.png" class="windows image">
-              </div>
-              <div class="grid-button">
-                <div class="vcenter">Download Windows</div>
-              </div>
-            </div>
-          </button>
+        <div class="grid-sidebyside">
+          <img src="./images/codehort-logo-512.png" width="256px" height="256px">
         </div>
       </div>
-<!--
-      <button class="buttonClick buttonClickOk">Send Email</button>
-      --->
-
-
     </div>
   </div>
 
@@ -72,28 +115,38 @@
       <img src="./images/screencap.png" id="screencap" class="screencap image">
     </div>
   </div>
+
   <div class="white">
     <div class="centered">
-      <div class="cohort-subheader">Get Coding</div>
-      <div class="text">Start working on your coding challenges together.</div>
-
-      <div class="grid-buttons">
-        <div class="grid-button">
-          <button class="buttonClick buttonClickOk">
-            <div class="grid-buttons">
-              <div class="grid-button">
-                <img src="./images/code.png" class="code image">
-              </div>
-              <div class="grid-button">
-                <div class="vcenter">Code Challenges</div>
-              </div>
-            </div>
-          </button>
+      <div class="grid-sidebysides">
+        <div class="grid-sidebyside">
+          <img src="./images/codehort-logo-512.png" width="256px" height="256px">
         </div>
-        <div class="grid-button">
-          <!-- empty -->
+        <div class="grid-sidebyside">
+          <div class="cohort-subheader">Get Coding</div>
+          <div class="text">Start working on your coding challenges together.</div>
+          <div class="grid-buttons">
+            <div class="grid-button">
+              <button class="buttonClick buttonClickOk">
+                <div class="grid-buttons">
+                  <div class="grid-button">
+                    <img src="./images/code.png" class="code image">
+                  </div>
+                  <div class="grid-button">
+                    <div class="vcenter">Challenges</div>
+                  </div>
+                </div>
+              </button>
+            </div>
+            <div class="grid-button">
+              <!-- empty -->
+            </div>
+          </div>
         </div>
       </div>
+
+
+
             <!--
       <div class="text">Used at</div>
       <img src="./images/target-gray.png"  id="target" class="target image">
