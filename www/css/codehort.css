@@ -60,6 +60,20 @@ div.right {
   position: fixed;
 }
 
+#codehort-footer {
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-right: 0px;
+  padding-left: 0px;
+  position: relative;
+  clear: both;
+  height: 20px;
+  margin-top: -20px;
+  z-index: 5;
+  width: 100%;
+  background-color: #eee;
+  border-top: 1px solid #aaa;
+}
 
 /* Height / width / positioning can be customized for your use case.
    For demo purposes, we make firepad fill the entire browser. */
@@ -68,6 +82,13 @@ div.right {
   width: 100%;
   height: 100%;
   z-index: 0;
+}
+
+.footer-content {
+  padding-left: 10px;
+  padding-right: 10px;
+  font-family: Arial;
+  color: #666;
 }
 
 .userlist {

@@ -142,7 +142,6 @@ function newSession() {
 
 // join session icon click
 function joinCode() {
-  console.log(document.getElementById("sessionIdInput").value);
   var sessionId = document.getElementById("sessionIdInput").value;
   window.location.href = baseURL + '#-' + sessionId;
   // make sure we reload the url to join correcty
@@ -153,6 +152,7 @@ function joinCode() {
 function showSessionInfo(link) {
   document.getElementById("codehort-link").innerHTML = "Send your friend to <a href=\"http://codehort.appspot.com/\" target=\"_new\">http://codehort.appspot.com</a> to download codehort, and then tell them to use this secret code to join you."
   document.getElementById("codehort-display").innerHTML = link;
+  document.getElementById("sessionIdFooter").innerHTML = "Connected to session id: " + link;
 }
 
 function copySessionId() {
