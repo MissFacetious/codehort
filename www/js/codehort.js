@@ -80,6 +80,7 @@ function hidePanels() {
   document.getElementById("codehort-newsession").style.display = 'none';
   document.getElementById("codehort-joinsession").style.display = 'none';
   document.getElementById("codehort-sessioninfo").style.display = 'none';
+  document.getElementById("codehort-timer").style.display = 'none';
   document.getElementById("codehort-preferences").style.display = 'none';
   document.getElementById("codehort-run").style.display = 'none';
   document.getElementById("overlay").style.display = 'none';
@@ -165,6 +166,17 @@ function copySessionId() {
   document.execCommand("copy");
 
   console.log("Copied the text: " + sessionId.innerHTML);
+}
+
+function changeQuantity(input, amount) {
+  var value = document.getElementById(input).value;
+  if (value > 0 && amount < 0) {
+    value--;
+  }
+  if (amount > 0) {
+    value++;
+  }
+  document.getElementById(input).value = value;
 }
 
 // preferences icon click

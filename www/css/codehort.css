@@ -369,7 +369,7 @@ input:checked + .slider:before {
 .grid-icons {
   display: grid;
   width: 100%;
-  grid-template-columns: repeat(6, auto);
+  grid-template-columns: repeat(7, auto);
 }
 
 .grid-icon {
@@ -401,11 +401,22 @@ input:checked + .slider:before {
   background-color: #eee;
 }
 
+.quantityIcon {
+  height: 37px;
+  width: 37px;
+  vertical-align: middle;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 30px 30px;
+  border: 0;
+  -webkit-appearance: none;
+  padding: 2px;
+  background-color: #fff;
+}
+
 .icon {
   background-repeat: no-repeat;
   background-position: center;
-  /*background-color: #cccccc;*/
-  /*background-size: cover; */
 }
 
 .logo {
@@ -456,11 +467,47 @@ input:checked + .slider:before {
 .infoSessionBtn {
   background-image: url("./../img/twotone_info_black_18dp.png");
 }
+.mobBtn {
+  background-image: url("./../img/mob.png");
+}
 .configBtn {
   background-image: url("./../img/twotone_settings_black_18dp.png");
 }
 .runBtn {
   background-image: url("./../img/twotone_play_circle_filled_black_18dp.png");
+}
+
+.plus {
+  background-image: url("./../img/plus.png");
+}
+
+.minus {
+  background-image: url("./../img/minus.png");
+}
+
+.number {
+  border: 1px solid #aaa;
+}
+input[type=number].quantity {
+  width: 35px;
+  height: 25px;
+  display: table-cell;
+  vertical-align: middle;
+  align-content: center;
+  padding: 4px;
+  margin: 0 auto;
+  border-top: 0;
+  border-bottom: 0;
+  border-left: 1px solid #ccc;
+  border-right: 1px solid #ccc;
+}
+
+input[type=number].quantity:focus {
+  background-color: #ffe300;
+}
+
+input.change:hover {
+  background-color: #ffe300;
 }
 
 .tooltip {

@@ -131,6 +131,102 @@
 </div>
 <!-- end session information panel -->
 
+<!-- timer panel -->
+<div id="codehort-timer" class="panel panel-large">
+  <div class="panel-content">
+    <div class="panel-header">
+      <span class="close" onclick="closePanel();">&times;</span>
+      <h2>Timer Setup</h2>
+    </div>
+    <div class="panel-body">
+      <div>Setup the timer with your cohort to begin extreme programming.</div>
+      Timer - 5 + Minutes
+      Breaks - 5 + Minutes
+      Every - 5 + Minutes
+      Active User1, User2, User3
+      Inactive User4, User5
+      <table width="100%">
+        <tr>
+          <td>
+            <table class="labeled">
+              <tr>
+                <td class="labeled right">Timer</td>
+                <td class="labeled">
+                  <div class="number">
+                    <input class="minus change quantityIcon" type="button" value="" onclick="changeQuantity('timer', -1);">
+                    <input id="timer" class="quantity" type="number" size="3" value="5">
+                    <input class="plus change quantityIcon" type="button" value="" onclick="changeQuantity('timer', 1);">
+                </div>
+                </td>
+              </tr>
+              <tr>
+                <td class="labeled right">Breaks</td>
+                <td class="labeled">
+                  <div class="number">
+                    <input class="minus change quantityIcon" type="button" value="" onclick="changeQuantity('break', -1);">
+                    <input id="break" class="quantity" type="number" size="3" value="5">
+                    <input class="plus change quantityIcon" type="button" value="" onclick="changeQuantity('break', 1);">
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td class="labeled right">Every</td>
+                <td class="labeled">
+                  <div class="number">
+                    <input class="minus change quantityIcon" type="button" value="" onclick="changeQuantity('every', -1);">
+                    <input id="every" class="quantity" type="number" size="3" value="5">
+                    <input class="plus change quantityIcon" type="button" value="" onclick="changeQuantity('every', 1);">
+                  </div>
+                </td>
+              </tr>
+            </table>
+          </td>
+          <td>
+            <table class="labeled">
+              <tr>
+                <td class="labeled right">name</td>
+                <td class="labeled">
+                  <div class="number">
+                    <input class="minus change quantityIcon" type="button" value="" onclick="changeQuantity('name1', -1);">
+                    <input id="name1" class="quantity" type="number" size="3" value="5">
+                    <input class="plus change quantityIcon" type="button" value="" onclick="changeQuantity('name1', 1);">
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td class="labeled right">name</td>
+                <td class="labeled">
+                  <div class="number">
+                    <input class="minus change quantityIcon" type="button" value="" onclick="changeQuantity('name2', -1);">
+                    <input id="name2" class="quantity" type="number" size="3" value="5">
+                    <input class="plus change quantityIcon" type="button" value="" onclick="changeQuantity('name2', 1);">
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td class="labeled right">name</td>
+                <td class="labeled">
+                  <div class="number">
+                    <input class="minus change quantityIcon" type="button" value="" onclick="changeQuantity('name3', -1);">
+                    <input id="name3" class="quantity" type="number" size="3" value="5">
+                    <input class="plus change quantityIcon" type="button" value="" onclick="changeQuantity('name3', 1);">
+                  </div>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </table>
+      <p></p>
+      <div class="right">
+        <input type="button" name="cancelTimerBtn" id="cancelTimerBtn" class="buttonClick buttonClickCancel" value="Cancel" onclick="closePanel();">
+        <input type="button" name="startTimerBtn" id="startTimerBtn" value="Start" class="buttonClick buttonClickOk" onclick="return startTimer();">
+      </div>
+    </div>
+  </div>
+</div>
+<!-- end timer panel -->
+
 <!-- preferences panel -->
 <div id="codehort-preferences" class="panel panel-large">
   <div class="panel-content">
@@ -141,67 +237,71 @@
     <div class="panel-body">
       <div>Change your preferences below and select Apply.</div>
       <table width="100%">
-        <tr><td>
-      <table class="labeled">
         <tr>
-          <td class="labeled right">Show Splash Screen</td>
-          <td class="labeled">
-            <label class="switch">
-              <input type="checkbox">
-              <span class="slider round"></span>
-            </label>
+          <td>
+            <table class="labeled">
+              <tr>
+                <td class="labeled right">Show Splash Screen</td>
+                <td class="labeled">
+                  <label class="switch">
+                    <input type="checkbox">
+                    <span class="slider round"></span>
+                  </label>
+                </td>
+              </tr>
+              <tr>
+                <td class="labeled right">Dark Theme<br>(Light Theme if turned off)</td>
+                <td class="labeled">
+                  <label class="switch">
+                    <input type="checkbox">
+                    <span class="slider round"></span>
+                  </label>
+                </td>
+              </tr>
+              <tr>
+                <td class="labeled right">name</td>
+                <td class="labeled">
+                  <label class="switch">
+                    <input type="checkbox">
+                    <span class="slider round"></span>
+                  </label>
+                </td>
+              </tr>
+            </table>
           </td>
-        </tr>
-        <tr>
-          <td class="labeled right">Dark Theme<br>(Light Theme if turned off)</td>
-          <td class="labeled">
-            <label class="switch">
-              <input type="checkbox">
-              <span class="slider round"></span>
-            </label>
-          </td>
-        </tr>
-        <tr>
-          <td class="labeled right">name</td>
-          <td class="labeled">
-            <label class="switch">
-              <input type="checkbox">
-              <span class="slider round"></span>
-            </label>
+          <td>
+            <table class="labeled">
+              <tr>
+                <td class="labeled right">name</td>
+                <td class="labeled">
+                  <label class="switch">
+                    <input type="checkbox">
+                    <span class="slider round"></span>
+                  </label>
+                </td>
+              </tr>
+              <tr>
+                <td class="labeled right">name</td>
+                <td class="labeled">
+                  <label class="switch">
+                    <input type="checkbox">
+                    <span class="slider round"></span>
+                  </label>
+                </td>
+              </tr>
+              <tr>
+                <td class="labeled right">name</td>
+                <td class="labeled">
+                  <label class="switch">
+                    <input type="checkbox">
+                    <span class="slider round"></span>
+                  </label>
+                </td>
+              </tr>
+            </table>
           </td>
         </tr>
       </table>
-</td><td>
-  <table class="labeled">
-    <tr>
-      <td class="labeled right">name</td>
-      <td class="labeled">
-        <label class="switch">
-          <input type="checkbox">
-          <span class="slider round"></span>
-        </label>
-      </td>
-    </tr>
-    <tr>
-      <td class="labeled right">name</td>
-      <td class="labeled">
-        <label class="switch">
-          <input type="checkbox">
-          <span class="slider round"></span>
-        </label>
-      </td>
-    </tr>
-    <tr>
-      <td class="labeled right">name</td>
-      <td class="labeled">
-        <label class="switch">
-          <input type="checkbox">
-          <span class="slider round"></span>
-        </label>
-      </td>
-    </tr>
-  </table>
-</td></tr></table>
       <p></p>
       <div class="right">
         <input type="button" name="cancelPrefBtn" id="cancelPrefBtn" class="buttonClick buttonClickCancel" value="Cancel" onclick="closePanel();">
@@ -246,11 +346,14 @@
         <button name="infoSessionBtn" id="infoSessionBtn" onclick="showPanel('codehort-sessioninfo');" class="buttonIcon icon tooltip infoSessionBtn" value="Session Info" ><span class="tooltiptext">Session Info</span></button>
       </div>
       <div class="grid-icon">
+        <button name="mobBtn" id="mobBtn" onclick="showPanel('codehort-timer');" type="button" class="buttonIcon icon tooltip mobBtn" value="Timer" ><span class="tooltiptext">Mob</span></button>
+      </div>
+      <div class="grid-icon">
         <button name="configBtn" id="configBtn" onclick="showPanel('codehort-preferences');" type="button" class="buttonIcon icon tooltip configBtn" value="Preferences" ><span class="tooltiptext">Preferences</span></button>
         <button name="runBtn" id="runBtn" onclick="executeCode();" class="buttonIcon icon tooltip runBtn" value="Run" ><span class="tooltiptext">Run Code</span></button>
       </div>
       <div class="grid-icon">
-        <img name="logo" id="logo" class="logo" />
+        <img name="logo" id="logo" class="logo" src="./img/codehort-logo-white-512.png">
       </div>
     </div>
   </div>
