@@ -281,11 +281,12 @@ input.firepad-userlist-name-input {
 }
 
 .codehort-display {
+  font-family: Source Code Pro, Courier;
   padding: 5px;
   border: 1px solid #000;
   width: auto;
-  margin-left: 275px;
-  margin-right: 275px;
+  margin-left: 150px;
+  margin-right: 150px;
   cursor: copy;
   -webkit-touch-callout: auto !important;
   -webkit-user-select: auto !important;
