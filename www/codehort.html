@@ -99,7 +99,7 @@
     <div class="panel-body">
       <div>Join a session shared by others. The session id should be a nineteen alphanumeric code.</div>
       <p></p>
-      <center><input type="text" maxSize="20" width="20" name="sessionIdInput" id="sessionIdInput" class="inputClick session" value="00000000000000000000"></center>
+      <center><input type="text" maxSize="20" width="20" name="sessionIdInput" id="sessionIdInput" class="inputClick session" placeholder="AbCdEfGh1234mNoPqRsT"></center>
       <p></p>
       <!-- TODO: this should reload when the user hits join session? -->
       <div>Current users in session:</div>
@@ -158,7 +158,7 @@
                     <input class="minus change quantityIcon" type="button" value="" onclick="changeQuantity('timer', -1);">
                     <input id="timer" class="quantity" type="number" size="3" value="5" onchange="changeQuantity('timer', 0);">
                     <input class="plus change quantityIcon" type="button" value="" onclick="changeQuantity('timer', 1);">
-                </div>
+                  </div>
                 </td>
                 <td class="labeled">
                   Minutes
@@ -252,13 +252,15 @@
           <td>
             <table class="labeled">
               <tr>
-                <td class="labeled right">name</td>
+                <td class="labeled right">Zoom</td>
                 <td class="labeled">
-                  <label class="switch">
-                    <input type="checkbox">
-                    <span class="slider round"></span>
-                  </label>
+                  <div class="number">
+                    <input class="minus change quantityIcon" type="button" value="" onclick="changePercent(-1);">
+                    <input id="zoom" class="quantity" type="number" size="3" value="100" onchange="changePercent(0);">
+                    <input class="plus change quantityIcon" type="button" value="" onclick="changePercent(1);">
+                  </div>
                 </td>
+                <td class="labeled left">%</td>
               </tr>
               <tr>
                 <td class="labeled right">name</td>
@@ -284,7 +286,7 @@
       </table>
       <p></p>
       <div class="right">
-        <input type="button" name="cancelPrefBtn" id="cancelPrefBtn" class="buttonClick buttonClickCancel" value="Cancel" onclick="closePanel();">
+        <!--<input type="button" name="cancelPrefBtn" id="cancelPrefBtn" class="buttonClick buttonClickCancel" value="Cancel" onclick="closePanel();">-->
         <input type="button" name="applyPrefBtn" id="applyPrefBtn" value="Apply" class="buttonClick buttonClickOk" onclick="return applyPref();">
       </div>
     </div>

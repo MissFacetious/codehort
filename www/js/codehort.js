@@ -1,7 +1,7 @@
 var codeMirror;
 var firepad;
 var firepadRef;
-var zoom = 1.5;
+var zoom;
 var baseURL = window.location+"";
 var sessionId;
 var username = ""; // will be set in getPref
@@ -89,8 +89,8 @@ function init() {
   var firepadUserListDisabled = FirepadUserList.fromDiv(firepadRef.child('users'),
   document.getElementById('userlistdisabled'), userId, username);
 
-  changeSize(0);
   updateMobbing();
+  changePercent(0);
 }
 
 // Helper to get hash from end of URL or generate a random one.
@@ -169,7 +169,7 @@ function changeSize(i) {
       zoom += 0.1*i;
     }
     else {
-      zoom += 0.5*i;
+      zoom += 0.1*i;
     }
   }
   if (zoom < 7.2 && i > 0) {
@@ -177,9 +177,15 @@ function changeSize(i) {
       zoom += 0.1*i;
     }
     else {
-      zoom += 0.5*i;
+      zoom += 0.1*i;
     }
   }
+  resize();
+  var storage = window.localStorage;
+  storage.setItem('zoom', zoom);
+}
+
+function resize() {
   document.getElementById('firepad-container').style.fontSize = zoom+"em";
 }
 
@@ -262,6 +268,33 @@ function getPref() {
   }
   userNameInput.value = userNamePref;
   username = userNamePref;
+
+  var zoomPref = storage.getItem('zoom');
+  if (zoomPref == null || zoomPref == '') {
+    zoom = 1.5; // default
+  }
+  else {
+    zoom = zoomPref;
+    document.getElementById('zoom').value = Math.round(100 * zoom);
+  }
+  resize();
+}
+
+function changePercent(amount) {
+  var value = document.getElementById('zoom').value;
+  value = value / 100;
+
+  if (value > 0 && amount < 0) {
+    changeSize(amount);
+  }
+  if (amount > 0) {
+    changeSize(amount);
+  }
+  if (amount == 0) {
+    zoom = value;
+    resize();
+  }
+  document.getElementById('zoom').value = Math.round(100 * zoom);
 }
 
 // preferences icon click
@@ -278,11 +311,12 @@ function applyPref() {
 
   // display chat
 
-
-
+  // zoom
+  changePercent(0);
+  storage.setItem('zoom', zoom);
 
   hidePanels();
-  window.location.reload(true);
+  //window.location.reload(true);
 }
 
 // run code icon click
