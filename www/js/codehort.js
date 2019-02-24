@@ -45,11 +45,13 @@ function init() {
 
   // Listen for authentication state changes
     firebase.auth().onAuthStateChanged(function(user) {
-      //if (user) {
+      if (user) {
         // If the user is logged in, set them as the Firechat user
-
-          chat.setUser(user.uid, username);
           console.log(user);
+          console.log("username " + username);
+          if (username == "") console.log("username is empty");
+          chat.setUser(user.uid, username);
+
           console.log("user id: " + user.uid);
           // if user is first, set the chatroom name to the session id and create room
           console.log("Creating chatroom...");
@@ -60,12 +62,12 @@ function init() {
             //chat.enterRoom(roomId);
           //});
         //});
-    //} else {
+    } else {
       // If the user is not logged in, sign them in anonymously
-    //  firebase.auth().signInAnonymously().catch(function(error) {
-    //    console.log("Error signing user in anonymously:", error);
-    //  });
-    //}
+      firebase.auth().signInAnonymously().catch(function(error) {
+        console.log("Error signing user in anonymously:", error);
+      });
+    }
   });
 
 
@@ -254,9 +256,12 @@ function getPref() {
   var storage = window.localStorage;
   var userNameInput = document.getElementById("usernameInput");
   var userNamePref = storage.getItem('username');
+  if (userNamePref == null || userNamePref == '') {
+    if (username == "") username = "User"+userId.substring(userId.length-4, 3);
+    userNamePref = username;
+  }
   userNameInput.value = userNamePref;
   username = userNamePref;
-
 }
 
 // preferences icon click
@@ -277,6 +282,7 @@ function applyPref() {
 
 
   hidePanels();
+  window.location.reload(true);
 }
 
 // run code icon click
