@@ -17,6 +17,13 @@
   <script src="./js/firepad.min.js"></script>
   <script src="./js/firepad-userlist.js"></script>
 
+  <script src="./js/jquery.min.js"></script>
+
+  <!-- Firechat -->
+  <link rel="stylesheet" href="./css/firechat.min.css" />
+  <script src="./js/firechat.min.js"></script>
+
+  <!-- -->
   <script src="./js/FileSaver.min.js"></script>
   <script src="./js/codehort.js"></script>
 
@@ -215,6 +222,14 @@
           <td>
             <table class="labeled">
               <tr>
+                <td class="labeled right">Username</td>
+                <td class="labeled">
+                  <label>
+                    <input type="text" id="usernameInput" class="inputClick name">
+                  </label>
+                </td>
+              </tr>
+              <tr>
                 <td class="labeled right">Show Splash Screen</td>
                 <td class="labeled">
                   <label class="switch">
@@ -225,15 +240,6 @@
               </tr>
               <tr>
                 <td class="labeled right">Dark Theme<br>(Light Theme if turned off)</td>
-                <td class="labeled">
-                  <label class="switch">
-                    <input type="checkbox">
-                    <span class="slider round"></span>
-                  </label>
-                </td>
-              </tr>
-              <tr>
-                <td class="labeled right">name</td>
                 <td class="labeled">
                   <label class="switch">
                     <input type="checkbox">
@@ -299,6 +305,22 @@
   </div>
 </div>
 <!-- end run code panel -->
+
+
+<!-- chat panel -->
+<div id="codehort-chat" class="panel-chat">
+  <div class="panel-content">
+    <div class="panel-header">
+      <span class="close" onclick="hideChat();">&times;</span>
+    </div>
+    <div class="panel-body">
+      <div id="firechat-wrapper"></div>
+    </div>
+  </div>
+</div>
+<!-- chat panel -->
+
+
 <div id="codehort-header" class="codehort-header">
   <div class="codehort-icons" id="codehort-icons">
     <div class="grid-icons">
@@ -327,7 +349,7 @@
         <button name="runBtn" id="runBtn" onclick="executeCode();" class="buttonIcon icon tooltip runBtn" value="Run" ><span class="tooltiptext">Run Code</span></button>
       </div>
       <div class="grid-icon">
-        <img name="logo" id="logo" class="logo" src="./img/codehort-logo-white-512.png">
+        <a href="javascript:showPanel('codehort-chat');"><img name="logo" id="logo" class="logo" src="./img/codehort-logo-white-512.png" border="0"></a>
       </div>
     </div>
   </div>
@@ -336,6 +358,8 @@
 <div id="codehort-header-behind"></div>
 <div id="overlay" class="overlay"></div>
 <div id="firepad-container"></div>
+
+
 
   <div id="codehort-footer">
     <div class="footer-content">Codehort <span id="sessionIdFooter"></span></div>

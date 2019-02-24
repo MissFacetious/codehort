@@ -3,6 +3,10 @@ var firepad;
 var firepadRef;
 var zoom = 1.5;
 var baseURL = window.location+"";
+var sessionId;
+var username = ""; // will be set in getPref
+var userId = Math.floor(Math.random() * 9999999999).toString(); // will be set when we authenticate
+
 //strip out anything after #
 if (baseURL != null) {
   var n = baseURL.indexOf('#');
@@ -14,6 +18,7 @@ function init() {
 
   // hide panels
   hidePanels();
+  getPref();
 
     //// Initialize Firebase.
   var config = {
@@ -33,8 +38,37 @@ function init() {
     mode: 'javascript'
   });
 
-  // Create a random ID to use as our user ID (we must give this to firepad and FirepadUserList).
-  var userId = Math.floor(Math.random() * 9999999999).toString();
+  // Get a reference to the Firebase Realtime Database
+  var chatRef = firebase.database().ref();
+  // Create an instance of Firechat
+  var chat = new FirechatUI(chatRef, document.getElementById("firechat-wrapper"));
+
+  // Listen for authentication state changes
+    firebase.auth().onAuthStateChanged(function(user) {
+      //if (user) {
+        // If the user is logged in, set them as the Firechat user
+
+          chat.setUser(user.uid, username);
+          console.log(user);
+          console.log("user id: " + user.uid);
+          // if user is first, set the chatroom name to the session id and create room
+          console.log("Creating chatroom...");
+          //chat.createRoom("myRoom", "public", function(roomId) {
+
+            //console.log("Success! ID: " + roomId);
+          // if user is not first, join the chatroom name session id
+            //chat.enterRoom(roomId);
+          //});
+        //});
+    //} else {
+      // If the user is not logged in, sign them in anonymously
+    //  firebase.auth().signInAnonymously().catch(function(error) {
+    //    console.log("Error signing user in anonymously:", error);
+    //  });
+    //}
+  });
+
+
 
   //// Create Firepad.
   firepad = Firepad.fromCodeMirror(firepadRef, codeMirror, {
@@ -45,13 +79,13 @@ function init() {
   //// Create FirepadUserList (with our desired userId).
   // problem where all of these users ends up with different name
   var firepadUserList = FirepadUserList.fromDiv(firepadRef.child('users'),
-  document.getElementById('userlist'), userId);
+  document.getElementById('userlist'), userId, username);
 
   var firepadUser = FirepadUserList.fromDiv(firepadRef.child('users'),
-  document.getElementById('user'), userId);
+  document.getElementById('user'), userId, username);
 
   var firepadUserListDisabled = FirepadUserList.fromDiv(firepadRef.child('users'),
-  document.getElementById('userlistdisabled'), userId);
+  document.getElementById('userlistdisabled'), userId, username);
 
   changeSize(0);
   updateMobbing();
@@ -65,13 +99,13 @@ function getExampleRef() {
   if (hash) {
     ref = ref.child(hash);
     var link = ref.key;
-    console.log(link);
+    sessionId = link;
     showSessionInfo(link);
   } else {
     ref = ref.push(); // generate unique location.
     window.location = baseURL + '#' + ref.key; // add it as a hash to the URL.
     var link = ref.key.replace(/-/g, '');
-    console.log(link);
+    sessionId = link;
     showSessionInfo(link);
   }
   if (typeof console !== 'undefined') {
@@ -92,13 +126,19 @@ function hidePanels() {
   document.getElementById("overlay").style.display = 'none';
 }
 
+function hideChat() {
+  document.getElementById("codehort-chat").style.display = 'none';
+}
+
 function showPanel(panel) {
   document.getElementById(panel).style.display = 'block';
-  document.getElementById("overlay").style.display = 'block';
+  if (panel != 'codehort-chat') {
+    document.getElementById("overlay").style.display = 'block';
+  }
 }
 
 function closePanel() {
-  hidePanels();
+    hidePanels();
 }
 
 // new editor icon click
@@ -150,8 +190,8 @@ function newSession() {
 
 // join session icon click
 function joinCode() {
-  var sessionId = document.getElementById("sessionIdInput").value;
-  window.location.href = baseURL + '#-' + sessionId;
+  var sessionIdInput = document.getElementById("sessionIdInput").value;
+  window.location.href = baseURL + '#-' + sessionIdInput;
   // make sure we reload the url to join correcty
   window.location.reload(true);
 }
@@ -165,14 +205,14 @@ function showSessionInfo(link) {
 
 function copySessionId() {
   var range = document.createRange();
-  var sessionId = document.getElementById("codehort-display");
-  range.selectNode(sessionId);
+  var sessionIdDisplay = document.getElementById("codehort-display");
+  range.selectNode(sessionIdDisplay);
   window.getSelection().removeAllRanges();
   window.getSelection().addRange(range);
   //sessionId.select();
   document.execCommand("copy");
 
-  console.log("Copied the text: " + sessionId.innerHTML);
+  console.log("Copied the text: " + sessionIdDisplay.innerHTML);
 }
 
 function changeQuantity(input, amount) {
@@ -210,15 +250,31 @@ function updateMobbing() {
   }
 }
 
+function getPref() {
+  var storage = window.localStorage;
+  var userNameInput = document.getElementById("usernameInput");
+  var userNamePref = storage.getItem('username');
+  userNameInput.value = userNamePref;
+  username = userNamePref;
+
+}
+
 // preferences icon click
 function applyPref() {
+  var storage = window.localStorage;
   // apply the prefs in the panel such as
+  var userNameInput = document.getElementById("usernameInput").value;
+  //var value = storage.getItem('username'); // Pass a key name to get its value.
+  storage.setItem('username', userNameInput); // Pass a key name and its value to add or update that key.
 
   // dark / light theme
 
   // show intro at startup
 
   // display chat
+
+
+
 
   hidePanels();
 }
