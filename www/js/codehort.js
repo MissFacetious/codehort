@@ -1,8 +1,6 @@
-var codeMirror;
 var firepad;
 var firepadRef;
 var baseURL = window.location+"";
-var sessionId;
 var username = ""; // will be set in getPref
 var userId = Math.floor(Math.random() * 9999999999).toString(); // will be set when we authenticate
 
@@ -32,7 +30,7 @@ function init() {
   //// Get Firebase Database reference.
   firepadRef = getExampleRef();
   //// Create CodeMirror (with line numbers and the JavaScript mode).
-  codeMirror = CodeMirror(document.getElementById('firepad-container'), {
+  var codeMirror = CodeMirror(document.getElementById('firepad-container'), {
     lineNumbers: true,
     mode: 'javascript'
   });
@@ -138,148 +136,4 @@ function showPanel(panel) {
 
 function closePanel() {
     hidePanels();
-}
-
-// new editor icon click
-function newEditor() {
-  // remove all text in the editor
-  firepad.setText('');
-  hidePanels();
-  updateMobbing();
-}
-
-// save editor icon click
-function saveEditor() {
-  var filename = document.getElementById("fileInput").value;
-  var blob = new Blob([firepad.getText()], {
-    type: "text/plain;charset=utf-8;",
-  });
-  window.saveAs(blob, filename);
-  closePanel();
-}
-
-
-
-// new session icon click
-function newSession() {
-  // create new session
-  window.location.href = baseURL;
-  firepadRef = getExampleRef();
-}
-
-// join session icon click
-function joinCode() {
-  var sessionIdInput = document.getElementById("sessionIdInput").value;
-  window.location.href = baseURL + '#-' + sessionIdInput;
-  // make sure we reload the url to join correcty
-  window.location.reload(true);
-}
-
-// show session info icon click
-function showSessionInfo(link) {
-  document.getElementById("codehort-link").innerHTML = "Send your friend to <a href=\"http://codehort.appspot.com/\" target=\"_new\">http://codehort.appspot.com</a> to download codehort, and then tell them to use this secret code to join you."
-  document.getElementById("codehort-display").innerHTML = link;
-  document.getElementById("sessionIdFooter").innerHTML = "Connected to session id: " + link;
-}
-
-function copySessionId() {
-  var range = document.createRange();
-  var sessionIdDisplay = document.getElementById("codehort-display");
-  range.selectNode(sessionIdDisplay);
-  window.getSelection().removeAllRanges();
-  window.getSelection().addRange(range);
-  //sessionId.select();
-  document.execCommand("copy");
-
-  console.log("Copied the text: " + sessionIdDisplay.innerHTML);
-}
-
-function changeQuantity(input, amount) {
-  var value = document.getElementById(input).value;
-  if (value > 0 && amount < 0) {
-    value--;
-  }
-  if (amount > 0) {
-    value++;
-  }
-  document.getElementById(input).value = value;
-  updateMobbing();
-}
-
-function updateMobbing() {
-  var code = document.getElementById('timer').value;
-  var thenbreak = document.getElementById('break').value;
-  var every = document.getElementById('every').value;
-  var sentence = "You will code for " + code + " minutes each, take a " + thenbreak + " minute break every "+ every + " coding ";
-  if (every > 1) {
-    sentence += "sessions.";
-  }
-  else {
-    sentence += "session.";
-  }
-  if (every == 0 || thenbreak == 0) {
-    sentence = "You will code for " + code + " minutes each, no breaks!";
-  }
-  document.getElementById("sentence").innerHTML = sentence;
-  if (every > 1) {
-    document.getElementById("plural").innerHTML = "s";
-  }
-  else {
-    document.getElementById("plural").innerHTML = "";
-  }
-}
-
-function getPref() {
-  var storage = window.localStorage;
-  var userNameInput = document.getElementById("usernameInput");
-  var userNamePref = storage.getItem('username');
-  if (userNamePref == null || userNamePref == '') {
-    if (username == "") username = "User"+userId.substring(userId.length-4, 3);
-    userNamePref = username;
-  }
-  userNameInput.value = userNamePref;
-  username = userNamePref;
-
-  var zoomPref = storage.getItem('zoom');
-  if (zoomPref == null || zoomPref == '') {
-    zoom = 1.5; // default
-  }
-  else {
-    zoom = zoomPref;
-    document.getElementById('zoom').value = Math.round(100 * zoom);
-  }
-  resize();
-}
-
-// preferences icon click
-function applyPref() {
-  var storage = window.localStorage;
-  // apply the prefs in the panel such as
-  var userNameInput = document.getElementById("usernameInput").value;
-  //var value = storage.getItem('username'); // Pass a key name to get its value.
-  storage.setItem('username', userNameInput); // Pass a key name and its value to add or update that key.
-
-  // dark / light theme
-
-  // show intro at startup
-
-  // display chat
-
-  // zoom
-  changePercent(0);
-  storage.setItem('zoom', zoom);
-
-  hidePanels();
-  window.location.reload(true);
-}
-
-// run code icon click
-function executeCode() {
-  //console.log(codeMirror.getValue(""));
-  //var newWindow = window.open();
-  //newWindow.document.write('<script>function init() { alert("hello"); eval(codeMirror.getValue("")) }');
-  //newWindow.document.write('<body onload="init()">');
-  console.log(firepad.getText());
-
-  eval(firepad.getText());
 }
