@@ -58,6 +58,14 @@
       <div id="splashSecond">
         <div>Second, do you know how big you want your text to be?</div>
         <p></p>
+        <button onclick="changeSize(-1);">
+        <img src="./img/small-zoom.png" border="0">
+      </button>
+      <button onclick="changeSize(1);">
+        <img src="./img/big-zoom.png" border="0">
+      </button>
+      <p></p>
+      <div id="zoomTest" class="zoomTest">This is pretty good.</div>
         <div class="right">
           <input type="button" name="prevBtn" id="prevBtn" value="Previous" class="buttonClick buttonClickOk" onclick="display(0);">
           <input type="button" name="nextBtn" id="nextBtn" value="Next" class="buttonClick buttonClickOk" onclick="display(2);">
@@ -74,11 +82,14 @@
             </td>
             <td width="50%">
               <div>Do you have a session ID from someone you want to put in?</div>
-              <center><input type="text" maxSize="20" width="20" name="sessionIdInput" id="sessionIdInput" class="inputClick session" placeholder="AbCdEfGh1234mNoPqRsT"></center>
+              <input type="text" maxSize="20" width="20" name="sessionIdSplashInput" id="sessionIdSplashInput" class="inputClick session" placeholder="AbCdEfGh1234mNoPqRsT">
               <input type="button" name="joinSessionSplashBtn" id="joinSessionSplashBtn" value="Join" class="buttonClick buttonClickOk" onclick="joinCode(false);">
             </td>
           </tr>
         </table>
+        <p></p>
+        <div id="successSplash"></div>
+        <p></p>
         <div class="right">
           <input type="button" name="previousSplashBtn" id="previousSplashBtn" value="Previous" class="buttonClick buttonClickOk" onclick="display(1);">
           <input type="button" name="finishBtn" id="finishBtn" value="Finish" class="buttonClick buttonClickOk" onclick="display(3);">

@@ -26,6 +26,7 @@ function changeSize(i) {
 
 function resize() {
   document.getElementById('firepad-container').style.fontSize = zoom+"em";
+  document.getElementById('zoomTest').style.fontSize = zoom+"em";
 }
 
 function changePercent(amount) {

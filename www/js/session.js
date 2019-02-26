@@ -52,14 +52,21 @@ function newSession(close) {
       document.getElementById("joinSessionSplashBtn").disabled = true;
       // enable the finish button
       document.getElementById("finishBtn").disabled = false;
+      document.getElementById("successSplash").innerHTML = "Connected to Session ID: " + sessionId;
     }
   }
 }
 
 // join session icon click
 function joinCode(close) {
-  // grab the session id that they inputted
-  var sessionIdInput = document.getElementById("sessionIdInput").value;
+  var sessionIdInput;
+  if (close) {
+    // grab the session id that they inputted
+    var sessionIdInput = document.getElementById("sessionIdInput").value;
+  }
+  else {
+    sessionIdInput = document.getElementById("sessionIdSplashInput").value;
+  }
   window.location.href = baseURL + '#-' + sessionIdInput;
   // if the editor needs to be created
   //createEditor();
@@ -75,8 +82,10 @@ function joinCode(close) {
       document.getElementById("newSessionSplashBtn").disabled = true;
       document.getElementById("previousSplashBtn").disabled = true;
       document.getElementById("joinSessionSplashBtn").disabled = true;
+      document.getElementById("sessionIdSplashInput").disabled = true;
       // enable the finish button
       document.getElementById("finishBtn").disabled = false;
+      document.getElementById("successSplash").innerHTML = "Connected to Session ID: " + sessionId;
     }
   }
 }
@@ -85,7 +94,7 @@ function joinCode(close) {
 function showSessionInfo(link) {
   document.getElementById("codehort-link").innerHTML = "Send your friend to <a href=\"http://codehort.appspot.com/\" target=\"_new\">http://codehort.appspot.com</a> to download codehort, and then tell them to use this secret code to join you."
   document.getElementById("codehort-display").innerHTML = link;
-  document.getElementById("sessionIdFooter").innerHTML = "Connected to session id: " + link;
+  document.getElementById("sessionIdFooter").innerHTML = "Connected to Session ID: " + link;
 }
 
 function copySessionId() {
