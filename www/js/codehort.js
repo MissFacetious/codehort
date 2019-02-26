@@ -29,6 +29,11 @@ function init() {
 
   firebase.initializeApp(config);
 
+  if (splashScreen) {
+    // show the first splash screen before we begin
+    display(0);
+    showPanel("codehort-splash");
+  }
   createEditor();
 }
 
@@ -102,6 +107,7 @@ function connectFirepad() {
 }
 
 function hidePanels() {
+  document.getElementById("codehort-splash").style.display = 'none';
   document.getElementById("codehort-neweditor").style.display = 'none';
   document.getElementById("codehort-saveedit").style.display = 'none';
   document.getElementById("codehort-newsession").style.display = 'none';

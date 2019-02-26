@@ -2,6 +2,8 @@ var sessionId;
 
 // Helper to get hash from end of URL or generate a random one.
 function getFirepad() {
+  // can we use sessionId here instead of the url?
+
   // grab the url hash id
   var hash = window.location.hash.replace(/#/g, '');
   hash = hash.replace(/-/g, '');
@@ -15,46 +17,68 @@ function getFirepad() {
       console.log('Firebase data: ', ref.toString());
     }
   } else {
-    /*
-    ref = ref.push(); // generate unique location.
-    window.location = baseURL + '#' + ref.key; // add it as a hash to the URL.
-    var link = ref.key.replace(/-/g, '');
-    sessionId = link;
-    showSessionInfo(link);
-    */
     console.log("do not generate a unique location at this time.");
     // disable buttons we can't use
-    //mobbingBtn
+    //mobBtn
     //chatBtn
-    //sessionInfoBtn
+    //infoSessionBtn
   }
   return ref;
 }
 
 // new session icon click
-function newSession() {
+function newSession(close) {
   // create new session
   var ref = firebase.database().ref();
   ref = ref.push(); // generate unique location.
   window.location = baseURL + '#' + ref.key; // add it as a hash to the URL.
   var link = ref.key.replace(/-/g, '');
+  // set the session id and update it in the UI
   sessionId = link;
   showSessionInfo(link);
-  //firepadRef = getFirepad();
+  // if the editor needs to be created
   createEditor();
+  // connect to firepad firebase
   connectFirepad();
-  closePanel();
-  //window.location.href = baseURL;
+  // hide the panel
+  if (close) {
+    closePanel();
+  }
+  else {
+    if (sessionId != null && firepadRef != null) {
+      // disable the new session button
+      document.getElementById("newSessionSplashBtn").disabled = true;
+      document.getElementById("previousSplashBtn").disabled = true;
+      document.getElementById("joinSessionSplashBtn").disabled = true;
+      // enable the finish button
+      document.getElementById("finishBtn").disabled = false;
+    }
+  }
 }
 
 // join session icon click
-function joinCode() {
+function joinCode(close) {
+  // grab the session id that they inputted
   var sessionIdInput = document.getElementById("sessionIdInput").value;
   window.location.href = baseURL + '#-' + sessionIdInput;
-  // make sure we reload the url to join correcty
-  //window.location.reload(true);
+  // if the editor needs to be created
+  //createEditor();
+  // connec to firepad firebase
   connectFirepad();
-  closePanel();
+  // hide the panel
+  if (close) {
+    closePanel();
+  }
+  else {
+    if (sessionId != null && firepadRef != null) {
+      // disable the join session button
+      document.getElementById("newSessionSplashBtn").disabled = true;
+      document.getElementById("previousSplashBtn").disabled = true;
+      document.getElementById("joinSessionSplashBtn").disabled = true;
+      // enable the finish button
+      document.getElementById("finishBtn").disabled = false;
+    }
+  }
 }
 
 // show session info icon click
@@ -70,8 +94,5 @@ function copySessionId() {
   range.selectNode(sessionIdDisplay);
   window.getSelection().removeAllRanges();
   window.getSelection().addRange(range);
-  //sessionId.select();
   document.execCommand("copy");
-
-  console.log("Copied the text: " + sessionIdDisplay.innerHTML);
 }

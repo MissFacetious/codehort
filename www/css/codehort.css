@@ -428,6 +428,10 @@ input:checked + .slider:before {
   background-color: #ffe300;
 }
 
+.buttonClickOk:disabled {
+  background-color: #eee;
+}
+
 .buttonClickCancel:hover {
   background-color: #ff4b00;
 }

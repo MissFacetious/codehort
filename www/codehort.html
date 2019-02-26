@@ -27,6 +27,7 @@
   <!-- Codehort -->
   <link rel="stylesheet" href="./css/codehort.css" />
   <script src="./js/codehort.js"></script>
+  <script src="./js/splash.js"></script>
   <script src="./js/session.js"></script>
   <script src="./js/mobbing.js"></script>
   <script src="./js/execute.js"></script>
@@ -38,6 +39,55 @@
 </head>
 
 <body onload="init()">
+
+  <!-- splash screen panel -->
+  <div id="codehort-splash" class="panel panel-large">
+    <div class="panel-content">
+      <div class="panel-header">
+        <h2>Welcome to Codehort!</h2>
+      </div>
+      <div class="panel-body">
+        <div id="splashFirst">
+        <div>First, put in your name so we know who you are.</div>
+        <p></p>
+        <input type="text" id="usernameInput" class="inputClick name">
+        <div class="right">
+          <input type="button" name="nextBtn" id="nextBtn" value="Next" class="buttonClick buttonClickOk" onclick="display(1);">
+        </div>
+      </div>
+      <div id="splashSecond">
+        <div>Second, do you know how big you want your text to be?</div>
+        <p></p>
+        <div class="right">
+          <input type="button" name="prevBtn" id="prevBtn" value="Previous" class="buttonClick buttonClickOk" onclick="display(0);">
+          <input type="button" name="nextBtn" id="nextBtn" value="Next" class="buttonClick buttonClickOk" onclick="display(2);">
+        </div>
+      </div>
+      <div id="splashThird">
+        <div>Third, how do you want to connect with others?</div>
+        <p></p>
+        <table>
+          <tr>
+            <td width="50%">
+              <div>Do you want to start a new session?</div>
+              <input type="button" name="newSessionSplashBtn" id="newSessionSplashBtn" value="Create" class="buttonClick buttonClickOk" onclick="newSession(false);">
+            </td>
+            <td width="50%">
+              <div>Do you have a session ID from someone you want to put in?</div>
+              <center><input type="text" maxSize="20" width="20" name="sessionIdInput" id="sessionIdInput" class="inputClick session" placeholder="AbCdEfGh1234mNoPqRsT"></center>
+              <input type="button" name="joinSessionSplashBtn" id="joinSessionSplashBtn" value="Join" class="buttonClick buttonClickOk" onclick="joinCode(false);">
+            </td>
+          </tr>
+        </table>
+        <div class="right">
+          <input type="button" name="previousSplashBtn" id="previousSplashBtn" value="Previous" class="buttonClick buttonClickOk" onclick="display(1);">
+          <input type="button" name="finishBtn" id="finishBtn" value="Finish" class="buttonClick buttonClickOk" onclick="display(3);">
+        </div>
+      </div>
+      </div>
+    </div>
+  </div>
+  <!-- end splash screen panel -->
 
 <!-- new editor panel -->
 <div id="codehort-neweditor" class="panel panel-small">
@@ -90,7 +140,7 @@
       <p></p>
       <div class="right">
         <input type="button" name="cancelSessionBtn" id="cancelSessionBtn" class="buttonClick buttonClickCancel" value="Cancel" onclick="closePanel();">
-        <input type="button" name="newSessionBtn" id="newSessionBtn" value="Create" class="buttonClick buttonClickOk" onclick="return newSession();">
+        <input type="button" name="newSessionBtn" id="newSessionBtn" value="Create" class="buttonClick buttonClickOk" onclick="return newSession('true');">
       </div>
     </div>
   </div>
@@ -114,7 +164,7 @@
       <div id="user" class="userlist-disabled"></div>
       <div class="right">
         <input type="button" name="cancelSessionBtn" id="cancelSessionBtn" class="buttonClick buttonClickCancel" value="Cancel" onclick="closePanel();">
-        <input type="button" name="joinSessionBtn" id="joinSessionBtn" value="Join" class="buttonClick buttonClickOk" onclick="return joinCode();">
+        <input type="button" name="joinSessionBtn" id="joinSessionBtn" value="Join" class="buttonClick buttonClickOk" onclick="return joinCode('true');">
       </div>
     </div>
   </div>

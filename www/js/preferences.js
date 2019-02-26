@@ -1,6 +1,13 @@
+var splashScreen = false;
+
 // at the start, get your preferences or set a default
 function getPref() {
   var storage = window.localStorage;
+
+  var splashPref = storage.getItem('splash');
+  if (splashPref == null || splashPref) splashScreen = true;
+  else splashScreen = false;
+
   var userNameInput = document.getElementById("usernameInput");
   var userNamePref = storage.getItem('username');
   if (userNamePref == null || userNamePref == '') {
