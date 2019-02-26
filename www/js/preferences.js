@@ -5,7 +5,7 @@ function getPref() {
   var storage = window.localStorage;
 
   var splashPref = storage.getItem('splash');
-  if (splashPref == null || splashPref) splashScreen = true;
+  if (splashPref == null || splashPref == 'true') splashScreen = true;
   else splashScreen = false;
 
   var userNameInput = document.getElementById("usernameInput");

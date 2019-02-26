@@ -42,7 +42,13 @@ function newSession(close) {
   connectFirepad();
   // hide the panel
   if (close) {
-    closePanel();
+    if (sessionId != null && firepadRef != null) {
+      closePanel();
+    }
+    else {
+      // give feedback this didn't connect
+      document.getElementById("errorNewSession").innerHTML = "Sorry, can't connect.";
+    }
   }
   else {
     if (sessionId != null && firepadRef != null) {
@@ -67,26 +73,38 @@ function joinCode(close) {
   else {
     sessionIdInput = document.getElementById("sessionIdSplashInput").value;
   }
-  window.location.href = baseURL + '#-' + sessionIdInput;
-  // if the editor needs to be created
-  //createEditor();
-  // connec to firepad firebase
-  connectFirepad();
-  // hide the panel
-  if (close) {
-    closePanel();
+  if (checkSessionId(sessionIdInput)) {
+    window.location.href = baseURL + '#-' + sessionIdInput;
+      // if the editor needs to be created
+    //createEditor();
+    // connect to firepad firebase
+    connectFirepad();
+    // hide the panel
+    if (close) {
+      if (sessionId != null && firepadRef != null) {
+        closePanel();
+      }
+      else {
+        // give feedback this didn't connect
+        document.getElementById("errorJoinSession").innerHTML = "Sorry, can't connect.";
+      }
+    }
+    else {
+      if (sessionId != null && firepadRef != null) {
+        // disable the join session button
+        document.getElementById("newSessionSplashBtn").disabled = true;
+        document.getElementById("previousSplashBtn").disabled = true;
+        document.getElementById("joinSessionSplashBtn").disabled = true;
+        document.getElementById("sessionIdSplashInput").disabled = true;
+        // enable the finish button
+        document.getElementById("finishBtn").disabled = false;
+        document.getElementById("successSplash").innerHTML = "Connected to Session ID: " + sessionId;
+      }
+    }
   }
   else {
-    if (sessionId != null && firepadRef != null) {
-      // disable the join session button
-      document.getElementById("newSessionSplashBtn").disabled = true;
-      document.getElementById("previousSplashBtn").disabled = true;
-      document.getElementById("joinSessionSplashBtn").disabled = true;
-      document.getElementById("sessionIdSplashInput").disabled = true;
-      // enable the finish button
-      document.getElementById("finishBtn").disabled = false;
-      document.getElementById("successSplash").innerHTML = "Connected to Session ID: " + sessionId;
-    }
+    // show error that session doesn't fufil
+    document.getElementById("errorJoinSession").innerHTML = "Enter a Session ID with 19 alphanumeric digits.";
   }
 }
 
@@ -104,4 +122,16 @@ function copySessionId() {
   window.getSelection().removeAllRanges();
   window.getSelection().addRange(range);
   document.execCommand("copy");
+}
+
+function checkSessionId(value) {
+  console.log(value.length);
+  if (value.includes(".") || value.includes("#") || value.includes("$") || value.includes("[") || value.includes("]")) {
+    return false;
+  }
+  if (value.length != 19) {
+    return false;
+  }
+  // Paths must be non-empty strings and can't contain ".", "#", "$", "[", or "]"
+  return true;
 }

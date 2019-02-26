@@ -89,6 +89,7 @@
         </table>
         <p></p>
         <div id="successSplash"></div>
+        <div id="errorSplash"></div>
         <p></p>
         <div class="right">
           <input type="button" name="previousSplashBtn" id="previousSplashBtn" value="Previous" class="buttonClick buttonClickOk" onclick="display(1);">
@@ -149,6 +150,8 @@
     <div class="panel-body">
       <div>Create a new session that can be shared with others. The code in your editor will still be there.</div>
       <p></p>
+      <div id="errorNewSession"></div>
+      <p></p>
       <div class="right">
         <input type="button" name="cancelSessionBtn" id="cancelSessionBtn" class="buttonClick buttonClickCancel" value="Cancel" onclick="closePanel();">
         <input type="button" name="newSessionBtn" id="newSessionBtn" value="Create" class="buttonClick buttonClickOk" onclick="return newSession('true');">
@@ -170,9 +173,12 @@
       <p></p>
       <center><input type="text" maxSize="20" width="20" name="sessionIdInput" id="sessionIdInput" class="inputClick session" placeholder="AbCdEfGh1234mNoPqRsT"></center>
       <p></p>
-      <!-- TODO: this should reload when the user hits join session? -->
-      <div>Current users in session:</div>
-      <div id="user" class="userlist-disabled"></div>
+      <div id="errorJoinSession"></div>
+      <p></p>
+      <div id="joinSessionUsers">
+        <div>Current users in session:</div>
+        <div id="user" class="userlist-disabled"></div>
+      </div>
       <div class="right">
         <input type="button" name="cancelSessionBtn" id="cancelSessionBtn" class="buttonClick buttonClickCancel" value="Cancel" onclick="closePanel();">
         <input type="button" name="joinSessionBtn" id="joinSessionBtn" value="Join" class="buttonClick buttonClickOk" onclick="return joinCode('true');">
@@ -192,13 +198,17 @@
     <div class="panel-body">
       <div>Here is your session id you currently have that you can share.</div>
       <p></p>
-      <center><h1 id="codehort-display" class="codehort-display" onClick="copySessionId();"></h1></center>
-      <p></p>
-      <center><div id="codehort-link"></div></center>
-      <p></p>
-      <!-- TODO: this should reload when the user hits info session? -->
-      <div>Current users in session:</div>
-      <div id="userlist" class="userlist-disabled"></div>
+      <div id="sessionInfoPanel">
+        <center><h1 id="codehort-display" class="codehort-display" onClick="copySessionId();"></h1></center>
+        <p></p>
+        <center><div id="codehort-link"></div></center>
+        <p></p>
+        <div id="sessionInfoUsers">
+          <div>Current users in session:</div>
+          <div id="userlist" class="userlist-disabled"></div>
+        </div>
+      </div>
+      <div id="errorSessionInfo"></div>
       <div class="right">
         <input type="button" name="sessionInfoBtn" id="sessionInfoBtn" value="Okay" class="buttonClick buttonClickOk" onclick="closePanel();">
       </div>
