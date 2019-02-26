@@ -57,7 +57,7 @@ function newSession(close) {
       document.getElementById("previousSplashBtn").disabled = true;
       document.getElementById("joinSessionSplashBtn").disabled = true;
       // enable the finish button
-      document.getElementById("finishBtn").disabled = false;
+      //document.getElementById("finishBtn").disabled = false;
       document.getElementById("successSplash").innerHTML = "Connected to Session ID: " + sessionId;
     }
   }
@@ -97,7 +97,7 @@ function joinCode(close) {
         document.getElementById("joinSessionSplashBtn").disabled = true;
         document.getElementById("sessionIdSplashInput").disabled = true;
         // enable the finish button
-        document.getElementById("finishBtn").disabled = false;
+        //document.getElementById("finishBtn").disabled = false;
         document.getElementById("successSplash").innerHTML = "Connected to Session ID: " + sessionId;
       }
     }

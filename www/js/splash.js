@@ -13,7 +13,7 @@ function display(index) {
   if (index == 2) {
     document.getElementById("newSessionSplashBtn").disabled = false;
     document.getElementById("joinSessionSplashBtn").disabled = false;
-    document.getElementById("finishBtn").disabled = true;
+    //document.getElementById("finishBtn").disabled = true;
     document.getElementById("splashFirst").style.display = 'none';
     document.getElementById("splashSecond").style.display = 'none';
     document.getElementById("splashThird").style.display = 'block';
