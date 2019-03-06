@@ -24,11 +24,6 @@
   <link rel="stylesheet" href="./css/firechat.min.css" />
   <script src="./js/firechat.min.js"></script>
 
-  <link rel="stylesheet" href="./css/dialog.css" />
-  <script src="./js/dialog.js"></script>
-  <script src="./js/searchcursor.js"></script>
-  <script src="./js/search.js"></script>
-
   <!-- Codehort -->
   <link rel="stylesheet" href="./css/codehort.css" />
   <script src="./js/codehort.js"></script>
@@ -40,6 +35,11 @@
   <script src="./js/editor.js"></script>
   <script src="./js/preferences.js"></script>
   <script src="./js/zoom.js"></script>
+
+  <link rel="stylesheet" href="./css/dialog.css" />
+  <script src="./js/dialog.js"></script>
+  <script src="./js/searchcursor.js"></script>
+  <script src="./js/search.js"></script>
 
 </head>
 
@@ -420,8 +420,8 @@
         <button name="zoomInBtn" id="zoomInBtn" onclick="changeSize(1);" class="buttonIcon icon tooltip zoomInBtn" value="Zoom In" ><span class="tooltiptext">Zoom In</span></button>
       </div>
       <div class="grid-icon">
-        <button name="searchBtn" id="searchBtn" onclick=";" class="buttonIcon icon tooltip searchBtn" value="Search" ><span class="tooltiptext">Search Code</span></button>
-        <button name="replaceBtn" id="replaceBtn" onclick=";" class="buttonIcon icon tooltip replaceBtn" value="Replace" ><span class="tooltiptext">Replace Text</span></button>
+        <button name="searchBtn" id="searchBtn" onclick="searchCmd();" class="buttonIcon icon tooltip searchBtn" value="Search" ><span class="tooltiptext">Search Code</span></button>
+        <button name="replaceBtn" id="replaceBtn" onclick="replaceCmd();" class="buttonIcon icon tooltip replaceBtn" value="Replace" ><span class="tooltiptext">Replace Text</span></button>
       </div>
       <div class="grid-icon">
         <button name="newSessionBtn" id="newSessionBtn" onclick="showPanel('codehort-newsession');" class="buttonIcon icon tooltip newSessionBtn" value="New Session" ><span class="tooltiptext">New Session</span></button>
