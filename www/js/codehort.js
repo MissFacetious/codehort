@@ -60,6 +60,7 @@ function connectFirepad() {
     var chat = new FirechatUI(chatRef, document.getElementById("firechat-wrapper"));
 
     // Listen for authentication state changes
+    //firebase.auth().signInAnonymously().catch(function(error) {
     firebase.auth().onAuthStateChanged(function(user) {
       if (user) {
         // If the user is logged in, set them as the Firechat user
@@ -133,3 +134,9 @@ function showPanel(panel) {
 function closePanel() {
     hidePanels();
 }
+
+// Ctrl-F / Cmd-F: Start searching
+// Ctrl-G / Cmd-G: Find next
+// Shift-Ctrl-G / Shift-Cmd-G: Find previous
+// Shift-Ctrl-F / Cmd-Option-F: Replace
+// Shift-Ctrl-R / Shift-Cmd-Option-F: Replace all
