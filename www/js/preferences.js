@@ -3,7 +3,8 @@ var splashScreen = false;
 // at the start, get your preferences or set a default
 function getPref() {
   var storage = window.localStorage;
-
+  // if you want to test the splash screen
+  //storage.setItem('splash', true);
   var splashPref = storage.getItem('splash');
   if (splashPref == null || splashPref == 'true') splashScreen = true;
   else splashScreen = false;

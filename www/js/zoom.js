@@ -25,8 +25,11 @@ function changeSize(i) {
 }
 
 function resize() {
-  document.getElementById('firepad-container').style.fontSize = zoom+"em";
-  document.getElementById('zoomTest').style.fontSize = zoom+"em";
+  var container = document.getElementsByClassName('CodeMirror');
+  if (container != null && container.length > 0) {
+    container[0].style.zoom = zoom;
+  }
+  document.getElementById('zoomTest').style.zoom = zoom;
 }
 
 function changePercent(amount) {
