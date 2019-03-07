@@ -1,4 +1,7 @@
 // run code icon click
+
+var contents = "";
+
 function executeCode() {
   // here is an example of doing a plus function, put the function into the code editor
   /*
@@ -6,6 +9,7 @@ function executeCode() {
     return a+b;
   }
   */
+  contents = "";
   var tests = [5];
   tests[0] = {"test": "plus(1, 3);", "value": "4"};
   tests[1] = {"test": "plus(4, 5);", "value": "9"};
@@ -13,18 +17,25 @@ function executeCode() {
   tests[3] = {"test": "plus(10, -10);", "value": "0"};
   tests[4] = {"test": "plus(-10, -10);", "value": "-20"};
 
+  var prepend = "<table>";
+  var append = "</table>";
+  var outnode = document.getElementById("outputCode");
+  contents += prepend;
+
   for (var i=0; i < tests.length; i++) {
     if (firepad != null) {
-      error = JSrun(tests[i], firepad);
+      error = JSrun(i+1, tests[i], firepad);
     }
     else {
-      error = JSrun(tests[i], codeMirror.getValue());
+      error = JSrun(i+1, tests[i], codeMirror.getValue());
     }
     if (error) {
       // do not execute any other tests
       break;
     }
   }
+  contents += append;
+  outnode.innerHTML = contents;
 
   if (!error) {
     // show succeeded animation!
@@ -47,7 +58,7 @@ function JSoutput(a) {
     return str;
 }
 
-function writeln(testcase, str, error) {
+function writeRow(number, testcase, str, error) {
     if (!str) str="";
     var message = "";
     var outnode = document.getElementById("outputCode");
@@ -58,30 +69,34 @@ function writeln(testcase, str, error) {
       message = '<span class="failure">FAILED</span>';
     }
 
-    // change this to a five column table for a better format
-    var string = "";
-    string = "Test Case: ";
+    // print out the row of information
+    var string = "<tr><td width='10%' valign='top'>";
+    string += "Test " + number + ":";
+    string += "</td><td width='20%' valign='top'>";
     string += testcase.test;
-    string += "\t\t";
+    string += "</td><td width='10%' valign='top'>";
     string += "Output: ";
+    string += "</td><td width='30%' valign='top'>";
     string += JSoutput(str);
-    string += "\t";
+    string += "</td><td width='10%' valign='top'>";
     if (!error) {
-      string += "\t\t\t";
+        string += "</td><td width='10%' valign='top'>";
+        string += "</td><td width='10%' valign='top'>";
     }
     else {
       string += "Expected: ";
+      string += "</td><td width='10%' valign='top'>";
       string += testcase.value;
-      string += "\t\t";
+      string += "</td><td width='10%' valign='top'>";
     }
     string += message;
-    outnode.innerHTML += string + "\n";
+    string += "</td></tr>";
+    return string;
 }
 
-function JSrun(testcase, script) {
+function JSrun(number, testcase, script) {
     var str;
     var error = true;
-    var outnode = document.getElementById("outputCode");
     d = new Date().getTime();
 
     // try this with strings, try this with math
@@ -105,8 +120,8 @@ function JSrun(testcase, script) {
       else {
         error = true;
       }
-      writeln(testcase, str, error);
-      //outnode.innerHTML += str;
+      var string = writeRow(number, testcase, str, error) + "\n";
+      contents += string;
     }
     return error;
 }
