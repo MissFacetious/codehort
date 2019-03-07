@@ -87,7 +87,6 @@ div.right {
   position: relative;
   clear: both;
   height: 20px;
-  margin-top: -20px;
   z-index: 5;
   width: 100%;
   background-color: #eee;
@@ -98,7 +97,7 @@ div.right {
    For demo purposes, we make firepad fill the entire browser. */
 #firepad-container {
   width: 100%;
-  height: calc(100% - 95px);
+  height: calc(100% - 100px - 20px - 11px);
   z-index: 0;
 }
 
