@@ -132,5 +132,7 @@ function showPanel(panel) {
 }
 
 function closePanel() {
+    var outnode = document.getElementById("outputCode");
+    outnode.innerHTML = "";
     hidePanels();
 }
