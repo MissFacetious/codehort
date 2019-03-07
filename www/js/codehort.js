@@ -47,18 +47,27 @@ function createEditor() {
   }
   updateMobbing();
   changePercent(0);
+
+  // if you have connected to a previous session try to connect now?
+  if (sessionId) {
+    // attempt to connect to this session id
+    console.log(sessionId);
+    joinSessionId(sessionId);
+  }
 }
 
 function connectFirepad() {
   //// Get Firebase Database reference.
-  firepadRef = getFirepad();
+  if (firepadRef == null) {
+    firepadRef = getFirepad();
+    console.log("new firepad");
+  }
 
   if (firepadRef != null) {
     // Get a reference to the Firebase Realtime Database
     var chatRef = firebase.database().ref();
     // Create an instance of Firechat
     var chat = new FirechatUI(chatRef, document.getElementById("firechat-wrapper"));
-
     // Listen for authentication state changes
     //firebase.auth().signInAnonymously().catch(function(error) {
     firebase.auth().onAuthStateChanged(function(user) {
@@ -87,12 +96,13 @@ function connectFirepad() {
       }
     });
 
-    //// Create Firepad.
-    firepad = Firepad.fromCodeMirror(firepadRef, codeMirror, {
-      defaultText: '// Welcome to Codehort, start coding!\n\nconsole.log(\'hello codehort!\');\n\n',
-      userId: userId
-    });
-
+    if (firebase == null) {
+      //// Create Firepad.
+      firepad = Firepad.fromCodeMirror(firepadRef, codeMirror, {
+        defaultText: '// Welcome to Codehort, start coding!\n\nconsole.log(\'hello codehort!\');\n\n',
+        userId: userId
+      });
+    }
     //// Create FirepadUserList (with our desired userId).
     // problem where all of these users ends up with different name
     var firepadUserList = FirepadUserList.fromDiv(firepadRef.child('users'),
@@ -103,7 +113,6 @@ function connectFirepad() {
 
     var firepadUserListDisabled = FirepadUserList.fromDiv(firepadRef.child('users'),
     document.getElementById('userlistdisabled'), userId, username);
-
   }
 }
 

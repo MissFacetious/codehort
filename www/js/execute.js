@@ -8,6 +8,10 @@ function executeCode() {
   function plus(a, b) {
     return a+b;
   }
+
+  things that are having problems are:
+    something that doesn't return anything
+
   */
   contents = "";
   var tests = [5];
@@ -23,12 +27,12 @@ function executeCode() {
   contents += prepend;
 
   for (var i=0; i < tests.length; i++) {
-    if (firepad != null) {
-      error = JSrun(i+1, tests[i], firepad);
-    }
-    else {
+    //if (firepad != null) {
+    //  error = JSrun(i+1, tests[i], firepad);
+    //}
+    //else {
       error = JSrun(i+1, tests[i], codeMirror.getValue());
-    }
+    //}
     if (error) {
       // do not execute any other tests
       break;

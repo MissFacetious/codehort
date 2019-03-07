@@ -28,5 +28,7 @@ function display(index) {
     splashScreen = false;
     var storage = window.localStorage;
     storage.setItem('splash', splashScreen);
+    username = document.getElementById("usernameSplashInput").value;
+    storage.setItem('username', username);
   }
 }

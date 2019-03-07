@@ -14,6 +14,7 @@ function getPref() {
     if (username == "") username = "User"+userId.substring(userId.length-4, 3);
     userNamePref = username;
   }
+
   userNameInput.value = userNamePref;
   username = userNamePref;
 
@@ -26,6 +27,11 @@ function getPref() {
     document.getElementById('zoom').value = Math.round(100 * zoom);
   }
   resize();
+
+  var sessionPref = storage.getItem('session');
+  if (sessionPref != null) {
+    sessionId = sessionPref;
+  }
 }
 
 // preferences icon click

@@ -74,11 +74,8 @@ function joinCode(close) {
     sessionIdInput = document.getElementById("sessionIdSplashInput").value;
   }
   if (checkSessionId(sessionIdInput)) {
-    window.location.href = baseURL + '#-' + sessionIdInput;
-      // if the editor needs to be created
-    //createEditor();
-    // connect to firepad firebase
-    connectFirepad();
+
+    joinSessionId(sessionIdInput);
     // hide the panel
     if (close) {
       if (sessionId != null && firepadRef != null) {
@@ -106,6 +103,16 @@ function joinCode(close) {
     // show error that session doesn't fufil
     document.getElementById("errorJoinSession").innerHTML = "Enter a Session ID with 19 alphanumeric digits.";
   }
+}
+
+function joinSessionId(session_id) {
+  sessionId = session_id;
+  window.location.href = baseURL + '#-' + sessionId;
+  // connect to firepad firebase
+  connectFirepad();
+
+  var storage = window.localStorage;
+  storage.setItem('session', sessionId);
 }
 
 // show session info icon click
