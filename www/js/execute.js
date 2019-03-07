@@ -31,7 +31,7 @@ function executeCode() {
     //  error = JSrun(i+1, tests[i], firepad);
     //}
     //else {
-      error = JSrun(i+1, tests[i], codeMirror.getValue());
+      error = runScript(i+1, tests[i], codeMirror.getValue());
     //}
     if (error) {
       // do not execute any other tests
@@ -48,18 +48,28 @@ function executeCode() {
   showPanel('codehort-run');
 }
 
-function JSoutput(a) {
-    var str = "["
-    if (typeof(a)=="object" && a.length) {
-        for (var i=0; i < a.length; i++)
-            if (typeof(a[i])=="object" && a[i].length) {
-                str += (i==0?"":" ")+"["
-                for (var j=0; j<a[i].length; j++)
-                    str += a[i][j]+(j==a[i].length-1?
-                            "]"+(i==a.length-1?"]":",")+"\n":", ");
-            } else str += a[i]+(i==a.length-1?"]":", ");
-    } else str = a;
-    return str;
+function outputScript(a) {
+  if (a == null) {
+    return null;
+  }
+  var str = "["
+  if (typeof(a)=="object" && a.length) {
+    for (var i=0; i < a.length; i++) {
+      if (typeof(a[i])=="object" && a[i].length) {
+        str += (i==0?"":" ")+"[";
+        for (var j=0; j<a[i].length; j++) {
+          str += a[i][j]+(j==a[i].length-1?"]"+(i==a.length-1?"]":",")+"\n":", ");
+        }
+      }
+      else {
+        str += a[i]+(i==a.length-1?"]":", ");
+      }
+    }
+  }
+  else {
+    str = a;
+  }
+  return str;
 }
 
 function writeRow(number, testcase, str, error) {
@@ -81,7 +91,7 @@ function writeRow(number, testcase, str, error) {
     string += "</td><td width='10%' valign='top'>";
     string += "Output: ";
     string += "</td><td width='30%' valign='top'>";
-    string += JSoutput(str);
+    string += outputScript(str);
     string += "</td><td width='10%' valign='top'>";
     if (!error) {
         string += "</td><td width='10%' valign='top'>";
@@ -98,15 +108,21 @@ function writeRow(number, testcase, str, error) {
     return string;
 }
 
-function JSrun(number, testcase, script) {
+function runScript(number, testcase, script) {
     var str;
     var error = true;
     d = new Date().getTime();
 
     // try this with strings, try this with math
     try {
-      str = JSoutput(eval(testcase.test + "\n" + script));
-      error = false;
+      str = outputScript(eval(testcase.test + "\n" + script));
+      if (str == null) {
+        str = "Nothing returned.";
+        error = true;
+      }
+      else {
+        error = false;
+      }
     }
     catch(e) {
         str = e.name+" at line "+(e.lineNumber-56)+": "+e.message;
