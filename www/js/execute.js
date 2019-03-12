@@ -4,6 +4,24 @@ var contents = "";
 var tests = [5]; // every challenge should have the same amount of tests
 
 function executeCode() {
+
+  // first, we need to make sure we are running the right test.
+  // parse through the code editor and make sure there is the // CHALLENGE # in it to set the tests right
+
+  var code = codeMirror.getValue();
+  var value = "";
+  var string = "// CHALLENGE #";
+  if (code.search(string) != -1) {
+    value = code.substr(string.length, 2);
+    if (!Number.isInteger(value)) {
+      value = code.substr(string.length, 1);
+    }
+  }
+  console.log("my value is : " + value);
+
+  startChallenge(value);
+  loadChallenge(false);
+
   // here is an example of doing a plus function, put the function into the code editor
   /*
   function plus(a, b) {
@@ -16,18 +34,20 @@ function executeCode() {
     if you have a console.log at the end that gets in the way, it grabs the attention of the output
   */
   contents = "";
-  
+
   var prepend = "<table>";
   var append = "</table>";
   var outnode = document.getElementById("outputCode");
   contents += prepend;
 
+console.log(codeMirror.getValue());
   for (var i=0; i < tests.length; i++) {
+    console.log(tests[i].test);
     //if (firepad != null) {
     //  error = JSrun(i+1, tests[i], firepad);
     //}
     //else {
-      error = runScript(i+1, tests[i], codeMirror.getValue());
+      error = runScript(i+1, tests[i], code);
     //}
     if (error) {
       // do not execute any other tests

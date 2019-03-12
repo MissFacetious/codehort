@@ -1,33 +1,36 @@
-var temp_code = null;
-var temp_tests = [5];
+var tempCode = null;
+var tempTests = [5];
+var challengeNumber;
 // new editor icon click
 function newEditor() {
-  // remove all text in the editor
-  if (firepad != null) {
-    // load up the sample code inside the editor to get them started
-    firepad.setText(temp_code);
-
-    // load up the tests that need to execute when ran
-    //tests = temp_tests;
-    for (var i=0; i > temp_tests.length; i++) {
-      tests[i] = temp_temps[i];
-    }
-  }
+  loadChallenge(true);
   hidePanels();
   updateMobbing();
+  tempCode = null;
+  tempTests = null;
+}
 
-  temp_code = null;
-  temp_tests = null;
+// we need to load these test cases if we reload..
+function loadChallenge(code) {
+  if (code) {
+    // remove all text in the editor
+    if (firepad != null) {
+      // load up the sample code inside the editor to get them started
+      firepad.setText(tempCode);
+    }
+  }
+  // load up the tests that need to execute when ran
+  tests = Array.from(tempTests);
 }
 
 function startChallenge(challenge) {
   // sample challenge
-  temp_code = "// Create a function that adds two numbers together and return the result.\nfunction plus() {\n\t\n}"
-  temp_tests[0] = {"test": "plus(1, 3);", "value": "4"};
-  temp_tests[1] = {"test": "plus(4, 5);", "value": "9"};
-  temp_tests[2] = {"test": "plus(-4, 5);", "value": "1"};
-  temp_tests[3] = {"test": "plus(10, -10);", "value": "0"};
-  temp_tests[4] = {"test": "plus(-10, -10);", "value": "-20"};
+  tempCode = "// CHALLENGE #1: addition\n// Keep this line in order to execute your code in codehort correctly.\n\n// Create a function that adds two numbers together and return the result.\nfunction plus() {\n\t\n}"
+  tempTests[0] = {"test": "plus(1, 3);", "value": "4"};
+  tempTests[1] = {"test": "plus(4, 5);", "value": "9"};
+  tempTests[2] = {"test": "plus(-4, 5);", "value": "1"};
+  tempTests[3] = {"test": "plus(10, -10);", "value": "0"};
+  tempTests[4] = {"test": "plus(-10, -10);", "value": "-20"};
 }
 
 // save editor icon click
