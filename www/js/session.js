@@ -27,7 +27,7 @@ function getFirepad() {
 }
 
 // new session icon click
-function newSession(close) {
+function newSession(close, click) {
   // create new session
   var ref = firebase.database().ref();
   ref = ref.push(); // generate unique location.
@@ -35,30 +35,40 @@ function newSession(close) {
   var link = ref.key.replace(/-/g, '');
   // set the session id and update it in the UI
   sessionId = link;
-  showSessionInfo(link);
-  // if the editor needs to be created
-  createEditor();
-  // connect to firepad firebase
-  connectFirepad();
-  // hide the panel
-  if (close) {
-    if (sessionId != null && firepadRef != null) {
-      closePanel();
-    }
-    else {
-      // give feedback this didn't connect
-      document.getElementById("errorNewSession").innerHTML = "Sorry, can't connect.";
-    }
+  // if we are click, we assume there is already a codemirror on the page
+  if (click) {
+    var storage = window.localStorage;
+    storage.setItem('session', sessionId);
+    // reload the page and connect to the new session id
+    window.location.reload(true);
   }
   else {
-    if (sessionId != null && firepadRef != null) {
-      // disable the new session button
-      document.getElementById("newSessionSplashBtn").disabled = true;
-      document.getElementById("previousSplashBtn").disabled = true;
-      document.getElementById("joinSessionSplashBtn").disabled = true;
-      // enable the finish button
-      //document.getElementById("finishBtn").disabled = false;
-      document.getElementById("successSplash").innerHTML = "Connected to Session ID: " + sessionId;
+    showSessionInfo(link);
+    // if the editor needs to be created
+    createEditor(true);
+    // connect to firepad firebase
+    connectFirepad();
+
+    // hide the panel
+    if (close) {
+      if (sessionId != null && firepadRef != null) {
+        closePanel();
+      }
+      else {
+        // give feedback this didn't connect
+        document.getElementById("errorNewSession").innerHTML = "Sorry, can't connect.";
+      }
+    }
+    else {
+      if (sessionId != null && firepadRef != null) {
+        // disable the new session button
+        document.getElementById("newSessionSplashBtn").disabled = true;
+        document.getElementById("previousSplashBtn").disabled = true;
+        document.getElementById("joinSessionSplashBtn").disabled = true;
+        // enable the finish button
+        //document.getElementById("finishBtn").disabled = false;
+        document.getElementById("successSplash").innerHTML = "Connected to Session ID: " + sessionId;
+      }
     }
   }
 }

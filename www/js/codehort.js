@@ -34,10 +34,10 @@ function init() {
     display(0);
     showPanel("codehort-splash");
   }
-  createEditor();
+  createEditor(false);
 }
 
-function createEditor() {
+function createEditor(click) {
   //// Create CodeMirror (with line numbers and the JavaScript mode).
 
   if (firebase != null) {
@@ -55,7 +55,7 @@ function createEditor() {
   changePercent(0);
 
   // if you have connected to a previous session try to connect now?
-  if (sessionId) {
+  if (sessionId && !splashScreen && !click) {
     // attempt to connect to this session id
     console.log(sessionId);
     joinSessionId(sessionId, false);
