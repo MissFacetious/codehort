@@ -1,6 +1,7 @@
 // run code icon click
 
 var contents = "";
+var tests = [5]; // every challenge should have the same amount of tests
 
 function executeCode() {
   // here is an example of doing a plus function, put the function into the code editor
@@ -12,15 +13,10 @@ function executeCode() {
   things that are having problems are:
     something that doesn't return anything
 
+    if you have a console.log at the end that gets in the way, it grabs the attention of the output
   */
   contents = "";
-  var tests = [5];
-  tests[0] = {"test": "plus(1, 3);", "value": "4"};
-  tests[1] = {"test": "plus(4, 5);", "value": "9"};
-  tests[2] = {"test": "plus(-4, 5);", "value": "1"};
-  tests[3] = {"test": "plus(10, -10);", "value": "0"};
-  tests[4] = {"test": "plus(-10, -10);", "value": "-20"};
-
+  
   var prepend = "<table>";
   var append = "</table>";
   var outnode = document.getElementById("outputCode");
@@ -124,8 +120,9 @@ function runScript(number, testcase, script) {
         error = false;
       }
     }
-    catch(e) {
-        str = e.name+" at line "+(e.lineNumber-56)+": "+e.message;
+    catch (e) {
+      // line number is a problem here
+        str = e.name+" at line "+(e.lineno)+": "+e.message;
         error = true;
     }
     var tnode = document.getElementById("outputTime");

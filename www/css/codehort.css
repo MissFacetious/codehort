@@ -281,7 +281,7 @@ input.firepad-userlist-name-input {
   padding: 20px;
   border: 5px solid #ffe300;
   width: 70%; /* Could be more or less, depending on screen size */
-  height: 55%;
+  height: 450px;
 }
 
 .panel-small {
@@ -290,7 +290,7 @@ input.firepad-userlist-name-input {
   padding: 20px;
   border: 5px solid #ffe300;
   width: 35%; /* Could be more or less, depending on screen size */
-  height: 35%;
+  height: 250px;
 }
 
 .panel-chat {
@@ -601,4 +601,21 @@ input.change:hover {
 
 .tooltip:hover .tooltiptext {
   visibility: visible;
+}
+
+.challenge {
+  overflow-y: scroll;
+  height: 250px;
+}
+
+.between {
+  padding: 10px;
+}
+
+.image {
+  cursor: pointer;
+}
+
+.image:hover {
+  background-color: #ffe300;
 }

@@ -2,6 +2,8 @@
 <!-- See http://www.firepad.io/docs/ for detailed embedding docs. -->
 <html>
 <head>
+
+  <title>Codehort App</title>
   <meta charset="utf-8" />
 
   <!-- Firebase -->
@@ -83,7 +85,7 @@
           <tr>
             <td width="50%">
               <div>Do you want to start a new session?</div>
-              <input type="button" name="newSessionSplashBtn" id="newSessionSplashBtn" value="Create" class="buttonClick buttonClickOk" onclick="newSession(false);">
+              <input type="button" name="newSessionSplashBtn" id="newSessionSplashBtn" value="Create" class="buttonClick buttonClickOk" onclick="newSession(false, true);">
             </td>
             <td width="50%">
               <div>Do you have a session ID from someone you want to put in?</div>
@@ -106,19 +108,84 @@
   </div>
   <!-- end splash screen panel -->
 
-<!-- new editor panel -->
-<div id="codehort-neweditor" class="panel panel-small">
+<!-- new challenge panel -->
+<div id="codehort-neweditor" class="panel panel-large">
   <div class="panel-content">
     <div class="panel-header">
       <span class="close" onclick="closePanel();">&times;</span>
-      <h2>Create New Editor</h2>
+      <h2>Start New Challenge</h2>
     </div>
     <div class="panel-body">
-      <div>Any code in your current editor will be deleted for everyone. Click Create to make a new Editor.</div>
+      <div>Ready to start a new code challenge? Any code in your current editor will be deleted for everyone. Click Start only once to start the Challenge for every one in the session.</div>
+      <p></p>
+      <div class="challenge">
+        <table>
+          <tr>
+            <td>
+              <img src="./img/big-zoom.png" class="image" onclick="startChallenge('');">
+            </td>
+            <td class="between">
+              <p>beginner</p>
+              <p>1 hour</p>
+            </td>
+            <td class="between">
+              Basic Javascript Operations
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <img src="./img/big-zoom.png" class="image" onclick="startChallenge('');">
+            </td>
+            <td class="between">
+              <p>beginner</p>
+              <p>2 hours</p>
+            </td>
+            <td class="between">
+              Javascript Functions
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <img src="./img/big-zoom.png" class="image" onclick="startChallenge('');">
+            </td>
+            <td class="between">
+              <p>intermediate</p>
+              <p>2 hours</p>
+            </td>
+            <td class="between">
+              Holding data objects
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <img src="./img/big-zoom.png" class="image" onclick="startChallenge('');">
+            </td>
+            <td class="between">
+              <p>intermediate</p>
+              <p>2 hours</p>
+            </td>
+            <td class="between">
+              Parsing JSON and objects
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <img src="./img/big-zoom.png" class="image" onclick="startChallenge('');">
+            </td>
+            <td class="between">
+              <p>advanced</p>
+              <p>2 hours</p>
+            </td>
+            <td class="between">
+              Complex functions
+            </td>
+          </tr>
+        </table>
+      </div>
       <p></p>
       <div class="right">
         <input type="button" name="cancelEditorBtn" id="cancelEditorBtn" class="buttonClick buttonClickCancel" value="Cancel" onclick="closePanel();">
-        <input type="button" name="newEditorBtn" id="newEditorBtn" value="Create" class="buttonClick buttonClickOk" onclick="return newEditor();">
+        <input type="button" name="newEditorBtn" id="newEditorBtn" value="Start" class="buttonClick buttonClickOk" onclick="return newEditor();">
       </div>
     </div>
   </div>
@@ -159,7 +226,7 @@
       <p></p>
       <div class="right">
         <input type="button" name="cancelSessionBtn" id="cancelSessionBtn" class="buttonClick buttonClickCancel" value="Cancel" onclick="closePanel();">
-        <input type="button" name="newSessionBtn" id="newSessionBtn" value="Create" class="buttonClick buttonClickOk" onclick="return newSession('true');">
+        <input type="button" name="newSessionBtn" id="newSessionBtn" value="Create" class="buttonClick buttonClickOk" onclick="return newSession(true, true);">
       </div>
     </div>
   </div>
@@ -174,7 +241,10 @@
       <h2>Join Session</h2>
     </div>
     <div class="panel-body">
-      <div>Join a session shared by others. The session id should be a nineteen alphanumeric code.</div>
+      <div>
+        <p>Join a session shared by others. The session id should be a nineteen alphanumeric code. </p>
+        <p>Anything in your current session will stay in that session, but anything new will be in your joined session.</p>
+      </div>
       <p></p>
       <center><input type="text" maxSize="20" width="20" name="sessionIdInput" id="sessionIdInput" class="inputClick session" placeholder="AbCdEfGh1234mNoPqRsT"></center>
       <p></p>
@@ -186,7 +256,7 @@
       </div>
       <div class="right">
         <input type="button" name="cancelSessionBtn" id="cancelSessionBtn" class="buttonClick buttonClickCancel" value="Cancel" onclick="closePanel();">
-        <input type="button" name="joinSessionBtn" id="joinSessionBtn" value="Join" class="buttonClick buttonClickOk" onclick="return joinCode('true');">
+        <input type="button" name="joinSessionBtn" id="joinSessionBtn" value="Join" class="buttonClick buttonClickOk" onclick="return joinCode(true);">
       </div>
     </div>
   </div>
@@ -415,7 +485,7 @@
   <div class="codehort-icons" id="codehort-icons">
     <div class="grid-icons">
       <div class="grid-icon">
-        <button name="newBtn" id="newBtn" onclick="showPanel('codehort-neweditor');" class="buttonIcon icon tooltip newBtn" value="New" ><span class="tooltiptext">Create New Editor</span></button>
+        <button name="newBtn" id="newBtn" onclick="showPanel('codehort-neweditor');" class="buttonIcon icon tooltip newBtn" value="New" ><span class="tooltiptext">Start Code Challenge</span></button>
         <button name="saveBtn" id="saveBtn" onclick="showPanel('codehort-saveedit');" class="buttonIcon icon tooltip saveBtn" value="Save" ><span class="tooltiptext">Save Code in Editor</span></button>
       </div>
       <div class="grid-icon">
