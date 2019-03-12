@@ -7,7 +7,7 @@ function newEditor() {
   hidePanels();
   updateMobbing();
   tempCode = null;
-  tempTests = null;
+  tempTests = [5];
 }
 
 // we need to load these test cases if we reload..

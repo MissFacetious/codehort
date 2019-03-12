@@ -17,7 +17,6 @@ function executeCode() {
       value = code.substr(string.length, 1);
     }
   }
-  console.log("my value is : " + value);
 
   startChallenge(value);
   loadChallenge(false);
@@ -40,9 +39,7 @@ function executeCode() {
   var outnode = document.getElementById("outputCode");
   contents += prepend;
 
-console.log(codeMirror.getValue());
   for (var i=0; i < tests.length; i++) {
-    console.log(tests[i].test);
     //if (firepad != null) {
     //  error = JSrun(i+1, tests[i], firepad);
     //}
