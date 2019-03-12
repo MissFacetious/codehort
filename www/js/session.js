@@ -75,7 +75,7 @@ function joinCode(close) {
   }
   if (checkSessionId(sessionIdInput)) {
 
-    joinSessionId(sessionIdInput);
+    joinSessionId(sessionIdInput, true);
     // hide the panel
     if (close) {
       if (sessionId != null && firepadRef != null) {
@@ -105,14 +105,22 @@ function joinCode(close) {
   }
 }
 
-function joinSessionId(session_id) {
+function joinSessionId(session_id, click) {
   sessionId = session_id;
   window.location.href = baseURL + '#-' + sessionId;
-  // connect to firepad firebase
-  connectFirepad();
 
   var storage = window.localStorage;
   storage.setItem('session', sessionId);
+
+  if (click && sessionId) {
+    // two options Here, if you are connected to an instance already, we have to set the session id you want and reload page
+      window.location.reload(true);
+  }
+  else {
+    // option two is that you aren't connected to an instance so we can just connect firepad
+    // connect to firepad firebase
+    connectFirepad();
+  }
 }
 
 // show session info icon click

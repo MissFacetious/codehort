@@ -39,6 +39,12 @@ function init() {
 
 function createEditor() {
   //// Create CodeMirror (with line numbers and the JavaScript mode).
+
+  if (firebase != null) {
+    // clear out the CodeMirror instance
+    // newEditor();// this just wipes everything out... sad.
+
+  }
   if (codeMirror == null) {
     codeMirror = CodeMirror(document.getElementById('firepad-container'), {
       lineNumbers: true,
@@ -52,7 +58,7 @@ function createEditor() {
   if (sessionId) {
     // attempt to connect to this session id
     console.log(sessionId);
-    joinSessionId(sessionId);
+    joinSessionId(sessionId, false);
   }
 }
 
@@ -96,13 +102,12 @@ function connectFirepad() {
       }
     });
 
-    if (firebase == null) {
-      //// Create Firepad.
-      firepad = Firepad.fromCodeMirror(firepadRef, codeMirror, {
-        defaultText: '// Welcome to Codehort, start coding!\n\nconsole.log(\'hello codehort!\');\n\n',
-        userId: userId
-      });
-    }
+    //// Create Firepad.
+    firepad = Firepad.fromCodeMirror(firepadRef, codeMirror, {
+      defaultText: '// Welcome to Codehort, start coding!\n\nconsole.log(\'hello codehort!\');\n\n',
+      userId: userId
+    });
+    //}
     //// Create FirepadUserList (with our desired userId).
     // problem where all of these users ends up with different name
     var firepadUserList = FirepadUserList.fromDiv(firepadRef.child('users'),
