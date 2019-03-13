@@ -6,11 +6,16 @@
   <title>Codehort App</title>
   <meta charset="utf-8" />
 
+  <script src="./js/preferences.js"></script>
+  <script language="Javascript">
+
+
+  </script>
+
   <!-- Firebase -->
   <script src="./js/firebase.js"></script>
 
   <!-- CodeMirror and its JavaScript mode file -->
-  <link rel="stylesheet" href="./css/codemirror.css" />
   <script src="./js/codemirror.js"></script>
   <script src="./js/javascript.js"></script>
 
@@ -27,7 +32,6 @@
   <script src="./js/firechat.min.js"></script>
 
   <!-- Codehort -->
-  <link rel="stylesheet" href="./css/codehort.css" />
   <script src="./js/codehort.js"></script>
   <script src="./js/splash.js"></script>
   <script src="./js/session.js"></script>
@@ -35,13 +39,14 @@
   <script src="./js/execute.js"></script>
   <script src="./js/FileSaver.min.js"></script>
   <script src="./js/editor.js"></script>
-  <script src="./js/preferences.js"></script>
   <script src="./js/zoom.js"></script>
 
   <link rel="stylesheet" href="./css/dialog.css" />
   <script src="./js/dialog.js"></script>
   <script src="./js/searchcursor.js"></script>
   <script src="./js/search.js"></script>
+
+
 
 </head>
 
@@ -220,7 +225,7 @@
       <h2>New Session</h2>
     </div>
     <div class="panel-body">
-      <div>Create a new session that can be shared with others. The code in your editor will still be there.</div>
+      <div>Create a new session that can be shared with others. The code in your editor will still be there if it's not already from a session.</div>
       <p></p>
       <div id="errorNewSession"></div>
       <p></p>
@@ -387,8 +392,8 @@
                 <td class="labeled right">Show Splash Screen</td>
                 <td class="labeled">
                   <label class="switch">
-                    <input type="checkbox">
-                    <span class="slider round"></span>
+                    <input type="checkbox" id="splashSwitch" checked onchange="splashChange();">
+                    <span class="slider round" data-on="On" data-off="Off"></span>
                   </label>
                 </td>
               </tr>
@@ -396,8 +401,8 @@
                 <td class="labeled right">Dark Theme</td>
                 <td class="labeled">
                   <label class="switch">
-                    <input type="checkbox">
-                    <span class="slider round"></span>
+                    <input type="checkbox" id="lightSwitch" onchange="lightChange();">
+                    <span class="slider round" data-on="On" data-off="Off"></span>
                   </label>
                 </td>
                 <td class="labeled right">Light Theme</td>
@@ -508,8 +513,11 @@
         <button name="configBtn" id="configBtn" onclick="showPanel('codehort-preferences');" type="button" class="buttonIcon icon tooltip configBtn" value="Preferences" ><span class="tooltiptext">Preferences</span></button>
         <button name="runBtn" id="runBtn" onclick="executeCode();" class="buttonIcon icon tooltip runBtn" value="Run" ><span class="tooltiptext">Run Code</span></button>
       </div>
-      <div class="grid-icon">
+      <div class="grid-icon" id="grid-icon-light">
         <a href="javascript:showPanel('codehort-chat');"><img name="logo" id="logo" class="logo" src="./img/codehort-logo-white-512.png" border="0"></a>
+      </div>
+      <div class="grid-icon" id="grid-icon-dark">
+        <a href="javascript:showPanel('codehort-chat');"><img name="logo" id="logo" class="logo" src="./img/codehort-logo-512.png" border="0"></a>
       </div>
     </div>
   </div>

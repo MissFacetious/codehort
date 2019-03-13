@@ -23,6 +23,15 @@ if (baseURL != null) {
 else baseURL = "";
 
 function init() {
+
+  if (light) {
+    document.getElementById("grid-icon-light").style.display = 'block';
+    document.getElementById("grid-icon-dark").style.display = 'none';
+  }
+  else {
+    document.getElementById("grid-icon-light").style.display = 'none';
+    document.getElementById("grid-icon-dark").style.display = 'block';
+  }
   // hide panels
   hidePanels();
   getPref();

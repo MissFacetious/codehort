@@ -1,0 +1,640 @@
+/*
+D8D8D8->292C34
+DDDDDD->292C33
+EEEEEE->22252B
+line number color->777D86
+yellow/okay FFE300->
+black 000000->ACB2BE
+dark 888888->
+red cancel FF4B00->
+*/
+html {
+  height: 100%;
+  background: #292C34;
+  cursor: default;
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome and Opera */
+  color: #eee;
+}
+body {
+  margin: 0px;
+  height: 100%;
+}
+
+pre {
+  background: #f4f4f4;
+  border: 1px solid #292C34;
+  border-left: 3px solid #f36d33;
+  color: #666;
+  page-break-inside: avoid;
+  font-family: monospace;
+  font-size: 15px;
+  line-height: 1.6;
+  margin-bottom: 1.6em;
+  max-width: 100%;
+  overflow: auto;
+  padding: 1em 1.5em;
+  display: block;
+  white-space: pre-wrap;       /* css-3 */
+  white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
+  white-space: -pre-wrap;      /* Opera 4-6 */
+  white-space: -o-pre-wrap;    /* Opera 7 */
+  word-wrap: break-word;       /* Internet Explorer 5.5+ */
+}
+
+.success {
+  color: green;
+}
+
+.failure {
+  color: red;
+}
+
+table.labeled {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+td.right {
+  text-align: right;
+}
+
+td.labeled {
+  padding: 5px;
+}
+
+div.right {
+  float: right;
+}
+
+#codehort-header {
+  padding-top: 10px;
+  padding-bottom: 0px;
+  padding-right: 10px;
+  padding-left: 30px;
+  font-family: Arial;
+  height: 80px; /* subtracting the padding on top/bottom */
+  z-index: 5;
+  width: calc(100% - 50px);
+  background-color: #22252B;
+  border: 5px solid #ffe300;
+}
+
+#codehort-footer {
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-right: 0px;
+  padding-left: 0px;
+  position: relative;
+  clear: both;
+  height: 20px;
+  z-index: 5;
+  width: 100%;
+  background-color: #22252B;
+  border-top: 1px solid #aaa;
+}
+
+/* Height / width / positioning can be customized for your use case.
+   For demo purposes, we make firepad fill the entire browser. */
+#firepad-container {
+  width: 100%;
+  height: calc(100% - 100px - 20px - 11px);
+  z-index: 0;
+}
+
+#firechat-wrapper {
+  height: 475px;
+  max-width: 325px;
+  padding: 10px;
+  border: 1px solid #292C34;
+  background-color: #292C34;
+  margin: 50px auto;
+  text-align: center;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  -webkit-box-shadow: 0 5px 25px #666;
+  -moz-box-shadow: 0 5px 25px #666;
+  box-shadow: 0 5px 25px #666;
+}
+
+.footer-content {
+  padding-left: 10px;
+  padding-right: 10px;
+  font-family: Arial;
+  color: #666;
+}
+
+.userlist {
+  max-height: 300px;
+  overflow: hidden;
+}
+
+.userlist-disabled {
+  max-height: 300px;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.firepad-userlist {
+  height: 150px;
+  min-width: 175px;
+  overflow: scroll;
+  background: #ebebeb; /* Old browsers */
+  background: -moz-linear-gradient(left, #ebebeb 0%, #eaeaea 93%, #d9d9d9 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, right top, color-stop(0%,#ebebeb), color-stop(93%,#eaeaea), color-stop(100%,#d9d9d9)); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(left, #ebebeb 0%,#eaeaea 93%,#d9d9d9 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(left, #ebebeb 0%,#eaeaea 93%,#d9d9d9 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(left, #ebebeb 0%,#eaeaea 93%,#d9d9d9 100%); /* IE10+ */
+  background: linear-gradient(to right, #ebebeb 0%,#eaeaea 93%,#d9d9d9 100%); /* W3C */
+  color: #404040;
+}
+
+.firepad-userlist {
+  text-align: left;
+  font-family: 'Helvetica Neue', sans-serif;
+  line-height: normal;
+}
+
+.firepad-userlist-heading {
+  margin: 20px 15px 0;
+  font-size: 12px;
+  font-weight: bold;
+  border-bottom: 2px solid #292C34;
+}
+
+.firepad-userlist-users {
+  left: 15px;
+  right: 15px;
+  top: 38px;
+  bottom: 10px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.firepad-userlist-user {
+  position: relative;
+  margin: 3px 0;
+  height: 32px;
+  border-bottom: 1px solid #292C34;
+  padding-bottom: 5px;
+}
+
+.firepad-userlist-color-indicator {
+  display: inline-block;
+  width: 32px;
+  height: 32px;
+  border: 1px solid #292C34;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+}
+
+input.firepad-userlist-name-input {
+  position: absolute;
+  left: 38px;
+  top: 0;
+  width: 105px;
+  height: 20px;
+  border: 0;
+  border-bottom: 1px solid #292C34;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0;
+  font-size: 14px;
+  line-height: 14px;
+  padding: 1px;
+}
+
+.firepad-userlist-name-hint {
+  position: absolute;
+  left: 38px;
+  top: 23px;
+  width: 300px; /* I'd rather it clip than wrap. */
+  font-size: 9px;
+  line-height: 11px;
+}
+
+.firepad-userlist-name {
+  position: absolute;
+  top: 2px;
+  left: 38px;
+  width: 95px;
+  font-size: 13px;
+}
+
+.panel {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  background-color: #292C34;
+  margin: auto;
+  padding: 0;
+  border: 1px solid #888;
+  width: 80%;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+  animation-name: animatetop;
+  animation-duration: 0.4s;
+  z-index: 8;
+  background-color: #ACB2BE;
+  overflow: hidden;
+}
+
+.overlay {
+  position: fixed; /* Sit on top of the page content */
+  display: none; /* Hidden by default */
+  width: 100%; /* Full width (cover the whole page) */
+  height: 100%; /* Full height (cover the whole page) */
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0,0,0,0.5); /* Black background with opacity */
+  z-index: 7;
+}
+.overlay:target {
+  visibility: visible;
+  opacity: 1;
+}
+
+/* The Close Button */
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #ACB2BE;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.panel-large {
+  background-color: #292C34;
+  margin: 5% 15%; /* 15% from the top and centered */
+  padding: 20px;
+  border: 5px solid #ffe300;
+  width: 70%; /* Could be more or less, depending on screen size */
+  height: 450px;
+}
+
+.panel-small {
+  background-color: #292C34;
+  margin: 5% 30%; /* 15% from the top and centered */
+  padding: 20px;
+  border: 5px solid #ffe300;
+  width: 35%; /* Could be more or less, depending on screen size */
+  height: 250px;
+}
+
+.panel-chat {
+  margin-top: -60px;
+  margin-left: 73%;
+  margin-right: 0px;
+  padding: 20px;
+  width: 350px; /* Could be more or less, depending on screen size */
+  height: 92%;
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  animation-name: animatetop;
+  animation-duration: 0.4s;
+  z-index: 6;
+  overflow: hidden;
+}
+
+.panel-header {
+  font-family: Arial;
+}
+
+.panel-body {
+  font-family: Arial;
+}
+
+/* Add Animation */
+@keyframes animatetop {
+  from {top: -300px; opacity: 0}
+  to {top: 0; opacity: 1}
+}
+
+.inputClick {
+  padding: 5px;
+  margin: 5px;
+  height: 45px;
+  width: 130px;
+  background-color: #292C34;
+  color: #eee;
+  font-size: 24px;
+}
+
+.codehort-display {
+  font-family: Source Code Pro, Courier;
+  padding: 5px;
+  border: 1px solid #ACB2BE;
+  width: auto;
+  margin-left: 150px;
+  margin-right: 150px;
+  cursor: copy;
+  -webkit-touch-callout: auto !important;
+  -webkit-user-select: auto !important;
+  -khtml-user-select: auto !important;
+  -moz-user-select: auto !important;
+  -ms-user-select: auto !important;
+  user-select: auto !important;
+}
+
+.codehort-display::selection {
+  background: #ffe300;
+}
+
+.session {
+  width: 300px;
+  maxSize: 20px;
+}
+
+.name {
+  width: 300px;
+  maxSize: 20px;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+.switch-label, .switch-handle {
+	transition: All 0.3s ease;
+	-webkit-transition: All 0.3s ease;
+	-moz-transition: All 0.3s ease;
+	-o-transition: All 0.3s ease;
+}
+
+.switch-input:checked ~ .switch-handle {
+left: 74px;
+box-shadow: -1px 1px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #666;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: #292C34;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #ffe300;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #ffe300;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+.grid-icons {
+  display: grid;
+  width: 100%;
+  grid-template-columns: repeat(7, auto);
+}
+
+.grid-icon {
+  padding: 0px;
+  margin-left: 0px;
+}
+
+.buttonClick {
+  padding: 5px;
+  margin: 5px;
+  height: 45px;
+  width: 130px;
+  background-color: #292C34;
+  color: #eee;
+  font-size: 24px;
+}
+
+.buttonClickOk:hover {
+  background-color: #ffe300;
+  color: #333;
+}
+
+.buttonClickOk:disabled {
+  background-color: #22252B;
+}
+
+.buttonClickCancel:hover {
+  background-color: #ff4b00;
+  color: #333;
+}
+
+.buttonIcon {
+  height: 57px;
+  width: 57px;
+  background-color: #22252B;
+}
+
+.buttonIcon:hover {
+  color: #FFE300;
+}
+
+.quantityIcon {
+  height: 37px;
+  width: 37px;
+  vertical-align: middle;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 30px 30px;
+  border: 0;
+  -webkit-appearance: none;
+  padding: 2px;
+  background-color: #292C34;
+}
+
+.icon {
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.logo {
+  background-image: url("./../img/codehort-logo-512.png");
+  background-repeat: no-repeat;
+  background-position: contain;
+  background-size:contain;
+  height: 57px;
+  width: 57px;
+  margin-left: 57px;
+}
+.newBtn {
+  background-image: url("./../img/twotone_insert_drive_file_white_18dp.png");
+}
+.saveBtn {
+  background-image: url("./../img/twotone_save_white_18dp.png");
+}
+.undoBtn {
+  background-image: url("./../img/twotone_undo_white_18dp.png");
+}
+.redoBtn {
+  background-image: url("./../img/twotone_redo_white_18dp.png");
+}
+.copyBtn {
+  background-image: url("./../img/twotone_file_copy_white_18dp.png");
+}
+.pasteBtn {
+  background-image: url("./../img/twotone_perm_media_white_18dp.png");
+}
+.zoomOutBtn {
+  background-image: url("./../img/twotone_zoom_out_white_18dp.png");
+}
+.zoomInBtn {
+  background-image: url("./../img/twotone_zoom_in_white_18dp.png");
+}
+.searchBtn {
+  background-image: url("./../img/baseline_search_white_18dp.png");
+}
+.replaceBtn {
+  background-image: url("./../img/baseline_search_white_18dp.png");
+}
+.newSessionBtn {
+  background-image: url("./../img/twotone_person_add_white_18dp.png");
+}
+.joinSessionBtn {
+  background-image: url("./../img/twotone_group_white_18dp.png");
+}
+.infoSessionBtn {
+  background-image: url("./../img/twotone_info_white_18dp.png");
+}
+.mobBtn {
+  background-image: url("./../img/mob.png");
+}
+.configBtn {
+  background-image: url("./../img/twotone_settings_white_18dp.png");
+}
+.runBtn {
+  background-image: url("./../img/twotone_play_circle_filled_white_18dp.png");
+}
+
+.plus {
+  background-image: url("./../img/plus.png");
+}
+
+.minus {
+  background-image: url("./../img/minus.png");
+}
+
+.number {
+  border: 1px solid #aaa;
+}
+input[type=number].quantity {
+  width: 35px;
+  height: 25px;
+  display: table-cell;
+  vertical-align: middle;
+  align-content: center;
+  padding: 4px;
+  margin: 0 auto;
+  border-top: 0;
+  border-bottom: 0;
+  border-left: 1px solid #292C34;
+  border-right: 1px solid #292C34;
+}
+
+input[type=number].quantity:focus {
+  background-color: #ffe300;
+}
+
+input.change:hover {
+  background-color: #ffe300;
+}
+
+.zoomTest {
+  font-family: Source Code Pro, Courier;
+  white-space: nowrap;
+}
+
+.tooltip {
+  position: relative;
+  display: inline-block;
+  border-bottom: 1px dotted #ACB2BE; /* If you want dots under the hoverable text */
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: #ACB2BE;
+  color: #292C34;
+  text-align: center;
+  padding: 5px 0;
+  border-radius: 6px;
+
+  /* Position the tooltip text - see examples below! */
+  position: absolute;
+  z-index: 1;
+  top: -20px;
+  left: 50%;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+}
+
+.challenge {
+  overflow-y: scroll;
+  height: 250px;
+}
+
+.between {
+  padding: 10px;
+}
+
+.image {
+  cursor: pointer;
+}
+
+.image:hover {
+  background-color: #ffe300;
+}
