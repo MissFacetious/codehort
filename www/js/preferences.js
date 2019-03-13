@@ -10,7 +10,6 @@ function getPref() {
   else light = false;
   var lightInput = document.getElementById("lightSwitch");
   lightInput.checked = light;
-  console.log("light: " + light);
 
   // if you want to test the splash screen
   var splashSwitch = document.getElementById("splashSwitch");
@@ -18,7 +17,6 @@ function getPref() {
   var splashPref = storage.getItem('splash');
   if (splashPref == null || splashPref == 'true') splashScreen = true;
   else splashScreen = false;
-  console.log('splash ' + splashScreen);
   splashSwitch.checked = splashScreen;
 
   var userNameInput = document.getElementById("usernameInput");
@@ -31,13 +29,14 @@ function getPref() {
   username = userNamePref;
 
   var zoomPref = storage.getItem('zoom');
-  if (zoomPref == null || zoomPref == '') {
+  if (zoomPref == null || zoomPref == '' || zoomPref == 'undefined') {
     zoom = 1.5; // default
   }
   else {
-    zoom = zoomPref;
-    document.getElementById('zoom').value = Math.round(100 * zoom);
+    zoom = parseFloat(Math.round(zoomPref));
   }
+  console.log(zoom);
+  document.getElementById('zoom').value = Math.round(100*zoom);
   resize();
 
   var sessionPref = storage.getItem('session');
@@ -64,44 +63,32 @@ function applyPref() {
 
   // zoom
   changePercent(0);
-  storage.setItem('zoom', zoom);
-
+  var zoomValue = parseFloat(Math.round(100*zoom));
+  storage.setItem('zoom', zoomValue);
+  console.log('set zoom ' + storage.getItem('zoom'));
   hidePanels();
 
   // when we change the splash screen option, we reload and the splash screen shows here
-  window.location.reload(true);
+  //window.location.reload(true);
 }
 
 function loadTheme() {
-  console.log("load theme files " + light);
-    var fileref1=document.createElement("link");
-        fileref1.setAttribute("rel", "stylesheet");
-        fileref1.setAttribute("type", "text/css");
-        var fileref2=document.createElement("link");
-            fileref2.setAttribute("rel", "stylesheet");
-            fileref2.setAttribute("type", "text/css");
-      if (light) {
-        fileref1.setAttribute("href", "./css/codemirror-light.css");
-        fileref2.setAttribute("href", "./css/codehort-light.css");
-
-        //document.getElementById("grid-icon-light").style.display = "block";
-        //document.getElementById("grid-icon-dark").style.display = "none";
-      }
-      else {
-        fileref1.setAttribute("href", "./css/codemirror-dark.css");
-        fileref2.setAttribute("href", "./css/codehort-dark.css");
-        //document.getElementById("grid-icon-light").style.display = "none";
-        //document.getElementById("grid-icon-dark").style.display = "block";
-      }
-      document.getElementsByTagName('head')[0].appendChild(fileref1);
-      document.getElementsByTagName('head')[0].appendChild(fileref2);
-}
-
-function splashChange() {
-  if (splashScreen)
-    splashScreen = false;
-  else
-    splashScreen = true;
+  var fileref1=document.createElement("link");
+      fileref1.setAttribute("rel", "stylesheet");
+      fileref1.setAttribute("type", "text/css");
+  var fileref2=document.createElement("link");
+      fileref2.setAttribute("rel", "stylesheet");
+      fileref2.setAttribute("type", "text/css");
+  if (light) {
+    fileref1.setAttribute("href", "./css/codemirror-light.css");
+    fileref2.setAttribute("href", "./css/codehort-light.css");
+  }
+  else {
+    fileref1.setAttribute("href", "./css/codemirror-dark.css");
+    fileref2.setAttribute("href", "./css/codehort-dark.css");
+  }
+  document.getElementsByTagName('head')[0].appendChild(fileref1);
+  document.getElementsByTagName('head')[0].appendChild(fileref2);
 }
 
 function lightChange() {
@@ -109,4 +96,16 @@ function lightChange() {
     light = false;
   else
     light = true;
+}
+
+function changeLight(beLight) {
+  light = beLight;
+  var element = document.getElementById("lightTest");
+  // set the style of the div to be either light or dark to show the user the change
+  if (light) {
+      //element.style...
+  }
+  else {
+      //element.style...
+  }
 }

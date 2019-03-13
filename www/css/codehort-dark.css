@@ -370,18 +370,6 @@ input.firepad-userlist-name-input {
   height: 34px;
 }
 
-.switch-label, .switch-handle {
-	transition: All 0.3s ease;
-	-webkit-transition: All 0.3s ease;
-	-moz-transition: All 0.3s ease;
-	-o-transition: All 0.3s ease;
-}
-
-.switch-input:checked ~ .switch-handle {
-left: 74px;
-box-shadow: -1px 1px 5px rgba(0, 0, 0, 0.2);
-}
-
 /* Hide default HTML checkbox */
 .switch input {
   opacity: 0;

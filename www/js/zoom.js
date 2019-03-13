@@ -21,7 +21,9 @@ function changeSize(i) {
   }
   resize();
   var storage = window.localStorage;
-  storage.setItem('zoom', zoom);
+  storage.setItem('zoom', parseFloat(zoom));
+  // change value in Preferences
+  //document.getElementById('zoom').value = Math.round(100*zoom);
 }
 
 function resize() {
@@ -29,15 +31,22 @@ function resize() {
   if (container != null && container.length > 0) {
     container[0].style.zoom = zoom;
   }
-  document.getElementById('zoomTest').style.zoom = zoom;
+  var element = document.getElementById('zoomTest');
+  if (element != null) {
+    element.style.zoom = zoom;
+  }
 }
 
 function changePercent(amount) {
-  var value = document.getElementById('zoom').value;
-  value = value / 100;
+  var element = document.getElementById('zoom');
 
-  if (value > 0 && amount < 0) {
-    changeSize(amount);
+  if (element != null) {
+    var value = element.value;
+    value = value / 100;
+
+    if (value > 0 && amount < 0) {
+      changeSize(amount);
+    }
   }
   if (amount > 0) {
     changeSize(amount);
@@ -46,5 +55,10 @@ function changePercent(amount) {
     zoom = value;
     resize();
   }
-  document.getElementById('zoom').value = Math.round(100 * zoom);
+  if (element != null) {
+    element.value = Math.round(100 * zoom);
+  }
 }
+
+CodeMirror.commands.zoomin = changePercent(1);
+CodeMirror.commands.zoomout = changePercent(-1);
