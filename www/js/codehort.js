@@ -23,11 +23,10 @@ if (baseURL != null) {
 else baseURL = "";
 
 function init() {
-  loadTheme();
-
   // hide panels
   hidePanels();
   getPref();
+  loadTheme();
 
   firebase.initializeApp(config);
 

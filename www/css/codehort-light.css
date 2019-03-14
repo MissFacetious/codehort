@@ -1,12 +1,3 @@
-/* for when this supports dark/light themes */
-@media (prefers-color-scheme: light) {
-
-}
-
-@media (prefers-color-scheme: dark) {
-
-}
-
 html {
   height: 100%;
   background: #ddd;
