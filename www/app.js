@@ -7,12 +7,14 @@ const app = express();
 
 app.use(express.static('public'));
 
+var firebaseFunctions = require('firebase-functions');
+
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, '/public/index.html'));
 });
 
-app.get('/www/demo', (req, res) => {
-  res.sendFile(path.join(__dirname, '/public/www/codehort.html'));
+app.get('/tool/demo', (req, res) => {
+  res.sendFile(path.join(__dirname, '/public/tool/codehort.html'));
 });
 
 // Start the server

@@ -60,7 +60,7 @@ function applyPref() {
   // display chat
 
   // zoom
-  changePercent(0);
+  resize();
   var zoomValue = parseFloat(Math.round(100*zoom));
   storage.setItem('zoom', zoomValue);
   console.log('set zoom ' + storage.getItem('zoom'));
