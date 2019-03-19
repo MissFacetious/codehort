@@ -1,0 +1,45 @@
+html {
+  height: 100%;
+  background: #fff;
+  cursor: default;
+  color: #000;
+}
+
+body {
+  margin: 10px;
+  height: 100%;
+  font-family: Arial;
+}
+
+pre {
+  background: #f4f4f4;
+  border: 1px solid #ddd;
+  border-left: 3px solid #f36d33;
+  color: #666;
+  page-break-inside: avoid;
+  font-family: monospace;
+  font-size: 15px;
+  line-height: 1.6;
+  margin-bottom: 1.6em;
+  max-width: 100%;
+  overflow: auto;
+  padding: 1em 1.5em;
+  display: block;
+  white-space: pre-wrap;       /* css-3 */
+  white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
+  white-space: -pre-wrap;      /* Opera 4-6 */
+  white-space: -o-pre-wrap;    /* Opera 7 */
+  word-wrap: break-word;       /* Internet Explorer 5.5+ */
+}
+
+h1 {
+
+}
+
+h2 {
+
+}
+
+p {
+
+}

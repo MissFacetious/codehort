@@ -151,3 +151,10 @@ function closePanel() {
     outnode.innerHTML = "";
     hidePanels();
 }
+
+function help() {
+  window.open(
+  'help.html',
+  '_blank' // <- This is what makes it open in a new window.
+);
+}

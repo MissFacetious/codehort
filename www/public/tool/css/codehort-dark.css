@@ -545,7 +545,9 @@ input:checked + .slider:before {
 .runBtn {
   background-image: url("./../img/twotone_play_circle_filled_white_18dp.png");
 }
-
+.helpBtn {
+  background-image: url("./../img/baseline_help_outline_white_18dp.png");
+}
 .plus {
   background-image: url("./../img/plus.png");
 }
