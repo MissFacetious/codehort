@@ -4,6 +4,7 @@ var codeMirror;
 var baseURL = window.location+"";
 var username = ""; // will be set in getPref
 var userId = Math.floor(Math.random() * 9999999999).toString(); // will be set when we authenticate
+var firepadUserList;
 
 //// Initialize Firebase.
 var config = {
@@ -111,7 +112,7 @@ function connectFirepad() {
     //}
     //// Create FirepadUserList (with our desired userId).
     // problem where all of these users ends up with different name
-    var firepadUserList = FirepadUserList.fromDiv(firepadRef.child('users'),
+    firepadUserList = FirepadUserList.fromDiv(firepadRef.child('users'),
     document.getElementById('userlist'), userId, username);
 
     var firepadUser = FirepadUserList.fromDiv(firepadRef.child('users'),
