@@ -26,30 +26,20 @@ function changeQuantity(input, amount) {
 
 function updateMobbing() {
   var code = document.getElementById('timer').value;
-  var thenbreak = document.getElementById('break').value;
-  var every = document.getElementById('every').value;
-
   // setup timers
   eachTimer = code;
-  eachBreak = thenbreak;
-  everyBreak = every;
-
   timerTimer = eachTimer * 60;
-  timerBreak = eachBreak * 60;
   currentSession = 0;
 
-  sentence = "You will code for " + code + " minutes each, take a " + thenbreak + " minute break every "+ every + " coding ";
-  if (every > 1) {
-    sentence += "sessions.";
+  sentence = "You will code for " + code;
+  if (code > 1) {
+    sentence += " minutes each.";
   }
   else {
-    sentence += "session.";
-  }
-  if (every == 0 || thenbreak == 0) {
-    sentence = "You will code for " + code + " minutes each, no breaks!";
+    sentence += " minute each.";
   }
   document.getElementById("sentence").innerHTML = sentence;
-  if (every > 1) {
+  if (code > 1) {
     document.getElementById("plural").innerHTML = "s";
   }
   else {
