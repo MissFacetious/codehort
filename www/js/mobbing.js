@@ -70,6 +70,11 @@ function startTimer() {
                   code);
 
 
+  // you are in charge, otherwise...
+  codeMirror.setOption("readOnly", false);
+  // update the bottom ui to show your in charge of mobbing
+  document.getElementById("mobbingFooter").innerHTML = "Mobbing with driver: " + mobUser + " [IN CHARGE OF EDITING]";
+
   closePanel();
 }
 
@@ -101,9 +106,10 @@ function waitingForMobbing() {
   // keep checking to see if anyone has started to mob
   if (inMobbing && !check) {
     tries = 0;
+
     parseTheEditor();
     timerTimer = eachTimer * 60;
-    // we are not mobbing, who is in charge here?
+
     if (mobUser == username) {
       // you are in charge, otherwise...
       codeMirror.setOption("readOnly", false);
@@ -182,6 +188,12 @@ function continueTimer() {
       firepad.setText(before+
                       " - Mobbing session: " + currentSession + " - Currently in charge: " + mobUser + " - " +
                       after);
+      if (mobUser != username) {
+        // disable the text to show the countdown
+        codeMirror.setOption("readOnly", true);
+        // update the bottom ui to show it's readonly
+        document.getElementById("mobbingFooter").innerHTML = "Mobbing with driver: " + mobUser + " [READONLY]";
+      }
     }
     else {
       // we have some errors so let's just stop mobbing
@@ -199,6 +211,19 @@ function continueTimer() {
     parseTheEditor();
     // can we wait a few seconds here...
     timerTimer = eachTimer * 60;
+
+    if (mobUser == username) {
+      // you are in charge, otherwise...
+      codeMirror.setOption("readOnly", false);
+      // update the bottom ui to show your in charge of mobbing
+      document.getElementById("mobbingFooter").innerHTML = "Mobbing with driver: " + mobUser + " [IN CHARGE OF EDITING]";
+    }
+    else {
+      // disable the text to show the countdown
+      codeMirror.setOption("readOnly", true);
+      // update the bottom ui to show it's readonly
+      document.getElementById("mobbingFooter").innerHTML = "Mobbing with driver: " + mobUser + " [READONLY]";
+    }
   }
 }
 
