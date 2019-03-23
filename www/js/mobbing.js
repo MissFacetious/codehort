@@ -113,6 +113,7 @@ function waitingForMobbing() {
   }
   // keep checking to see if anyone has started to mob
   if (inMobbing && !check) {
+    tries = 0;
     parseTheEditor();
     timerTimer = eachTimer * 60;
     timerBreak = eachBreak * 60;
@@ -202,12 +203,14 @@ function continueTimer() {
     timerTimer = eachTimer * 60;
   }
   else {
+    tries = 0;
     parseTheEditor();
     // can we wait a few seconds here...
     timerTimer = eachTimer * 60;
   }
 }
 
+var tries = 0;
 function parseTheEditor() {
   // parse out what is in the editor for mobbing
   var code = codeMirror.getValue();
@@ -241,7 +244,13 @@ function parseTheEditor() {
   pos = num.indexOf(" -");
   num = num.substr(0, pos);
   mobUser = num;
-  console.log("parsed mobUser:" + num);
+  console.log("parsed mobUser: " + num);
+  //if (num == '' && tries < 10) {
+  //  console.log("no mob user? " + code);
+  //  // try again!
+  //  parseTheEditor();
+  //  tries++;
+  //}
 }
 
 var snap = "";
@@ -266,7 +275,7 @@ function timerFunction() {
         snap = snap.substring(0, a);
         check = true;
         console.log("we are done, what is our mobber and current user? " + mobUser + ", " + username);
-        if (mobUser == username) {
+        if (mobUser != '' && mobUser == username) {
           // put up window that says we're done and on to the next mobber
           showPanel('codehort-continue-mob');
         }
