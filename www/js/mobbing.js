@@ -83,6 +83,7 @@ function startTimer() {
                   code);
 
 
+  closePanel();
 }
 
 function youAreTheDriver() {
@@ -133,6 +134,12 @@ function getCurrentUsers() {
     var name = main.childNodes[i].lastChild.innerHTML;
     mobbingUsers.push(name);
   }
+  mobbingUsers.sort();
+  //console.log("list of users: " + mobbingUsers.length);
+  //for (var i=0; i < mobbingUsers.length; i++) {
+  //  console.log("   " + mobbingUsers[i]);
+  //}
+  //console.log("end of list");
 }
 
 function setCurrentMobUser() {
@@ -140,6 +147,7 @@ function setCurrentMobUser() {
   for (var i=0; i < mobbingUsers.length; i++) {
     if (username == mobbingUsers[i]) {
       current = i;
+      console.log("you found the current user " + username + " at " + i + " in the array");
       break;
     }
   }
@@ -156,10 +164,12 @@ function continueTimer() {
 
 // there is no mob user here
   if (mobUser == username) {
+    console.log("increase the current session " + currentSession + "++ and get the next user after " + mobUser);
     currentSession++;
 
     // instead of picking the mob user being the next in line, find the current mob user and get the next person
     mobUser = setCurrentMobUser();
+    console.log("current user was set " + mobUser);
 
     timerTimer = eachTimer * 60;
     // are you in charge?
@@ -244,13 +254,14 @@ function timerFunction() {
       document.getElementById("timerShow").innerHTML = timerTimer;
       if (timerTimer <= 0) {
         // done!
-        console.log("DONE");
+        console.log("DONE"); // miggs says DONE x 3
         // waiting on change to the Editor
         // take a snap shot of editor between
         snap = codeMirror.getValue();
         var a = snap.indexOf("// END MOBBING");
         snap = snap.substring(0, a);
         check = true;
+        console.log("we are done, what is our mobber and current user? " + mobUser + ", " + username);
         if (mobUser == username) {
           // put up window that says we're done and on to the next mobber
           showPanel('codehort-continue-mob');
