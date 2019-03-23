@@ -88,7 +88,6 @@ function startTimer() {
 function youAreTheDriver() {
   inMobbing = true;
   mobUser = username;
-  console.log(mobUser);
 }
 
 function waitingForMobbing() {
@@ -108,7 +107,6 @@ function waitingForMobbing() {
     }
   }
   else if (code.indexOf("MOBBING!") != -1) {
-    console.log("mobbing has started!");
     inMobbing = true;
     check = false;
   }
@@ -135,13 +133,20 @@ function getCurrentUsers() {
     var name = main.childNodes[i].lastChild.innerHTML;
     mobbingUsers.push(name);
   }
+}
 
-  mobbingUsers.sort();
-  console.log("start user list");
-  for (var i=0; i < main.childNodes.length; i++) {
-    console.log(mobbingUsers[i]);
+function setCurrentMobUser() {
+  var current = 0;
+  for (var i=0; i < mobbingUsers.length; i++) {
+    if (username == mobbingUsers[i]) {
+      current = i;
+      break;
+    }
   }
-    console.log("end user list");
+  current++;
+  if (current >= mobbingUsers.length) current = 0;
+  mobUser = mobbingUsers[current];
+  return mobUser;
 }
 
 function continueTimer() {
@@ -153,13 +158,10 @@ function continueTimer() {
   if (mobUser == username) {
     currentSession++;
 
-    //console.log(mobbingUsers[0] + ", " + mobbingUsers[1] + " " + currentSession % mobbingUsers.length);
-
-    mobUser = mobbingUsers[currentSession % mobbingUsers.length];
+    // instead of picking the mob user being the next in line, find the current mob user and get the next person
+    mobUser = setCurrentMobUser();
 
     timerTimer = eachTimer * 60;
-
-    console.log("continue mobbing #" + currentSession + " " + mobUser);
     // are you in charge?
 
     //youAreTheDriver();
@@ -220,15 +222,12 @@ function parseTheEditor() {
   position = number.indexOf(" -");
   number = number.substr(0, position);
   currentSession = number;
-  //turn number into currentSession
-  console.log("currentSession: " + currentSession);
   // get the mob in charge
   var pos = code.indexOf("Currently in charge: ");
   var num = code.substring(pos+21, code.length);
   pos = num.indexOf(" -");
   num = num.substr(0, pos);
   mobUser = num;
-  console.log("mob user: " + mobUser);
 }
 
 var snap = "";
@@ -240,7 +239,6 @@ function timerFunction() {
     }
     else if (inMobbing) {
       // we are in mobbing, start the countdown timer
-      //console.log(timerTimer);
       timerTimer--;
       // display timer on client
       document.getElementById("timerShow").innerHTML = timerTimer;
@@ -255,7 +253,6 @@ function timerFunction() {
         check = true;
         if (mobUser == username) {
           // put up window that says we're done and on to the next mobber
-          console.log("put up panel for next mobber");
           showPanel('codehort-continue-mob');
         }
       }
