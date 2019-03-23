@@ -132,12 +132,12 @@ div.right {
 
 .userlist {
   max-height: 300px;
-  overflow: hidden;
+  overflow-y: scroll;
 }
 
 .userlist-disabled {
   max-height: 300px;
-  overflow: hidden;
+  overflow-y: scroll;
   pointer-events: none;
 }
 

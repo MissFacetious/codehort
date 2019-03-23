@@ -120,9 +120,15 @@ function waitingForMobbing() {
     // we are not mobbing, who is in charge here?
     if (mobUser == username) {
       // you are in charge, otherwise...
+      codeMirror.setOption("readOnly", false);
+      // update the bottom ui to show your in charge of mobbing
+      document.getElementById("mobbingFooter").innerHTML = "Mobbing with driver: " + mobUser + " [IN CHARGE OF EDITING]";
     }
     else {
       // disable the text to show the countdown
+      codeMirror.setOption("readOnly", true);
+      // update the bottom ui to show it's readonly
+      document.getElementById("mobbingFooter").innerHTML = "Mobbing with driver: " + mobUser + " [READONLY]";
     }
   }
 }
@@ -257,8 +263,10 @@ var snap = "";
 function timerFunction() {
     if (check) {
       waitingForMobbing();
-      var element = document.getElementById("timerShow");
-      if (element) element.innerHTML = "";
+      var element1 = document.getElementById("timerShow");
+      if (element1) element1.innerHTML = "";
+      //var element2 = document.getElementById("mobbingFooter");
+      //if (element2) element2.innerHTML = "";
     }
     else if (inMobbing) {
       // we are in mobbing, start the countdown timer
