@@ -76,7 +76,7 @@ function startTimer() {
 
   // update the text with information of how long the timer will take
   firepad.setText("// MOBBING!: "+sentence+
-                  " - Mobbing session: " + currentSession + " -  Currently in charge: " + mobbingUsers[currentSession-1] +
+                  " - Mobbing session: " + currentSession + " - Currently in charge: " + mobbingUsers[currentSession-1] +
                   " - // END MOBBING\n"+
                   code);
 
@@ -102,6 +102,9 @@ function waitingForMobbing() {
   // keep checking to see if anyone has started to mob
   if (inMobbing) {
     check = false;
+    parseTheEditor();
+    timerTimer = eachTimer * 60;
+    timerBreak = eachBreak * 60;
     // we are not mobbing, who is in charge here?
     if (mobUser == username) {
       // you are in charge, otherwise...
@@ -116,7 +119,7 @@ function getCurrentUsers() {
   console.log("users:");
   var usersDom = firepadUserList.userList_.children[1];
   var main = usersDom.lastChild;
-
+  mobbingUsers = [];
   for (var i=0; i < main.childNodes.length; i++) {
     var name = main.childNodes[i].lastChild.innerHTML;
     mobbingUsers.push(name);
@@ -126,36 +129,37 @@ function getCurrentUsers() {
 function continueTimer() {
 
   parseTheEditor();
-
   getCurrentUsers();
 
 // there is no mob user here
   if (mobUser == username) {
     currentSession++;
 
-    mobUser = mobbingUsers[currentSession];
+    console.log(mobbingUsers[0] + ", " + mobbingUsers[1] + " " + currentSession % mobbingUsers.length);
+
+    mobUser = mobbingUsers[currentSession % mobbingUsers.length];
 
     timerTimer = eachTimer * 60;
 
-    console.log("continue mobbing #" + currentSession + " " + mobUser)
+    console.log("continue mobbing #" + currentSession + " " + mobUser);
     // are you in charge?
 
-    youAreTheDriver();
+    //youAreTheDriver();
 
     var before = codeMirror.getValue();
     var a = before.indexOf(" - Mobbing session:");
-    before = before.substring(0, a-1);
+    before = before.substring(0, a);
     var after = codeMirror.getValue();
     var n = after.indexOf("// END MOBBING");
     after = after.substring(n, after.length);
 
-    console.log(before);
-    console.log("====");
-    console.log(after);
+    //console.log(before);
+    //console.log("====");
+    //console.log(after);
     // write to Editor
     if (before != null && before.length > 0) {
       firepad.setText(before+
-                      " - Mobbing session: " + currentSession + " -  Currently in charge: " + mobbingUsers[currentSession-1] +
+                      " - Mobbing session: " + currentSession + " - Currently in charge: " + mobUser + " - " +
                       after);
     }
     else {
@@ -165,13 +169,34 @@ function continueTimer() {
     }
   }
   else {
-    parseTheEditor();
+    // can we wait a few seconds here...
+    timerTimer = eachTimer * 60;
+    //parseTheEditor();
   }
 }
 
 function parseTheEditor() {
   // parse out what is in the editor for mobbing
   var code = codeMirror.getValue();
+
+  var a = code.indexOf("You will code for ");
+  var x = code.substring(a+18, code.length);
+  a = x.indexOf(" minute");
+  x = x.substr(0, a);
+  eachTimer = x;
+
+  var b = code.indexOf("take a ");
+  var y = code.substring(b+7, code.length);
+  b = y.indexOf(" minute");
+  y = y.substr(0, b);
+  eachBreak = y;
+
+  var c = code.indexOf("every ");
+  var z = code.substring(c+6, code.length);
+  c = z.indexOf(" coding");
+  z = z.substr(0, c);
+  everyBreak = z;
+
   var position = code.indexOf("Mobbing session: ");
   var number = code.substring(position+17, code.length);
   position = number.indexOf(" -");
@@ -208,7 +233,7 @@ function timerFunction() {
       }
     }
     // constantly check to see if
-    setTimeout(timerFunction, 1000/10);
+    setTimeout(timerFunction, 1000/1);
 }
 
 timerFunction();
