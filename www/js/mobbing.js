@@ -1,10 +1,7 @@
 var eachTimer;
-var eachBreak;
-var everyBreak;
 var sentence;
 
 var timerTimer; // in seconds
-var timerBreak; // in seconds
 var currentSession;
 
 var mobbingUsers = [];
@@ -106,7 +103,6 @@ function waitingForMobbing() {
     tries = 0;
     parseTheEditor();
     timerTimer = eachTimer * 60;
-    timerBreak = eachBreak * 60;
     // we are not mobbing, who is in charge here?
     if (mobUser == username) {
       // you are in charge, otherwise...
@@ -217,18 +213,6 @@ function parseTheEditor() {
   x = x.substr(0, a);
   eachTimer = x;
 
-  var b = code.indexOf("take a ");
-  var y = code.substring(b+7, code.length);
-  b = y.indexOf(" minute");
-  y = y.substr(0, b);
-  eachBreak = y;
-
-  var c = code.indexOf("every ");
-  var z = code.substring(c+6, code.length);
-  c = z.indexOf(" coding");
-  z = z.substr(0, c);
-  everyBreak = z;
-
   var position = code.indexOf("Mobbing session: ");
   var number = code.substring(position+17, code.length);
   position = number.indexOf(" -");
@@ -280,7 +264,7 @@ function timerFunction() {
       }
     }
     // constantly check to see if
-    setTimeout(timerFunction, 1000/100);
+    setTimeout(timerFunction, 1000/1);
 }
 
 timerFunction();
