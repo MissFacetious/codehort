@@ -10,7 +10,7 @@ var currentSession;
 var mobbingUsers = [];
 var inMobbing = false;
 var check = true;
-var mobUser;
+var mobUser = '';
 
 function changeQuantity(input, amount) {
   var value = document.getElementById(input).value;
@@ -96,7 +96,7 @@ function waitingForMobbing() {
   if (codeMirror != null) {
     code = codeMirror.getValue();
   }
-  if (snap != "") {
+  if (check == true && snap != "") {
     // check if snap is different than new snapshot
     var newsnap = codeMirror.getValue();
     var a = newsnap.indexOf("// END MOBBING");
@@ -107,7 +107,7 @@ function waitingForMobbing() {
       continueTimer();
     }
   }
-  else if (code.indexOf("MOBBING!") != -1) {
+  else if (check == true && code.indexOf("MOBBING!") != -1) {
     inMobbing = true;
     check = false;
   }
@@ -159,11 +159,11 @@ function setCurrentMobUser() {
 
 function continueTimer() {
   closePanel();
-  parseTheEditor();
-  getCurrentUsers();
-
+  //parseTheEditor(); //not needed for mobUser assign, this is done in youAreTheDriver - will move to inside
+  getCurrentUsers(); //for dropping out
+  console.log("mobUser in continueTimer:" + mobUser);
 // there is no mob user here
-  if (mobUser == username) {
+  if (mobUser != '' && mobUser == username) {
     console.log("increase the current session " + currentSession + "++ and get the next user after " + mobUser);
     currentSession++;
 
@@ -172,9 +172,7 @@ function continueTimer() {
     console.log("current user was set " + mobUser);
 
     timerTimer = eachTimer * 60;
-    // are you in charge?
-
-    //youAreTheDriver();
+    // are you in charge? No!
 
     var before = codeMirror.getValue();
     var a = before.indexOf(" - Mobbing session:");
@@ -197,11 +195,16 @@ function continueTimer() {
       inMobbing = false;
       check = true;
     }
+    // now that we have set the text for users, get ready to start up the next mobbing after
+    // our new mobUser is set, currentsession set, timer set, checking is done
+    check = false;
+    inMobbing = true;
+    timerTimer = eachTimer * 60;
   }
   else {
+    parseTheEditor();
     // can we wait a few seconds here...
     timerTimer = eachTimer * 60;
-    //parseTheEditor();
   }
 }
 
@@ -238,6 +241,7 @@ function parseTheEditor() {
   pos = num.indexOf(" -");
   num = num.substr(0, pos);
   mobUser = num;
+  console.log("parsed mobUser:" + num);
 }
 
 var snap = "";
