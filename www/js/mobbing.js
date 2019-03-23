@@ -73,15 +73,16 @@ function startTimer() {
 
   // get usernames
   getCurrentUsers();
+  // kick off the timer then with all this information
+  youAreTheDriver();
 
   // update the text with information of how long the timer will take
   firepad.setText("// MOBBING!: "+sentence+
-                  " - Mobbing session: " + currentSession + " - Currently in charge: " + mobbingUsers[currentSession-1] +
+                  " - Mobbing session: " + currentSession + " - Currently in charge: " + mobUser +
                   " - // END MOBBING\n"+
                   code);
 
-  // kick off the timer then with all this information
-  youAreTheDriver();
+
 }
 
 function youAreTheDriver() {
@@ -144,7 +145,7 @@ function getCurrentUsers() {
 }
 
 function continueTimer() {
-
+  closePanel();
   parseTheEditor();
   getCurrentUsers();
 
@@ -152,7 +153,7 @@ function continueTimer() {
   if (mobUser == username) {
     currentSession++;
 
-    console.log(mobbingUsers[0] + ", " + mobbingUsers[1] + " " + currentSession % mobbingUsers.length);
+    //console.log(mobbingUsers[0] + ", " + mobbingUsers[1] + " " + currentSession % mobbingUsers.length);
 
     mobUser = mobbingUsers[currentSession % mobbingUsers.length];
 
@@ -252,10 +253,15 @@ function timerFunction() {
         var a = snap.indexOf("// END MOBBING");
         snap = snap.substring(0, a);
         check = true;
+        if (mobUser == username) {
+          // put up window that says we're done and on to the next mobber
+          console.log("put up panel for next mobber");
+          showPanel('codehort-continue-mob');
+        }
       }
     }
     // constantly check to see if
-    setTimeout(timerFunction, 1000/1);
+    setTimeout(timerFunction, 1000/100);
 }
 
 timerFunction();

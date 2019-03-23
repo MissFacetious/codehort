@@ -133,6 +133,7 @@ function hidePanels() {
   document.getElementById("codehort-timer").style.display = 'none';
   document.getElementById("codehort-preferences").style.display = 'none';
   document.getElementById("codehort-run").style.display = 'none';
+  document.getElementById("codehort-continue-mob").style.display = 'none';
   document.getElementById("overlay").style.display = 'none';
 }
 
