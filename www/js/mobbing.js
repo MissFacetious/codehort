@@ -95,13 +95,24 @@ function waitingForMobbing() {
   if (codeMirror != null) {
     code = codeMirror.getValue();
   }
-  if (code.indexOf("MOBBING!") != -1) {
+  if (snap != "") {
+    // check if snap is different than new snapshot
+    var newsnap = codeMirror.getValue();
+    var a = newsnap.indexOf("// END MOBBING");
+    newsnap = newsnap.substring(0, a);
+    if (snap != newsnap) {
+      snap = "";
+      check = false;
+      continueTimer();
+    }
+  }
+  else if (code.indexOf("MOBBING!") != -1) {
     console.log("mobbing has started!");
     inMobbing = true;
+    check = false;
   }
   // keep checking to see if anyone has started to mob
-  if (inMobbing) {
-    check = false;
+  if (inMobbing && !check) {
     parseTheEditor();
     timerTimer = eachTimer * 60;
     timerBreak = eachBreak * 60;
@@ -116,7 +127,6 @@ function waitingForMobbing() {
 }
 
 function getCurrentUsers() {
-  console.log("users:");
   var usersDom = firepadUserList.userList_.children[1];
   var main = usersDom.lastChild;
   mobbingUsers = [];
@@ -124,6 +134,13 @@ function getCurrentUsers() {
     var name = main.childNodes[i].lastChild.innerHTML;
     mobbingUsers.push(name);
   }
+
+  mobbingUsers.sort();
+  console.log("start user list");
+  for (var i=0; i < main.childNodes.length; i++) {
+    console.log(mobbingUsers[i]);
+  }
+    console.log("end user list");
 }
 
 function continueTimer() {
@@ -213,7 +230,7 @@ function parseTheEditor() {
   console.log("mob user: " + mobUser);
 }
 
-
+var snap = "";
 function timerFunction() {
     if (check) {
       waitingForMobbing();
@@ -229,7 +246,12 @@ function timerFunction() {
       if (timerTimer <= 0) {
         // done!
         console.log("DONE");
-        continueTimer();
+        // waiting on change to the Editor
+        // take a snap shot of editor between
+        snap = codeMirror.getValue();
+        var a = snap.indexOf("// END MOBBING");
+        snap = snap.substring(0, a);
+        check = true;
       }
     }
     // constantly check to see if
