@@ -11,7 +11,7 @@ var mobUser = '';
 
 function changeQuantity(input, amount) {
   var value = document.getElementById(input).value;
-  if (value > 0 && amount < 0) {
+  if (value > 1 && amount < 0) {
     value--;
   }
   if (amount > 0) {

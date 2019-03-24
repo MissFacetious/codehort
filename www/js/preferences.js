@@ -29,13 +29,10 @@ function getPref() {
   username = userNamePref;
 
   var zoomPref = storage.getItem('zoom');
-  if (zoomPref == null || zoomPref == '' || zoomPref == 'undefined') {
-    zoom = 1.5; // default
+  if (zoomPref == null || zoomPref == '' || zoomPref == 'undefined' || zoomPref == NaN) {
+    zoomPref = 150; // default
   }
-  else {
-    zoom = parseFloat(Math.round(zoomPref));
-  }
-  console.log(zoom);
+  zoom = zoomPref/100; // default
   document.getElementById('zoom').value = Math.round(100*zoom);
   resize();
 
@@ -60,12 +57,11 @@ function applyPref() {
   // display chat
 
   // zoom
-  resize();
-  var zoomValue = parseFloat(Math.round(100*zoom));
+  var element = document.getElementById('zoom');
+  var zoomValue = element.value;
   storage.setItem('zoom', zoomValue);
-  console.log('set zoom ' + storage.getItem('zoom'));
   hidePanels();
 
   // when we change the splash screen option, we reload and the splash screen shows here
-    window.location.reload(true);
+  window.location.reload(true);
 }
