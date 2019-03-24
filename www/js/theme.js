@@ -18,25 +18,17 @@ function changeLight(beLight) {
 }
 
 function loadTheme() {
-  var header = document.getElementsByTagName('head')[0];
-  var link1 = document.createElement("link");
-  var link2 = document.createElement("link");
-  link1.setAttribute("ref", "stylesheet");
-  link2.setAttribute("ref", "stylesheet");
 
   if (light) {
-    link1.setAttribute("href", "./css/codemirror-light.css");
-    link2.setAttribute("href", "./css/codehort-light.css");
+    $('#css1').replaceWith('<link id="css1" rel="stylesheet" href="./css/codemirror-light.css" />');
+    $('#css2').replaceWith('<link id="css1" rel="stylesheet" href="./css/codehort-light.css" />');
     document.getElementById("grid-icon-light").style.display = 'block';
     document.getElementById("grid-icon-dark").style.display = 'none';
   }
   else {
-    link1.setAttribute("href", "./css/codemirror-dark.css");
-    link2.setAttribute("href", "./css/codehort-dark.css");
+    $('#css1').replaceWith('<link id="css1" rel="stylesheet" href="./css/codemirror-dark.css" />');
+    $('#css2').replaceWith('<link id="css1" rel="stylesheet" href="./css/codehort-dark.css" />');
     document.getElementById("grid-icon-light").style.display = 'none';
     document.getElementById("grid-icon-dark").style.display = 'block';
   }
-
-  header.appendChild(link1);
-  header.appendChild(link2);
 }

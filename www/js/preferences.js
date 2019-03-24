@@ -9,7 +9,8 @@ function getPref() {
   if (lightPref == null || lightPref == 'true') light = true;
   else light = false;
   var lightInput = document.getElementById("lightSwitch");
-  lightInput.checked = light;
+  if (lightInput != null)
+    lightInput.checked = light;
 
   // if you want to test the splash screen
   var splashSwitch = document.getElementById("splashSwitch");
@@ -17,7 +18,8 @@ function getPref() {
   var splashPref = storage.getItem('splash');
   if (splashPref == null || splashPref == 'true') splashScreen = true;
   else splashScreen = false;
-  splashSwitch.checked = splashScreen;
+  if (splashSwitch != null)
+    splashSwitch.checked = splashScreen;
 
   var userNameInput = document.getElementById("usernameInput");
   var userNamePref = storage.getItem('username');
@@ -25,7 +27,8 @@ function getPref() {
     if (username == "") username = "User"+userId.substring(userId.length-4, 3);
     userNamePref = username;
   }
-  userNameInput.value = userNamePref;
+  if (userNameInput != null)
+    userNameInput.value = userNamePref;
   username = userNamePref;
 
   var zoomPref = storage.getItem('zoom');
@@ -33,8 +36,11 @@ function getPref() {
     zoomPref = 150; // default
   }
   zoom = zoomPref/100; // default
-  document.getElementById('zoom').value = Math.round(100*zoom);
-  resize();
+  var zoomInput = document.getElementById('zoom');
+  if (zoomInput != null) {
+    zoomInput.value = Math.round(100*zoom);
+    resize();
+  }
 
   var sessionPref = storage.getItem('session');
   if (sessionPref != null) {
