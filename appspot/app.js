@@ -14,10 +14,14 @@ app.get('/', (req, res) => {
 });
 
 app.get('/code', (req, res) => {
-  res.sendFile(path.join(__dirname, '/public/tool/challenges.html'));
+  res.sendFile(path.join(__dirname, '/public/challenges.html'));
 });
 
-app.get('/docs', (req, res) => {
+app.get('/downloads', (req, res) => {
+  res.sendFile(path.join(__dirname, '/public/download.html'));
+});
+
+app.get('/tool/docs', (req, res) => {
   res.sendFile(path.join(__dirname, '/public/tool/help.html'));
 });
 

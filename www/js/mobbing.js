@@ -260,12 +260,14 @@ function parseTheEditor() {
 
 var snap = "";
 function timerFunction() {
+    if (!inMobbing) {
+      var element2 = document.getElementById("mobbingFooter");
+      if (element2) element2.innerHTML = "";
+    }
     if (check) {
       waitingForMobbing();
       var element1 = document.getElementById("timerShow");
       if (element1) element1.innerHTML = "";
-      //var element2 = document.getElementById("mobbingFooter");
-      //if (element2) element2.innerHTML = "";
     }
     else if (inMobbing) {
       // we are in mobbing, start the countdown timer
