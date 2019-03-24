@@ -11,9 +11,11 @@ function changeLight(beLight) {
   // set the style of the div to be either light or dark to show the user the change
   if (light) {
       //element.style...
+      document.getElementById("lightTest").innerHTML = "A nice and light theme!";
   }
   else {
       //element.style...
+      document.getElementById("lightTest").innerHTML = "Definately dark theme.";
   }
 }
 

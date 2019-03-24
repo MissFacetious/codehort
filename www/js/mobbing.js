@@ -134,11 +134,11 @@ function getCurrentUsers() {
     users.push(name);
   }
   users.sort();
-  console.log("list of users: " + users.length);
-  for (var i=0; i < users.length; i++) {
-    console.log("   " + users[i]);
-  }
-  console.log("end of list");
+  //console.log("list of users: " + users.length);
+  //for (var i=0; i < users.length; i++) {
+  //  console.log("   " + users[i]);
+  //}
+  //console.log("end of list");
   return users;
 }
 

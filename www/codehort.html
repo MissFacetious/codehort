@@ -88,10 +88,10 @@
         <img src="./img/small-zoom.png" border="0">
       </button>
       <button onclick="changeLight(false);">
-        <img src="./img/big-zoom.png" border="0">
+        <img src="./img/dark-theme.png" border="0">
       </button>
       <p></p>
-      <div id="lightTest" class="lightTest">Definately dark.</div>
+      <div id="lightTest" class="lightTest">A nice and light theme!</div>
         <div class="right">
           <input type="button" name="prevBtn" id="prevBtn" value="Previous" class="buttonClick buttonClickOk" onclick="display(1);">
           <input type="button" name="nextBtn" id="nextBtn" value="Next" class="buttonClick buttonClickOk" onclick="display(3);">
@@ -378,22 +378,13 @@
               </tr>
               <tr>
                 <td class="labeled right">Show Splash Screen</td>
-                <td class="labeled">
-                  <label class="switch">
-                    <input type="checkbox" id="splashSwitch" checked onchange="splashChange();">
-                    <span class="slider round" data-on="On" data-off="Off"></span>
-                  </label>
+                  <td class="labeled">
+                    <label class="switch">
+                      <input type="checkbox" id="splashSwitch" checked onchange="splashChange();">
+                      <span class="slider round" data-on="On" data-off="Off"></span>
+                    </label>
+                  </td>
                 </td>
-              </tr>
-              <tr>
-                <td class="labeled right">Dark Theme</td>
-                <td class="labeled">
-                  <label class="switch">
-                    <input type="checkbox" id="lightSwitch" onchange="lightChange();">
-                    <span class="slider round" data-on="On" data-off="Off"></span>
-                  </label>
-                </td>
-                <td class="labeled right">Light Theme</td>
               </tr>
             </table>
           </td>
@@ -411,23 +402,18 @@
                 <td class="labeled left">%</td>
               </tr>
               <tr>
-                <td class="labeled right">name</td>
+                <td class="labeled right">Dark Theme</td>
                 <td class="labeled">
-                  <label class="switch">
-                    <input type="checkbox">
-                    <span class="slider round"></span>
-                  </label>
+                  <center>
+                    <label class="switch">
+                      <input type="checkbox" id="lightSwitch" onchange="lightChange();">
+                      <span class="slider round" data-on="On" data-off="Off"></span>
+                    </label>
+                  </center>
                 </td>
+                <td class="labeled right">Light Theme</td>
               </tr>
-              <tr>
-                <td class="labeled right">name</td>
-                <td class="labeled">
-                  <label class="switch">
-                    <input type="checkbox">
-                    <span class="slider round"></span>
-                  </label>
-                </td>
-              </tr>
+
             </table>
           </td>
         </tr>

@@ -59,7 +59,7 @@ function createEditor(click) {
   // if you have connected to a previous session try to connect now?
   if (sessionId && !splashScreen && !click) {
     // attempt to connect to this session id
-    console.log(sessionId);
+    //console.log(sessionId);
     joinSessionId(sessionId, false);
   }
 }
@@ -68,7 +68,7 @@ function connectFirepad() {
   //// Get Firebase Database reference.
   if (firepadRef == null) {
     firepadRef = getFirepad();
-    console.log("new firepad");
+    //console.log("new firepad");
   }
 
   if (firepadRef != null) {
