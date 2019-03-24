@@ -538,7 +538,7 @@ input:checked + .slider:before {
   background-image: url("./../img/twotone_info_white_18dp.png");
 }
 .mobBtn {
-  background-image: url("./../img/mob.png");
+  background-image: url("./../img/mob-white.png");
 }
 .configBtn {
   background-image: url("./../img/twotone_settings_white_18dp.png");
