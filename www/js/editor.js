@@ -65,7 +65,41 @@ function startChallenge(challenge) {
   tempTests[3] = {"test": "romanNumeralToInteger(\"XXVIMFOO\");", "value": "-1"};
   tempTests[4] = {"test": "romanNumeralToInteger(\"MC\");", "value": "1100"};
 
+} else if (challenge == '4') {
+
+  tempCode = "// CHALLENGE #4: JSON Parsing\n// Keep this line in order to execute your code in codehort correctly.\n\n" +
+  "\n//Given the student list shown in the function below, implement the listed functions to compute and retrieve student information.\n"+
+  "\n//Access the database in your implementations using the function shown here:\n"+
+  "\n function getStudentList() { var studentRecords = [\n\t{\n\t\"studentName\": \"Miggs\",\n\t\"studentId\": \"12345\",\n\t\"grades\": [{\n\t\t\"assignmentName\": \"project\",\n\t\t\"score\": 88,\n\t\t\"weight\": 0.2\n\t},\n\t{\n\t\t\"assignmentName\": \"test1\",\n\t\t\"score\": 82,\n\t\t\"weight\": 0.4\n\t},\n\t{\n\t\t\"assignmentName\": \"test2\",\n\t\t\"score\": 94,\n\t\t\"weight\": 0.4\n\t}\n\t]\n\t},"+
+  "\n\t{\n\t\"studentName\": \"Lisa\",\n\t\"studentId\": \"67890\",\n\t\"grades\": [{\n\t\t\"assignmentName\": \"project\",\n\t\t\"score\": 94,\n\t\t\"weight\": 0.2\n\t},\n\t{\n\t\t\"assignmentName\": \"test1\",\n\t\t\"score\": 90,\n\t\t\"weight\": 0.4\n\t},\n\t{\n\t\t\"assignmentName\": \"test2\",\n\t\t\"score\": 92,\n\t\t\"weight\": 0.4\n\t}\n\t]\n\t}," +
+  "\n\t{\n\t\"studentName\": \"Slacky\",\n\t\"studentId\": \"64732\",\n\t\"grades\": [{\n\t\t\"assignmentName\": \"project\",\n\t\t\"score\": 34,\n\t\t\"weight\": 0.2\n\t},\n\t{\n\t\t\"assignmentName\": \"test1\",\n\t\t\"score\": 68,\n\t\t\"weight\": 0.4},\n\t{\n\t\t\"assignmentName\": \"test2\",\n\t\t\"score\": 86,\n\t\t\"weight\": 0.4\n\t}\n\t]\n\t}\n]\n" +
+  "\n return studentRecords; } \n"+
+
+  "\n\n //Implement a function that returns the weighted numerical grade for a student given their name (shown in JSON as studentName)." +
+  "\n //Weighted numerical grade is determined by multiplying each grade entry by its weighted value and then summing the results (see: https://www.rapidtables.com/calc/grade/grade-calculator.html)." +
+  "\n //Hint: access the student list using the provided function." +
+  "\n //If the student is not found in the database, return -1.\nfunction getWeightedNumericalGrade(studentName) {\n\t\n}" +
+
+  "\n\n //Implement a function that returns the letter grade for a student given their name (shown in JSON as studentName)." +
+  "\n //For the sake of this exercise, A = 90+, B=80-89, C=70-79, D=65-69, F=64 and below." +
+  "\n //Hint: you may want to utilize the function written above to retrieve the weighted numerical grade in your implementation." +
+  "\n //If the student is not found in the database, return -1.\nfunction getLetterGrade(studentName) {\n\t\n}" +
+
+  "\n\n //Implement a function that returns the score for an assignment given the student name and assignment name." +
+  "\n //If the student or assignment name is not found in the database, return -1.\nfunction getScoreForAssignment(studentName, assignmentName) {\n\t\n}"
+
+  tempTests[0] = {"test": "getWeightedNumericalGrade(\'Miggs\');", "value": "88"};
+  tempTests[1] = {"test": "getWeightedNumericalGrade(\'Ash\');", "value": "-1"};
+  tempTests[2] = {"test": "getLetterGrade(\'Slacky\');", "value": "D"};
+  tempTests[3] = {"test": "getLetterGrade(\'Ash\');", "value": "-1"};
+  tempTests[4] = {"test": "getScoreForAssignment(\'Miggs\',\'project'\);", "value": "88"};
+  //tempTests[5] = {"test": "getScoreForAssignment(\'Miggs\',\'fakeExam'\);", "value": "-1"};
+  //tempTests[6] = {"test": "getScoreForAssignment(\'Ash\',\'project'\);", "value": "-1"};
+
 }
+
+
+
 }
 // save editor icon click
 function saveEditor() {
