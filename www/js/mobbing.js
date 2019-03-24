@@ -11,7 +11,7 @@ var mobUser = '';
 
 function changeQuantity(input, amount) {
   var value = document.getElementById(input).value;
-  if (value > 0 && amount < 0) {
+  if (value > 1 && amount < 0) {
     value--;
   }
   if (amount > 0) {
@@ -59,7 +59,7 @@ function startTimer() {
   // since mobbing is removed now, we need to put it in with our information
 
   // get usernames
-  getCurrentUsers();
+  mobbingUsers = getCurrentUsers();
   // kick off the timer then with all this information
   youAreTheDriver();
 
@@ -126,19 +126,20 @@ function waitingForMobbing() {
 }
 
 function getCurrentUsers() {
+  var users = [];
   var usersDom = firepadUserList.userList_.children[1];
   var main = usersDom.lastChild;
-  mobbingUsers = [];
   for (var i=0; i < main.childNodes.length; i++) {
     var name = main.childNodes[i].lastChild.innerHTML;
-    mobbingUsers.push(name);
+    users.push(name);
   }
-  mobbingUsers.sort();
-  //console.log("list of users: " + mobbingUsers.length);
-  //for (var i=0; i < mobbingUsers.length; i++) {
-  //  console.log("   " + mobbingUsers[i]);
-  //}
-  //console.log("end of list");
+  users.sort();
+  console.log("list of users: " + users.length);
+  for (var i=0; i < users.length; i++) {
+    console.log("   " + users[i]);
+  }
+  console.log("end of list");
+  return users;
 }
 
 function setCurrentMobUser() {
@@ -159,7 +160,7 @@ function setCurrentMobUser() {
 function continueTimer() {
   closePanel();
   //parseTheEditor(); //not needed for mobUser assign, this is done in youAreTheDriver - will move to inside
-  getCurrentUsers(); //for dropping out
+  mobbingUsers = getCurrentUsers(); //for dropping out
   console.log("mobUser in continueTimer:" + mobUser);
 // there is no mob user here
   if (mobUser != '' && mobUser == username) {

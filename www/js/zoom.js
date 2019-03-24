@@ -21,11 +21,10 @@ function changeSize(i) {
   }
   resize();
   var storage = window.localStorage;
-  storage.setItem('zoom', parseFloat(zoom));
+  storage.setItem('zoom1', parseFloat(zoom));
   // change value in Preferences
   var element = document.getElementById('zoom');
   if (element) {
-    console.log(zoom);
     element.value = Math.round(100*zoom);
   }
 }
@@ -34,11 +33,11 @@ function resize() {
   var container = document.getElementsByClassName('CodeMirror');
   if (container != null && container.length > 0) {
     // only the first one
-    //container[0].style.zoom = zoom;
+    container[0].style.zoom = zoom;
   }
   var element = document.getElementById('zoomTest');
   if (element != null) {
-    //element.style.zoom = zoom;
+    element.style.zoom = zoom;
   }
 }
 
