@@ -112,16 +112,34 @@ function connectFirepad() {
     //}
     //// Create FirepadUserList (with our desired userId).
     // problem where all of these users ends up with different name
-    firepadUserList = FirepadUserList.fromDiv(firepadRef.child('users'),
+    var userListRef = firepadRef.child('users');
+
+    firepadUserList = FirepadUserList.fromDiv(userListRef,
     document.getElementById('userlist'), userId, username);
 
-    var firepadUser = FirepadUserList.fromDiv(firepadRef.child('users'),
+    var firepadUser = FirepadUserList.fromDiv(userListRef,
     document.getElementById('user'), userId, username);
 
-    var firepadUserListDisabled = FirepadUserList.fromDiv(firepadRef.child('users'),
+    var firepadUserListDisabled = FirepadUserList.fromDiv(userListRef,
     document.getElementById('userlistdisabled'), userId, username);
+
+    // kick off a function to wait a little then show how many usersDom
+    showNumberUsers(); // this doesn't take into effect real time changes
   }
 }
+
+const delay = ms => new Promise(res => setTimeout(res, ms));
+
+showNumberUsers = async () => {
+  await delay(3000);
+  var users = getCurrentUsers();
+  if (users.length > 0) {
+    document.getElementById("sessionUsersFooter").innerHTML = "Users connected: " + users.length;
+  }
+  else {
+    document.getElementById("sessionUsersFooter").innerHTML = "";
+  }
+};
 
 function hidePanels() {
   document.getElementById("codehort-splash").style.display = 'none';
