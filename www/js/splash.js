@@ -67,12 +67,9 @@ function nameGenerator() {
   var random1 = Math.round(Math.random()*firstPart.length);
   var random2 = Math.round(Math.random()*lastPart.length);
 
-  console.log("random numbers " + random1 + " " + random2);
   var name = firstPart[random1] + "" + lastPart[random2];
-  console.log("random name generator: " + name);
   var usernameInput = document.getElementById("usernameSplashInput");
   if (usernameInput.value == "") {
-
     usernameInput.placeholder = name;
   }
 }

@@ -36,7 +36,7 @@ function newSession(close, click) {
   // set the session id and update it in the UI
   sessionId = link;
   // if we are click, we assume there is already a codemirror on the page
-  if (click) {
+  if (click && close) {
     var storage = window.localStorage;
     storage.setItem('session', sessionId);
     // reload the page and connect to the new session id
@@ -85,7 +85,7 @@ function joinCode(close) {
   }
   if (checkSessionId(sessionIdInput)) {
 
-    joinSessionId(sessionIdInput, true);
+    joinSessionId(sessionIdInput, close);
     // hide the panel
     if (close) {
       if (sessionId != null && firepadRef != null) {
