@@ -23,14 +23,12 @@ function loadTheme() {
 
   if (light) {
     $('#css1').replaceWith('<link id="css1" rel="stylesheet" href="./css/codemirror-light.css" />');
-    $('#css2').replaceWith('<link id="css1" rel="stylesheet" href="./css/codehort-light.css" />');
-    document.getElementById("grid-icon-light").style.display = 'block';
-    document.getElementById("grid-icon-dark").style.display = 'none';
+    $('#css2').replaceWith('<link id="css2" rel="stylesheet" href="./css/codehort-light.css" />');
+    $('#logo').replaceWith('<img name="logo" id="logo" class="logo" src="./img/codehort-logo-white-512.png" border="0">');
   }
   else {
     $('#css1').replaceWith('<link id="css1" rel="stylesheet" href="./css/codemirror-dark.css" />');
-    $('#css2').replaceWith('<link id="css1" rel="stylesheet" href="./css/codehort-dark.css" />');
-    document.getElementById("grid-icon-light").style.display = 'none';
-    document.getElementById("grid-icon-dark").style.display = 'block';
+    $('#css2').replaceWith('<link id="css2" rel="stylesheet" href="./css/codehort-dark.css" />');
+    $('#logo').replaceWith('<img name="logo" id="logo" class="logo" src="./img/codehort-logo-dark.png" border="0">');
   }
 }

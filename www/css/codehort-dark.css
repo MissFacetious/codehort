@@ -490,7 +490,7 @@ input:checked + .slider:before {
 }
 
 .logo {
-  background-image: url("./../img/codehort-logo-512.png");
+  background-image: url("./../img/codehort-logo-dark.png");
   background-repeat: no-repeat;
   background-position: contain;
   background-size:contain;
