@@ -97,15 +97,15 @@ function startChallenge(challenge) {
   //tempTests[6] = {"test": "getScoreForAssignment(\'Ash\',\'project'\);", "value": "-1"};
 
 }
-
-
-
 }
+var blob;
+var filename;
 // save editor icon click
 function saveEditor() {
   //writeFile();
-  var blob;
-  var filename = document.getElementById("fileInput").value;
+
+
+  filename = document.getElementById("fileInput").value;
   if (firepad != null) {
     blob = new Blob([firepad.getText()], {
       type: "text/plain;charset=utf-8;",
@@ -120,30 +120,45 @@ function saveEditor() {
   window.saveAs(blob, filename);
 
   // for macos
-  /*
-  window.requestFileSystem(window.TEMPORARY, 5 * 1024 * 1024, function (fs) {
+  // so this works, I just have no idea where it puts it at all...
+  //window.requestFileSystem  = window.requestFileSystem || window.webkitRequestFileSystem;
+  //window.requestFileSystem(window.PERSISTENT, 5*1024*1024, onInitFs, errorHandler);
+}
 
-    console.log('file system open: ' + fs.name);
-    createFile(fs.root, filename, false);
-
-    dirEntry.getFile(filename, {create: true, exclusive: false}, function(fileEntry) {
-
-      fileEntry.createWriter(function (fileWriter) {
-
-          fileWriter.onwriteend = function() {
-              console.log("Successful file write...");
-              readFile(fileEntry);
-          };
-
-          fileWriter.onerror = function (e) {
-              console.log("Failed file write: " + e.toString());
-          };
-
-          fileWriter.write(blob);
-      });
-    });
-
-   });
-   */
+function onInitFs(fs) {
+  alert('file system open: ' + fs.name);
+  createFile(fs.root, filename, false);
   closePanel();
+
+}
+
+function errorHandler(e) {
+  alert("woops " + e);
+}
+
+
+function createFile(dirEntry, fileName, isAppend) {
+    // Creates a new file or returns the file if it already exists.
+    dirEntry.getFile(fileName, {create: true, exclusive: false}, function(fileEntry) {
+
+        writeFile(fileEntry, null, isAppend);
+
+    });
+}
+
+function writeFile(fileEntry, dataObj) {
+    // Create a FileWriter object for our FileEntry (log.txt).
+    fileEntry.createWriter(function (fileWriter) {
+
+        fileWriter.onwriteend = function() {
+            console.log("Successful file write...");
+            //readFile(fileEntry);
+        };
+
+        fileWriter.onerror = function (e) {
+            console.log("Failed file write: " + e.toString());
+        };
+
+        fileWriter.write(blob);
+    });
 }

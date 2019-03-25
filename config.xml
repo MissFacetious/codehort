@@ -31,8 +31,8 @@
     <preference name="OSXLocalStoragePath" value="~/.codehort/database" />
     <preference name="EnableWebGL" value="true" />
     <preference name="windows-target-version" value="10.0" />
-    <plugin name="cordova-plugin-file" spec="^6.0.1" />
     <plugin name="cordova-plugin-app-preferences" spec="^0.99.3" />
+    <plugin name="cordova-plugin-file" spec="^6.0.1" />
     <engine name="osx" spec="^4.0.2" />
     <engine name="browser" spec="^5.0.4" />
     <engine name="macos" spec="^4.0.2" />
