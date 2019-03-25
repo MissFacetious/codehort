@@ -511,7 +511,7 @@ input:checked + .slider:before {
   background-image: url("./../img/baseline_search_black_18dp.png");
 }
 .replaceBtn {
-  background-image: url("./../img/baseline_search_black_18dp.png");
+  background-image: url("./../img/twotone_refresh_black_18dp.png");
 }
 .newSessionBtn {
   background-image: url("./../img/twotone_person_add_black_18dp.png");
