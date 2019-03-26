@@ -642,3 +642,82 @@ input.change:hover {
   background-size: contain;
 
 }
+
+.CodeMirror {
+  color: #ACB2BE !important;
+}
+
+.CodeMirror-scrollbar-filler, .CodeMirror-gutter-filler {
+  background-color: #ACB2BE !important;
+}
+
+/* GUTTER */
+
+.CodeMirror-gutters {
+  border-right: 1px solid #ddd !important;
+  background-color: #292C34 !important;
+  white-space: nowrap;
+}
+.CodeMirror-linenumbers {}
+.CodeMirror-linenumber {
+  padding: 0 3px 0 5px;
+  min-width: 20px;
+  text-align: right;
+  color: #777D86 !important;
+  white-space: nowrap;
+}
+
+.CodeMirror-guttermarker { color: #ACB2BE !important; }
+.CodeMirror-guttermarker-subtle { color: #777D86 !important; }
+
+/* CURSOR */
+
+.CodeMirror-cursor {
+  border-left: 1px solid #ACB2BE !important;
+  border-right: none;
+  width: 0;
+}
+
+/* DEFAULT THEME */
+
+.cm-s-default .cm-header {color: #689CD1;}
+.cm-s-default .cm-quote {color: #090;}
+.cm-negative {color: #d44;}
+.cm-positive {color: #292;}
+.cm-header, .cm-strong {font-weight: bold;}
+.cm-em {font-style: italic;}
+.cm-link {text-decoration: underline;}
+.cm-strikethrough {text-decoration: line-through;}
+
+.cm-s-default .cm-keyword {color: #B67CD2 !important;}
+.cm-s-default .cm-atom {color: #B99B6E !important;}
+.cm-s-default .cm-number {color: #A1C181 !important;}
+.cm-s-default .cm-def {color: #689CD1 !important;}
+.cm-s-default .cm-variable,
+.cm-s-default .cm-punctuation,
+.cm-s-default .cm-property,
+.cm-s-default .cm-operator {}
+.cm-s-default .cm-variable-2 {color: #64A9C0 !important;}
+.cm-s-default .cm-variable-3 {color: #A1C181 !important;}
+.cm-s-default .cm-comment {color: #B99B6E !important;}
+.cm-s-default .cm-string {color: #A1C181 !important;}
+.cm-s-default .cm-string-2 {color: #f50 !important;}
+.cm-s-default .cm-meta {color: #A1C181 !important;}
+.cm-s-default .cm-qualifier {color: #555 !important;}
+.cm-s-default .cm-builtin {color: #30a !important;}
+.cm-s-default .cm-bracket {color: #997 !important;}
+.cm-s-default .cm-tag {color: #170 !important;}
+.cm-s-default .cm-attribute {color: #00c !important;}
+.cm-s-default .cm-hr {color: #999 !important;}
+.cm-s-default .cm-link {color: #00c !important;}
+
+.cm-s-default .cm-error {color: #f00 !important;}
+.cm-invalidchar {color: #f00 !important;}
+
+.CodeMirror-composing { border-bottom: 2px solid; }
+
+.CodeMirror {
+  position: relative;
+  overflow: hidden;
+  background: #292C34 !important;
+}
