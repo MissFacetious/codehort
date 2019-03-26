@@ -618,6 +618,10 @@ input.change:hover {
   height: 250px;
 }
 
+.challengeIcon:hover {
+  background-color: #fff !important;
+}
+
 .between {
   padding: 10px;
 }

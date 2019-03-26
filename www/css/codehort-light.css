@@ -604,6 +604,10 @@ input.change:hover {
   height: 250px;
 }
 
+.challengeIcon:hover {
+  background-color: #333 !important;
+}
+
 .between {
   padding: 10px;
 }
