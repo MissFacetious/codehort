@@ -76,6 +76,8 @@ function startTimer() {
   document.getElementById("mobbingFooter").innerHTML = "Mobbing with driver: " + mobUser + " [IN CHARGE OF EDITING]";
 
   closePanel();
+
+  aTone.play();
 }
 
 function youAreTheDriver() {
@@ -158,6 +160,7 @@ function setCurrentMobUser() {
 }
 
 function continueTimer() {
+  aTone.play();
   closePanel();
   //parseTheEditor(); //not needed for mobUser assign, this is done in youAreTheDriver - will move to inside
   mobbingUsers = getCurrentUsers(); //for dropping out
@@ -287,6 +290,7 @@ function timerFunction() {
         console.log("we are done, what is our mobber and current user? " + mobUser + ", " + username);
         if (mobUser != '' && mobUser == username) {
           // put up window that says we're done and on to the next mobber
+          musicBox.play();
           showPanel('codehort-continue-mob');
         }
       }

@@ -307,6 +307,7 @@ input.firepad-userlist-name-input {
 
 .panel-body {
   font-family: Arial;
+  height: 375px;
 }
 
 /* Add Animation */
@@ -618,4 +619,11 @@ input.change:hover {
 
 .image:hover {
   background-color: #ffe300;
+}
+
+.trophy {
+  height: 400px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
 }

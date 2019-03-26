@@ -6,6 +6,11 @@ var username = ""; // will be set in getPref
 var userId = Math.floor(Math.random() * 9999999999).toString(); // will be set when we authenticate
 var firepadUserList;
 
+var aTone;
+var applause;
+var musicBox;
+var errorTone;
+
 //// Initialize Firebase.
 var config = {
   apiKey: "AIzaSyCa3PLDxHQ8Fz0Gyz8-aL-Ep6WhjSgKdRc",
@@ -37,6 +42,11 @@ function init() {
     showPanel("codehort-splash");
   }
   createEditor(false);
+
+  aTone = new Audio('./audio/a-tone.mp3');
+  applause = new Audio('./audio/applause.mp3');
+  musicBox = new Audio('./audio/music_box.mp3');
+  errorTone = new Audio('./audio/error.mp3');
 }
 
 function createEditor(click) {
@@ -167,6 +177,7 @@ function showPanel(panel) {
 }
 
 function closePanel() {
+    document.getElementById("trophy").style.display = 'none';
     var outnode = document.getElementById("outputCode");
     outnode.innerHTML = "";
     hidePanels();

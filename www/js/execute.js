@@ -56,7 +56,14 @@ function executeCode() {
 
   if (!error) {
     // show succeeded animation!
-
+    musicBox.play();
+    document.getElementById("trophy").style.backgroundImage = "url('./img/trophy.gif')";
+    document.getElementById("outputCode").style.opacity = 0.5;
+  }
+  else {
+    errorTone.play();
+    document.getElementById("trophy").style.backgroundImage = "url('')";
+    document.getElementById("outputCode").style.opacity = 1;
   }
   showPanel('codehort-run');
 }
