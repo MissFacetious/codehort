@@ -56,7 +56,7 @@ function executeCode() {
 
   if (!error) {
     // show succeeded animation!
-    musicBox.play();
+    applause.play();
     document.getElementById("trophy").style.backgroundImage = "url('./img/trophy.gif')";
     document.getElementById("outputCode").style.opacity = 0.5;
   }
