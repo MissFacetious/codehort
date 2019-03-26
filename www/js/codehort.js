@@ -177,7 +177,6 @@ function showPanel(panel) {
 }
 
 function closePanel() {
-    document.getElementById("trophy").style.display = 'none';
     var outnode = document.getElementById("outputCode");
     outnode.innerHTML = "";
     hidePanels();
