@@ -1,13 +1,16 @@
 var tempCode = null;
 var tempTests = [5];
+var tempHtml = null;
 var challengeNumber;
 // new editor icon click
+
 function newEditor() {
   loadChallenge(true);
   hidePanels();
   updateMobbing();
   tempCode = null;
   tempTests = [5];
+  tempHtml = null;
 }
 
 // we need to load these test cases if we reload..
@@ -20,7 +23,34 @@ function loadChallenge(code) {
     }
   }
   // load up the tests that need to execute when ran
-  tests = Array.from(tempTests);
+  if (tempCode != null) {
+    tests = Array.from(tempTests);
+
+    // load up the challenge to the window
+    document.getElementById("challenge").innerHTML = tempHtml;
+  }
+  else {
+    // show you need to pick a challenge
+  document.getElementById("challenge").innerHTML = "Pick a challenge to start.";
+  }
+}
+
+function getChallengeFromEditor() {
+  // first, we need to make sure we are running the right test.
+  // parse through the code editor and make sure there is the // CHALLENGE # in it to set the tests right
+  var code = codeMirror.getValue();
+  var value = "";
+  var string = "// CHALLENGE #";
+  if (code.search(string) != -1) {
+    value = code.substr(string.length, 2);
+    if (!Number.isInteger(value)) {
+      value = code.substr(string.length, 1);
+    }
+  }
+
+  startChallenge(value);
+  loadChallenge(false);
+  return code;
 }
 
 function startChallenge(challenge) {
@@ -34,6 +64,7 @@ function startChallenge(challenge) {
       tempTests[3] = {"test": "plus(10, -10);", "value": "0"};
       tempTests[4] = {"test": "plus(-10, -10);", "value": "-20"};
 
+      tempHtml = 'CHALLENGE #1: addition';
   } else if (challenge == '2') {
 
     tempCode = "// CHALLENGE #2: arithmetic\n// Keep this line in order to execute your code in codehort correctly.\n\n//Implement the following functions. \n" +
@@ -51,6 +82,8 @@ function startChallenge(challenge) {
     tempTests[3] = {"test": "compute(10, 20);", "value": "930"};
     tempTests[4] = {"test": "compute(423.332323423, 363.83232334);", "value": "266160.47"};
 
+    tempHtml = 'CHALLENGE #2: arithmetic';
+
 } else if (challenge == '3') {
 
   tempCode = "// CHALLENGE #3: roman numeral converter\n// Keep this line in order to execute your code in codehort correctly.\n\n" +
@@ -64,6 +97,8 @@ function startChallenge(challenge) {
   tempTests[2] = {"test": "romanNumeralToInteger(\"vii\");", "value": "7"};
   tempTests[3] = {"test": "romanNumeralToInteger(\"XXVIMFOO\");", "value": "-1"};
   tempTests[4] = {"test": "romanNumeralToInteger(\"MC\");", "value": "1100"};
+
+  tempHtml = '';
 
 } else if (challenge == '4') {
 
@@ -95,7 +130,7 @@ function startChallenge(challenge) {
   tempTests[4] = {"test": "getScoreForAssignment(\'Miggs\',\'project'\);", "value": "88"};
   //tempTests[5] = {"test": "getScoreForAssignment(\'Miggs\',\'fakeExam'\);", "value": "-1"};
   //tempTests[6] = {"test": "getScoreForAssignment(\'Ash\',\'project'\);", "value": "-1"};
-
+  tempHtml = '';
 }
 }
 var blob;

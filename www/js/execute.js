@@ -5,21 +5,7 @@ var tests = [5]; // every challenge should have the same amount of tests
 
 function executeCode() {
 
-  // first, we need to make sure we are running the right test.
-  // parse through the code editor and make sure there is the // CHALLENGE # in it to set the tests right
-
-  var code = codeMirror.getValue();
-  var value = "";
-  var string = "// CHALLENGE #";
-  if (code.search(string) != -1) {
-    value = code.substr(string.length, 2);
-    if (!Number.isInteger(value)) {
-      value = code.substr(string.length, 1);
-    }
-  }
-
-  startChallenge(value);
-  loadChallenge(false);
+  var code = getChallengeFromEditor();
 
   // here is an example of doing a plus function, put the function into the code editor
   /*

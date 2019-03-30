@@ -169,10 +169,18 @@ function hideChat() {
   document.getElementById("codehort-chat").style.display = 'none';
 }
 
+function hideChallenge() {
+  document.getElementById("codehort-challenge").style.display = 'none';
+  document.getElementById("overlay").style.display = 'none';
+}
+
 function showPanel(panel) {
   document.getElementById(panel).style.display = 'block';
   if (panel != 'codehort-chat') {
     document.getElementById("overlay").style.display = 'block';
+  }
+  if (panel == 'codehort-challenge') {
+    getChallengeFromEditor();
   }
 }
 

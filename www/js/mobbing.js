@@ -283,6 +283,8 @@ function timerFunction() {
         console.log("DONE"); // miggs says DONE x 3
         // waiting on change to the Editor
         // take a snap shot of editor between
+        // remove all panels currently open, sorry...
+        closePanel();
         snap = codeMirror.getValue();
         var a = snap.indexOf("// END MOBBING");
         snap = snap.substring(0, a);

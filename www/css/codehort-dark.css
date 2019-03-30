@@ -310,6 +310,21 @@ input.firepad-userlist-name-input {
   overflow: hidden;
 }
 
+.panel-challenge {
+  margin-top: 0px;
+  margin-left: 70%;
+  margin-right: 0px;
+  padding: 20px;
+  width: 350px; /* Could be more or less, depending on screen size */
+  height: 92%;
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  animation-name: animatetop;
+  animation-duration: 0.4s;
+  z-index: 6;
+  overflow: hidden;
+}
+
 .panel-header {
   font-family: Arial;
 }
