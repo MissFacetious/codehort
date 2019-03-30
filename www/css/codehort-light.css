@@ -312,9 +312,10 @@ input.firepad-userlist-name-input {
   position: fixed; /* Stay in place */
   animation-name: animatetop;
   animation-duration: 0.4s;
-  z-index: 10;
+  z-index: 6;
   overflow: hidden;
   background-color: #fff;
+  border: 1px solid #000;
 }
 
 .panel-header {

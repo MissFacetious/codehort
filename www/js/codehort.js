@@ -176,11 +176,11 @@ function hideChallenge() {
 
 function showPanel(panel) {
   document.getElementById(panel).style.display = 'block';
-  if (panel != 'codehort-chat') {
-    document.getElementById("overlay").style.display = 'block';
-  }
   if (panel == 'codehort-challenge') {
     getChallengeFromEditor();
+  }
+  else if (panel != 'codehort-chat') {
+    document.getElementById("overlay").style.display = 'block';
   }
 }
 
