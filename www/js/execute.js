@@ -6,16 +6,8 @@ var tests = [5]; // every challenge should have the same amount of tests
 function executeCode() {
 
   var code = getChallengeFromEditor();
-
-  // here is an example of doing a plus function, put the function into the code editor
   /*
-  function plus(a, b) {
-    return a+b;
-  }
-
   things that are having problems are:
-    something that doesn't return anything
-
     if you have a console.log at the end that gets in the way, it grabs the attention of the output
   */
   contents = "";

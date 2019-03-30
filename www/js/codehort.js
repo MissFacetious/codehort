@@ -83,37 +83,6 @@ function connectFirepad() {
 
   if (firepadRef != null) {
     // Get a reference to the Firebase Realtime Database
-    var chatRef = firebase.database().ref();
-    // Create an instance of Firechat
-    var chat = new FirechatUI(chatRef, document.getElementById("firechat-wrapper"));
-    // Listen for authentication state changes
-    //firebase.auth().signInAnonymously().catch(function(error) {
-    firebase.auth().onAuthStateChanged(function(user) {
-      if (user) {
-        // If the user is logged in, set them as the Firechat user
-        console.log(user);
-        console.log("username " + username);
-        if (username == "") console.log("username is empty");
-        chat.setUser(user.uid, username);
-
-        console.log("user id: " + user.uid);
-        // if user is first, set the chatroom name to the session id and create room
-        console.log("Creating chatroom...");
-        //chat.createRoom("myRoom", "public", function(roomId) {
-
-        //console.log("Success! ID: " + roomId);
-        // if user is not first, join the chatroom name session id
-          //chat.enterRoom(roomId);
-        //});
-      //});
-      } else {
-        // If the user is not logged in, sign them in anonymously
-        firebase.auth().signInAnonymously().catch(function(error) {
-          console.log("Error signing user in anonymously:", error);
-        });
-      }
-    });
-
     //// Create Firepad.
     firepad = Firepad.fromCodeMirror(firepadRef, codeMirror, {
       defaultText: '// Welcome to Codehort, start coding!\n\nconsole.log(\'hello codehort!\');\n\n',
@@ -165,10 +134,6 @@ function hidePanels() {
   document.getElementById("overlay").style.display = 'none';
 }
 
-function hideChat() {
-  document.getElementById("codehort-chat").style.display = 'none';
-}
-
 function hideChallenge() {
   document.getElementById("codehort-challenge").style.display = 'none';
   document.getElementById("overlay").style.display = 'none';
@@ -179,7 +144,7 @@ function showPanel(panel) {
   if (panel == 'codehort-challenge') {
     getChallengeFromEditor();
   }
-  else if (panel != 'codehort-chat') {
+  else {
     document.getElementById("overlay").style.display = 'block';
   }
 }

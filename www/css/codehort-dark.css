@@ -108,22 +108,6 @@ div.right {
   z-index: 0;
 }
 
-#firechat-wrapper {
-  height: 475px;
-  max-width: 325px;
-  padding: 10px;
-  border: 1px solid #292C34;
-  background-color: #292C34;
-  margin: 50px auto;
-  text-align: center;
-  -webkit-border-radius: 4px;
-  -moz-border-radius: 4px;
-  border-radius: 4px;
-  -webkit-box-shadow: 0 5px 25px #666;
-  -moz-box-shadow: 0 5px 25px #666;
-  box-shadow: 0 5px 25px #666;
-}
-
 .footer-content {
   padding-left: 10px;
   padding-right: 10px;
@@ -295,21 +279,6 @@ input.firepad-userlist-name-input {
   height: 250px;
 }
 
-.panel-chat {
-  margin-top: -60px;
-  margin-left: 73%;
-  margin-right: 0px;
-  padding: 20px;
-  width: 350px; /* Could be more or less, depending on screen size */
-  height: 92%;
-  display: none; /* Hidden by default */
-  position: fixed; /* Stay in place */
-  animation-name: animatetop;
-  animation-duration: 0.4s;
-  z-index: 6;
-  overflow: hidden;
-}
-
 .panel-challenge {
   margin-top: 130px;
   margin-left: 70%;
@@ -447,7 +416,7 @@ input:checked + .slider:before {
 .grid-icons {
   display: grid;
   width: 100%;
-  grid-template-columns: repeat(7, auto);
+  grid-template-columns: repeat(8, auto);
 }
 
 .grid-icon {
@@ -737,4 +706,21 @@ input.change:hover {
   position: relative;
   overflow: hidden;
   background: #292C34 !important;
+}
+
+.timer {
+  background-image: url("./../img/timer.png");
+  background-repeat: no-repeat;
+  background-position: contain;
+  background-size:contain;
+  height: 57px;
+  width: 57px;
+  display: none;
+}
+
+.timerText {
+  height: 57px;
+  width: 57px;
+  padding-top: 38%;
+  text-align: center;
 }

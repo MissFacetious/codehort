@@ -272,12 +272,20 @@ function timerFunction() {
       waitingForMobbing();
       var element1 = document.getElementById("timerShow");
       if (element1) element1.innerHTML = "";
+      var element3 = document.getElementById("mobTimer");
+      if (element3 != null) {
+        element3.style.display="none";
+      }
     }
     else if (inMobbing) {
       // we are in mobbing, start the countdown timer
       timerTimer--;
       // display timer on client
       document.getElementById("timerShow").innerHTML = timerTimer;
+      var element3 = document.getElementById("mobTimer");
+      if (element3 != null) {
+        element3.style.display="block";
+      }
       if (timerTimer <= 0) {
         // done!
         console.log("DONE"); // miggs says DONE x 3

@@ -27,10 +27,6 @@
   <!-- jquery -->
   <script src="./js/jquery.min.js"></script>
 
-  <!-- Firechat -->
-  <link rel="stylesheet" href="./css/firechat.min.css" />
-  <script src="./js/firechat.min.js"></script>
-
   <!-- Codehort -->
   <script src="./js/codehort.js"></script>
   <script src="./js/splash.js"></script>
@@ -500,21 +496,7 @@
     </div>
   </div>
 </div>
-<!-- challenge panel -->
-
-<!-- chat panel -->
-<div id="codehort-chat" class="panel-chat">
-  <div class="panel-content">
-    <div class="panel-header">
-      <span class="close" onclick="hideChat();">&times;</span>
-    </div>
-    <div class="panel-body">
-      <div id="firechat-wrapper"></div>
-    </div>
-  </div>
-</div>
-<!-- chat panel -->
-
+<!-- end challenge panel -->
 
 <div id="codehort-header" class="codehort-header">
   <div class="codehort-icons" id="codehort-icons">
@@ -545,8 +527,12 @@
         <button name="helpBtn" id="helpBtn" onclick="help();" type="button" class="buttonIcon icon tooltip helpBtn" value="Help" ><span class="tooltiptext">Help</span></button>
       </div>
       <div class="grid-icon">
-        <div id="timerShow"></div>
-        <div class="grid-icon"><a href="javascript:showPanel('codehort-challenge');"><img name="logo" id="logo" class="logo" src="./img/codehort-logo-white-512.png" border="0"></a></div>
+        <div id="mobTimer" class="timer">
+          <div id="timerShow" class="timerText"></div>
+        </div>
+      </div>
+      <div class="grid-icon">
+          <a href="javascript:showPanel('codehort-challenge');"><img name="logo" id="logo" class="logo" src="./img/codehort-logo-white-512.png" border="0"></a>
       </div>
     </div>
   </div>

@@ -60,7 +60,6 @@ function applyPref() {
 
   // show intro at startup
   storage.setItem('splash', splashScreen);
-  // display chat
 
   // zoom
   var element = document.getElementById('zoom');

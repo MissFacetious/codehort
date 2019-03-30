@@ -20,7 +20,6 @@ function getFirepad() {
     console.log("do not generate a unique location at this time.");
     // disable buttons we can't use
     //mobBtn
-    //chatBtn
     //infoSessionBtn
   }
   return ref;
