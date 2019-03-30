@@ -443,6 +443,14 @@ input:checked + .slider:before {
   background-color: #eee;
 }
 
+.buttonIcon:disabled {
+  background-color: #ccc;
+}
+
+.buttonIcon:hover {
+  background-color: #fff;
+}
+
 .quantityIcon {
   height: 37px;
   width: 37px;
@@ -707,4 +715,13 @@ input.change:hover {
   width: 57px;
   padding-top: 38%;
   text-align: center;
+}
+
+.stop {
+  background-image: url("./../img/stop.png");
+  background-repeat: no-repeat;
+  background-position: contain;
+  background-size:contain;
+  height: 57px;
+  width: 57px;
 }

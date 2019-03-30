@@ -270,7 +270,7 @@
       <p></p>
       <div class="right">
         <input type="button" name="cancelSessionBtn" id="cancelSessionBtn" class="buttonClick buttonClickCancel" value="Cancel" onclick="closePanel();">
-        <input type="button" name="newSessionBtn" id="newSessionBtn" value="Create" class="buttonClick buttonClickOk" onclick="return newSession(true, true);">
+        <input type="button" name="newSessionButton" id="newSessionButton" value="Create" class="buttonClick buttonClickOk" onclick="return newSession(true, true);">
       </div>
     </div>
   </div>
@@ -300,7 +300,7 @@
       </div>
       <div class="right">
         <input type="button" name="cancelSessionBtn" id="cancelSessionBtn" class="buttonClick buttonClickCancel" value="Cancel" onclick="closePanel();">
-        <input type="button" name="joinSessionBtn" id="joinSessionBtn" value="Join" class="buttonClick buttonClickOk" onclick="return joinCode(true);">
+        <input type="button" name="joinSessionBtn" id="joinSessionButton" value="Join" class="buttonClick buttonClickOk" onclick="return joinCode(true);">
       </div>
     </div>
   </div>
@@ -519,7 +519,7 @@
         <button name="infoSessionBtn" id="infoSessionBtn" onclick="showPanel('codehort-sessioninfo');" class="buttonIcon icon tooltip infoSessionBtn" value="Session Info" ><span class="tooltiptext">Session Info</span></button>
       </div>
       <div class="grid-icon">
-        <button name="mobBtn" id="mobBtn" onclick="showPanel('codehort-timer');" type="button" class="buttonIcon icon tooltip mobBtn" value="Timer" ><span class="tooltiptext">Mob Program</span></button>
+        <button name="mobBtn" id="mobBtn" onclick="mob();" type="button" class="buttonIcon icon tooltip mobBtn" value="Timer" ><span class="tooltiptext" id="mobText">Mob Program</span></button>
       </div>
       <div class="grid-icon">
         <button name="configBtn" id="configBtn" onclick="showPanel('codehort-preferences');" type="button" class="buttonIcon icon tooltip configBtn" value="Preferences" ><span class="tooltiptext">Preferences</span></button>

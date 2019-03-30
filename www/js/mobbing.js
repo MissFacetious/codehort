@@ -9,6 +9,24 @@ var inMobbing = false;
 var check = true;
 var mobUser = '';
 
+function mob() {
+  if (inMobbing) {
+    var code = codeMirror.getValue();
+    removeMobbing(code);
+    stopMobbing();
+  }
+  else {
+    showPanel('codehort-timer');
+  }
+}
+
+function stopMobbing() {
+  // remove the mobbing statement in the editor
+  timerTimer = 0;
+  inMobbing = false;
+  check = true;
+}
+
 function changeQuantity(input, amount) {
   var value = document.getElementById(input).value;
   if (value > 1 && amount < 0) {
@@ -44,9 +62,7 @@ function updateMobbing() {
   }
 }
 
-function startTimer() {
-  number = 0;
-  var code = codeMirror.getValue();
+function removeMobbing(code) {
   // find if we have any line that has MOBBING on it first, and remove the line
   var pos = code.search("MOBBING");
   if (pos != -1) {
@@ -55,6 +71,12 @@ function startTimer() {
     code = code.substring(until+1, code.length);
     firepad.setText(code);
   }
+}
+
+function startTimer() {
+  number = 0;
+  var code = codeMirror.getValue();
+  removeMobbing(code);
   currentSession = 1;
   // since mobbing is removed now, we need to put it in with our information
 
@@ -253,7 +275,6 @@ function parseTheEditor() {
   pos = num.indexOf(" -");
   num = num.substr(0, pos);
   mobUser = num;
-  console.log("parsed mobUser: " + num);
   //if (num == '' && tries < 10) {
   //  console.log("no mob user? " + code);
   //  // try again!
@@ -275,6 +296,13 @@ function timerFunction() {
       var element3 = document.getElementById("mobTimer");
       if (element3 != null) {
         element3.style.display="none";
+        document.getElementById("mobBtn").classList.remove("stop");
+        document.getElementById("mobBtn").classList.add("mobBtn");
+        document.getElementById("mobText").innerHTML = "Mob Program";
+        document.getElementById("newBtn").disabled = false;
+        document.getElementById("newSessionBtn").disabled = false;
+        document.getElementById("joinSessionBtn").disabled = false;
+        document.getElementById("configBtn").disabled = false;
       }
     }
     else if (inMobbing) {
@@ -285,6 +313,14 @@ function timerFunction() {
       var element3 = document.getElementById("mobTimer");
       if (element3 != null) {
         element3.style.display="block";
+        // do not allow any buttons other than stop to be hit
+        document.getElementById("mobBtn").classList.remove("mobBtn");
+        document.getElementById("mobBtn").classList.add("stop");
+        document.getElementById("mobText").innerHTML = "Stop Mobbing";
+        document.getElementById("newBtn").disabled = true;
+        document.getElementById("newSessionBtn").disabled = true;
+        document.getElementById("joinSessionBtn").disabled = true;
+        document.getElementById("configBtn").disabled = true;
       }
       if (timerTimer <= 0) {
         // done!
