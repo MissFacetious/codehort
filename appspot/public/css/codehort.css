@@ -1,90 +1,143 @@
-/* for when this supports dark/light themes */
-@media (prefers-color-scheme: light) {
-
+.grid-headers {
+  display: grid;
+  width: 50%;
+  margin: auto;
+  grid-template-columns: repeat(2, auto);
 }
 
-@media (prefers-color-scheme: dark) {
-
+.grid-footers {
+  display: grid;
+  width: 50%;
+  margin: auto;
+  grid-template-columns: repeat(2, 80% 20%);
 }
 
-  .grid-headers {
-    display: grid;
-    width: 50%;
-    margin: auto;
-    grid-template-columns: repeat(2, auto);
-  }
+.centered {
+  margin: 0 auto;
+  width: 50%;
+}
 
-  .grid-footers {
-    display: grid;
-    width: 50%;
-    margin: auto;
-    grid-template-columns: repeat(2, 80% 20%);
-  }
+.grid-sidebysides {
+  display: grid;
+  width: 100%;
+  margin: auto;
+  grid-template-columns: repeat(2, auto);
+}
 
-  .centered {
-    margin: 0 auto;
-    width: 50%;
-  }
+.grid-sidebyside {
+  padding: 0px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: auto;
+  margin-bottom: auto;
+}
 
-  .grid-sidebysides {
-    display: grid;
-    width: 100%;
-    margin: auto;
-    grid-template-columns: repeat(2, auto);
-  }
+.middle {
+  text-align: center;
+}
 
-  .grid-sidebyside {
-    padding: 0px;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: auto;
-    margin-bottom: auto;
-  }
+.title {
+  font-size: 5em;
+  text-align: center;
+  padding: 50px;
+  color: #fff;
+  font-weight: 700;
+  -webkit-text-stroke-width: 2px;
+  -webkit-text-stroke-color: black;
+}
 
-  .middle {
-    text-align: center;
-  }
+.intro {
+  font-size: 2em;
+  text-align: right;
+  color: #000;
+}
 
-  .title {
-    font-size: 5em;
-    text-align: center;
-    padding: 50px;
-    color: #fff;
-    font-weight: 700;
-    -webkit-text-stroke-width: 2px;
-    -webkit-text-stroke-color: black;
-  }
+.buttonClick {
+  border-radius: 5px;
+  padding: 5px;
+  margin: 5px;
+  height: 55px;
+  width: 180px;
+  background-color: lightGray;
+  color: #333;
+  font-size: 20px;
+}
 
-  .intro {
-    font-size: 2em;
-    text-align: right;
-    color: #000;
-  }
+.screencap {
+  background: url("./../images/screencap.png");
+  width: 640px;
+  height: 384px;
+  align-items: center;
+  align-content: center;
+}
 
-  .buttonClick {
-    border-radius: 5px;
-    padding: 5px;
-    margin: 5px;
-    height: 55px;
-    width: 180px;
-    background-color: lightGray;
-    color: #333;
-    font-size: 20px;
+.text {
+  padding-top: 1em;
+  padding-bottom: : 1em;
+  padding-left: 1em;
+  padding-right: 1em;
+  margin: 0 0 1em 0;
+  letter-spacing: 2px;
+}
 
-  }
+a.black {
+  color: #333 !important;
+  font-color: #333 !important;
+  font-size: 0.5em;
+}
 
-  .screencap {
-    background: url("./../images/screencap.png");
-    width: 640px;
-    height: 384px;
-    align-items: center;
-    align-content: center;
-  }
+.cohort-subheader {
+  font-size: 2em;
+  text-align: left;
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+  margin: 0;
+  letter-spacing: 2px;
+}
 
-  @media only screen
-    and (min-device-width: 320px)
-    and (max-device-width: 480px)
-    and (-webkit-min-device-pixel-ratio: 2) {
+.vcenter {
+  vertical-align: center;
+  width: 100%
+  height: 64px;
+}
+
+.macos {
+  background: url("./../images/mac.png");
+  height: 30px;
+  width: 30px;
+}
+
+.windows {
+  background: url("./../images/windows.png");
+  height: 30px;
+  width: 30px;
+}
+
+.email {
+  background: url("./../images/code.png");
+  height: 30px;
+  width: 30px;
+}
+
+.code {
+  background: url("./../images/code.png");
+  height: 30px;
+  width: 30px;
+}
+.inputClick {
+  padding: 5px;
+  margin: 5px;
+  height: 45px;
+  width: 200px;
+  background-color: lightGray;
+  color: #333;
+  font-size: 24px;
+}
+
+@media only screen
+  and (min-device-width: 320px)
+  and (max-device-width: 480px)
+  and (-webkit-min-device-pixel-ratio: 2) {
 
   .grid-headers {
     display: grid;
@@ -121,7 +174,7 @@
   .buttonClick {
     padding: 5px;
     margin: 5px;
-    height: 100px;
+    height: 150px;
     width: 500px;
     background-color: lightGray;
     color: #333;
@@ -133,6 +186,67 @@
     height: 100%;
     align-items: center;
     align-content: center;
+  }
+  .text {
+    padding-top: 1em;
+    padding-bottom: : 1em;
+    padding-left: 1em;
+    padding-right: 1em;
+    margin: 0 0 1em 0;
+    letter-spacing: 2px;
+    font-size: 2em;
+  }
+  a.black {
+    color: #333 !important;
+    font-color: #333 !important;
+    font-size: 2em;
+  }
+  .cohort-subheader {
+    font-size: 3em;
+    font-weight: 700;
+    text-align: left;
+    padding-top: 0.1em;
+    padding-bottom: 0.1em;
+    margin: 0;
+    letter-spacing: 2px;
+  }
+  .vcenter {
+    vertical-align: center;
+    width: 100%
+    height: 100px;
+    font-size: 1.5em;
+  }
+  .macos {
+    background: url("./../images/mac.png");
+    height: 60px;
+    width: 60px;
+  }
+
+  .windows {
+    background: url("./../images/windows.png");
+    height: 60px;
+    width: 60px;
+  }
+
+  .email {
+    background: url("./../images/code.png");
+    height: 60px;
+    width: 60px;
+  }
+
+  .code {
+    background: url("./../images/code.png");
+    height: 60px;
+    width: 60px;
+  }
+  .inputClick {
+    padding: 5px;
+    margin: 5px;
+    height: 80px;
+    width: 500px;
+    background-color: lightGray;
+    color: #333;
+    font-size: 2em;
   }
 }
 
@@ -148,12 +262,6 @@ body {
 a {
   color: #ffe300;
   text-decoration: none;
-}
-
-a.black {
-  color: #333 !important;
-  font-color: #333 !important;
-  font-size: 0.5em;
 }
 
 a:hover {
@@ -198,97 +306,6 @@ div.right {
   margin-left: 0px;
   margin-right: 0px;
   width: 100%;
-}
-
-.panel {
-  display: none; /* Hidden by default */
-  position: fixed; /* Stay in place */
-  background-color: #fefefe;
-  margin: auto;
-  padding: 0;
-  border: 1px solid #888;
-  width: 80%;
-  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
-  animation-name: animatetop;
-  animation-duration: 0.4s;
-  z-index: 8;
-  background-color: rgb(0,0,0); /* Fallback color */
-  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-  overflow: hidden;
-}
-
-.overlay {
-  position: fixed; /* Sit on top of the page content */
-  display: none; /* Hidden by default */
-  width: 100%; /* Full width (cover the whole page) */
-  height: 100%; /* Full height (cover the whole page) */
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(0,0,0,0.5); /* Black background with opacity */
-  z-index: 7;
-}
-.overlay:target {
-  visibility: visible;
-  opacity: 1;
-}
-
-/* The Close Button */
-.close {
-  color: #aaa;
-  float: right;
-  font-size: 28px;
-  font-weight: bold;
-}
-
-.close:hover,
-.close:focus {
-  color: black;
-  text-decoration: none;
-  cursor: pointer;
-}
-
-.panel-large {
-  background-color: #fefefe;
-  margin: 5% 15%; /* 15% from the top and centered */
-  padding: 20px;
-  border: 5px solid #ffe300;
-  width: 70%; /* Could be more or less, depending on screen size */
-  height: 55%;
-}
-
-.panel-small {
-  background-color: #fefefe;
-  margin: 5% 30%; /* 15% from the top and centered */
-  padding: 20px;
-  border: 5px solid #ffe300;
-  width: 35%; /* Could be more or less, depending on screen size */
-  height: 35%;
-}
-
-.panel-header {
-  font-family: Arial;
-}
-
-.panel-body {
-  font-family: Arial;
-}
-
-/* Add Animation */
-@keyframes animatetop {
-  from {top: -300px; opacity: 0}
-  to {top: 0; opacity: 1}
-}
-
-.inputClick {
-  padding: 5px;
-  margin: 5px;
-  height: 45px;
-  width: 130px;
-  background-color: lightGray;
-  color: #333;
-  font-size: 24px;
 }
 
 .download {
@@ -372,45 +389,12 @@ div.right {
   width: 303px;
 }
 
-.macos {
-  background: url("./../images/mac.png");
-  height: 30px;
-  width: 30px;
-}
-
-.windows {
-  background: url("./../images/windows.png");
-  height: 30px;
-  width: 30px;
-}
-
-.email {
-  background: url("./../images/code.png");
-  height: 30px;
-  width: 30px;
-}
-
-.code {
-  background: url("./../images/code.png");
-  height: 30px;
-  width: 30px;
-}
-
 .image {
   background-repeat: no-repeat;
   background-position: contain;
   background-size:contain;
   margin-right: 5px;
   margin-left: 5px;
-}
-
-.cohort-subheader {
-  font-size: 2em;
-  text-align: left;
-  padding-top: 0.5em;
-  padding-bottom: 0.5em;
-  margin: 0;
-  letter-spacing: 2px;
 }
 
 #cohort-footer {
@@ -429,21 +413,6 @@ div.right {
 .gray {
   padding: 50px;
   background: #ddd;
-}
-
-.vcenter {
-  vertical-align: center;
-  width: 100%
-  height: 64px;
-}
-
-.text {
-  padding-top: 1em;
-  padding-bottom: : 1em;
-  padding-left: 1em;
-  padding-right: 1em;
-  margin: 0 0 1em 0;
-  letter-spacing: 2px;
 }
 
 .grid-buttons {
