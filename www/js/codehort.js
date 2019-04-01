@@ -150,14 +150,14 @@ function showPanel(panel) {
 }
 
 function closePanel() {
-    var outnode = document.getElementById("outputCode");
-    outnode.innerHTML = "";
-    hidePanels();
+  var outnode = document.getElementById("outputCode");
+  outnode.innerHTML = "";
+  hidePanels();
 }
 
 function help() {
   window.open(
-  'help.html',
-  '_blank' // <- This is what makes it open in a new window.
-);
+    'help.html',
+    '_blank' // <- This is what makes it open in a new window.
+  );
 }
