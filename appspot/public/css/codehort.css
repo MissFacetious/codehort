@@ -179,6 +179,7 @@ a.black {
     background-color: lightGray;
     color: #333;
     font-size: 3em;
+    cursor: pointer;
   }
   .screencap {
     background: url("./../images/screencap.png");
