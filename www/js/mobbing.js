@@ -106,7 +106,7 @@ Mobbing.removeMobbing = function(code) {
 
     Codehort.closePanel();
 
-    aTone.play();
+    AudioPlayer.playTone();
   }
 
   function youAreTheDriver() {
@@ -172,7 +172,7 @@ Mobbing.removeMobbing = function(code) {
   }
 
   Mobbing.continueTimer = function() {
-    aTone.play();
+    AudioPlayer.playTone();
     Codehort.closePanel();
     //parseTheEditor(); //not needed for mobUser assign, this is done in youAreTheDriver - will move to inside
     mobbingUsers = Codehort.getCurrentUsers(); //for dropping out
@@ -326,7 +326,7 @@ Mobbing.removeMobbing = function(code) {
           console.log("we are done, what is our mobber and current user? " + mobUser + ", " + Codehort.getUsername());
           if (mobUser != '' && mobUser == Codehort.getUsername()) {
             // put up window that says we're done and on to the next mobber
-            musicBox.play();
+            AudioPlayer.playMusic();
             Codehort.showPanel('codehort-continue-mob');
           }
         }

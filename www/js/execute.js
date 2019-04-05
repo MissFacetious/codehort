@@ -47,12 +47,12 @@ var Execute = (function() {
 
     if (!error) {
       // show succeeded animation!
-      applause.play();
+      AudioPlayer.playApplause();
       document.getElementById("trophy").style.backgroundImage = "url('./img/trophy.gif')";
       document.getElementById("outputCode").style.opacity = 0.5;
     }
     else {
-      errorTone.play();
+      AudioPlayer.playError();
       document.getElementById("trophy").style.backgroundImage = "url('')";
       document.getElementById("outputCode").style.opacity = 1;
     }

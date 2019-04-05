@@ -12,12 +12,6 @@ function init() {
     Codehort.showPanel("codehort-splash");
   }
   Codehort.createEditor(false);
-
-  aTone = new Audio('./audio/a-tone.mp3');
-  applause = new Audio('./audio/applause.mp3');
-  musicBox = new Audio('./audio/music_box.mp3');
-  errorTone = new Audio('./audio/error.mp3');
-
   Mobbing.timerFunction();
 }
 
@@ -29,11 +23,6 @@ var Codehort = (function() {
   var username = ""; // will be set in getPref
   var userId = Math.floor(Math.random() * 9999999999).toString(); // will be set when we authenticate
   var firepadUserList;
-
-  var aTone;
-  var applause;
-  var musicBox;
-  var errorTone;
 
   function Codehort() {
     if (!(this instanceof Codehort)) {
