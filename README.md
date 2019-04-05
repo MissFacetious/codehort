@@ -26,12 +26,12 @@ open up www/codehort.html in any web browser
 ### run locally
 
 ### open up in web browsers
-open up appspot/public/index.html
+open up www/public/index.html
 or, `npm start` to run on a local server localhost:8080
 
 ### run codehort publically
 copy www/ folder to appspot/public folder
-when run, it will be in localhost:8080/www/demo or https://codehort.appspot.com/www/demo when deployed
+when run, it will be in localhost:8080/tool/demo or https://codehort.appspot.com/tool/demo when deployed
 
 ### deploy to appspot
 `npm run deploy`
