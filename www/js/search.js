@@ -10,12 +10,12 @@
 // Ctrl-G.
 
 function searchCmd() {
-  clearSearch(codeMirror);
-  doSearch(codeMirror);
+  clearSearch(Codehort.getCodeMirror());
+  doSearch(Codehort.getCodeMirror());
 }
 
 function replaceCmd() {
-  replace(codeMirror, false);
+  replace(Codehort.getCodeMirror(), false);
 }
 
   function searchOverlay(query, caseInsensitive) {

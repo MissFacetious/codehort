@@ -5,6 +5,7 @@
   <title>Codehort App</title>
   <meta charset="utf-8" />
 
+  <script src="./js/config.js"></script>
   <script src="./js/preferences.js"></script>
   <script src="./js/theme.js"></script>
 
@@ -28,19 +29,18 @@
   <script src="./js/jquery.min.js"></script>
 
   <!-- Codehort -->
-  <script src="./js/codehort.js"></script>
   <script src="./js/splash.js"></script>
   <script src="./js/session.js"></script>
   <script src="./js/mobbing.js"></script>
   <script src="./js/execute.js"></script>
+  <script src="./js/zoom.js"></script>
+  <script src="./js/editor.js"></script>
+  <script src="./js/codehort.js"></script>
 
   <!-- for web -->
   <script src="./js/FileSaver.min.js"></script>
   <!-- for macos -->
 
-
-  <script src="./js/editor.js"></script>
-  <script src="./js/zoom.js"></script>
 
   <link rel="stylesheet" href="./css/dialog.css" />
   <script src="./js/dialog.js"></script>
@@ -63,39 +63,39 @@
         <p></p>
         <input type="text" id="usernameSplashInput" class="inputClick name">
         <div class="right">
-          <input type="button" name="nextBtn" id="nextBtn" value="Next" class="buttonClick buttonClickOk" onclick="display(1);">
+          <input type="button" name="nextBtn" id="nextBtn" value="Next" class="buttonClick buttonClickOk" onclick="Splash.display(1);">
         </div>
       </div>
       <div id="splashSecond">
         <div>Second, do you know how big you want your text to be?</div>
         <p></p>
-        <button onclick="changeSize(-1);">
+        <button onclick="Zoom.changeSize(-1);">
         <img src="./img/small-zoom.png" border="0">
       </button>
-      <button onclick="changeSize(1);">
+      <button onclick="Zoom.changeSize(1);">
         <img src="./img/big-zoom.png" border="0">
       </button>
       <p></p>
       <div id="zoomTest" class="zoomTest">This is pretty good.</div>
         <div class="right">
-          <input type="button" name="prevBtn" id="prevBtn" value="Previous" class="buttonClick buttonClickOk" onclick="display(0);">
-          <input type="button" name="nextBtn" id="nextBtn" value="Next" class="buttonClick buttonClickOk" onclick="display(2);">
+          <input type="button" name="prevBtn" id="prevBtn" value="Previous" class="buttonClick buttonClickOk" onclick="Splash.display(0);">
+          <input type="button" name="nextBtn" id="nextBtn" value="Next" class="buttonClick buttonClickOk" onclick="Splash.display(2);">
         </div>
       </div>
       <div id="splashThird">
         <div>Do you like your screen light or dark?</div>
         <p></p>
-        <button onclick="changeLight(true);">
+        <button onclick="Preferences.changeLight(true);">
         <img src="./img/small-zoom.png" border="0">
       </button>
-      <button onclick="changeLight(false);">
+      <button onclick="Preferences.changeLight(false);">
         <img src="./img/dark-theme.png" border="0">
       </button>
       <p></p>
       <div id="lightTest" class="lightTest">A nice and light theme!</div>
         <div class="right">
-          <input type="button" name="prevBtn" id="prevBtn" value="Previous" class="buttonClick buttonClickOk" onclick="display(1);">
-          <input type="button" name="nextBtn" id="nextBtn" value="Next" class="buttonClick buttonClickOk" onclick="display(3);">
+          <input type="button" name="prevBtn" id="prevBtn" value="Previous" class="buttonClick buttonClickOk" onclick="Splash.display(1);">
+          <input type="button" name="nextBtn" id="nextBtn" value="Next" class="buttonClick buttonClickOk" onclick="Splash.display(3);">
         </div>
       </div>
       <div id="splashForth">
@@ -105,12 +105,12 @@
           <tr>
             <td width="50%">
               <div>Do you want to start a new session?</div>
-              <input type="button" name="newSessionSplashBtn" id="newSessionSplashBtn" value="Create" class="buttonClick buttonClickOk" onclick="newSession(false, true);">
+              <input type="button" name="newSessionSplashBtn" id="newSessionSplashBtn" value="Create" class="buttonClick buttonClickOk" onclick="Session.newSession(false, true);">
             </td>
             <td width="50%">
               <div>Do you have a session ID from someone you want to put in?</div>
               <input type="text" maxSize="20" width="20" name="sessionIdSplashInput" id="sessionIdSplashInput" class="inputClick session" placeholder="AbCdEfGh1234mNoPqRsT">
-              <input type="button" name="joinSessionSplashBtn" id="joinSessionSplashBtn" value="Join" class="buttonClick buttonClickOk" onclick="joinCode(false);">
+              <input type="button" name="joinSessionSplashBtn" id="joinSessionSplashBtn" value="Join" class="buttonClick buttonClickOk" onclick="Session.joinCode(false);">
             </td>
           </tr>
         </table>
@@ -119,8 +119,8 @@
         <div id="errorSplash"></div>
         <p></p>
         <div class="right">
-          <input type="button" name="previousSplashBtn" id="previousSplashBtn" value="Previous" class="buttonClick buttonClickOk" onclick="display(2);">
-          <input type="button" name="finishBtn" id="finishBtn" value="Finish" class="buttonClick buttonClickOk" onclick="display(4);">
+          <input type="button" name="previousSplashBtn" id="previousSplashBtn" value="Previous" class="buttonClick buttonClickOk" onclick="Splash.display(2);">
+          <input type="button" name="finishBtn" id="finishBtn" value="Finish" class="buttonClick buttonClickOk" onclick="Splash.display(4);">
         </div>
       </div>
       </div>
@@ -132,7 +132,7 @@
 <div id="codehort-neweditor" class="panel panel-large">
   <div class="panel-content">
     <div class="panel-header">
-      <span class="close" onclick="closePanel();">&times;</span>
+      <span class="close" onclick="Codehort.closePanel();">&times;</span>
       <h2>Start New Challenge</h2>
     </div>
     <div class="panel-body">
@@ -142,7 +142,7 @@
         <table>
           <tr>
             <td>
-              <img src="./img/brain_head.png" class="image challengeIcon" onclick="startChallenge('1');">
+              <img src="./img/brain_head.png" class="image challengeIcon" onclick="Editor.startChallenge('1');">
             </td>
             <td class="between">
               <p>beginner</p>
@@ -154,7 +154,7 @@
           </tr>
           <tr>
             <td>
-              <img src="./img/calculator.png" class="image challengeIcon" onclick="startChallenge('2');">
+              <img src="./img/calculator.png" class="image challengeIcon" onclick="Editor.startChallenge('2');">
             </td>
             <td class="between">
               <p>beginner</p>
@@ -166,7 +166,7 @@
           </tr>
           <tr>
             <td>
-              <img src="./img/books.png" class="image challengeIcon" onclick="startChallenge('3');">
+              <img src="./img/books.png" class="image challengeIcon" onclick="Editor.startChallenge('3');">
             </td>
             <td class="between">
               <p>intermediate</p>
@@ -178,7 +178,7 @@
           </tr>
           <tr>
             <td>
-              <img src="./img/contact_card.png" class="image challengeIcon" onclick="startChallenge('4');">
+              <img src="./img/contact_card.png" class="image challengeIcon" onclick="Editor.startChallenge('4');">
             </td>
             <td class="between">
               <p>intermediate</p>
@@ -190,7 +190,7 @@
           </tr>
           <tr>
             <td>
-              <img src="./img/calendar.png" class="image challengeIcon" onclick="startChallenge('');">
+              <img src="./img/calendar.png" class="image challengeIcon" onclick="Editor.startChallenge('');">
             </td>
             <td class="between">
               <p>advanced</p>
@@ -202,7 +202,7 @@
           </tr>
           <tr>
             <td>
-              <img src="./img/key.png" class="image challengeIcon" onclick="startChallenge('');">
+              <img src="./img/key.png" class="image challengeIcon" onclick="Editor.startChallenge('');">
             </td>
             <td class="between">
               <p>advanced</p>
@@ -214,7 +214,7 @@
           </tr>
           <tr>
             <td>
-              <img src="./img/maze.png" class="image challengeIcon" onclick="startChallenge('');">
+              <img src="./img/maze.png" class="image challengeIcon" onclick="Editor.startChallenge('');">
             </td>
             <td class="between">
               <p>advanced</p>
@@ -228,8 +228,8 @@
       </div>
       <p></p>
       <div class="right">
-        <input type="button" name="cancelEditorBtn" id="cancelEditorBtn" class="buttonClick buttonClickCancel" value="Cancel" onclick="closePanel();">
-        <input type="button" name="newEditorBtn" id="newEditorBtn" value="Start" class="buttonClick buttonClickOk" onclick="return newEditor();">
+        <input type="button" name="cancelEditorBtn" id="cancelEditorBtn" class="buttonClick buttonClickCancel" value="Cancel" onclick="Codehort.closePanel();">
+        <input type="button" name="newEditorBtn" id="newEditorBtn" value="Start" class="buttonClick buttonClickOk" onclick="return Editor.newEditor();">
       </div>
     </div>
   </div>
@@ -240,7 +240,7 @@
 <div id="codehort-saveedit" class="panel panel-large">
   <div class="panel-content">
     <div class="panel-header">
-      <span class="close" onclick="closePanel();">&times;</span>
+      <span class="close" onclick="Codehort.closePanel();">&times;</span>
       <h2>Save Code in Editor</h2>
     </div>
     <div class="panel-body">
@@ -248,8 +248,8 @@
       <center><input type="text" maxSize="20" width="20" name="fileInput" id="fileInput" class="inputClick session" value="filename.txt"></center>
       <p></p>
       <div class="right">
-        <input type="button" name="cancelEditorBtn" id="cancelEditorBtn" class="buttonClick buttonClickCancel" value="Cancel" onclick="closePanel();">
-        <input type="button" name="saveEditorBtn" id="saveEditorBtn" value="Create" class="buttonClick buttonClickOk" onclick="return saveEditor();">
+        <input type="button" name="cancelEditorBtn" id="cancelEditorBtn" class="buttonClick buttonClickCancel" value="Cancel" onclick="Codehort.closePanel();">
+        <input type="button" name="saveEditorBtn" id="saveEditorBtn" value="Create" class="buttonClick buttonClickOk" onclick="return Editor.saveEditor();">
       </div>
     </div>
   </div>
@@ -260,7 +260,7 @@
 <div id="codehort-newsession" class="panel panel-small">
   <div class="panel-content">
     <div class="panel-header">
-      <span class="close" onclick="closePanel();">&times;</span>
+      <span class="close" onclick="Codehort.closePanel();">&times;</span>
       <h2>New Session</h2>
     </div>
     <div class="panel-body">
@@ -269,8 +269,8 @@
       <div id="errorNewSession"></div>
       <p></p>
       <div class="right">
-        <input type="button" name="cancelSessionBtn" id="cancelSessionBtn" class="buttonClick buttonClickCancel" value="Cancel" onclick="closePanel();">
-        <input type="button" name="newSessionButton" id="newSessionButton" value="Create" class="buttonClick buttonClickOk" onclick="return newSession(true, true);">
+        <input type="button" name="cancelSessionBtn" id="cancelSessionBtn" class="buttonClick buttonClickCancel" value="Cancel" onclick="Codehort.closePanel();">
+        <input type="button" name="newSessionButton" id="newSessionButton" value="Create" class="buttonClick buttonClickOk" onclick="return Session.newSession(true, true);">
       </div>
     </div>
   </div>
@@ -281,7 +281,7 @@
 <div id="codehort-joinsession" class="panel panel-large">
   <div class="panel-content">
     <div class="panel-header">
-      <span class="close" onclick="closePanel();">&times;</span>
+      <span class="close" onclick="Codehort.closePanel();">&times;</span>
       <h2>Join Session</h2>
     </div>
     <div class="panel-body">
@@ -299,8 +299,8 @@
         <div id="user" class="userlist-disabled"></div>
       </div>
       <div class="right">
-        <input type="button" name="cancelSessionBtn" id="cancelSessionBtn" class="buttonClick buttonClickCancel" value="Cancel" onclick="closePanel();">
-        <input type="button" name="joinSessionBtn" id="joinSessionButton" value="Join" class="buttonClick buttonClickOk" onclick="return joinCode(true);">
+        <input type="button" name="cancelSessionBtn" id="cancelSessionBtn" class="buttonClick buttonClickCancel" value="Cancel" onclick="Codehort.closePanel();">
+        <input type="button" name="joinSessionBtn" id="joinSessionButton" value="Join" class="buttonClick buttonClickOk" onclick="return Session.joinCode(true);">
       </div>
     </div>
   </div>
@@ -311,14 +311,14 @@
 <div id="codehort-sessioninfo" class="panel panel-large">
   <div class="panel-content">
     <div class="panel-header">
-      <span class="close" onclick="closePanel();">&times;</span>
+      <span class="close" onclick="Codehort.closePanel();">&times;</span>
       <h2>Session Info</h2>
     </div>
     <div class="panel-body">
       <div>Here is your session id you currently have that you can share.</div>
       <p></p>
       <div id="sessionInfoPanel">
-        <center><h1 id="codehort-display" class="codehort-display" onClick="copySessionId();"></h1></center>
+        <center><h1 id="codehort-display" class="codehort-display" onClick="Session.copySessionId();"></h1></center>
         <p></p>
         <center><div id="codehort-link"></div></center>
         <p></p>
@@ -329,7 +329,7 @@
       </div>
       <div id="errorSessionInfo"></div>
       <div class="right">
-        <input type="button" name="sessionInfoBtn" id="sessionInfoBtn" value="Okay" class="buttonClick buttonClickOk" onclick="closePanel();">
+        <input type="button" name="sessionInfoBtn" id="sessionInfoBtn" value="Okay" class="buttonClick buttonClickOk" onclick="Codehort.closePanel();">
       </div>
     </div>
   </div>
@@ -340,7 +340,7 @@
 <div id="codehort-timer" class="panel panel-large">
   <div class="panel-content">
     <div class="panel-header">
-      <span class="close" onclick="closePanel();">&times;</span>
+      <span class="close" onclick="Codehort.closePanel();">&times;</span>
       <h2>Timer Setup</h2>
     </div>
     <div class="panel-body">
@@ -353,9 +353,9 @@
                 <td class="labeled right">Timer</td>
                 <td class="labeled">
                   <div class="number">
-                    <input class="minus change quantityIcon" type="button" value="" onclick="changeQuantity('timer', -1);">
-                    <input id="timer" class="quantity" type="number" size="3" value="5" onchange="changeQuantity('timer', 0);">
-                    <input class="plus change quantityIcon" type="button" value="" onclick="changeQuantity('timer', 1);">
+                    <input class="minus change quantityIcon" type="button" value="" onclick="Mobbing.changeQuantity('timer', -1);">
+                    <input id="timer" class="quantity" type="number" size="3" value="5" onchange="Mobbing.changeQuantity('timer', 0);">
+                    <input class="plus change quantityIcon" type="button" value="" onclick="Mobbing.changeQuantity('timer', 1);">
                   </div>
                 </td>
                 <td class="labeled">
@@ -372,8 +372,8 @@
       </table>
       <p></p>
       <div class="right">
-        <input type="button" name="cancelTimerBtn" id="cancelTimerBtn" class="buttonClick buttonClickCancel" value="Cancel" onclick="closePanel();">
-        <input type="button" name="startTimerBtn" id="startTimerBtn" value="Start" class="buttonClick buttonClickOk" onclick="return startTimer();">
+        <input type="button" name="cancelTimerBtn" id="cancelTimerBtn" class="buttonClick buttonClickCancel" value="Cancel" onclick="Codehort.closePanel();">
+        <input type="button" name="startTimerBtn" id="startTimerBtn" value="Start" class="buttonClick buttonClickOk" onclick="return Mobbing.startTimer();">
       </div>
     </div>
   </div>
@@ -384,7 +384,7 @@
 <div id="codehort-preferences" class="panel panel-large">
   <div class="panel-content">
     <div class="panel-header">
-      <span class="close" onclick="closePanel();">&times;</span>
+      <span class="close" onclick="Codehort.closePanel();">&times;</span>
       <h2>Preferences</h2>
     </div>
     <div class="panel-body">
@@ -405,7 +405,7 @@
                 <td class="labeled right">Show Splash Screen</td>
                   <td class="labeled">
                     <label class="switch">
-                      <input type="checkbox" id="splashSwitch" checked onchange="splashChange();">
+                      <input type="checkbox" id="splashSwitch" checked onchange="Preferences.splashChange();">
                       <span class="slider round" data-on="On" data-off="Off"></span>
                     </label>
                   </td>
@@ -419,9 +419,9 @@
                 <td class="labeled right">Zoom</td>
                 <td class="labeled">
                   <div class="number">
-                    <input class="minus change quantityIcon" type="button" value="" onclick="changePercent(-1);">
-                    <input id="zoom" class="quantity" type="number" size="3" value="100" onchange="changePercent(0);">
-                    <input class="plus change quantityIcon" type="button" value="" onclick="changePercent(1);">
+                    <input class="minus change quantityIcon" type="button" value="" onclick="Zoom.changePercent(-1);">
+                    <input id="zoom" class="quantity" type="number" size="3" value="100" onchange="Zoom.changePercent(0);">
+                    <input class="plus change quantityIcon" type="button" value="" onclick="Zoom.changePercent(1);">
                   </div>
                 </td>
                 <td class="labeled left">%</td>
@@ -431,7 +431,7 @@
                 <td class="labeled">
                   <center>
                     <label class="switch">
-                      <input type="checkbox" id="lightSwitch" onchange="lightChange();">
+                      <input type="checkbox" id="lightSwitch" onchange="Preferences.lightChange();">
                       <span class="slider round" data-on="On" data-off="Off"></span>
                     </label>
                   </center>
@@ -445,8 +445,7 @@
       </table>
       <p></p>
       <div class="right">
-        <!--<input type="button" name="cancelPrefBtn" id="cancelPrefBtn" class="buttonClick buttonClickCancel" value="Cancel" onclick="closePanel();">-->
-        <input type="button" name="applyPrefBtn" id="applyPrefBtn" value="Apply" class="buttonClick buttonClickOk" onclick="return applyPref();">
+        <input type="button" name="applyPrefBtn" id="applyPrefBtn" value="Apply" class="buttonClick buttonClickOk" onclick="return Preferences.applyPref();">
       </div>
     </div>
   </div>
@@ -457,7 +456,7 @@
 <div id="codehort-run" class="panel panel-large">
   <div id="trophy" class="panel-content trophy">
     <div class="panel-header">
-      <span class="close" onclick="closePanel();">&times;</span>
+      <span class="close" onclick="Codehort.closePanel();">&times;</span>
       <h2>Running Code</h2>
     </div>
     <div class="panel-body">
@@ -478,7 +477,7 @@
       <h2>Your Mobbing is Over</h2>
     </div>
     <div class="panel-body">
-      <input type="button" name="nextBtn" id="nextBtn" value="Next" class="buttonClick buttonClickOk" onclick="continueTimer();">
+      <input type="button" name="nextBtn" id="nextBtn" value="Next" class="buttonClick buttonClickOk" onclick="Mobbing.continueTimer();">
     </div>
   </div>
 </div>
@@ -488,7 +487,7 @@
 <div id="codehort-challenge" class="panel-challenge">
   <div class="panel-content">
     <div class="panel-header">
-      <span class="close" onclick="hideChallenge();">&times;</span>
+      <span class="close" onclick="Codehort.hideChallenge();">&times;</span>
       <h2>Challenge<h2>
     </div>
     <div class="panel-body">
@@ -502,29 +501,29 @@
   <div class="codehort-icons" id="codehort-icons">
     <div class="grid-icons">
       <div class="grid-icon">
-        <button name="newBtn" id="newBtn" onclick="showPanel('codehort-neweditor');" class="buttonIcon icon tooltip newBtn" value="New" ><span class="tooltiptext">Start Code Challenge</span></button>
-        <button name="saveBtn" id="saveBtn" onclick="showPanel('codehort-saveedit');" class="buttonIcon icon tooltip saveBtn" value="Save" ><span class="tooltiptext">Save Code in Editor</span></button>
+        <button name="newBtn" id="newBtn" onclick="Codehort.showPanel('codehort-neweditor');" class="buttonIcon icon tooltip newBtn" value="New" ><span class="tooltiptext">Start Code Challenge</span></button>
+        <button name="saveBtn" id="saveBtn" onclick="Codehort.showPanel('codehort-saveedit');" class="buttonIcon icon tooltip saveBtn" value="Save" ><span class="tooltiptext">Save Code in Editor</span></button>
       </div>
       <div class="grid-icon">
-        <button name="zoomOutBtn" id="zoomOutBtn" onclick="changeSize(-1);" class="buttonIcon icon tooltip zoomOutBtn" value="Zoom Out" ><span class="tooltiptext">Zoom Out</span></button>
-        <button name="zoomInBtn" id="zoomInBtn" onclick="changeSize(1);" class="buttonIcon icon tooltip zoomInBtn" value="Zoom In" ><span class="tooltiptext">Zoom In</span></button>
+        <button name="zoomOutBtn" id="zoomOutBtn" onclick="Zoom.changeSize(-1);" class="buttonIcon icon tooltip zoomOutBtn" value="Zoom Out" ><span class="tooltiptext">Zoom Out</span></button>
+        <button name="zoomInBtn" id="zoomInBtn" onclick="Zoom.changeSize(1);" class="buttonIcon icon tooltip zoomInBtn" value="Zoom In" ><span class="tooltiptext">Zoom In</span></button>
       </div>
       <div class="grid-icon">
         <button name="searchBtn" id="searchBtn" onclick="searchCmd();" class="buttonIcon icon tooltip searchBtn" value="Search" ><span class="tooltiptext">Search Code</span></button>
         <button name="replaceBtn" id="replaceBtn" onclick="replaceCmd();" class="buttonIcon icon tooltip replaceBtn" value="Replace" ><span class="tooltiptext">Replace Text</span></button>
       </div>
       <div class="grid-icon">
-        <button name="newSessionBtn" id="newSessionBtn" onclick="showPanel('codehort-newsession');" class="buttonIcon icon tooltip newSessionBtn" value="New Session" ><span class="tooltiptext">New Session</span></button>
-        <button name="joinSessionBtn" id="joinSessionBtn" onclick="showPanel('codehort-joinsession');" class="buttonIcon icon tooltip joinSessionBtn" value="Join Session" ><span class="tooltiptext">Join Session</span></button>
-        <button name="infoSessionBtn" id="infoSessionBtn" onclick="showPanel('codehort-sessioninfo');" class="buttonIcon icon tooltip infoSessionBtn" value="Session Info" ><span class="tooltiptext">Session Info</span></button>
+        <button name="newSessionBtn" id="newSessionBtn" onclick="Codehort.showPanel('codehort-newsession');" class="buttonIcon icon tooltip newSessionBtn" value="New Session" ><span class="tooltiptext">New Session</span></button>
+        <button name="joinSessionBtn" id="joinSessionBtn" onclick="Codehort.showPanel('codehort-joinsession');" class="buttonIcon icon tooltip joinSessionBtn" value="Join Session" ><span class="tooltiptext">Join Session</span></button>
+        <button name="infoSessionBtn" id="infoSessionBtn" onclick="Codehort.showPanel('codehort-sessioninfo');" class="buttonIcon icon tooltip infoSessionBtn" value="Session Info" ><span class="tooltiptext">Session Info</span></button>
       </div>
       <div class="grid-icon">
-        <button name="mobBtn" id="mobBtn" onclick="mob();" type="button" class="buttonIcon icon tooltip mobBtn" value="Timer" ><span class="tooltiptext" id="mobText">Mob Program</span></button>
+        <button name="mobBtn" id="mobBtn" onclick="Mobbing.mob();" type="button" class="buttonIcon icon tooltip mobBtn" value="Timer" ><span class="tooltiptext" id="mobText">Mob Program</span></button>
       </div>
       <div class="grid-icon">
-        <button name="configBtn" id="configBtn" onclick="showPanel('codehort-preferences');" type="button" class="buttonIcon icon tooltip configBtn" value="Preferences" ><span class="tooltiptext">Preferences</span></button>
-        <button name="runBtn" id="runBtn" onclick="executeCode();" class="buttonIcon icon tooltip runBtn" value="Run" ><span class="tooltiptext">Run Code</span></button>
-        <button name="helpBtn" id="helpBtn" onclick="help();" type="button" class="buttonIcon icon tooltip helpBtn" value="Help" ><span class="tooltiptext">Help</span></button>
+        <button name="configBtn" id="configBtn" onclick="Codehort.showPanel('codehort-preferences');" type="button" class="buttonIcon icon tooltip configBtn" value="Preferences" ><span class="tooltiptext">Preferences</span></button>
+        <button name="runBtn" id="runBtn" onclick="Execute.executeCode();" class="buttonIcon icon tooltip runBtn" value="Run" ><span class="tooltiptext">Run Code</span></button>
+        <button name="helpBtn" id="helpBtn" onclick="Codehort.help();" type="button" class="buttonIcon icon tooltip helpBtn" value="Help" ><span class="tooltiptext">Help</span></button>
       </div>
       <div class="grid-icon">
         <div id="mobTimer" class="timer">
@@ -532,7 +531,7 @@
         </div>
       </div>
       <div class="grid-icon">
-          <a href="javascript:showPanel('codehort-challenge');"><img name="logo" id="logo" class="logo" src="./img/codehort-logo-white-512.png" border="0"></a>
+          <a href="javascript:Codehort.showPanel('codehort-challenge');"><img name="logo" id="logo" class="logo" src="./img/codehort-logo-white-512.png" border="0"></a>
       </div>
     </div>
   </div>
