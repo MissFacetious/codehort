@@ -1,5 +1,14 @@
 # codehort
 
+## can I see this working?
+There is a working demo at https://codehort.appspot.com/tool/demo. Beware not all operating systems or browsers are supported.
+
+Connecting two browsers to a shared session so that you can share code: https://youtu.be/H3AiBBbKZzM
+
+The startup wizard/preferences for Codehort. A code challenge is chosen through the interface, implemented by the user, and then executed successfully by the application: https://youtu.be/-EdfBnxnswQ
+
+Mobbing session functionality (expertly narrated by Lisa): https://youtu.be/GrYF5koNjAQ
+
 ## run locally
 
 ### open up in web browser
