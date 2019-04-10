@@ -64,39 +64,39 @@
         <p></p>
         <input type="text" id="usernameSplashInput" class="inputClick name">
         <div class="right">
-          <input type="button" name="nextBtn" id="nextBtn" value="Next" class="buttonClick buttonClickOk" onclick="Splash.display(1);">
+          <input type="button" name="nextBtn" id="next1Btn" value="Next" class="buttonClick buttonClickOk" onclick="Splash.display(1);">
         </div>
       </div>
       <div id="splashSecond">
         <div>Second, do you know how big you want your text to be?</div>
         <p></p>
-        <button onclick="Zoom.changeSize(-1);">
+        <button id="zoomSplashDown" onclick="Zoom.changeSize(-1);">
         <img src="./img/small-zoom.png" border="0">
       </button>
-      <button onclick="Zoom.changeSize(1);">
+      <button id="zoomSplashUp" onclick="Zoom.changeSize(1);">
         <img src="./img/big-zoom.png" border="0">
       </button>
       <p></p>
       <div id="zoomTest" class="zoomTest">This is pretty good.</div>
         <div class="right">
           <input type="button" name="prevBtn" id="prevBtn" value="Previous" class="buttonClick buttonClickOk" onclick="Splash.display(0);">
-          <input type="button" name="nextBtn" id="nextBtn" value="Next" class="buttonClick buttonClickOk" onclick="Splash.display(2);">
+          <input type="button" name="nextBtn" id="next2Btn" value="Next" class="buttonClick buttonClickOk" onclick="Splash.display(2);">
         </div>
       </div>
       <div id="splashThird">
         <div>Do you like your screen light or dark?</div>
         <p></p>
-        <button onclick="Preferences.changeLight(true);">
+        <button id="themeSplashLight" onclick="Preferences.changeLight(true);">
         <img src="./img/small-zoom.png" border="0">
       </button>
-      <button onclick="Preferences.changeLight(false);">
+      <button id="themeSplashDark" onclick="Preferences.changeLight(false);">
         <img src="./img/dark-theme.png" border="0">
       </button>
       <p></p>
       <div id="lightTest" class="lightTest">A nice and light theme!</div>
         <div class="right">
           <input type="button" name="prevBtn" id="prevBtn" value="Previous" class="buttonClick buttonClickOk" onclick="Splash.display(1);">
-          <input type="button" name="nextBtn" id="nextBtn" value="Next" class="buttonClick buttonClickOk" onclick="Splash.display(3);">
+          <input type="button" name="nextBtn" id="next3Btn" value="Next" class="buttonClick buttonClickOk" onclick="Splash.display(3);">
         </div>
       </div>
       <div id="splashForth">

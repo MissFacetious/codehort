@@ -109,6 +109,17 @@ var Preferences = (function() {
     //console.log("username is - " + Codehort.getUsername());
     //console.log("zoom at - " + Zoom.getZoom());
     //console.log("session id - " + Session.getSessionId());
+
+    // quick check to see the splash screen or not for the test framework
+    let baseURL = window.location+"";
+    //strip out anything after #
+    if (baseURL != null) {
+      var n = baseURL.indexOf('#');
+      baseURL = baseURL.substring(n+1, baseURL.length);
+      if (baseURL == "none") {
+        Preferences.setSplashScreen(false);
+      }
+    }
   }
 
   // preferences icon click

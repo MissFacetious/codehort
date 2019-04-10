@@ -138,7 +138,7 @@ var Session = (function() {
 
   Session.joinSessionId = function(session_id, click) {
     this.sessionId = session_id;
-    let _baseURL = window.location+"";
+    let baseURL = window.location+"";
     //strip out anything after #
     if (baseURL != null) {
       var n = baseURL.indexOf('#');
