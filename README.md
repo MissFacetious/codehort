@@ -1,7 +1,8 @@
-# codehort
+# Codehort
+Codehort is a tool that allows you to share coding sessions together while on separate machines. Have your team or class learn how to code Javascript together.
 
-## can I see this working?
-There is a working demo at https://codehort.appspot.com/tool/demo. Beware not all operating systems or browsers are supported.
+## Can I see this working?
+There is a working demo at https://codehort.appspot.com/tool/demo. Beware not all operating systems or browsers are supported. Codehort is being build as a standalone application for Mac and Windows.
 
 Connecting two browsers to a shared session so that you can share code: https://youtu.be/H3AiBBbKZzM
 
@@ -39,14 +40,18 @@ open up www/public/index.html
 or, `npm start` to run on a local server localhost:8080
 
 ### run codehort publically
-copy www/ folder to appspot/public folder
-when run, it will be in localhost:8080/tool/demo or https://codehort.appspot.com/tool/demo when deployed
+Copy www/ folder to appspot/public folder and rename to tool
+
+When run, it will be in localhost:8080/tool/demo or https://codehort.appspot.com/tool/demo when deployed
+
+## testing codehort
+There is a suite of Selenium Tests that can be run at different stages of the development and deploy.
+`npm test` will kick off the test suite.
 
 ### deploy to appspot
 `npm run deploy`
 It will be at https://codehort.appspot.com
 
-### view
+### continuous delivery
+<img src="https://github.com/MissFacetious/codehort/blob/master/cdfd.png?raw=true">
 
-### switch appspot projects
-`gcloud config set project codehort`
