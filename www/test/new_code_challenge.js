@@ -11,7 +11,9 @@ var webdriver = require('selenium-webdriver'),
       await driver.manage().window().maximize();
 
       console.log("open up app");
-      await driver.get('file:///Users/lisa/Classes/6460%20Educational%20Technology/codehort/www/codehort.html#none');
+      var path = 'file://' + process.cwd() + '/www/codehort.html#none';
+      path = path.replace(/ /g, '%20');
+      await driver.get(path);
 
       console.log("click new code challenge button");
       await driver.findElement(By.id('newBtn')).click();

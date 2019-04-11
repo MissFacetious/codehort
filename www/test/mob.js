@@ -9,7 +9,10 @@ var webdriver = require('selenium-webdriver'),
           .forBrowser('safari')
           .build();
       await driver.manage().window().maximize();
-      await driver.get('file:///Users/lisa/Classes/6460%20Educational%20Technology/codehort/www/codehort.html#none');
+
+      var path = 'file://' + process.cwd() + '/www/codehort.html#none';
+      path = path.replace(/ /g, '%20');
+      await driver.get(path);
 
       await driver.findElement(By.id('mobBtn')).click();
       // startTimerBtn

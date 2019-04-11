@@ -13,7 +13,9 @@ var assert = require('assert');
       await driver.manage().window().maximize();
 
       console.log("open up app");
-      await driver.get('file:///Users/lisa/Classes/6460%20Educational%20Technology/codehort/www/codehort.html');
+      var path = 'file://' + process.cwd() + '/www/codehort.html#none';
+      path = path.replace(/ /g, '%20');
+      await driver.get(path);
 
       // or test for not adding one and getting the default
       //await driver.findElement(By.id('usernameSplashInput')).sendKeys('');
