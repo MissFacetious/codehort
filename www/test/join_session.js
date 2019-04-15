@@ -2,6 +2,8 @@ var webdriver = require('selenium-webdriver'),
     By = webdriver.By,
     until = webdriver.until;
 
+var testName = "Join Session";
+
   (async function() {
     let driver;
     try {
@@ -9,6 +11,11 @@ var webdriver = require('selenium-webdriver'),
           .forBrowser('safari')
           .build();
       await driver.manage().window().maximize();
+
+      console.log("");
+      console.log("========== "+testName+" TEST ==========");
+      console.log("");
+
       var path = 'file://' + process.cwd() + '/www/codehort.html#none';
       path = path.replace(/ /g, '%20');
       await driver.get(path);
@@ -25,12 +32,12 @@ var webdriver = require('selenium-webdriver'),
 
       // parse through codehort-display for session id "id"
 
-      console.log('SUCCESS');
+      console.log(":) " + testName + " SUCCESS");
       return true;
       }
       catch (e) {
-        console.log(err);
-        console.log('FAILED');
+        console.log(e);
+      console.log(":( " + testName + " FAILED");
         return false;
       } finally {
       //await driver && driver.quit();

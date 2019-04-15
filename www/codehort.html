@@ -143,7 +143,7 @@
         <table>
           <tr>
             <td>
-              <img src="./img/brain_head.png" class="image challengeIcon" onclick="Editor.startChallenge('1');">
+              <img src="./img/brain_head.png" id="challenge1" class="image challengeIcon" onclick="Editor.startChallenge('1');">
             </td>
             <td class="between">
               <p>beginner</p>
@@ -155,7 +155,7 @@
           </tr>
           <tr>
             <td>
-              <img src="./img/calculator.png" class="image challengeIcon" onclick="Editor.startChallenge('2');">
+              <img src="./img/calculator.png" id="challenge2" class="image challengeIcon" onclick="Editor.startChallenge('2');">
             </td>
             <td class="between">
               <p>beginner</p>
@@ -167,7 +167,7 @@
           </tr>
           <tr>
             <td>
-              <img src="./img/books.png" class="image challengeIcon" onclick="Editor.startChallenge('3');">
+              <img src="./img/books.png" id="challenge3" class="image challengeIcon" onclick="Editor.startChallenge('3');">
             </td>
             <td class="between">
               <p>intermediate</p>
@@ -179,7 +179,7 @@
           </tr>
           <tr>
             <td>
-              <img src="./img/contact_card.png" class="image challengeIcon" onclick="Editor.startChallenge('4');">
+              <img src="./img/contact_card.png" id="challenge4" class="image challengeIcon" onclick="Editor.startChallenge('4');">
             </td>
             <td class="between">
               <p>intermediate</p>
@@ -191,7 +191,7 @@
           </tr>
           <tr>
             <td>
-              <img src="./img/calendar.png" class="image challengeIcon" onclick="Editor.startChallenge('');">
+              <img src="./img/calendar.png" id="challenge5" class="image challengeIcon" onclick="Editor.startChallenge('');">
             </td>
             <td class="between">
               <p>advanced</p>
@@ -203,7 +203,7 @@
           </tr>
           <tr>
             <td>
-              <img src="./img/key.png" class="image challengeIcon" onclick="Editor.startChallenge('');">
+              <img src="./img/key.png" id="challenge6" class="image challengeIcon" onclick="Editor.startChallenge('');">
             </td>
             <td class="between">
               <p>advanced</p>
@@ -215,7 +215,7 @@
           </tr>
           <tr>
             <td>
-              <img src="./img/maze.png" class="image challengeIcon" onclick="Editor.startChallenge('');">
+              <img src="./img/maze.png" id="challenge7" class="image challengeIcon" onclick="Editor.startChallenge('');">
             </td>
             <td class="between">
               <p>advanced</p>
@@ -354,9 +354,9 @@
                 <td class="labeled right">Timer</td>
                 <td class="labeled">
                   <div class="number">
-                    <input class="minus change quantityIcon" type="button" value="" onclick="Mobbing.changeQuantity('timer', -1);">
+                    <input id="minusTimer" class="minus change quantityIcon" type="button" value="" onclick="Mobbing.changeQuantity('timer', -1);">
                     <input id="timer" class="quantity" type="number" size="3" value="5" onchange="Mobbing.changeQuantity('timer', 0);">
-                    <input class="plus change quantityIcon" type="button" value="" onclick="Mobbing.changeQuantity('timer', 1);">
+                    <input id="plusTimer" class="plus change quantityIcon" type="button" value="" onclick="Mobbing.changeQuantity('timer', 1);">
                   </div>
                 </td>
                 <td class="labeled">
@@ -420,9 +420,9 @@
                 <td class="labeled right">Zoom</td>
                 <td class="labeled">
                   <div class="number">
-                    <input class="minus change quantityIcon" type="button" value="" onclick="Zoom.changePercent(-1);">
+                    <input id="minusZoom" class="minus change quantityIcon" type="button" value="" onclick="Zoom.changePercent(-1);">
                     <input id="zoom" class="quantity" type="number" size="3" value="100" onchange="Zoom.changePercent(0);">
-                    <input class="plus change quantityIcon" type="button" value="" onclick="Zoom.changePercent(1);">
+                    <input id="plusZoom" class="plus change quantityIcon" type="button" value="" onclick="Zoom.changePercent(1);">
                   </div>
                 </td>
                 <td class="labeled left">%</td>

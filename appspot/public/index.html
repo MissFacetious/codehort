@@ -21,7 +21,7 @@ function checkOS() {
   document.getElementById('macDL').style.display = 'none';
   document.getElementById('noDL').style.display = 'none';
   var OSName=navigator.platform;
-  if (OSName.includes("Windows")) OSName="Windows";
+  if (OSName.includes("Windows") || OSName.includes("Win")) OSName="Windows";
   if (OSName.includes("Mac")) OSName="MacOS";
   console.log(OSName);
   if (OSName == "Windows") {
@@ -95,7 +95,7 @@ function checkOS() {
                 </div>
               </div>
             </button>
-            <div class="middle"><a href="" class="black">Another Platform?</a></div>
+            <div class="middle"><a href="./downloads" class="black">Another Platform?</a></div>
           </div>
         </div>
         <div class="grid-sidebyside">
