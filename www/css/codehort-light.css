@@ -63,6 +63,10 @@ div.right {
   float: right;
 }
 
+div.left {
+  float: left;
+}
+
 #codehort-header {
   padding-top: 20px;
   padding-bottom: 0px;

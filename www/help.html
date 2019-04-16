@@ -10,18 +10,37 @@
 </head>
 <body>
 
+<div class="grid-columns">
+  <div class="grid-column">
+    <div class="left">
+<h2>Table of Contents</h2>
+<p><a href="#newchallenge">New Challenge</a></p>
+<p><a href="#savetofile">Save to File</a></p>
+<p><a href="#zoom">Zoom</a></p>
+<p><a href="#search">Search/Replace</a></p>
+<p><a href="#newsession">New Session</a></p>
+<p><a href="#joinsession">Join Session</a></p>
+<p><a href="#sessioninfo">Session Info</a></p>
+<p><a href="#mob">Mob Programming</a></p>
+<p><a href="#prefs">Preferences</a></p>
+<p><a href="#run">Run Code</a></p>
+<p><a href="#help">Help</a></p>
+</div>
+</div>
+
+<div class="grid-column">
 <h1>Codehort Help Documentation</h1>
 <p>Welcome to Codehort! Below is a suite of help documentation designed to get you and your team connected, coding, and solving challenges in no time!</p>
 
-<h2>New Challenge <img src='./img/twotone_insert_drive_file_black_18dp.png' height='32' width='32'></img></h2>
+<h2 id='newchallenge'>New Challenge <img src='./img/twotone_insert_drive_file_black_18dp.png' height='32' width='32'></img></h2>
 
 <p>To select a new coding challenge to complete, first make sure you are <a href="#joinsession">joined to a session</a>. Then, click the <b>Start Code Challenge</b> button. From here you will be taken to a dialog allowing you to select from a variety of different code challenges to tackle as a team. Selexct your desired challenge from the list and then click 'OK' to begin the challenge. <b> WARNING: editor contents will be replaced with function stubs and instructions for the selected challenge, so make sure you <a href="#savetofile">save your editor contents to a file</a> if there is anything you wish to keep ahead of time! </b>
 <h2 id='savetofile'>Save to File <img src='./img/twotone_save_black_18dp.png' height='32' width='32'></img></h2>
 <p>Because Codehort is a distributed editor and the code your team develops will change over time, the application contains the capability to export the contents of your editor to a separate file. In order to do this, simply click the <b>Save Code in Editor</b> button. Select a filename and then press OK. </p>
 
-<h2>Zoom <img src='./img/twotone_zoom_in_black_18dp.png' height='32' width='32'></img> <img src='./img/twotone_zoom_out_black_18dp.png' height='32' width='32'></img></h2>
+<h2 id='zoom'>Zoom <img src='./img/twotone_zoom_in_black_18dp.png' height='32' width='32'></img> <img src='./img/twotone_zoom_out_black_18dp.png' height='32' width='32'></img></h2>
 <p>Select your preferred text size and editor field of view by clicking the <b>Zoom In and Zoom Out</b> icons. Clicking the '+' icon will increase text size, while clicking the '-' icon will reduce it. </p>
-<h2>Search/Replace <img src='./img/baseline_search_black_18dp.png' height='32' width='32'></img> <img src='./img/twotone_refresh_black_18dp.png' height='32' width='32'></img></h2>
+<h2 id='search'>Search/Replace <img src='./img/baseline_search_black_18dp.png' height='32' width='32'></img> <img src='./img/twotone_refresh_black_18dp.png' height='32' width='32'></img></h2>
 <p>Click the <b>Search Code</b> button to pop open a small text entry field below the Codehort toolbar. Entering a string into this field and then pressing Enter/Return will cause all instances of that string to highlight in the editor. Regular expressions are supported and by default the Search functionality is not case-sensitive. </p>
 <p>Click the <b>Replace Text</b> button to pop open a small text entry field below the Codehort toolbar. Enter a string into this field (this will be the string to replace) and then press Enter. Then enter a second string (this will be the new text) and then press Enter a second time. The editor will then navigate to each instance of the first string entered. Users can choose to replace the old text of the first string with that of the new string by selecting "Yes", skip that instance by pressing "No", or quit scanning for instances to replace by pressing "Stop".</p>
 <h2 id='newsession'>New Session  <img src='./img/twotone_person_add_black_18dp.png' height='32' width='32'></img></h2>
@@ -30,14 +49,20 @@
 <p>To join a session in progress, click the <b>Join Session</b> button. Enter the nineteen character alphanumeric session identifier and press OK. The session identifier can be found in the in the <a href="sessioninfo">session information</a> panel of any of the users already active in the session.
 <h2 id='sessioninfo'>Session Info <img src='./img/twotone_info_black_18dp.png' height='32' width='32'></h2>
 <p>To access session properties, click the <b>Session Info</b> button. A panel will appear showing the current session identifier and the names of all users in the session. The identifier can be given to other users who can then enter it into the <a href="joinsession">join session</a> panel to join your session in progress.
-<h2>Mob Programming <img src='./img/mob.png' height='32' width='32'></h2>
+<h2 id='mob'>Mob Programming <img src='./img/mob.png' height='32' width='32'></h2>
 <p>To begin a mob programming session, click the <b>Mob Program</b> button. Select the time interval for the driver and then press "Start". Comments will appear at the top of the editor showing the name of the driver and the timer on the Codehort toolbar will begin to tick down. During a mob programming session, only the driver can modify the contents of the editor. Codehort will automatically rotate to the next user in the session when the timer expires. To stop the mobbing session, click the "Stop" button.</p>
 
-<h2>Preferences <img src='./img/twotone_settings_black_18dp.png' height='32' width='32'></h2>
+<h2 id='prefs'>Preferences <img src='./img/twotone_settings_black_18dp.png' height='32' width='32'></h2>
 <p>To access user preferences, click the <b>Preferences</b> button. Here, you can change your username, set your zoom level, or turn on Codehort's dark theme by pressing the corresponding buttons and then clicking "Apply".</p>
-<h2>Run Code <img src='./img/twotone_play_circle_filled_black_18dp.png' height='32' width='32'></h2>
+<h2 id='run'>Run Code <img src='./img/twotone_play_circle_filled_black_18dp.png' height='32' width='32'></h2>
 <p>To run your code while in a challenge, press the <b>Run Code</b> button. Test cases will be executed for your selected challenge and the output will be shown on the newly-displayed results panel.</p>
-<h2>Help</h2>
+<h2 id='help'>Help <img src='./img/baseline_help_outline_black_18dp.png' height='32' width='32'></h2>
 <p>Further questions? Contact information forthcoming.</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+</div>
+</div>
 </body>
 </html>
