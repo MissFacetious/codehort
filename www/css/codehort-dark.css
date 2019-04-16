@@ -737,3 +737,9 @@ input.change:hover {
   height: 57px;
   width: 57px;
 }
+
+.check {
+  width: 100px;
+  height: 100px;
+  display: none;
+}

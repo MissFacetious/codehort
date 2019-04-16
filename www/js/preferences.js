@@ -104,6 +104,37 @@ var Preferences = (function() {
       Session.setSessionId(sessionPref);
     }
 
+    var check1 = false, check2 = false, check3 = false, check4 = false, check4 = false, check5 = false, check6 = false, check7 = false;
+    var challengeCheck1 = storage.getItem('check1');
+    if (challengeCheck1 != null && challengeCheck1 == 'true') {
+      check1 = true;
+    }
+    var challengeCheck2 = storage.getItem('check2');
+    if (challengeCheck2 != null && challengeCheck2 == 'true') {
+      check2 = true;
+    }
+    var challengeCheck3 = storage.getItem('check3');
+    if (challengeCheck3 != null && challengeCheck3 == 'true') {
+      check3 = true;
+    }
+    var challengeCheck4 = storage.getItem('check4');
+    if (challengeCheck4 != null && challengeCheck4 == 'true') {
+      check4 = true;
+    }
+    var challengeCheck5 = storage.getItem('check5');
+    if (challengeCheck5 != null && challengeCheck5 == 'true') {
+      check5 = true;
+    }
+    var challengeCheck6 = storage.getItem('check6');
+    if (challengeCheck6 != null && challengeCheck6 == 'true') {
+      check6 = true;
+    }
+    var challengeCheck7 = storage.getItem('check7');
+    if (challengeCheck7 != null && challengeCheck7 == 'true') {
+      check7 = true;
+    }
+    Editor.showChecks(check1, check2, check3, check4, check5, check6, check7);
+
     //console.log("light theme - " + Preferences.getLight());
     //console.log("splash screen - " + Preferences.getSplashScreen());
     //console.log("username is - " + Codehort.getUsername());

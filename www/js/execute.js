@@ -50,6 +50,31 @@ var Execute = (function() {
       AudioPlayer.playApplause();
       document.getElementById("trophy").style.backgroundImage = "url('./img/trophy.gif')";
       document.getElementById("outputCode").style.opacity = 0.5;
+
+      //console.log(Editor.showChallengeNumber());
+      var storage = window.localStorage;
+      if (Editor.showChallengeNumber() == 1) {
+        storage.setItem('check1', true);
+      }
+      if (Editor.showChallengeNumber() == 2) {
+        storage.setItem('check2', true);
+      }
+      if (Editor.showChallengeNumber() == 3) {
+        storage.setItem('check3', true);
+      }
+      if (Editor.showChallengeNumber() == 4) {
+        storage.setItem('check4', true);
+      }
+      if (Editor.showChallengeNumber() == 5) {
+        storage.setItem('check5', true);
+      }
+      if (Editor.showChallengeNumber() == 6) {
+        storage.setItem('check6', true);
+      }
+      if (Editor.showChallengeNumber() == 7) {
+        storage.setItem('check7', true);
+      }
+
     }
     else {
       AudioPlayer.playError();

@@ -11,6 +11,34 @@ var Editor = (function() {
     }
   }
 
+  Editor.showChallengeNumber = function() {
+    return this.challengeNumber;
+  }
+
+  Editor.showChecks = function(one, two, three, four, five, six, seven) {
+    if (one) {
+      document.getElementById('challenge1check').style.display='block';
+    }
+    if (two) {
+      document.getElementById('challenge2check').style.display='block';
+    }
+    if (three) {
+      document.getElementById('challenge3check').style.display='block';
+    }
+    if (four) {
+      document.getElementById('challenge4check').style.display='block';
+    }
+    if (five) {
+      document.getElementById('challenge5check').style.display='block';
+    }
+    if (six) {
+      document.getElementById('challenge6check').style.display='block';
+    }
+    if (seven) {
+      document.getElementById('challenge7check').style.display='block';
+    }
+  }
+
   Editor.newEditor = function() {
     Editor.loadChallenge(true);
     Codehort.hidePanels();
@@ -62,7 +90,7 @@ var Editor = (function() {
   }
 
   Editor.startChallenge = function(challenge) {
-
+    this.challengeNumber = challenge;
     if (challenge == '1') {
       // sample challenge
         tempCode = "// CHALLENGE #1: addition\n// Keep this line in order to execute your code in codehort correctly.\n\n// Create a function that adds two numbers together and return the result.\nfunction plus() {\n\t\n}"
