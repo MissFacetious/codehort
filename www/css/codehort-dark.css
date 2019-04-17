@@ -303,6 +303,7 @@ input.firepad-userlist-name-input {
 .panel-body {
   font-family: Arial;
   height: 375px;
+  overflow-y: auto;
 }
 
 /* Add Animation */
