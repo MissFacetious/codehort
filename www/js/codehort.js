@@ -105,7 +105,7 @@ var Codehort = (function() {
       //// Create Firepad.
       firepad = Firepad.fromCodeMirror(firepadRef, codeMirror, {
         defaultText: '// Welcome to Codehort, start coding!\n\nconsole.log(\'hello codehort!\');\n\n',
-        userId: userId
+        userId: this.userId
       });
 
       //// Create FirepadUserList (with our desired userId).
