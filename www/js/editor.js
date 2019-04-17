@@ -187,8 +187,7 @@ var Editor = (function() {
       tempHtml = '<h3>Description:</h3>Given the student record information given in the <i>getStudentList</i> function provided in the challenge, implement functions to perform the operations listed below. <ul><li>Implement a function <i>getWeightedNumericalGrade(studentName)</i> that returns the weighted numerical grade for a student given the value provided in <i>studentName</i>. You can access all student information, including student name and assignment grades, using the <i>getStudentList</i> function provided for you. Hint: A weighted numerical grade is determined by multiplying each grade entry by its weighted value and then summing the results, see explanation <a href=\'https://www.rapidtables.com/calc/grade/grade-calculator.html\' target=\'_new\'>here</a>.</li><li>Implement a function <i>getLetterGrade(studentName)</i> that returns the letter grade as a string for a student given the value provided in <i>studentName</i>. For the sake of this exercise, A = 90+, B=80-89, C=70-79, D=65-69, F=64 and below. Hint: You may want to utilize the function written above to retrieve the weighted numerical grade in your implementation.</li><li>Implement a function <i>getScoreForAssigment(studentName, assignmentName)</i> that returns the score for an assignment given the values provided in <i>studentName</i> and <i>assignmentName</i>.</li></ul></p><h3>Error Conditions:</h3><p>If <i>studentName</i> or <i>assignmentName</i> information is not found in the student list, any function accessing that information should return -1 (since the results cannot be accurately computed.)</p><h3>Examples:</h3><p>getWeightedNumericalGrade(\'Miggs\') will return 88</p><p>getLetterGrade(\'Slacky\') will return D</p><p>getScoreForAssignment(\'Lisa\', \'project\') will return 94</p><p>getWeightedNumericalGrade(\'Ash\') will return -1</p>';
     }
     else if (challenge == '5') {
-<<<<<<< HEAD
-      document.getElementById("challenge5").style.backgroundColor = "#333";
+      document.getElementById("challenge5").classList.add("challengeIconSelected");
 
       tempCode = "// CHALLENGE #5: Date and Time\n// Keep this line in order to execute your code in codehort correctly.\n\n//Click the Codehort icon above to view challenge instructions and example input and output values.\n" +
       "\n //Takes a string as input and returns true if the string is in a correct date format, false otherwise." +
@@ -210,32 +209,17 @@ var Editor = (function() {
       tempHtml = '<h3>Description:</h3>To familiarize yourself with the treatment of date and time values, implement functions to perform the operations listed below. <ul><li>Implement a function <i>isValidDate(potentialDate)</i> that returns true if the value provided in <i>potentialDate</i> can be parsed by JavaScript as a valid Date object, and false otherwise.</li><li>Implement a function <i>getNumberOfDaysInMonth(monthName, year)</i> that returns the number of days in the month passed as the string value <i>monthName</i> for the year provided by the string value <i>year</i>. Examples of usage provided below.</li><li>Implement a function <i>getMilliseconds(potentialDate)</i> that returns returns the number of milliseconds since January 1, 1970, 00:00:00 UTC for the value provided in the string <i>potentialDate</i>. Hint: you can use the function you already implemented to determine whether or not an input string represents a valid date value in order to determine whether the function can correctly compute the expected milliseconds value.</li></ul></p><h3>Error Conditions:</h3><p>If <i>monthName</i> or <i>year</i> in <i>getNumberOfDaysInMonth</i> cannot be parsed or are invalid (unexpected) values, the function should return -1.</p> <p>Similarly, if <i>potentialDate</i> cannot be successfully parsed in <i>getMilliseconds</i>, the function should return -1.</p><h3>Examples:</h3><p>isValidDate(\"2019-01-01\") will return true</p><p>isValidDate(\"2014-25-23\") will return false</p><p>getDaysInMonth(\"January\", \"2012\") will return 31</p><p>getMilliseconds(\"Thu, 01 Jan 1970 00:00:00 GMT\") will return 0</p><p>getMilliseconds(\"Wed, 09 Aug 1995 00:00:00 GMT\") will return 807926400000</p>';
     }
     else if (challenge == '6') {
-      document.getElementById("challenge6").style.backgroundColor = "#333";
-      tempCode = "// CHALLENGE #6: encoding\n// Keep this line in order to execute your code in codehort correctly.\n\n//Click the Codehort icon above to view challenge instructions and example input and output values.\n" +
-      "\n //Takes a roman numeral string as input and returns its corresponding numeric value." +
-      "\nfunction encode(valueToEncode) {\n\t\n}";
-=======
-      document.getElementById("challenge5").classList.add("challengeIconSelected");
-      tempCode = "";
-      tempTests[0] = {"test": "", "value": ""};
-      tempTests[1] = {"test": "", "value": ""};
-      tempTests[2] = {"test": "", "value": ""};
-      tempTests[3] = {"test": "", "value": ""};
-      tempTests[4] = {"test": "", "value": ""};
-      tempTitle = '<h2></h2>';
-      tempHtml = '';
-    }
-    else if (challenge == '6') {
       document.getElementById("challenge6").classList.add("challengeIconSelected");
-      tempCode = "";
->>>>>>> fe11ef0f648c218fccd6dd0c821b59cb3f66ec5d
-      tempTests[0] = {"test": "", "value": ""};
-      tempTests[1] = {"test": "", "value": ""};
-      tempTests[2] = {"test": "", "value": ""};
-      tempTests[3] = {"test": "", "value": ""};
-      tempTests[4] = {"test": "", "value": ""};
-      tempTitle = '<h2>Basic Encoding</h2>';
-      tempHtml = '';
+      tempCode = "// CHALLENGE #6: encoding\n// Keep this line in order to execute your code in codehort correctly.\n\n//Click the Codehort icon above to view challenge instructions and example input and output values.\n" +
+      "\n //Encodes a string according to the rules described in the challenge instructions. You are free to create any helper methods you need." +
+      "\nfunction encode(numOccurrences, rotationDirection, rotationValue, shiftCharacterCount, textToEncode) {\n\t\n}";
+      tempTests[0] = {"test": "encode(1, \"foo\", 2, 10, \"badRotationValue\")", "value": "-1"};
+      tempTests[1] = {"test": "encode(1, \"r\", 1, 1, \"abcXYZ\")", "value": "270203045152"};
+      tempTests[2] = {"test": "encode(1, \"r\", 5, 6, \"abcxyz\")", "value": "080904050607"};
+      tempTests[3] = {"test": "encode(1, \"l\", 2, 10, \"abcABC123XYZxyzabcxyz\")", "value": "133738391233435360809101112"};
+      tempTests[4] = {"test": "encode(1, \"r\", 1, 10, \" @#$%^&* \")", "value": "-1"};
+      tempTitle = '<h2>Encoding</h2>';
+      tempHtml = '<h3>Description:</h3>Implement a function, <i>encode(numOccurrences, rotationDirection, rotationValue, shiftCharacterCount, textToEncode)</i>, that will encode an alphanumeric string value passed in as <i>textToEncode</i> via the following operations <b>in order</b>: <ul><li>Remove Duplicate Characters: First, the utility will remove all but the first <integer> occurrences of any specific character, where <integer> is the value passed into the <i>encode</i> function as <i>numOccurrences</i>. This value must be greater than or equal to 0. For example, if <i>numOccurrences</i> is specified as 3 for the string \“a ab abc abcd abcd\”, that string would be transformed into \“a ab abc bcd cd\”; that is, all the characters that appear more than 3 times (“a” and “b” in this case) will have their 4th, 5th, etc. occurrences removed.</li><li>String Rotation: Next, the utility will rotate the string to the right or to the left (based on the value of the <i>rotationDirection</i> string passed into the <i>encode</i> function - supported values are \"r\" and \"l\", representing right and left consecutively) by as many characters as indicated by the <i>rotationValue</i> parameter passed into the <i>encode</i> function, which has to be greater than or equal to 1. For example, applying a <i>rotationDirection</i> of \"r\" and a <i>rotationValue</i> of 3 on the string \"abcdefg\" would produce \"efgabcd\".</li><li>Alphabetic Encoding: Finally, the utility will encode all alphabetic characters as the equivalent number in the alphabet (other characters remain unchanged), with 26 added to all capital letters (as if the alphabet in uppercase were numbering following the alphabet in lowercase)  so \‘a\’ would be encoded as \“01\” and \‘z\’ would be encoded as \“26\”, while \‘A\’ would be encoded as \“27\”and \‘Z\’ would be encoded as \“52\” . The value passed to the <i>encode</i> function as <i> shiftCharacterCount</i> must be an integer value between 0 and 25. This parameter will cause the utility to increment the encoding of each letter by the value specified, wrapping it back to \“01\” or \“27\” if it becomes greater than \"26\" or \"52\", respectively. For example, if <i>shiftCharacterCount</i> is specified as 1, \‘a\’ would be encoded as \“02\”, \‘A\’ would be encoded as \“28\”, \“z\”  would be encoded as \“01\”, and \‘Z\’ would be encoded as \“27\”.</li></ul></p><h3>Error Conditions:</h3><p><ul><li>Remove Duplicate Characters: <i>numOccurrences</i> must be positive or zero. If negative, empty, or null, <i>encode</i> will return -1.</li><li>String Rotation: Accepted values for <i>rotationDirection</i> are \"r\" and \"l\", case insensitive. Additionally, <i>rotationValue</i> must be greater than or equal to 1. If either of these conditions is not met, <i>encode</i> will return -1.</li><li>Alphabetic Encoding: the value passed into <i>shiftCharacterCount</i> has to be between 0 and 25, inclusive. If it falls outside of that range, is null, or empty, <i>encode</i> will return -1.</li><li>General: The value of <i>textToEncode</i> must be alphanumeric(consisting of letters and numbers only), non-empty, and non-null. No whitespace or non-printable characters can be present. If this condition is not met, <i>encode</i> will return -1.</li></ul></p><h3>Examples:</h3><p>encode(1, \"r\", 5, 6, \"abcxyz\") will return 080904050607</p><p>encode(1, \"l\", 2, 10, \"abcABC123XYZxyzabcxyz\") will return 133738391233435360809101112</p>';
     }
     else if (challenge == '7') {
       document.getElementById("challenge7").classList.add("challengeIconSelected");
