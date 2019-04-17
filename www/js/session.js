@@ -132,7 +132,7 @@ var Session = (function() {
     }
     else {
       // show error that session doesn't fufil
-      document.getElementById("errorJoinSession").innerHTML = "Enter a Session ID with 19 alphanumeric digits.";
+      document.getElementById("errorJoinSession").innerHTML = "Enter a Session ID with 18-19 alphanumeric digits.";
     }
   }
 
@@ -206,7 +206,7 @@ var Session = (function() {
     if (value.includes(".") || value.includes("#") || value.includes("$") || value.includes("[") || value.includes("]")) {
       return false;
     }
-    if (value.length != 19) {
+    if (value.length != 18 && value.length != 19) {
       return false;
     }
     // Paths must be non-empty strings and can't contain ".", "#", "$", "[", or "]"
