@@ -99,16 +99,16 @@ var Editor = (function() {
 
   Editor.startChallenge = function(challenge) {
     this.challengeNumber = challenge;
-    document.getElementById("challenge1").style.backgroundColor = "";
-    document.getElementById("challenge2").style.backgroundColor = "";
-    document.getElementById("challenge3").style.backgroundColor = "";
-    document.getElementById("challenge4").style.backgroundColor = "";
-    document.getElementById("challenge5").style.backgroundColor = "";
-    document.getElementById("challenge6").style.backgroundColor = "";
-    document.getElementById("challenge7").style.backgroundColor = "";
+    document.getElementById("challenge1").classList.remove("challengeIconSelected");
+    document.getElementById("challenge2").classList.remove("challengeIconSelected");
+    document.getElementById("challenge3").classList.remove("challengeIconSelected");
+    document.getElementById("challenge4").classList.remove("challengeIconSelected");
+    document.getElementById("challenge5").classList.remove("challengeIconSelected");
+    document.getElementById("challenge6").classList.remove("challengeIconSelected");
+    document.getElementById("challenge7").classList.remove("challengeIconSelected");
 
     if (challenge == '1') {
-        document.getElementById("challenge1").style.backgroundColor = "#333";
+        document.getElementById("challenge1").classList.add("challengeIconSelected");
       // sample challenge
         tempCode = "// CHALLENGE #1: addition\n// Keep this line in order to execute your code in codehort correctly.\n\n//Click the Codehort icon above to view challenge instructions and example input and output values.\nfunction plus() {\n\t\n}"
         tempTests[0] = {"test": "plus(1, 3);", "value": "4"};
@@ -121,7 +121,7 @@ var Editor = (function() {
         tempHtml = '<h3>Description:</h3><p>Example challenge. Create a function that adds two parameters <i>a</i> and <i>b</i> and returns the result. </p><h3>Error Conditions:</h3><p>None</p><h3>Examples:</h3><p>plus(1, 2) will return 3</p><p>plus(5,10) will return 15</p><p>plus(-5,10) will return 5</p>';
     }
     else if (challenge == '2') {
-      document.getElementById("challenge2").style.backgroundColor = "#333";
+      document.getElementById("challenge2").classList.add("challengeIconSelected");
       tempCode = "// CHALLENGE #2: arithmetic\n// Keep this line in order to execute your code in codehort correctly.\n\n//Click the Codehort icon above to view challenge instructions and example input and output values.\n" +
       "\n //Adds two numbers together and return the result. \n function add(a, b) {\n\t\n} \n" +
       "\n //Subtracts a from b and returns the result.\nfunction subtract(a, b) {\n\t\n}" +
@@ -141,7 +141,7 @@ var Editor = (function() {
       tempHtml = '<h3>Description:</h3><p>Create several functions to complete basic arithmetic operations. Those functions will then be used in another function, <i>compute</i>, which will return a rounded numerical result.<ul><li>Create a function <i>add(a, b)</i> that adds two parameters <i>a</i> and <i>b</i> and returns the result.</li><li>Create a function <i>subtract(a, b)</i> that subtracts parameter <i>b</i> from parameter <i>a</i> and returns the result.</li><li>Create a function <i>multiply(a, b)</i> that multiplies two parameters <i>a</i> and <i>b</i> and returns the result.</li><li>Create a function <i>divide(a, b)</i> that divides parameter <i>a</i> by parameter <i>b</i> and returns the result. If divide by zero, return Infinity.</li><li>Create a function <i>modulus(a, b)</i> that takes the modulo of two parameters <i>a</i> and <i>b</i> and returns the result. If incalculable, return NaN.</li><li>Create a function <i>round(value, decimal_places)</i> that returns the parameter <i> value </i> rounded to the value specified by <i> decimal_places </i>. Examples of target behavior shown below.</li></ul></p><h3>Error Conditions:</h3><p>None</p><h3>Examples:</h3><p>round(2.256, 2) will return 2.26</p><p>round(56.2345,3) will return 56.235</p><p>round(42,10) will return 42.</p>';
     }
     else if (challenge == '3') {
-      document.getElementById("challenge3").style.backgroundColor = "#333";
+      document.getElementById("challenge3").classList.add("challengeIconSelected");
       tempCode = "// CHALLENGE #3: roman numeral converter\n// Keep this line in order to execute your code in codehort correctly.\n\n//Click the Codehort icon above to view challenge instructions and example input and output values.\n" +
       "\n //Implement a roman numeral converter that takes a roman numeral string as input and returns its corresponding numeric value." +
       "\nfunction romanNumeralToInteger(romanValue) {\n\t\n}";
@@ -156,7 +156,7 @@ var Editor = (function() {
       tempHtml = '<h3>Description:</h3><p>Implement a roman numeral converter function, <i>romanNumeralToInteger(romanValue)</i> that takes a string in a roman numeral format, <i>romanValue</i> as input and returns its corresponding numeric value. An explanation of roman numerals and their values can be found <a href=\'http://mathworld.wolfram.com/RomanNumerals.html\' target=\'_new\'>here</a>.</p><h3>Error Conditions:</h3><p>Roman numerals provided to the <i>romanNumeralToInteger</i> function can be either uppercase or lowercase. If an invalid roman numeral string (with non-roman-numeral characters, empty, or null) is provided, the function should return -1.</p><h3>Examples:</h3><p>romanNumeralToInteger("viii") will return 8</p><p>romanNumeralToInteger("IX") will return 9</p><p>romanNumeralToInteger("xli") will return 41</p><p>romanNumeralToInteger("LII") will return 52</p><p>romanNumeralToInteger("foo") will return -1</p>';
     }
     else if (challenge == '4') {
-      document.getElementById("challenge4").style.backgroundColor = "#333";
+      document.getElementById("challenge4").classList.add("challengeIconSelected");
       tempCode = "// CHALLENGE #4: JSON Parsing\n// Keep this line in order to execute your code in codehort correctly.\n\n//Click the Codehort icon above to view challenge instructions and example input and output values.\n" +
       "\n//Given the student list shown in the function below, implement the listed functions to compute and retrieve student information.\n"+
       "\n//Access the student records in your implementations using the function shown here:\n"+
@@ -185,7 +185,7 @@ var Editor = (function() {
       tempHtml = '<h3>Description:</h3>Given the student record information given in the <i>getStudentList</i> function provided in the challenge, implement functions to perform the operations listed below. <ul><li>Implement a function <i>getWeightedNumericalGrade(studentName)</i> that returns the weighted numerical grade for a student given the value provided in <i>studentName</i>. You can access all student information, including student name and assignment grades, using the <i>getStudentList</i> function provided for you. Hint: A weighted numerical grade is determined by multiplying each grade entry by its weighted value and then summing the results, see explanation <a href=\'https://www.rapidtables.com/calc/grade/grade-calculator.html\' target=\'_new\'>here</a>.</li><li>Implement a function <i>getLetterGrade(studentName)</i> that returns the letter grade as a string for a student given the value provided in <i>studentName</i>. For the sake of this exercise, A = 90+, B=80-89, C=70-79, D=65-69, F=64 and below. Hint: You may want to utilize the function written above to retrieve the weighted numerical grade in your implementation.</li><li>Implement a function <i>getScoreForAssigment(studentName, assignmentName)</i> that returns the score for an assignment given the values provided in <i>studentName</i> and <i>assignmentName</i>.</li></ul></p><h3>Error Conditions:</h3><p>If <i>studentName</i> or <i>assignmentName</i> information is not found in the student list, any function accessing that information should return -1 (since the results cannot be accurately computed.)</p><h3>Examples:</h3><p>getWeightedNumericalGrade(\'Miggs\') will return 88</p><p>getLetterGrade(\'Slacky\') will return D</p><p>getScoreForAssignment(\'Lisa\', \'project\') will return 94</p><p>getWeightedNumericalGrade(\'Ash\') will return -1</p>';
     }
     else if (challenge == '5') {
-      document.getElementById("challenge5").style.backgroundColor = "#333";
+      document.getElementById("challenge5").classList.add("challengeIconSelected");
       tempCode = "";
       tempTests[0] = {"test": "", "value": ""};
       tempTests[1] = {"test": "", "value": ""};
@@ -196,7 +196,7 @@ var Editor = (function() {
       tempHtml = '';
     }
     else if (challenge == '6') {
-      document.getElementById("challenge6").style.backgroundColor = "#333";
+      document.getElementById("challenge6").classList.add("challengeIconSelected");
       tempCode = "";
       tempTests[0] = {"test": "", "value": ""};
       tempTests[1] = {"test": "", "value": ""};
@@ -207,7 +207,7 @@ var Editor = (function() {
       tempHtml = '';
     }
     else if (challenge == '7') {
-      document.getElementById("challenge7").style.backgroundColor = "#333";
+      document.getElementById("challenge7").classList.add("challengeIconSelected");
       tempCode = "";
       tempTests[0] = {"test": "", "value": ""};
       tempTests[1] = {"test": "", "value": ""};
