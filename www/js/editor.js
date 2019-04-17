@@ -210,6 +210,7 @@ var Editor = (function() {
     }
     else if (challenge == '6') {
       document.getElementById("challenge6").classList.add("challengeIconSelected");
+<<<<<<< HEAD
       tempCode = "// CHALLENGE #6: encoding\n// Keep this line in order to execute your code in codehort correctly.\n\n//Click the Codehort icon above to view challenge instructions and example input and output values.\n" +
       "\n //Encodes a string according to the rules described in the challenge instructions. You are free to create any helper methods you need." +
       "\nfunction encode(numOccurrences, rotationDirection, rotationValue, shiftCharacterCount, textToEncode) {\n\t\n}";
@@ -220,6 +221,21 @@ var Editor = (function() {
       tempTests[4] = {"test": "encode(1, \"r\", 1, 10, \" @#$%^&* \")", "value": "-1"};
       tempTitle = '<h2>Encoding</h2>';
       tempHtml = '<h3>Description:</h3>Implement a function, <i>encode(numOccurrences, rotationDirection, rotationValue, shiftCharacterCount, textToEncode)</i>, that will encode an alphanumeric string value passed in as <i>textToEncode</i> via the following operations <b>in order</b>: <ul><li>Remove Duplicate Characters: First, the utility will remove all but the first <integer> occurrences of any specific character, where <integer> is the value passed into the <i>encode</i> function as <i>numOccurrences</i>. This value must be greater than or equal to 0. For example, if <i>numOccurrences</i> is specified as 3 for the string \“a ab abc abcd abcd\”, that string would be transformed into \“a ab abc bcd cd\”; that is, all the characters that appear more than 3 times (“a” and “b” in this case) will have their 4th, 5th, etc. occurrences removed.</li><li>String Rotation: Next, the utility will rotate the string to the right or to the left (based on the value of the <i>rotationDirection</i> string passed into the <i>encode</i> function - supported values are \"r\" and \"l\", representing right and left consecutively) by as many characters as indicated by the <i>rotationValue</i> parameter passed into the <i>encode</i> function, which has to be greater than or equal to 1. For example, applying a <i>rotationDirection</i> of \"r\" and a <i>rotationValue</i> of 3 on the string \"abcdefg\" would produce \"efgabcd\".</li><li>Alphabetic Encoding: Finally, the utility will encode all alphabetic characters as the equivalent number in the alphabet (other characters remain unchanged), with 26 added to all capital letters (as if the alphabet in uppercase were numbering following the alphabet in lowercase)  so \‘a\’ would be encoded as \“01\” and \‘z\’ would be encoded as \“26\”, while \‘A\’ would be encoded as \“27\”and \‘Z\’ would be encoded as \“52\” . The value passed to the <i>encode</i> function as <i> shiftCharacterCount</i> must be an integer value between 0 and 25. This parameter will cause the utility to increment the encoding of each letter by the value specified, wrapping it back to \“01\” or \“27\” if it becomes greater than \"26\" or \"52\", respectively. For example, if <i>shiftCharacterCount</i> is specified as 1, \‘a\’ would be encoded as \“02\”, \‘A\’ would be encoded as \“28\”, \“z\”  would be encoded as \“01\”, and \‘Z\’ would be encoded as \“27\”.</li></ul></p><h3>Error Conditions:</h3><p><ul><li>Remove Duplicate Characters: <i>numOccurrences</i> must be positive or zero. If negative, empty, or null, <i>encode</i> will return -1.</li><li>String Rotation: Accepted values for <i>rotationDirection</i> are \"r\" and \"l\", case insensitive. Additionally, <i>rotationValue</i> must be greater than or equal to 1. If either of these conditions is not met, <i>encode</i> will return -1.</li><li>Alphabetic Encoding: the value passed into <i>shiftCharacterCount</i> has to be between 0 and 25, inclusive. If it falls outside of that range, is null, or empty, <i>encode</i> will return -1.</li><li>General: The value of <i>textToEncode</i> must be alphanumeric(consisting of letters and numbers only), non-empty, and non-null. No whitespace or non-printable characters can be present. If this condition is not met, <i>encode</i> will return -1.</li></ul></p><h3>Examples:</h3><p>encode(1, \"r\", 5, 6, \"abcxyz\") will return 080904050607</p><p>encode(1, \"l\", 2, 10, \"abcABC123XYZxyzabcxyz\") will return 133738391233435360809101112</p>';
+=======
+
+      tempCode = "// CHALLENGE #6: encoding\n// Keep this line in order to execute your code in codehort correctly.\n\n//Click the Codehort icon above to view challenge instructions and example input and output values.\n" +
+      "\n //Takes a roman numeral string as input and returns its corresponding numeric value." +
+      "\nfunction encode(valueToEncode) {\n\t\n}";
+
+      tempCode = "";
+      tempTests[0] = {"test": "", "value": ""};
+      tempTests[1] = {"test": "", "value": ""};
+      tempTests[2] = {"test": "", "value": ""};
+      tempTests[3] = {"test": "", "value": ""};
+      tempTests[4] = {"test": "", "value": ""};
+      tempTitle = '<h2>Basic Encoding</h2>';
+      tempHtml = '';
+>>>>>>> fc07110dab3e741d72a83bd008522aba69d67ff3
     }
     else if (challenge == '7') {
       document.getElementById("challenge7").classList.add("challengeIconSelected");
@@ -229,7 +245,7 @@ var Editor = (function() {
       tempTests[2] = {"test": "", "value": ""};
       tempTests[3] = {"test": "", "value": ""};
       tempTests[4] = {"test": "", "value": ""};
-      tempTitle = '<h2></h2>';
+      tempTitle = '<h2>Solve the Maze</h2>';
       tempHtml = '';
     }
   }
