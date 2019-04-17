@@ -302,8 +302,9 @@ input.firepad-userlist-name-input {
 
 .panel-body {
   font-family: Arial;
-  height: 375px;
+  height: 500px;
   overflow-y: auto;
+  padding-right: 10px;
 }
 
 /* Add Animation */
@@ -743,4 +744,9 @@ input.change:hover {
   width: 100px;
   height: 100px;
   display: none;
+}
+
+.challengeTitle {
+  font-weight: 700;
+  font-size: 1.5em;
 }

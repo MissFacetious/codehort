@@ -2,6 +2,7 @@ var Editor = (function() {
   var tempCode = null;
   var tempTests = [5];
   var tempHtml = null;
+  var tempTitle = null;
   var challengeNumber;
   // new editor icon click
 
@@ -46,6 +47,7 @@ var Editor = (function() {
     tempCode = null;
     tempTests = [5];
     tempHtml = null;
+    tempTitle = null;
     Codehort.showPanel('codehort-challenge');
   }
 
@@ -63,6 +65,7 @@ var Editor = (function() {
       Execute.setTests(Array.from(tempTests));
 
       // load up the challenge to the window
+      document.getElementById("challengeTitle").innerHTML = tempTitle;
       document.getElementById("challenge").innerHTML = tempHtml;
     }
     else {
@@ -100,7 +103,8 @@ var Editor = (function() {
         tempTests[3] = {"test": "plus(10, -10);", "value": "0"};
         tempTests[4] = {"test": "plus(-10, -10);", "value": "-20"};
 
-        tempHtml = '<h2>CHALLENGE #1: addition</h2><h3>Description:</h3><p>Example challenge. Create a function that adds two parameters <i>a</i> and <i>b</i> and returns the result. </p><h3>Error Conditions:</h3><p>None</p><h3>Examples:</h3><p>plus(1, 2) will return 3</p><p>plus(5,10) will return 15</p><p>plus(-5,10) will return 5</p>';
+        tempTitle = '<h2>Addition</h2>';
+        tempHtml = '<h3>Description:</h3><p>Example challenge. Create a function that adds two parameters <i>a</i> and <i>b</i> and returns the result. </p><h3>Error Conditions:</h3><p>None</p><h3>Examples:</h3><p>plus(1, 2) will return 3</p><p>plus(5,10) will return 15</p><p>plus(-5,10) will return 5</p>';
     }
     else if (challenge == '2') {
       tempCode = "// CHALLENGE #2: arithmetic\n// Keep this line in order to execute your code in codehort correctly.\n\n//Click the Codehort icon above to view challenge instructions and example input and output values.\n" +
@@ -118,7 +122,8 @@ var Editor = (function() {
       tempTests[3] = {"test": "compute(10, 20, 2);", "value": "930"};
       tempTests[4] = {"test": "compute(423.332323423, 363.83232334, 2);", "value": "266160.47"};
 
-      tempHtml = '<h2>CHALLENGE #2: arithmetic</h2><h3>Description:</h3><p>Create several functions to complete basic arithmetic operations. Those functions will then be used in another function, <i>compute</i>, which will return a rounded numerical result.<ul><li>Create a function <i>add(a, b)</i> that adds two parameters <i>a</i> and <i>b</i> and returns the result.</li><li>Create a function <i>subtract(a, b)</i> that subtracts parameter <i>b</i> from parameter <i>a</i> and returns the result.</li><li>Create a function <i>multiply(a, b)</i> that multiplies two parameters <i>a</i> and <i>b</i> and returns the result.</li><li>Create a function <i>divide(a, b)</i> that divides parameter <i>a</i> by parameter <i>b</i> and returns the result. If divide by zero, return Infinity.</li><li>Create a function <i>modulus(a, b)</i> that takes the modulo of two parameters <i>a</i> and <i>b</i> and returns the result. If incalculable, return NaN.</li><li>Create a function <i>round(value, decimal_places)</i> that returns the parameter <i> value </i> rounded to the value specified by <i> decimal_places </i>. Examples of target behavior shown below.</li></ul></p><h3>Error Conditions:</h3><p>None</p><h3>Examples:</h3><p>round(2.256, 2) will return 2.26</p><p>round(56.2345,3) will return 56.235</p><p>round(42,10) will return 42.</p>';
+      tempTitle = '<h2>Arithmetic</h2>';
+      tempHtml = '<h3>Description:</h3><p>Create several functions to complete basic arithmetic operations. Those functions will then be used in another function, <i>compute</i>, which will return a rounded numerical result.<ul><li>Create a function <i>add(a, b)</i> that adds two parameters <i>a</i> and <i>b</i> and returns the result.</li><li>Create a function <i>subtract(a, b)</i> that subtracts parameter <i>b</i> from parameter <i>a</i> and returns the result.</li><li>Create a function <i>multiply(a, b)</i> that multiplies two parameters <i>a</i> and <i>b</i> and returns the result.</li><li>Create a function <i>divide(a, b)</i> that divides parameter <i>a</i> by parameter <i>b</i> and returns the result. If divide by zero, return Infinity.</li><li>Create a function <i>modulus(a, b)</i> that takes the modulo of two parameters <i>a</i> and <i>b</i> and returns the result. If incalculable, return NaN.</li><li>Create a function <i>round(value, decimal_places)</i> that returns the parameter <i> value </i> rounded to the value specified by <i> decimal_places </i>. Examples of target behavior shown below.</li></ul></p><h3>Error Conditions:</h3><p>None</p><h3>Examples:</h3><p>round(2.256, 2) will return 2.26</p><p>round(56.2345,3) will return 56.235</p><p>round(42,10) will return 42.</p>';
     }
     else if (challenge == '3') {
       tempCode = "// CHALLENGE #3: roman numeral converter\n// Keep this line in order to execute your code in codehort correctly.\n\n//Click the Codehort icon above to view challenge instructions and example input and output values.\n" +
@@ -131,7 +136,8 @@ var Editor = (function() {
       tempTests[3] = {"test": "romanNumeralToInteger(\"XXVIMFOO\");", "value": "-1"};
       tempTests[4] = {"test": "romanNumeralToInteger(\"MC\");", "value": "1100"};
 
-      tempHtml = '<h2>CHALLENGE #3: roman numeral converter</h2><h3>Description:</h3><p>Implement a roman numeral converter function, <i>romanNumeralToInteger(romanValue)</i> that takes a string in a roman numeral format, <i>romanValue</i> as input and returns its corresponding numeric value. An explanation of roman numerals and their values can be found <a href=\'http://mathworld.wolfram.com/RomanNumerals.html\'>here</a>.</p><h3>Error Conditions:</h3><p>Roman numerals provided to the <i>romanNumeralToInteger</i> function can be either uppercase or lowercase. If an invalid roman numeral string (with non-roman-numeral characters, empty, or null) is provided, the function should return -1.</p><h3>Examples:</h3><p>romanNumeralToInteger("viii") will return 8</p><p>romanNumeralToInteger("IX") will return 9</p><p>romanNumeralToInteger("xli") will return 41</p><p>romanNumeralToInteger("LII") will return 52</p><p>romanNumeralToInteger("foo") will return -1</p>';
+      tempTitle = '<h2>Roman Numeral Converter</h2>';
+      tempHtml = '<h3>Description:</h3><p>Implement a roman numeral converter function, <i>romanNumeralToInteger(romanValue)</i> that takes a string in a roman numeral format, <i>romanValue</i> as input and returns its corresponding numeric value. An explanation of roman numerals and their values can be found <a href=\'http://mathworld.wolfram.com/RomanNumerals.html\' target=\'_new\'>here</a>.</p><h3>Error Conditions:</h3><p>Roman numerals provided to the <i>romanNumeralToInteger</i> function can be either uppercase or lowercase. If an invalid roman numeral string (with non-roman-numeral characters, empty, or null) is provided, the function should return -1.</p><h3>Examples:</h3><p>romanNumeralToInteger("viii") will return 8</p><p>romanNumeralToInteger("IX") will return 9</p><p>romanNumeralToInteger("xli") will return 41</p><p>romanNumeralToInteger("LII") will return 52</p><p>romanNumeralToInteger("foo") will return -1</p>';
     }
     else if (challenge == '4') {
       tempCode = "// CHALLENGE #4: JSON Parsing\n// Keep this line in order to execute your code in codehort correctly.\n\n//Click the Codehort icon above to view challenge instructions and example input and output values.\n" +
@@ -158,7 +164,8 @@ var Editor = (function() {
       tempTests[4] = {"test": "getScoreForAssignment(\'Miggs\',\'project'\);", "value": "88"};
       //tempTests[5] = {"test": "getScoreForAssignment(\'Miggs\',\'fakeExam'\);", "value": "-1"};
       //tempTests[6] = {"test": "getScoreForAssignment(\'Ash\',\'project'\);", "value": "-1"};
-      tempHtml = '<h2>CHALLENGE #4: JSON Parsing</h2><h3>Description:</h3>Given the student record information given in the <i>getStudentList</i> function provided in the challenge, implement functions to perform the operations listed below. <ul><li>Implement a function <i>getWeightedNumericalGrade(studentName)</i> that returns the weighted numerical grade for a student given the value provided in <i>studentName</i>. You can access all student information, including student name and assignment grades, using the <i>getStudentList</i> function provided for you. Hint: A weighted numerical grade is determined by multiplying each grade entry by its weighted value and then summing the results, see explanation <a href=\'https://www.rapidtables.com/calc/grade/grade-calculator.html\'>here</a>.</li><li>Implement a function <i>getLetterGrade(studentName)</i> that returns the letter grade as a string for a student given the value provided in <i>studentName</i>. For the sake of this exercise, A = 90+, B=80-89, C=70-79, D=65-69, F=64 and below. Hint: You may want to utilize the function written above to retrieve the weighted numerical grade in your implementation.</li><li>Implement a function <i>getScoreForAssigment(studentName, assignmentName)</i> that returns the score for an assignment given the values provided in <i>studentName</i> and <i>assignmentName</i>.</li></ul></p><h3>Error Conditions:</h3><p>If <i>studentName</i> or <i>assignmentName</i> information is not found in the student list, any function accessing that information should return -1 (since the results cannot be accurately computed.)</p><h3>Examples:</h3><p>getWeightedNumericalGrade(\'Miggs\') will return 88</p><p>getLetterGrade(\'Slacky\') will return D</p><p>getScoreForAssignment(\'Lisa\', \'project\') will return 94</p><p>getWeightedNumericalGrade(\'Ash\') will return -1</p>';
+      tempTitle = '<h2>JSON Parsing</h2>';
+      tempHtml = '<h3>Description:</h3>Given the student record information given in the <i>getStudentList</i> function provided in the challenge, implement functions to perform the operations listed below. <ul><li>Implement a function <i>getWeightedNumericalGrade(studentName)</i> that returns the weighted numerical grade for a student given the value provided in <i>studentName</i>. You can access all student information, including student name and assignment grades, using the <i>getStudentList</i> function provided for you. Hint: A weighted numerical grade is determined by multiplying each grade entry by its weighted value and then summing the results, see explanation <a href=\'https://www.rapidtables.com/calc/grade/grade-calculator.html\' target=\'_new\'>here</a>.</li><li>Implement a function <i>getLetterGrade(studentName)</i> that returns the letter grade as a string for a student given the value provided in <i>studentName</i>. For the sake of this exercise, A = 90+, B=80-89, C=70-79, D=65-69, F=64 and below. Hint: You may want to utilize the function written above to retrieve the weighted numerical grade in your implementation.</li><li>Implement a function <i>getScoreForAssigment(studentName, assignmentName)</i> that returns the score for an assignment given the values provided in <i>studentName</i> and <i>assignmentName</i>.</li></ul></p><h3>Error Conditions:</h3><p>If <i>studentName</i> or <i>assignmentName</i> information is not found in the student list, any function accessing that information should return -1 (since the results cannot be accurately computed.)</p><h3>Examples:</h3><p>getWeightedNumericalGrade(\'Miggs\') will return 88</p><p>getLetterGrade(\'Slacky\') will return D</p><p>getScoreForAssignment(\'Lisa\', \'project\') will return 94</p><p>getWeightedNumericalGrade(\'Ash\') will return -1</p>';
     }
   }
   var blob;
