@@ -605,6 +605,11 @@ input.change:hover {
   height: 250px;
 }
 
+.challengeIcon {
+  width: 70%;
+  height: 70%;
+}
+
 .challengeIcon:hover {
   background-color: #333 !important;
 }
@@ -733,8 +738,8 @@ input.change:hover {
 }
 
 .check {
-  width: 100px;
-  height: 100px;
+  width: 75px;
+  height: 75px;
   display: none;
 }
 
