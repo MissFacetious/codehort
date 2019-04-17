@@ -37,6 +37,10 @@ pre {
   word-wrap: break-word;       /* Internet Explorer 5.5+ */
 }
 
+a {
+  color: #ffe300;
+}
+
 .success {
   color: green;
 }
@@ -611,6 +615,10 @@ input.change:hover {
 }
 
 .challengeIcon:hover {
+  background-color: #333 !important;
+}
+
+.challengeIconSelected {
   background-color: #333 !important;
 }
 

@@ -24,23 +24,30 @@ var Execute = (function() {
       if you have a console.log at the end that gets in the way, it grabs the attention of the output
     */
     contents = "";
+    var error = true;
 
     var prepend = "<table>";
     var append = "</table>";
     var outnode = document.getElementById("outputCode");
     contents += prepend;
 
-    for (var i=0; i < Execute.tests.length; i++) {
-      //if (firepad != null) {
-      //  error = JSrun(i+1, tests[i], firepad);
-      //}
-      //else {
-        error = runScript(i+1, Execute.tests[i], code);
-      //}
-      if (error) {
-        // do not execute any other tests
-        break;
+    if (Execute.tests != null) {
+      for (var i=0; i < Execute.tests.length; i++) {
+        //if (firepad != null) {
+        //  error = JSrun(i+1, tests[i], firepad);
+        //}
+        //else {
+          error = runScript(i+1, Execute.tests[i], code);
+        //}
+        if (error) {
+          // do not execute any other tests
+          break;
+        }
       }
+    }
+    else {
+      // show there is nothing to execute because you aren't in a challenge
+      contents += "Nothing to execute, you need to start a code challenge first.";
     }
     contents += append;
     outnode.innerHTML = contents;
