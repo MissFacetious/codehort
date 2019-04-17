@@ -163,9 +163,18 @@ var Session = (function() {
 
   // show session info icon click
   Session.showSessionInfo = function(link) {
-    document.getElementById("codehort-link").innerHTML = "Send your friend to <a href=\"http://codehort.appspot.com/\" target=\"_new\">http://codehort.appspot.com</a> to download codehort, and then tell them to use this secret code to join you."
-    document.getElementById("codehort-display").innerHTML = link;
-    document.getElementById("sessionIdFooter").innerHTML = "Connected to Session ID: " + link;
+    // check to see if you have a session id or not and display
+    if (this.sessionId != null && this.sessionId != '') {
+      document.getElementById("haveSession").style.display="block";
+      document.getElementById("noSession").style.display="none";
+      document.getElementById("codehort-link").innerHTML = "Send your friend to <a href=\"http://codehort.appspot.com/\" target=\"_new\">http://codehort.appspot.com</a> to download codehort, and then tell them to use this secret code to join you."
+      document.getElementById("codehort-display").innerHTML = link;
+      document.getElementById("sessionIdFooter").innerHTML = "Connected to Session ID: " + link;
+    }
+    else {
+      document.getElementById("noSession").style.display="block";
+      document.getElementById("haveSession").style.display="none";
+    }
   }
 
   Session.leaveSession = function() {

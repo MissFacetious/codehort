@@ -344,19 +344,26 @@
       <h2>Session Info</h2>
     </div>
     <div class="panel-body">
-      <div>Here is your session id you currently have that you can share. Want to <a href="javascript:Session.leaveSession();">leave</a> this session?</div>
-      <p></p>
-      <div id="sessionInfoPanel">
-        <center><h1 id="codehort-display" class="codehort-display" onClick="Session.copySessionId();"></h1></center>
-        <p></p>
-        <center><div id="codehort-link"></div></center>
-        <p></p>
-        <div id="sessionInfoUsers">
-          <div>Current users in session:</div>
-          <div id="userlist" class="userlist-disabled"></div>
-        </div>
+
+      <div id="noSession">
+        <p>Create a New Session or Join a Session first to get session information.</p>
+        <p>Send your friend to <a href="http://codehort.appspot.com/" target="_new">http://codehort.appspot.com</a> to download codehort, and then tell them to use that secret code to join you.</p>
       </div>
-      <div id="errorSessionInfo"></div>
+      <div id="haveSession">
+        <div>Here is your session id you currently have that you can share. Want to <a href="javascript:Session.leaveSession();">leave</a> this session?</div>
+        <p></p>
+        <div id="sessionInfoPanel">
+          <center><h1 id="codehort-display" class="codehort-display" onClick="Session.copySessionId();"></h1></center>
+          <p></p>
+          <center><div id="codehort-link"></div></center>
+          <p></p>
+          <div id="sessionInfoUsers">
+            <div>Current users in session:</div>
+            <div id="userlist" class="userlist-disabled"></div>
+          </div>
+        </div>
+        <div id="errorSessionInfo"></div>
+      </div>
       <div class="right">
         <input type="button" name="sessionInfoBtn" id="sessionInfoBtn" value="Okay" class="buttonClick buttonClickOk" onclick="Codehort.closePanel();">
       </div>

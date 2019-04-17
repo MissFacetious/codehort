@@ -13,6 +13,7 @@ function init() {
   }
   Codehort.createEditor(false);
   Mobbing.timerFunction();
+  Session.showSessionInfo(Session.getSessionId());
 }
 
 var Codehort = (function() {
