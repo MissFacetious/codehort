@@ -143,7 +143,7 @@ var Editor = (function() {
     else if (challenge == '3') {
       document.getElementById("challenge3").style.backgroundColor = "#333";
       tempCode = "// CHALLENGE #3: roman numeral converter\n// Keep this line in order to execute your code in codehort correctly.\n\n//Click the Codehort icon above to view challenge instructions and example input and output values.\n" +
-      "\n //Implement a roman numeral converter that takes a roman numeral string as input and returns its corresponding numeric value." +
+      "\n //Takes a roman numeral string as input and returns its corresponding numeric value." +
       "\nfunction romanNumeralToInteger(romanValue) {\n\t\n}";
 
       tempTests[0] = {"test": "romanNumeralToInteger(\'XXVI\');", "value": "26"};
@@ -165,19 +165,19 @@ var Editor = (function() {
       "\n\t{\n\t\"studentName\": \"Slacky\",\n\t\"studentId\": \"64732\",\n\t\"grades\": [{\n\t\t\"assignmentName\": \"project\",\n\t\t\"score\": 34,\n\t\t\"weight\": 0.2\n\t},\n\t{\n\t\t\"assignmentName\": \"test1\",\n\t\t\"score\": 68,\n\t\t\"weight\": 0.4},\n\t{\n\t\t\"assignmentName\": \"test2\",\n\t\t\"score\": 86,\n\t\t\"weight\": 0.4\n\t}\n\t]\n\t}\n]\n" +
       "\n return studentRecords; } \n"+
 
-      "\n\n //Implement a function that returns the weighted numerical grade for a student given their name (shown in JSON as studentName)." +
+      "\n\n //Returns the weighted numerical grade for a student given their name (shown in JSON as studentName)." +
       "\nfunction getWeightedNumericalGrade(studentName) {\n\t\n}" +
 
-      "\n\n //Implement a function that returns the letter grade for a student given their name (shown in JSON as studentName)." +
+      "\n\n //Returns the letter grade for a student given their name (shown in JSON as studentName)." +
       "\nfunction getLetterGrade(studentName) {\n\t\n}" +
 
-      "\n\n //Implement a function that returns the score for an assignment given the student name and assignment name." +
+      "\n\n //Returns the score for an assignment given the student name and assignment name." +
       "\nfunction getScoreForAssignment(studentName, assignmentName) {\n\t\n}"
 
       tempTests[0] = {"test": "getWeightedNumericalGrade(\'Miggs\');", "value": "88"};
       tempTests[1] = {"test": "getWeightedNumericalGrade(\'Ash\');", "value": "-1"};
       tempTests[2] = {"test": "getLetterGrade(\'Slacky\');", "value": "D"};
-      tempTests[3] = {"test": "getLetterGrade(\'Ash\');", "value": "-1"};
+      tempTests[3] = {"test": "getLetterGrade(\'Bob\');", "value": "-1"};
       tempTests[4] = {"test": "getScoreForAssignment(\'Miggs\',\'project'\);", "value": "88"};
       //tempTests[5] = {"test": "getScoreForAssignment(\'Miggs\',\'fakeExam'\);", "value": "-1"};
       //tempTests[6] = {"test": "getScoreForAssignment(\'Ash\',\'project'\);", "value": "-1"};
@@ -186,24 +186,37 @@ var Editor = (function() {
     }
     else if (challenge == '5') {
       document.getElementById("challenge5").style.backgroundColor = "#333";
-      tempCode = "";
-      tempTests[0] = {"test": "", "value": ""};
-      tempTests[1] = {"test": "", "value": ""};
-      tempTests[2] = {"test": "", "value": ""};
-      tempTests[3] = {"test": "", "value": ""};
-      tempTests[4] = {"test": "", "value": ""};
-      tempTitle = '<h2></h2>';
-      tempHtml = '';
+
+      tempCode = "// CHALLENGE #5: Date and Time\n// Keep this line in order to execute your code in codehort correctly.\n\n//Click the Codehort icon above to view challenge instructions and example input and output values.\n" +
+      "\n //Takes a string as input and returns true if the string is in a correct date format, false otherwise." +
+      "\nfunction isValidDate(potentialDate) {\n\t\n} \n" +
+
+      "\n\n //Takes in the name of a month (case insensitive) and year, and then returns the number of days in that month." +
+      "\nfunction getNumberOfDaysInMonth(monthName, year) {\n\t\n}" +
+
+      "\n\n //Takes in a valid date string and returns the number of milliseconds since January 1, 1970, 00:00:00 UTC." +
+      "\nfunction getMilliseconds(potentialDate) {\n\t\n}";
+
+      tempTests[0] = {"test": "isValidDate(\"Aug 9, 1995\")", "value": "true"};
+      tempTests[1] = {"test": "isValidDate(\"Foo 23, 2019\")", "value": "false"};
+      tempTests[2] = {"test": "getNumberOfDaysInMonth(\"September\", \"2012\")", "value": "30"};
+      tempTests[3] = {"test": "getMilliseconds(\"Thu, 01 Jan 1970 00:00:00 GMT-0400\")", "value": "14400000"};
+      tempTests[4] = {"test": "getMilliseconds(\"I am not a valid date!\")", "value": "-1"};
+
+      tempTitle = '<h2>Date and Time</h2>';
+      tempHtml = '<h3>Description:</h3>To familiarize yourself with the treatment of date and time values, implement functions to perform the operations listed below. <ul><li>Implement a function <i>isValidDate(potentialDate)</i> that returns true if the value provided in <i>potentialDate</i> can be parsed by JavaScript as a valid Date object, and false otherwise.</li><li>Implement a function <i>getNumberOfDaysInMonth(monthName, year)</i> that returns the number of days in the month passed as the string value <i>monthName</i> for the year provided by the string value <i>year</i>. Examples of usage provided below.</li><li>Implement a function <i>getMilliseconds(potentialDate)</i> that returns returns the number of milliseconds since January 1, 1970, 00:00:00 UTC for the value provided in the string <i>potentialDate</i>. Hint: you can use the function you already implemented to determine whether or not an input string represents a valid date value in order to determine whether the function can correctly compute the expected milliseconds value.</li></ul></p><h3>Error Conditions:</h3><p>If <i>monthName</i> or <i>year</i> in <i>getNumberOfDaysInMonth</i> cannot be parsed or are invalid (unexpected) values, the function should return -1.</p> <p>Similarly, if <i>potentialDate</i> cannot be successfully parsed in <i>getMilliseconds</i>, the function should return -1.</p><h3>Examples:</h3><p>isValidDate(\"2019-01-01\") will return true</p><p>isValidDate(\"2014-25-23\") will return false</p><p>getDaysInMonth(\"January\", \"2012\") will return 31</p><p>getMilliseconds(\"Thu, 01 Jan 1970 00:00:00 GMT\") will return 0</p><p>getMilliseconds(\"Wed, 09 Aug 1995 00:00:00 GMT\") will return 807926400000</p>';
     }
     else if (challenge == '6') {
       document.getElementById("challenge6").style.backgroundColor = "#333";
-      tempCode = "";
+      tempCode = "// CHALLENGE #6: encoding\n// Keep this line in order to execute your code in codehort correctly.\n\n//Click the Codehort icon above to view challenge instructions and example input and output values.\n" +
+      "\n //Takes a roman numeral string as input and returns its corresponding numeric value." +
+      "\nfunction encode(valueToEncode) {\n\t\n}";
       tempTests[0] = {"test": "", "value": ""};
       tempTests[1] = {"test": "", "value": ""};
       tempTests[2] = {"test": "", "value": ""};
       tempTests[3] = {"test": "", "value": ""};
       tempTests[4] = {"test": "", "value": ""};
-      tempTitle = '<h2></h2>';
+      tempTitle = '<h2>Basic Encoding</h2>';
       tempHtml = '';
     }
     else if (challenge == '7') {
