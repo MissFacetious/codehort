@@ -32,6 +32,8 @@ var Mobbing = (function() {
     timerTimer = 0;
     inMobbing = false;
     check = true;
+    // give back any control to the user so they are not disabled anymore
+    Codehort.getCodeMirror().setOption("readOnly", false);
   }
 
   Mobbing.changeQuantity = function(input, amount) {
@@ -175,70 +177,72 @@ Mobbing.removeMobbing = function(code) {
     AudioPlayer.playTone();
     Codehort.closePanel();
     //parseTheEditor(); //not needed for mobUser assign, this is done in youAreTheDriver - will move to inside
-    mobbingUsers = Codehort.getCurrentUsers(); //for dropping out
-    console.log("mobUser in continueTimer:" + mobUser);
-  // there is no mob user here
-    if (mobUser != '' && mobUser == Codehort.getUsername()) {
-      console.log("increase the current session " + currentSession + "++ and get the next user after " + mobUser);
-      currentSession++;
+    if (inMobbing) {
+      mobbingUsers = Codehort.getCurrentUsers(); //for dropping out
+      console.log("mobUser in continueTimer:" + mobUser);
+      // there is no mob user here
+      if (mobUser != '' && mobUser == Codehort.getUsername()) {
+        console.log("increase the current session " + currentSession + "++ and get the next user after " + mobUser);
+        currentSession++;
 
-      // instead of picking the mob user being the next in line, find the current mob user and get the next person
-      mobUser = setCurrentMobUser();
-      console.log("current user was set " + mobUser);
+        // instead of picking the mob user being the next in line, find the current mob user and get the next person
+        mobUser = setCurrentMobUser();
+        console.log("current user was set " + mobUser);
 
-      timerTimer = eachTimer * 60;
-      // are you in charge? No!
+        timerTimer = eachTimer * 60;
+        // are you in charge? No!
 
-      var before = Codehort.getCodeMirror().getValue();
-      var a = before.indexOf(" - Mobbing session:");
-      before = before.substring(0, a);
-      var after = Codehort.getCodeMirror().getValue();
-      var n = after.indexOf("// END MOBBING");
-      after = after.substring(n, after.length);
+        var before = Codehort.getCodeMirror().getValue();
+        var a = before.indexOf(" - Mobbing session:");
+        before = before.substring(0, a);
+        var after = Codehort.getCodeMirror().getValue();
+        var n = after.indexOf("// END MOBBING");
+        after = after.substring(n, after.length);
 
       //console.log(before);
       //console.log("====");
       //console.log(after);
       // write to Editor
-      if (before != null && before.length > 0) {
-        Codehort.setFirepad(before+
-                        " - Mobbing session: " + currentSession + " - Currently in charge: " + mobUser + " - " +
-                        after);
-        if (mobUser != Codehort.getUsername()) {
+        if (before != null && before.length > 0) {
+          Codehort.setFirepad(before+
+            " - Mobbing session: " + currentSession + " - Currently in charge: " + mobUser + " - " +
+            after);
+          if (mobUser != Codehort.getUsername()) {
+            // disable the text to show the countdown
+            Codehort.getCodeMirror().setOption("readOnly", true);
+            // update the bottom ui to show it's readonly
+            document.getElementById("mobbingFooter").innerHTML = "Mobbing with driver: " + mobUser + " [READONLY]";
+          }
+        }
+        else {
+          // we have some errors so let's just stop mobbing
+          inMobbing = false;
+          check = true;
+        }
+        // now that we have set the text for users, get ready to start up the next mobbing after
+        // our new mobUser is set, currentsession set, timer set, checking is done
+        check = false;
+        inMobbing = true;
+        timerTimer = eachTimer * 60;
+      }
+      else {
+        tries = 0;
+        parseTheEditor();
+        // can we wait a few seconds here...
+        timerTimer = eachTimer * 60;
+
+        if (mobUser == Codehort.getUsername()) {
+          // you are in charge, otherwise...
+          Codehort.getCodeMirror().setOption("readOnly", false);
+          // update the bottom ui to show your in charge of mobbing
+          document.getElementById("mobbingFooter").innerHTML = "Mobbing with driver: " + mobUser + " [IN CHARGE OF EDITING]";
+        }
+        else {
           // disable the text to show the countdown
           Codehort.getCodeMirror().setOption("readOnly", true);
           // update the bottom ui to show it's readonly
           document.getElementById("mobbingFooter").innerHTML = "Mobbing with driver: " + mobUser + " [READONLY]";
         }
-      }
-      else {
-        // we have some errors so let's just stop mobbing
-        inMobbing = false;
-        check = true;
-      }
-      // now that we have set the text for users, get ready to start up the next mobbing after
-      // our new mobUser is set, currentsession set, timer set, checking is done
-      check = false;
-      inMobbing = true;
-      timerTimer = eachTimer * 60;
-    }
-    else {
-      tries = 0;
-      parseTheEditor();
-      // can we wait a few seconds here...
-      timerTimer = eachTimer * 60;
-
-      if (mobUser == Codehort.getUsername()) {
-        // you are in charge, otherwise...
-        Codehort.getCodeMirror().setOption("readOnly", false);
-        // update the bottom ui to show your in charge of mobbing
-        document.getElementById("mobbingFooter").innerHTML = "Mobbing with driver: " + mobUser + " [IN CHARGE OF EDITING]";
-      }
-      else {
-        // disable the text to show the countdown
-        Codehort.getCodeMirror().setOption("readOnly", true);
-        // update the bottom ui to show it's readonly
-        document.getElementById("mobbingFooter").innerHTML = "Mobbing with driver: " + mobUser + " [READONLY]";
       }
     }
   }
