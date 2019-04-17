@@ -62,26 +62,32 @@ var Execute = (function() {
       var storage = window.localStorage;
       if (Editor.showChallengeNumber() == 1) {
         storage.setItem('check1', true);
+        document.getElementById('challenge1check').style.display='block';
       }
       if (Editor.showChallengeNumber() == 2) {
         storage.setItem('check2', true);
+        document.getElementById('challenge2check').style.display='block';
       }
       if (Editor.showChallengeNumber() == 3) {
         storage.setItem('check3', true);
+        document.getElementById('challenge3check').style.display='block';
       }
       if (Editor.showChallengeNumber() == 4) {
         storage.setItem('check4', true);
+        document.getElementById('challenge4check').style.display='block';
       }
       if (Editor.showChallengeNumber() == 5) {
         storage.setItem('check5', true);
+        document.getElementById('challenge5check').style.display='block';
       }
       if (Editor.showChallengeNumber() == 6) {
         storage.setItem('check6', true);
+        document.getElementById('challenge6check').style.display='block';
       }
       if (Editor.showChallengeNumber() == 7) {
         storage.setItem('check7', true);
+        document.getElementById('challenge7check').style.display='block';
       }
-
     }
     else {
       AudioPlayer.playError();
