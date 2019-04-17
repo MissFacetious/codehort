@@ -85,7 +85,9 @@ var Editor = (function() {
     var code = Codehort.getCodeMirrorValue();
     var value = "";
     var string = "// CHALLENGE #";
-    if (code.search(string) != -1) {
+    var n = code.indexOf(string);
+    if (n != -1) {
+      code = code.substr(n, code.length);
       value = code.substr(string.length, 2);
       if (!Number.isInteger(value)) {
         value = code.substr(string.length, 1);
@@ -108,17 +110,17 @@ var Editor = (function() {
     document.getElementById("challenge7").classList.remove("challengeIconSelected");
 
     if (challenge == '1') {
-        document.getElementById("challenge1").classList.add("challengeIconSelected");
+      document.getElementById("challenge1").classList.add("challengeIconSelected");
       // sample challenge
-        tempCode = "// CHALLENGE #1: addition\n// Keep this line in order to execute your code in codehort correctly.\n\n//Click the Codehort icon above to view challenge instructions and example input and output values.\nfunction plus() {\n\t\n}"
-        tempTests[0] = {"test": "plus(1, 3);", "value": "4"};
-        tempTests[1] = {"test": "plus(4, 5);", "value": "9"};
-        tempTests[2] = {"test": "plus(-4, 5);", "value": "1"};
-        tempTests[3] = {"test": "plus(10, -10);", "value": "0"};
-        tempTests[4] = {"test": "plus(-10, -10);", "value": "-20"};
+      tempCode = "// CHALLENGE #1: addition\n// Keep this line in order to execute your code in codehort correctly.\n\n//Click the Codehort icon above to view challenge instructions and example input and output values.\nfunction plus() {\n\t\n}"
+      tempTests[0] = {"test": "plus(1, 3);", "value": "4"};
+      tempTests[1] = {"test": "plus(4, 5);", "value": "9"};
+      tempTests[2] = {"test": "plus(-4, 5);", "value": "1"};
+      tempTests[3] = {"test": "plus(10, -10);", "value": "0"};
+      tempTests[4] = {"test": "plus(-10, -10);", "value": "-20"};
 
-        tempTitle = '<h2>Addition</h2>';
-        tempHtml = '<h3>Description:</h3><p>Example challenge. Create a function that adds two parameters <i>a</i> and <i>b</i> and returns the result. </p><h3>Error Conditions:</h3><p>None</p><h3>Examples:</h3><p>plus(1, 2) will return 3</p><p>plus(5,10) will return 15</p><p>plus(-5,10) will return 5</p>';
+      tempTitle = '<h2>Addition</h2>';
+      tempHtml = '<h3>Description:</h3><p>Example challenge. Create a function that adds two parameters <i>a</i> and <i>b</i> and returns the result. </p><h3>Error Conditions:</h3><p>None</p><h3>Examples:</h3><p>plus(1, 2) will return 3</p><p>plus(5,10) will return 15</p><p>plus(-5,10) will return 5</p>';
     }
     else if (challenge == '2') {
       document.getElementById("challenge2").classList.add("challengeIconSelected");
