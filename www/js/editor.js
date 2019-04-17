@@ -59,6 +59,11 @@ var Editor = (function() {
         // load up the sample code inside the editor to get them started
         Codehort.setFirepad(tempCode);
       }
+      else if (Codehort.getCodeMirror() != null) {
+        // you aren't in a session, so use codemirror editor instead, maybe give them a warning because if they start
+        // a new session it will be wiped out
+        Codehort.setCodeMirror(tempCode);
+      }
     }
     // load up the tests that need to execute when ran
     if (tempCode != null) {

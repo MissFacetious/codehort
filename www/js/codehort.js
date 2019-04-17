@@ -47,6 +47,10 @@ var Codehort = (function() {
     this.userId = u;
   }
 
+  Codehort.setCodeMirror = function(code) {
+    codeMirror.setValue(code);
+  }
+
   Codehort.getCodeMirror = function() {
     return codeMirror;
   }
