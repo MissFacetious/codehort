@@ -138,7 +138,7 @@ var Session = (function() {
 
   Session.joinSessionId = function(session_id, click) {
     this.sessionId = session_id;
-    let baseURL = window.location+"";
+    var baseURL = window.location+"";
     //strip out anything after #
     if (baseURL != null) {
       var n = baseURL.indexOf('#');
@@ -166,6 +166,21 @@ var Session = (function() {
     document.getElementById("codehort-link").innerHTML = "Send your friend to <a href=\"http://codehort.appspot.com/\" target=\"_new\">http://codehort.appspot.com</a> to download codehort, and then tell them to use this secret code to join you."
     document.getElementById("codehort-display").innerHTML = link;
     document.getElementById("sessionIdFooter").innerHTML = "Connected to Session ID: " + link;
+  }
+
+  Session.leaveSession = function() {
+    // to leave we can set their session id to null and reload
+    this.sessionId = "";
+    var baseURL = window.location+"";
+    //strip out anything after #
+    if (baseURL != null) {
+      var n = baseURL.indexOf('#');
+      baseURL = baseURL.substring(0, n);
+    }
+    window.location.href = baseURL;
+    var storage = window.localStorage;
+    storage.setItem('session', this.sessionId);
+    window.location.reload(true);
   }
 
   Session.copySessionId = function() {
