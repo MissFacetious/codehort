@@ -10,6 +10,16 @@ The startup wizard/preferences for Codehort. A code challenge is chosen through 
 
 Mobbing session functionality (expertly narrated by Lisa): https://youtu.be/GrYF5koNjAQ
 
+## technology stack
+### Code Language
+Vanilla Javascript, HTML5, CSS
+
+### Database
+Firebase
+
+### Libraries
+Codemirror, Firepad, FireSaver
+
 ## run locally
 
 ### open up in web browser
