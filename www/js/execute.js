@@ -1,3 +1,11 @@
+// Custom logging using codehort.log()
+var codehort = new Object();
+
+codehort.log = function(value) {
+  var logger = document.getElementById('log');
+  logger.innerHTML += value+'\n';
+}
+
 var Execute = (function() {
   // run code icon click
   var contents = "";
@@ -18,6 +26,8 @@ var Execute = (function() {
   }
 
   Execute.executeCode = function() {
+    var logger = document.getElementById('log');
+    logger.innerHTML = '';
     var code = Editor.getChallengeFromEditor();
     /*
     things that are having problems are:
@@ -33,21 +43,25 @@ var Execute = (function() {
 
     if (Execute.tests != null) {
       for (var i=0; i < Execute.tests.length; i++) {
-        //if (firepad != null) {
-        //  error = JSrun(i+1, tests[i], firepad);
-        //}
-        //else {
-          error = runScript(i+1, Execute.tests[i], code);
-        //}
+        error = runScript(i+1, Execute.tests[i], code);
         if (error) {
+          // print out error console.log
+          var log = document.getElementById("consolelog");
+          log.style.display = 'block';
           // do not execute any other tests
           break;
+        }
+        else {
+          var log = document.getElementById("consolelog");
+          log.style.display = 'none';
         }
       }
     }
     else {
       // show there is nothing to execute because you aren't in a challenge
       contents += "Nothing to execute, you need to start a code challenge first.";
+      var log = document.getElementById("consolelog");
+      log.style.display = 'none';
     }
     contents += append;
     outnode.innerHTML = contents;
@@ -93,6 +107,8 @@ var Execute = (function() {
       AudioPlayer.playError();
       document.getElementById("trophy").style.backgroundImage = "url('')";
       document.getElementById("outputCode").style.opacity = 1;
+      var log = document.getElementById("consolelog");
+      log.style.display = 'block';
     }
     Codehort.showPanel('codehort-run');
   }
@@ -161,10 +177,10 @@ var Execute = (function() {
       var str;
       var error = true;
       d = new Date().getTime();
-
       // try this with strings, try this with math
       try {
         str = outputScript(eval(testcase.test + "\n" + script));
+
         if (str == null) {
           str = "Nothing returned.";
           error = true;
@@ -178,6 +194,7 @@ var Execute = (function() {
           str = e.name+" at line "+(e.lineno)+": "+e.message;
           error = true;
       }
+
       var tnode = document.getElementById("outputTime");
       time = (new Date().getTime()-d)/1000;
       if (time == 0) time = "0.000";
