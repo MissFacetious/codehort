@@ -1,5 +1,6 @@
 # Codehort
-Codehort is a tool that allows you to share coding sessions together while on separate machines. Have your team or class learn how to code Javascript together.
+Codehort is a tool that allows you to share coding sessions together while on separate machines.
+Have your team or class learn how to code Javascript together. https://codehort.appspot.com/
 
 ## Can I see this working?
 There is a working demo at https://codehort.appspot.com/tool/demo. Beware not all operating systems or browsers are supported. Codehort is being build as a standalone application for Mac and Windows.
