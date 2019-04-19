@@ -1,15 +1,15 @@
 // Custom logging using codehort.log()
-var codehort = new Object();
+const codehort = new Object();
 
 codehort.log = function(value) {
-  var logger = document.getElementById('log');
+  let logger = document.getElementById('log');
   logger.innerHTML += value+'\n';
 }
 
-var Execute = (function() {
+const Execute = (function() {
   // run code icon click
-  var contents = "";
-  var tests = [5]; // every challenge should have the same amount of tests
+  let contents = "";
+  let tests = [5]; // every challenge should have the same amount of tests
 
   function Execute() {
     if (!(this instanceof Execute)) {
@@ -26,41 +26,34 @@ var Execute = (function() {
   }
 
   Execute.executeCode = function() {
-    var logger = document.getElementById('log');
+    // reset the contents and log
+    let logger = document.getElementById('log');
     logger.innerHTML = '';
-    var code = Editor.getChallengeFromEditor();
-    /*
-    things that are having problems are:
-      if you have a console.log at the end that gets in the way, it grabs the attention of the output
-    */
-    contents = "";
-    var error = true;
+    contents = '';
 
-    var prepend = "<table>";
-    var append = "</table>";
-    var outnode = document.getElementById("outputCode");
+    let code = Editor.getChallengeFromEditor();
+    let error = true;
+    let prepend = "<table>";
+    let append = "</table>";
+    let outnode = document.getElementById("outputCode");
+
     contents += prepend;
-
     if (Execute.tests != null) {
       for (var i=0; i < Execute.tests.length; i++) {
         error = runScript(i+1, Execute.tests[i], code);
         if (error) {
-          // print out error console.log
-          var log = document.getElementById("consolelog");
+          // print out error and show logs
+          let log = document.getElementById("consolelog");
           log.style.display = 'block';
           // do not execute any other tests
           break;
-        }
-        else {
-          var log = document.getElementById("consolelog");
-          log.style.display = 'none';
         }
       }
     }
     else {
       // show there is nothing to execute because you aren't in a challenge
       contents += "Nothing to execute, you need to start a code challenge first.";
-      var log = document.getElementById("consolelog");
+      let log = document.getElementById("consolelog");
       log.style.display = 'none';
     }
     contents += append;
@@ -73,7 +66,7 @@ var Execute = (function() {
       document.getElementById("outputCode").style.opacity = 0.5;
 
       //console.log(Editor.showChallengeNumber());
-      var storage = window.localStorage;
+      let storage = window.localStorage;
       if (Editor.showChallengeNumber() == 1) {
         storage.setItem('check1', true);
         document.getElementById('challenge1check').style.display='block';
@@ -107,7 +100,7 @@ var Execute = (function() {
       AudioPlayer.playError();
       document.getElementById("trophy").style.backgroundImage = "url('')";
       document.getElementById("outputCode").style.opacity = 1;
-      var log = document.getElementById("consolelog");
+      let log = document.getElementById("consolelog");
       log.style.display = 'block';
     }
     Codehort.showPanel('codehort-run');
@@ -139,8 +132,8 @@ var Execute = (function() {
 
   function writeRow(number, testcase, str, error) {
       if (!str) str="";
-      var message = "";
-      var outnode = document.getElementById("outputCode");
+      let message = "";
+      let outnode = document.getElementById("outputCode");
       if (!error) {
         message = '<span class="success">SUCCESS!</span>';
       }
@@ -149,7 +142,7 @@ var Execute = (function() {
       }
 
       // print out the row of information
-      var string = "<tr><td width='10%' valign='top'>";
+      let string = "<tr><td width='10%' valign='top'>";
       string += "Test " + number + ":";
       string += "</td><td width='20%' valign='top'>";
       string += testcase.test;
@@ -174,8 +167,8 @@ var Execute = (function() {
   }
 
   function runScript(number, testcase, script) {
-      var str;
-      var error = true;
+      let str;
+      let error = true;
       d = new Date().getTime();
       // try this with strings, try this with math
       try {
@@ -190,12 +183,12 @@ var Execute = (function() {
         }
       }
       catch (e) {
-        // line number is a problem here
+          // TODO: line number is a problem here
           str = e.name+" at line "+(e.lineno)+": "+e.message;
           error = true;
       }
 
-      var tnode = document.getElementById("outputTime");
+      let tnode = document.getElementById("outputTime");
       time = (new Date().getTime()-d)/1000;
       if (time == 0) time = "0.000";
       tnode.innerHTML = "Execution time: "+time;
@@ -207,7 +200,7 @@ var Execute = (function() {
         else {
           error = true;
         }
-        var string = writeRow(number, testcase, str, error) + "\n";
+        let string = writeRow(number, testcase, str, error) + "\n";
         contents += string;
       }
       return error;

@@ -1,9 +1,9 @@
-var AudioPlayer = (function() {
+const AudioPlayer = (function() {
 
-  var aTone = new Audio('./audio/a-tone.mp3');
-  var applause = new Audio('./audio/applause.mp3');
-  var musicBox = new Audio('./audio/music_box.mp3');
-  var errorTone = new Audio('./audio/error.mp3');
+  const aTone = new Audio('./audio/a-tone.mp3');
+  const applause = new Audio('./audio/applause.mp3');
+  const musicBox = new Audio('./audio/music_box.mp3');
+  const errorTone = new Audio('./audio/error.mp3');
 
   function AudioPlayer() {
     if (!(this instanceof AudioPlayer)) {

@@ -1,6 +1,6 @@
-var Session = (function() {
-  var sessionId;
-  var baseURL = window.location+"";
+const Session = (function() {
+  let sessionId;
+  let baseURL = window.location+"";
 
   function Session() {
     if (!(this instanceof Session)) {
@@ -17,15 +17,13 @@ var Session = (function() {
   }
   // Helper to get hash from end of URL or generate a random one.
   Session.getFirepad = function() {
-    // can we use sessionId here instead of the url?
-
+    let ref = firebase.database().ref();
     // grab the url hash id
-    var hash = window.location.hash.replace(/#/g, '');
+    let hash = window.location.hash.replace(/#/g, '');
     hash = hash.replace(/-/g, '');
     if (hash) {
-      var ref = firebase.database().ref();
       ref = ref.child(hash);
-      var link = ref.key;
+      let link = ref.key;
       this.sessionId = link;
       Session.showSessionInfo(link);
       if (typeof console !== 'undefined') {
@@ -43,22 +41,22 @@ var Session = (function() {
   // new session icon click
   Session.newSession = function(close, click) {
     // create new session
-    var ref = firebase.database().ref();
+    let ref = firebase.database().ref();
     ref = ref.push(); // generate unique location.
     baseURL = window.location+"";
     //strip out anything after #
     if (baseURL != null) {
-      var n = baseURL.indexOf('#');
+      let n = baseURL.indexOf('#');
       baseURL = baseURL.substring(0, n != -1 ? n : baseURL.length);
     }
     else baseURL = "";
     window.location = baseURL + '#' + ref.key; // add it as a hash to the URL.
-    var link = ref.key.replace(/-/g, '');
+    let link = ref.key.replace(/-/g, '');
     // set the session id and update it in the UI
     this.sessionId = link;
     // if we are click, we assume there is already a codemirror on the page
     if (click && close) {
-      var storage = window.localStorage;
+      let storage = window.localStorage;
       storage.setItem('session', this.sessionId);
       // reload the page and connect to the new session id
       window.location.reload(true);
@@ -96,10 +94,10 @@ var Session = (function() {
 
   // join session icon click
   Session.joinCode = function(close) {
-    var sessionIdInput;
+    let sessionIdInput;
     if (close) {
       // grab the session id that they inputted
-      var sessionIdInput = document.getElementById("sessionIdInput").value;
+      sessionIdInput = document.getElementById("sessionIdInput").value;
     }
     else {
       sessionIdInput = document.getElementById("sessionIdSplashInput").value;
@@ -138,16 +136,16 @@ var Session = (function() {
 
   Session.joinSessionId = function(session_id, click) {
     this.sessionId = session_id;
-    var baseURL = window.location+"";
+    let baseURL = window.location+"";
     //strip out anything after #
     if (baseURL != null) {
-      var n = baseURL.indexOf('#');
+      let n = baseURL.indexOf('#');
       baseURL = baseURL.substring(0, n != -1 ? n : baseURL.length);
     }
     else baseURL = "";
     window.location.href = baseURL + '#-' + this.sessionId;
 
-    var storage = window.localStorage;
+    let storage = window.localStorage;
     storage.setItem('session', this.sessionId);
 
     if (click && this.sessionId) {
@@ -180,21 +178,21 @@ var Session = (function() {
   Session.leaveSession = function() {
     // to leave we can set their session id to null and reload
     this.sessionId = "";
-    var baseURL = window.location+"";
+    let baseURL = window.location+"";
     //strip out anything after #
     if (baseURL != null) {
-      var n = baseURL.indexOf('#');
+      let n = baseURL.indexOf('#');
       baseURL = baseURL.substring(0, n);
     }
     window.location.href = baseURL;
-    var storage = window.localStorage;
+    let storage = window.localStorage;
     storage.setItem('session', this.sessionId);
     window.location.reload(true);
   }
 
   Session.copySessionId = function() {
-    var range = document.createRange();
-    var sessionIdDisplay = document.getElementById("codehort-display");
+    let range = document.createRange();
+    let sessionIdDisplay = document.getElementById("codehort-display");
     range.selectNode(sessionIdDisplay);
     window.getSelection().removeAllRanges();
     window.getSelection().addRange(range);
@@ -202,7 +200,6 @@ var Session = (function() {
   }
 
   function checkSessionId(value) {
-    console.log(value.length);
     if (value.includes(".") || value.includes("#") || value.includes("$") || value.includes("[") || value.includes("]")) {
       return false;
     }

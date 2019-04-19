@@ -1,9 +1,9 @@
-var Editor = (function() {
-  var tempCode = null;
-  var tempTests = [5];
-  var tempHtml = null;
-  var tempTitle = null;
-  var challengeNumber;
+const Editor = (function() {
+  let tempCode = null;
+  let tempTests = [5];
+  let tempHtml = null;
+  let tempTitle = null;
+  let challengeNumber;
   // new editor icon click
 
   function Editor() {
@@ -12,10 +12,12 @@ var Editor = (function() {
     }
   }
 
+  // challenges have numbers from 1 - 7 in our coding challenges
   Editor.showChallengeNumber = function() {
     return this.challengeNumber;
   }
 
+  // from storage, find out if this user has passed challenges yet and show a checkmark if they did
   Editor.showChecks = function(one, two, three, four, five, six, seven) {
     if (one) {
       document.getElementById('challenge1check').style.display='block';
@@ -41,10 +43,10 @@ var Editor = (function() {
   }
 
   Editor.newEditor = function() {
-    Editor.loadChallenge(true);
-    Codehort.hidePanels();
+    Editor.loadChallenge(true); // load up the challenge held in the temp variables
+    Codehort.hidePanels(); // close all panels
     Mobbing.updateMobbing();
-    tempCode = null;
+    tempCode = null; // reset temp variables
     tempTests = [5];
     tempHtml = null;
     tempTitle = null;
@@ -82,10 +84,10 @@ var Editor = (function() {
   Editor.getChallengeFromEditor = function() {
     // first, we need to make sure we are running the right test.
     // parse through the code editor and make sure there is the // CHALLENGE # in it to set the tests right
-    var code = Codehort.getCodeMirrorValue();
-    var value = "";
-    var string = "// CHALLENGE #";
-    var n = code.indexOf(string);
+    let code = Codehort.getCodeMirrorValue();
+    let value = "";
+    let string = "// CHALLENGE #";
+    let n = code.indexOf(string);
     if (n != -1) {
       code = code.substr(n, code.length);
       value = code.substr(string.length, 2);
@@ -233,8 +235,10 @@ var Editor = (function() {
       tempHtml = '';
     }
   }
-  var blob;
-  var filename;
+
+  // TODO: save functionality is spotty at best, it works on the browser using FileSaver, but that's about it.
+  let blob;
+  let filename;
   // save editor icon click
   Editor.saveEditor = function() {
     //writeFile();

@@ -1,29 +1,31 @@
 function init() {
   // hide panels
-  Codehort.hidePanels();
-  Preferences.getPref();
-  loadTheme();
+  Codehort.hidePanels(); // hide all panels at start - should be hidden already from default css
+  Preferences.getPref(); // load preferences from storage
+  loadTheme(); // light or dark theme change
 
   firebase.initializeApp(config);
 
+  // if this is our first time here or we have our splash screen wizard option true
   if (Preferences.getSplashScreen()) {
     // show the first splash screen before we begin
     Splash.display(0);
     Codehort.showPanel("codehort-splash");
   }
-  Codehort.createEditor(false);
-  Mobbing.timerFunction();
-  Session.showSessionInfo(Session.getSessionId());
+
+  Codehort.createEditor(false); // create the code editor ui
+  Mobbing.timerFunction(); // start waiting to see if we want to start mobbing
+  Session.showSessionInfo(Session.getSessionId()); // show the session we are in on the bottom status bar
 }
 
-var Codehort = (function() {
+const Codehort = (function() {
 
-  var firepad;
-  var firepadRef;
-  var codeMirror;
-  var username = ""; // will be set in getPref
-  var userId = Math.floor(Math.random() * 9999999999).toString(); // will be set when we authenticate
-  var firepadUserList;
+  let firepad;
+  let firepadRef;
+  let codeMirror;
+  let username = ""; // will be set in getPref
+  let userId = Math.floor(Math.random() * 9999999999).toString(); // will be set when we authenticate to firebase, just make a unique id
+  let firepadUserList;
 
   function Codehort() {
     if (!(this instanceof Codehort)) {
@@ -72,44 +74,38 @@ var Codehort = (function() {
   }
 
   Codehort.createEditor = function(click) {
-    //// Create CodeMirror (with line numbers and the JavaScript mode).
-    if (firebase != null) {
-      // clear out the CodeMirror instance
-      // newEditor();// this just wipes everything out... sad.
-    }
+    // create new code editor ui by creating new codemirror.
+    // only one codemirror can exist, so if we need to change this, we need to reload page
     if (codeMirror == null) {
       codeMirror = CodeMirror(document.getElementById('firepad-container'), {
-        lineNumbers: true,
-        mode: 'javascript'
+        lineNumbers: true, // line numbers
+        mode: 'javascript' // JavaScript mode
       });
     }
-    Mobbing.updateMobbing();
-    Zoom.changePercent(0);
+    //Mobbing.updateMobbing(); // maybe don't need this here because of the page refresh
+    Zoom.changePercent(0); // zoom into what user prefers
 
     // if you have connected to a previous session try to connect now?
     if (Session.getSessionId() && !Preferences.getSplashScreen() && !click) {
       // attempt to connect to this session id
-      //console.log(sessionId);
       Session.joinSessionId(Session.getSessionId(), false);
     }
   }
 
   Codehort.connectFirepad = function() {
-    //// Get Firebase Database reference.
+    // Get Firebase Database reference first if null
     if (firepadRef == null) {
       firepadRef = Session.getFirepad();
     }
 
     if (firepadRef != null) {
-      // Get a reference to the Firebase Realtime Database
-      //// Create Firepad.
+      // Create Firepad with default text
       firepad = Firepad.fromCodeMirror(firepadRef, codeMirror, {
         defaultText: '// Welcome to Codehort, start coding!\n\nconsole.log(\'hello codehort!\');\n\n',
-        userId: this.userId
+        userId: this.userId // sign in with unique user id
       });
 
-      //// Create FirepadUserList (with our desired userId).
-      // problem where all of these users ends up with different name
+      // Create FirepadUserList (with our desired userId, usernames can change, so keep track with ids)
       var userListRef = firepadRef.child('users');
 
       firepadUserList = FirepadUserList.fromDiv(userListRef,
@@ -126,11 +122,12 @@ var Codehort = (function() {
     }
   }
 
+  // this delays in finding users because the userlist needs to populate first
   delay = ms => new Promise(res => setTimeout(res, ms));
 
   showNumberUsers = async () => {
     await delay(3000);
-    var users = Codehort.getCurrentUsers();
+    let users = Codehort.getCurrentUsers();
     if (users.length > 0) {
       document.getElementById("sessionUsersFooter").innerHTML = "Users connected: " + users.length;
     }
@@ -140,11 +137,11 @@ var Codehort = (function() {
   };
 
   Codehort.getCurrentUsers = function() {
-    var users = [];
-    var usersDom = firepadUserList.userList_.children[1];
-    var main = usersDom.lastChild;
+    let users = [];
+    let usersDom = firepadUserList.userList_.children[1];
+    let main = usersDom.lastChild;
     for (var i=0; i < main.childNodes.length; i++) {
-      var name = main.childNodes[i].lastChild.innerHTML;
+      let name = main.childNodes[i].lastChild.innerHTML;
       users.push(name);
     }
     users.sort();
@@ -181,15 +178,15 @@ var Codehort = (function() {
   }
 
   Codehort.closePanel = function() {
-    var outnode = document.getElementById("outputCode");
+    let outnode = document.getElementById("outputCode");
     outnode.innerHTML = "";
     Codehort.hidePanels();
   }
 
   Codehort.help = function() {
     window.open(
-      'help.html',
-      '_blank' // <- This is what makes it open in a new window.
+      'help.html', // open help document
+      '_blank' // open in a new window
     );
   }
   return Codehort;

@@ -1,15 +1,17 @@
-var Mobbing = (function() {
-  var eachTimer;
-  var sentence;
+const Mobbing = (function() {
+  let eachTimer;
+  let sentence;
 
-  var timerTimer; // in seconds
-  var currentSession;
+  let timerTimer; // in seconds
+  let currentSession;
 
-  var mobbingUsers = [];
-  var inMobbing = false;
-  var check = true;
-  var mobUser = '';
+  let mobbingUsers = [];
+  let inMobbing = false;
+  let check = true;
+  let mobUser = '';
 
+  let snap = "";
+  
   function Mobbing() {
     if (!(this instanceof Mobbing)) {
       return new Mobbing();
@@ -37,7 +39,7 @@ var Mobbing = (function() {
   }
 
   Mobbing.changeQuantity = function(input, amount) {
-    var value = document.getElementById(input).value;
+    let value = document.getElementById(input).value;
     if (value > 1 && amount < 0) {
       value--;
     }
@@ -49,7 +51,7 @@ var Mobbing = (function() {
   }
 
   Mobbing.updateMobbing = function() {
-    var code = document.getElementById('timer').value;
+    let code = document.getElementById('timer').value;
     // setup timers
     eachTimer = code;
     timerTimer = eachTimer * 60;
@@ -73,10 +75,10 @@ var Mobbing = (function() {
 
 Mobbing.removeMobbing = function(code) {
     // find if we have any line that has MOBBING on it first, and remove the line
-    var pos = code.search("MOBBING");
+    let pos = code.search("MOBBING");
     if (pos != -1) {
       // remove first line
-      var until = code.indexOf("\n");
+      let until = code.indexOf("\n");
       code = code.substring(until+1, code.length);
       Codehort.setFirepad(code);
     }
@@ -84,7 +86,7 @@ Mobbing.removeMobbing = function(code) {
 
   Mobbing.startTimer = function() {
     number = 0;
-    var code = Codehort.getCodeMirror().getValue();
+    let code = Codehort.getCodeMirror().getValue();
     Mobbing.removeMobbing(code);
     currentSession = 1;
     // since mobbing is removed now, we need to put it in with our information
@@ -100,14 +102,12 @@ Mobbing.removeMobbing = function(code) {
                     " - // END MOBBING\n"+
                     code);
 
-
     // you are in charge, otherwise...
     Codehort.getCodeMirror().setOption("readOnly", false);
     // update the bottom ui to show your in charge of mobbing
     document.getElementById("mobbingFooter").innerHTML = "Mobbing with driver: " + mobUser + " [IN CHARGE OF EDITING]";
 
     Codehort.closePanel();
-
     AudioPlayer.playTone();
   }
 
@@ -117,14 +117,14 @@ Mobbing.removeMobbing = function(code) {
   }
 
   function waitingForMobbing() {
-    var code = "";
+    let code = "";
     if (Codehort.getCodeMirror() != null) {
       code = Codehort.getCodeMirror().getValue();
     }
     if (check == true && snap != "") {
       // check if snap is different than new snapshot
-      var newsnap = Codehort.getCodeMirror().getValue();
-      var a = newsnap.indexOf("// END MOBBING");
+      let newsnap = Codehort.getCodeMirror().getValue();
+      let a = newsnap.indexOf("// END MOBBING");
       newsnap = newsnap.substring(0, a);
       if (snap != newsnap) {
         snap = "";
@@ -159,7 +159,7 @@ Mobbing.removeMobbing = function(code) {
   }
 
   function setCurrentMobUser() {
-    var current = 0;
+    let current = 0;
     for (var i=0; i < mobbingUsers.length; i++) {
       if (Codehort.getUsername() == mobbingUsers[i]) {
         current = i;
@@ -192,17 +192,14 @@ Mobbing.removeMobbing = function(code) {
         timerTimer = eachTimer * 60;
         // are you in charge? No!
 
-        var before = Codehort.getCodeMirror().getValue();
-        var a = before.indexOf(" - Mobbing session:");
+        let before = Codehort.getCodeMirror().getValue();
+        let a = before.indexOf(" - Mobbing session:");
         before = before.substring(0, a);
-        var after = Codehort.getCodeMirror().getValue();
-        var n = after.indexOf("// END MOBBING");
+        let after = Codehort.getCodeMirror().getValue();
+        let n = after.indexOf("// END MOBBING");
         after = after.substring(n, after.length);
 
-      //console.log(before);
-      //console.log("====");
-      //console.log(after);
-      // write to Editor
+        // write to Editor
         if (before != null && before.length > 0) {
           Codehort.setFirepad(before+
             " - Mobbing session: " + currentSession + " - Currently in charge: " + mobUser + " - " +
@@ -250,34 +247,27 @@ Mobbing.removeMobbing = function(code) {
   //var tries = 0;
   function parseTheEditor() {
     // parse out what is in the editor for mobbing
-    var code = Codehort.getCodeMirror().getValue();
+    let code = Codehort.getCodeMirror().getValue();
 
-    var a = code.indexOf("You will code for ");
-    var x = code.substring(a+18, code.length);
+    let a = code.indexOf("You will code for ");
+    let x = code.substring(a+18, code.length);
     a = x.indexOf(" minute");
     x = x.substr(0, a);
     eachTimer = x;
 
-    var position = code.indexOf("Mobbing session: ");
-    var number = code.substring(position+17, code.length);
+    let position = code.indexOf("Mobbing session: ");
+    let number = code.substring(position+17, code.length);
     position = number.indexOf(" -");
     number = number.substr(0, position);
     currentSession = number;
     // get the mob in charge
-    var pos = code.indexOf("Currently in charge: ");
-    var num = code.substring(pos+21, code.length);
+    let pos = code.indexOf("Currently in charge: ");
+    let num = code.substring(pos+21, code.length);
     pos = num.indexOf(" -");
     num = num.substr(0, pos);
     mobUser = num;
-    //if (num == '' && tries < 10) {
-    //  console.log("no mob user? " + code);
-    //  // try again!
-    //  parseTheEditor();
-    //  tries++;
-    //}
   }
 
-  var snap = "";
   Mobbing.timerFunction = function() {
       if (!inMobbing) {
         var element2 = document.getElementById("mobbingFooter");

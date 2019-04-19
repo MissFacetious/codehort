@@ -12,7 +12,7 @@ Mobbing session functionality (expertly narrated by Lisa): https://youtu.be/GrYF
 
 ## technology stack
 ### Code Language
-Vanilla Javascript, HTML5, CSS
+EMCAScript & Javascript, HTML5, CSS
 
 ### Database
 Firebase
@@ -64,4 +64,3 @@ It will be at https://codehort.appspot.com
 
 ### continuous delivery
 <img src="https://github.com/MissFacetious/codehort/blob/master/cdfd.png?raw=true">
-

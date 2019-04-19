@@ -1,4 +1,4 @@
-var Splash = (function() {
+const Splash = (function() {
 
   function Splash() {
     if (!(this instanceof Splash)) {
@@ -12,13 +12,13 @@ var Splash = (function() {
       document.getElementById("splashSecond").style.display = 'none';
       document.getElementById("splashThird").style.display = 'none';
       document.getElementById("splashForth").style.display = 'none';
-      var name = Codehort.getUsername();
-      var already = true;
+      let name = Codehort.getUsername();
+      let already = true;
       if (name == null || name == "") {
           name = nameGenerator();
           already = false;
       }
-      var usernameInput = document.getElementById("usernameSplashInput");
+      let usernameInput = document.getElementById("usernameSplashInput");
       if (usernameInput.value == "") {
         if (already) usernameInput.value = name;
         else usernameInput.placeholder = name;
@@ -57,17 +57,17 @@ var Splash = (function() {
       document.getElementById("overlay").style.display = 'none';
       // set the splash screen not to show next time
       Preferences.setSplashScreen(false);
-      var storage = window.localStorage;
+      let storage = window.localStorage;
       storage.setItem('splash', Preferences.getSplashScreen());
-      var splashSwitch = document.getElementById("splashSwitch");
+      let splashSwitch = document.getElementById("splashSwitch");
       if (splashSwitch != null)
         splashSwitch.checked = Preferences.getSplashScreen();
 
-      var lightInput = document.getElementById("lightSwitch");
+      let lightInput = document.getElementById("lightSwitch");
       if (lightInput != null)
         lightInput.checked = Preferences.getLight();
 
-      var usernameInput = document.getElementById("usernameSplashInput");
+      let usernameInput = document.getElementById("usernameSplashInput");
       if (usernameInput.value == "") {
         usernameInput.value = usernameInput.placeholder;
       }
@@ -84,10 +84,10 @@ var Splash = (function() {
     firstPart = ["Lightning", "Thunder", "Sky", "Sea", "Ocean", "Green", "Blue", "Red", "Yellow", "Orange", "Colorful", "Strange", "Serious", "Magnificent", "Great"]; // nouns!
     lastPart = ["Monkey", "Squirrel", "Cat", "Mouse", "Koala", "Donkey", "Alien", "Fish", "Duck", "Goose", "Moose", "Bear", "Watermelon", "Cherry", "Strawberry", "Grape", "Blueberry", "Pineapple", "Pear", "Dog"]; // animals!
 
-    var random1 = Math.round(Math.random()*(firstPart.length-1));
-    var random2 = Math.round(Math.random()*(lastPart.length-1));
+    let random1 = Math.round(Math.random()*(firstPart.length-1));
+    let random2 = Math.round(Math.random()*(lastPart.length-1));
 
-    var name = firstPart[random1] + "" + lastPart[random2];
+    let name = firstPart[random1] + "" + lastPart[random2];
     return name;
   }
   return Splash;

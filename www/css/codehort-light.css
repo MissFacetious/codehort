@@ -273,6 +273,7 @@ input.firepad-userlist-name-input {
   border: 5px solid #ffe300;
   width: 70%; /* Could be more or less, depending on screen size */
   height: 450px;
+  display: 'none';
 }
 
 .panel-small {
@@ -282,6 +283,7 @@ input.firepad-userlist-name-input {
   border: 5px solid #ffe300;
   width: 35%; /* Could be more or less, depending on screen size */
   height: 250px;
+  display: 'none';
 }
 
 .panel-challenge {

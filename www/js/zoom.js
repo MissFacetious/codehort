@@ -1,5 +1,5 @@
-var Zoom = (function() {
-  var zoom;
+const Zoom = (function() {
+  let zoom;
 
   function Zoom() {
     if (!(this instanceof Zoom)) {
@@ -34,32 +34,32 @@ var Zoom = (function() {
       }
     }
     Zoom.resize();
-    var storage = window.localStorage;
+    let storage = window.localStorage;
     storage.setItem('zoom1', parseFloat(this.zoom));
     // change value in Preferences
-    var element = document.getElementById('zoom');
+    let element = document.getElementById('zoom');
     if (element) {
       element.value = Math.round(100*this.zoom);
     }
   }
 
   Zoom.resize = function() {
-    var container = document.getElementsByClassName('CodeMirror');
+    let container = document.getElementsByClassName('CodeMirror');
     if (container != null && container.length > 0) {
       // only the first one
       container[0].style.zoom = Zoom.getZoom();
     }
-    var element = document.getElementById('zoomTest');
+    let element = document.getElementById('zoomTest');
     if (element != null) {
       element.style.zoom = Zoom.getZoom();
     }
   }
 
   Zoom.changePercent = function(amount) {
-    var element = document.getElementById('zoom');
+    let element = document.getElementById('zoom');
 
     if (element != null) {
-      var value = element.value;
+      let value = element.value;
       value = value / 100;
 
       if (value > 0 && amount < 0) {
@@ -70,7 +70,7 @@ var Zoom = (function() {
       Zoom.changeSize(amount);
     }
     if (amount == 0) {
-      Zoom.setZoom(value);
+    //  Zoom.setZoom(value);
       Zoom.resize();
     }
     if (element != null && element > 0) {
