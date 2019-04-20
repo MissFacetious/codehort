@@ -314,6 +314,13 @@ input.firepad-userlist-name-input {
   padding-right: 10px;
 }
 
+.panel-body-c {
+  font-family: Arial;
+  height: 510px;
+  overflow-y: auto;
+  padding-right: 10px;
+}
+
 /* Add Animation */
 @keyframes animatetop {
   from {top: -300px; opacity: 0}

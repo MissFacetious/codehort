@@ -183,8 +183,20 @@ const Execute = (function() {
         }
       }
       catch (e) {
-          // TODO: line number is a problem here
-          str = e.name+" at line "+(e.lineno)+": "+e.message;
+          // line number needs to be extracted from the stack trace
+          let stack = e.stack;
+          //console.log(stack);
+          //console.log(e.message);
+          let index = stack.indexOf("<anonymous>:");
+          stack = stack.substr(index+12, stack.length);
+          index = stack.indexOf(":");
+          stack = stack.substr(0, index);
+          let lineNumber = (stack-1);
+          // how about we just grab the first two lines?
+          str = e.name;
+          if (lineNumber != -1)
+            str += " at line "+(lineNumber);
+          str += ": "+e.message;
           error = true;
       }
 
