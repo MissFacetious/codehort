@@ -204,10 +204,21 @@ const Execute = (function() {
       time = (new Date().getTime()-d)/1000;
       if (time == 0) time = "0.000";
       tnode.innerHTML = "Execution time: "+time;
-
       if (str != undefined) {
-        if (testcase.value == str) {
+
+        //process boolean logic properly
+        var useBoolean = false;
+        var booleanFromTestcaseValue = null; //testcase.value can come back as "true" or "false" in string format
+        if(testcase.value == "true" || testcase.value == "false") {
+          useBoolean = true;
+          booleanFromTestcaseValue = (testcase.value == "true")
+        }
+
+        if (testcase.value == str && !useBoolean) {
           error = false;
+        } else if (useBoolean && str == booleanFromTestcaseValue) {
+          error = false;
+          useBoolean = false;
         }
         else {
           error = true;
