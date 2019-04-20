@@ -152,9 +152,9 @@ const Editor = (function() {
 
       tempTests[0] = {"test": "romanNumeralToInteger(\'XXVI\');", "value": "26"};
       tempTests[1] = {"test": "romanNumeralToInteger(\"CI\");", "value": "101"};
-      tempTests[2] = {"test": "romanNumeralToInteger(\"vii\");", "value": "7"};
+      tempTests[2] = {"test": "romanNumeralToInteger(\"XiX\");", "value": "19"};
       tempTests[3] = {"test": "romanNumeralToInteger(\"XXVIMFOO\");", "value": "-1"};
-      tempTests[4] = {"test": "romanNumeralToInteger(\"MC\");", "value": "1100"};
+      tempTests[4] = {"test": "romanNumeralToInteger(\"mc\");", "value": "1100"};
 
       tempTitle = '<h2>Roman Numeral Converter</h2>';
       tempHtml = '<h3>Description:</h3><p>Implement a roman numeral converter function, <i>romanNumeralToInteger(romanValue)</i> that takes a string in a roman numeral format, <i>romanValue</i> as input and returns its corresponding numeric value. An explanation of roman numerals and their values can be found <a href=\'http://mathworld.wolfram.com/RomanNumerals.html\' target=\'_new\'>here</a>.</p><h3>Error Conditions:</h3><p>Roman numerals provided to the <i>romanNumeralToInteger</i> function can be either uppercase or lowercase. If an invalid roman numeral string (with non-roman-numeral characters, empty, or null) is provided, the function should return -1.</p><h3>Examples:</h3><p>romanNumeralToInteger("viii") will return 8</p><p>romanNumeralToInteger("IX") will return 9</p><p>romanNumeralToInteger("xli") will return 41</p><p>romanNumeralToInteger("LII") will return 52</p><p>romanNumeralToInteger("foo") will return -1</p>';
