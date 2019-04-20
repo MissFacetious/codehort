@@ -162,12 +162,10 @@ const Editor = (function() {
     else if (challenge == '4') {
       document.getElementById("challenge4").classList.add("challengeIconSelected");
       tempCode = "// CHALLENGE #4: JSON Parsing\n// Keep this line in order to execute your code in codehort correctly.\n\n//Click the Codehort icon above to view challenge instructions and example input and output values.\n" +
-      "\n//Given the student list shown in the function below, implement the listed functions to compute and retrieve student information.\n"+
-      "\n//Access the student records in your implementations using the function shown here:\n"+
-      "\n function getStudentList() { var studentRecords = [\n\t{\n\t\"studentName\": \"Miggs\",\n\t\"studentId\": \"12345\",\n\t\"grades\": [{\n\t\t\"assignmentName\": \"project\",\n\t\t\"score\": 88,\n\t\t\"weight\": 0.2\n\t},\n\t{\n\t\t\"assignmentName\": \"test1\",\n\t\t\"score\": 82,\n\t\t\"weight\": 0.4\n\t},\n\t{\n\t\t\"assignmentName\": \"test2\",\n\t\t\"score\": 94,\n\t\t\"weight\": 0.4\n\t}\n\t]\n\t},"+
-      "\n\t{\n\t\"studentName\": \"Lisa\",\n\t\"studentId\": \"67890\",\n\t\"grades\": [{\n\t\t\"assignmentName\": \"project\",\n\t\t\"score\": 94,\n\t\t\"weight\": 0.2\n\t},\n\t{\n\t\t\"assignmentName\": \"test1\",\n\t\t\"score\": 90,\n\t\t\"weight\": 0.4\n\t},\n\t{\n\t\t\"assignmentName\": \"test2\",\n\t\t\"score\": 92,\n\t\t\"weight\": 0.4\n\t}\n\t]\n\t}," +
-      "\n\t{\n\t\"studentName\": \"Slacky\",\n\t\"studentId\": \"64732\",\n\t\"grades\": [{\n\t\t\"assignmentName\": \"project\",\n\t\t\"score\": 34,\n\t\t\"weight\": 0.2\n\t},\n\t{\n\t\t\"assignmentName\": \"test1\",\n\t\t\"score\": 68,\n\t\t\"weight\": 0.4},\n\t{\n\t\t\"assignmentName\": \"test2\",\n\t\t\"score\": 86,\n\t\t\"weight\": 0.4\n\t}\n\t]\n\t}\n]\n" +
-      "\n return studentRecords; } \n"+
+      "\n//Given the student list shown at the bottom of the editor, implement the listed functions to compute and retrieve student information.\n"+
+
+      "\n\n //Returns the score for an assignment given the student name and assignment name." +
+      "\nfunction getScoreForAssignment(studentName, assignmentName) {\n\t\n}" +
 
       "\n\n //Returns the weighted numerical grade for a student given their name (shown in JSON as studentName)." +
       "\nfunction getWeightedNumericalGrade(studentName) {\n\t\n}" +
@@ -175,18 +173,22 @@ const Editor = (function() {
       "\n\n //Returns the letter grade for a student given their name (shown in JSON as studentName)." +
       "\nfunction getLetterGrade(studentName) {\n\t\n}" +
 
-      "\n\n //Returns the score for an assignment given the student name and assignment name." +
-      "\nfunction getScoreForAssignment(studentName, assignmentName) {\n\t\n}"
+      "\n//Access the student records in your implementations using the function shown here:\n"+
+      "\nfunction getStudentList() { var studentRecords = \n[\n\t{\n\t\t\"studentName\": \"Miggs\",\n\t\t\"studentId\": \"12345\",\n\t\t\"grades\": [\n\t\t\t{\n\t\t\t\t\"assignmentName\": \"project\",\n\t\t\t\t\"score\": 88,\n\t\t\t\t\"weight\": 0.2\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"assignmentName\": \"test1\",\n\t\t\t\t\"score\": 82,\n\t\t\t\t\"weight\": 0.4\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"assignmentName\": \"test2\",\n\t\t\t\t\"score\": 94,\n\t\t\t\t\"weight\": 0.4\n\t\t\t}\n\t\t]\n\t},"+
+      "\n\t{\n\t\t\"studentName\": \"Lisa\",\n\t\t\"studentId\": \"67890\",\n\t\t\"grades\": [\n\t\t\t{\n\t\t\t\t\"assignmentName\": \"project\",\n\t\t\t\t\"score\": 94,\n\t\t\t\t\"weight\": 0.2\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"assignmentName\": \"test1\",\n\t\t\t\t\"score\": 90,\n\t\t\t\t\"weight\": 0.4\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"assignmentName\": \"test2\",\n\t\t\t\t\"score\": 92,\n\t\t\t\t\"weight\": 0.4\n\t\t\t}\n\t\t]\n\t}," +
+      "\n\t{\n\t\t\"studentName\": \"Slacky\",\n\t\t\"studentId\": \"64732\",\n\t\t\"grades\": [\n\t\t\t{\n\t\t\t\t\"assignmentName\": \"project\",\n\t\t\t\t\"score\": 34,\n\t\t\t\t\"weight\": 0.2\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"assignmentName\": \"test1\",\n\t\t\t\t\"score\": 68,\n\t\t\t\t\"weight\": 0.4},\n\t\t\t{\n\t\t\t\t\"assignmentName\": \"test2\",\n\t\t\t\t\"score\": 86,\n\t\t\t\t\"weight\": 0.4\n\t\t\t}\n\t\t]\n\t}\n]\n" +
+      "\n return studentRecords; } \n"
 
-      tempTests[0] = {"test": "getWeightedNumericalGrade(\'Miggs\');", "value": "88"};
-      tempTests[1] = {"test": "getWeightedNumericalGrade(\'Ash\');", "value": "-1"};
-      tempTests[2] = {"test": "getLetterGrade(\'Slacky\');", "value": "D"};
-      tempTests[3] = {"test": "getLetterGrade(\'Bob\');", "value": "-1"};
-      tempTests[4] = {"test": "getScoreForAssignment(\'Miggs\',\'project'\);", "value": "88"};
+      tempTests[0] = {"test": "getScoreForAssignment(\'Miggs\',\'project'\);", "value": "88"};
+      tempTests[1] = {"test": "getWeightedNumericalGrade(\'Miggs\');", "value": "88"};
+      tempTests[2] = {"test": "getWeightedNumericalGrade(\'Bobby\');", "value": "-1"};
+      tempTests[3] = {"test": "getLetterGrade(\'Slacky\');", "value": "D"};
+      tempTests[4] = {"test": "getLetterGrade(\'Robert\');", "value": "-1"};
+
       //tempTests[5] = {"test": "getScoreForAssignment(\'Miggs\',\'fakeExam'\);", "value": "-1"};
       //tempTests[6] = {"test": "getScoreForAssignment(\'Ash\',\'project'\);", "value": "-1"};
       tempTitle = '<h2>JSON Parsing</h2>';
-      tempHtml = '<h3>Description:</h3>Given the student record information given in the <i>getStudentList</i> function provided in the challenge, implement functions to perform the operations listed below. <ul><li>Implement a function <i>getWeightedNumericalGrade(studentName)</i> that returns the weighted numerical grade for a student given the value provided in <i>studentName</i>. You can access all student information, including student name and assignment grades, using the <i>getStudentList</i> function provided for you. Hint: A weighted numerical grade is determined by multiplying each grade entry by its weighted value and then summing the results, see explanation <a href=\'https://www.rapidtables.com/calc/grade/grade-calculator.html\' target=\'_new\'>here</a>.</li><li>Implement a function <i>getLetterGrade(studentName)</i> that returns the letter grade as a string for a student given the value provided in <i>studentName</i>. For the sake of this exercise, A = 90+, B=80-89, C=70-79, D=65-69, F=64 and below. Hint: You may want to utilize the function written above to retrieve the weighted numerical grade in your implementation.</li><li>Implement a function <i>getScoreForAssigment(studentName, assignmentName)</i> that returns the score for an assignment given the values provided in <i>studentName</i> and <i>assignmentName</i>.</li></ul></p><h3>Error Conditions:</h3><p>If <i>studentName</i> or <i>assignmentName</i> information is not found in the student list, any function accessing that information should return -1 (since the results cannot be accurately computed.)</p><h3>Examples:</h3><p>getWeightedNumericalGrade(\'Miggs\') will return 88</p><p>getLetterGrade(\'Slacky\') will return D</p><p>getScoreForAssignment(\'Lisa\', \'project\') will return 94</p><p>getWeightedNumericalGrade(\'Ash\') will return -1</p>';
+      tempHtml = '<h3>Description:</h3>Given the student record information given in the <i>getStudentList</i> function provided in the challenge, implement functions to perform the operations listed below. <ul><li>Implement a function <i>getScoreForAssigment(studentName, assignmentName)</i> that returns the score for an assignment given the values provided in <i>studentName</i> and <i>assignmentName</i>.</li><li>Implement a function <i>getWeightedNumericalGrade(studentName)</i> that returns the weighted numerical grade for a student given the value provided in <i>studentName</i>. You can access all student information, including student name and assignment grades, using the <i>getStudentList</i> function provided for you. Hint: A weighted numerical grade is determined by multiplying each grade entry by its weighted value and then summing the results, see explanation <a href=\'https://www.rapidtables.com/calc/grade/grade-calculator.html\' target=\'_new\'>here</a>.</li><li>Implement a function <i>getLetterGrade(studentName)</i> that returns the letter grade as a string for a student given the value provided in <i>studentName</i>. For the sake of this exercise, A = 90+, B=80-89, C=70-79, D=65-69, F=64 and below. Hint: You may want to utilize the function written above to retrieve the weighted numerical grade in your implementation.</li></ul></p><h3>Error Conditions:</h3><p>If <i>studentName</i> or <i>assignmentName</i> information is not found in the student list, any function accessing that information should return -1 (since the results cannot be accurately computed.)</p><h3>Examples:</h3><p>getWeightedNumericalGrade(\'Miggs\') will return 88</p><p>getLetterGrade(\'Slacky\') will return D</p><p>getScoreForAssignment(\'Lisa\', \'project\') will return 94</p><p>getWeightedNumericalGrade(\'Ash\') will return -1</p>';
     }
     else if (challenge == '5') {
       document.getElementById("challenge5").classList.add("challengeIconSelected");
