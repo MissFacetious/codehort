@@ -19,7 +19,7 @@ EMCAScript & Javascript, HTML5, CSS
 Firebase
 
 ### Libraries
-Codemirror, Firepad, FireSaver
+<a href="https://codemirror.net/">Codemirror</a>, <a href="https://firepad.io/">Firepad</a>, <a href="https://github.com/eligrey/FileSaver.js/">FireSaver</a>
 
 ## run locally
 
