@@ -13,7 +13,7 @@ Mobbing session functionality (expertly narrated by Lisa): https://youtu.be/GrYF
 
 ## technology stack
 ### Code Language
-EMCAScript & Javascript, HTML5, CSS
+ECMAScript & Javascript, HTML5, CSS
 
 ### Database
 Firebase
